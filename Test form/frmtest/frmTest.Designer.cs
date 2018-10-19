@@ -37,13 +37,13 @@
             this.txtMaskedText = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpslaan1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOpslaan2 = new System.Windows.Forms.Button();
             this.dgvTest = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnOpslaan1 = new System.Windows.Forms.Button();
-            this.btnOpslaan2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTest)).BeginInit();
@@ -102,9 +102,11 @@
             // txtMaskedText
             // 
             this.txtMaskedText.Location = new System.Drawing.Point(72, 155);
+            this.txtMaskedText.Mask = "00/00/0000";
             this.txtMaskedText.Name = "txtMaskedText";
             this.txtMaskedText.Size = new System.Drawing.Size(100, 20);
             this.txtMaskedText.TabIndex = 6;
+            this.txtMaskedText.ValidatingType = typeof(System.DateTime);
             // 
             // label4
             // 
@@ -133,6 +135,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // btnOpslaan1
+            // 
+            this.btnOpslaan1.Location = new System.Drawing.Point(12, 198);
+            this.btnOpslaan1.Name = "btnOpslaan1";
+            this.btnOpslaan1.Size = new System.Drawing.Size(140, 23);
+            this.btnOpslaan1.TabIndex = 8;
+            this.btnOpslaan1.Text = "Opslaan in Excel";
+            this.btnOpslaan1.UseVisualStyleBackColor = true;
+            this.btnOpslaan1.Click += new System.EventHandler(this.btnOpslaan1_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnOpslaan2);
@@ -143,6 +155,15 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
+            // 
+            // btnOpslaan2
+            // 
+            this.btnOpslaan2.Location = new System.Drawing.Point(29, 214);
+            this.btnOpslaan2.Name = "btnOpslaan2";
+            this.btnOpslaan2.Size = new System.Drawing.Size(138, 23);
+            this.btnOpslaan2.TabIndex = 1;
+            this.btnOpslaan2.Text = "Opslaan in Excel";
+            this.btnOpslaan2.UseVisualStyleBackColor = true;
             // 
             // dgvTest
             // 
@@ -170,25 +191,6 @@
             // 
             this.Column3.HeaderText = "Column3";
             this.Column3.Name = "Column3";
-            // 
-            // btnOpslaan1
-            // 
-            this.btnOpslaan1.Location = new System.Drawing.Point(12, 198);
-            this.btnOpslaan1.Name = "btnOpslaan1";
-            this.btnOpslaan1.Size = new System.Drawing.Size(140, 23);
-            this.btnOpslaan1.TabIndex = 8;
-            this.btnOpslaan1.Text = "Opslaan in Excel";
-            this.btnOpslaan1.UseVisualStyleBackColor = true;
-            this.btnOpslaan1.Click += new System.EventHandler(this.btnOpslaan1_Click);
-            // 
-            // btnOpslaan2
-            // 
-            this.btnOpslaan2.Location = new System.Drawing.Point(29, 214);
-            this.btnOpslaan2.Name = "btnOpslaan2";
-            this.btnOpslaan2.Size = new System.Drawing.Size(138, 23);
-            this.btnOpslaan2.TabIndex = 1;
-            this.btnOpslaan2.Text = "Opslaan in Excel";
-            this.btnOpslaan2.UseVisualStyleBackColor = true;
             // 
             // frmTest
             // 

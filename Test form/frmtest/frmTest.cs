@@ -29,7 +29,7 @@ namespace frmtest
         {
             //exel openen
             xlexcel = new Excel.Application();
-            xlexcel.Visible = true;
+            xlexcel.Visible = false;
 
             //vorige resulaten verwijderen
             if (File.Exists(path + @"\Resultaat.xlsx"))
@@ -65,6 +65,9 @@ namespace frmtest
             xlWorkSheet.Cells[1, 2] = "Kolom 2";
             xlWorkSheet.Cells[1, 3] = "Kolom 3";
             xlWorkSheet.Cells[1, 4] = "Kolom 4";
+            xlWorkSheet.Cells[2, 2] = txtGetal.Text;
+            xlWorkSheet.Cells[2, 3] = txtVeelText.Text;
+            xlWorkSheet.Cells[2, 4] = txtMaskedText.Text;
 
             //opslaan als..
             xlWorkBook.Close(true, path + @"\Resultaat.xlsx", misValue);
@@ -78,6 +81,7 @@ namespace frmtest
             //verwijder temp file
             if (File.Exists(path + @"\TempFile.xlsx"))
                 File.Delete(path + @"\TempFile.xlsx");
+            MessageBox.Show("Voltooid.", "Voltooid", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void releaseObject(object obj)
         {
