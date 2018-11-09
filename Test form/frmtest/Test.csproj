@@ -59,6 +59,12 @@
     <Compile Include="Test2.Designer.cs">
       <DependentUpon>Test2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Leerling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Leerling.Designer.cs">
+      <DependentUpon>Leerling.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmTest.resx">
       <DependentUpon>frmTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +79,9 @@
     </Compile>
     <EmbeddedResource Include="Test2.resx">
       <DependentUpon>Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Leerling.resx">
+      <DependentUpon>Leerling.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

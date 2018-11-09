@@ -37,22 +37,12 @@ namespace frmtest
             if (File.Exists(path + @"\TempFile.xlsx"))
             {
                 File.Delete(path + @"\TempFile.xlsx");
-
-                //leeg excel document aanmaken.
-                var app = new Microsoft.Office.Interop.Excel.Application();
-                var wb = app.Workbooks.Add();
-                wb.SaveAs(path + @"\TempFile.xlsx");
-                wb.Close();
             }
-            else
-            {
-                //leeg excel document aanmaken.
-                var app = new Microsoft.Office.Interop.Excel.Application();
-                var wb = app.Workbooks.Add();
-                wb.SaveAs(path + @"\TempFile.xlsx");
-                wb.Close();
-            }
-
+            //leeg excel document aanmaken.
+            var app = new Microsoft.Office.Interop.Excel.Application();
+            var wb = app.Workbooks.Add();
+            wb.SaveAs(path + @"\TempFile.xlsx");
+            wb.Close();
 
             //Bestand openen en wijzigen.
             xlWorkBook = xlexcel.Workbooks.Open(path + @"\TempFile.xlsx", 0, true, 5, "", "", true,
