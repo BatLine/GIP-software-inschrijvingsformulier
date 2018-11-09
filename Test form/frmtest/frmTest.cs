@@ -100,5 +100,16 @@ namespace frmtest
                 GC.Collect();
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Test2 test2 = new Test2();
+            test2.Show();
+        }
     }
 }
