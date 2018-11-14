@@ -68,11 +68,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Voornaam = new System.Windows.Forms.Label();
             this.txtVoornaam = new System.Windows.Forms.TextBox();
+            this.txtBijkVoornaam = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mskRijksregisterNummer
             // 
-            this.mskRijksregisterNummer.Location = new System.Drawing.Point(184, 210);
+            this.mskRijksregisterNummer.Location = new System.Drawing.Point(184, 235);
             this.mskRijksregisterNummer.Mask = "00.00.00-000.00";
             this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
             this.mskRijksregisterNummer.Size = new System.Drawing.Size(100, 20);
@@ -84,7 +86,7 @@
             this.cmbGeslacht.Items.AddRange(new object[] {
             "Man",
             "Vrouw"});
-            this.cmbGeslacht.Location = new System.Drawing.Point(184, 98);
+            this.cmbGeslacht.Location = new System.Drawing.Point(184, 123);
             this.cmbGeslacht.Name = "cmbGeslacht";
             this.cmbGeslacht.Size = new System.Drawing.Size(100, 21);
             this.cmbGeslacht.TabIndex = 82;
@@ -173,7 +175,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(184, 323);
+            this.txtMail.Location = new System.Drawing.Point(184, 348);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(100, 20);
             this.txtMail.TabIndex = 74;
@@ -232,7 +234,7 @@
             // 
             // mskGsmNummer
             // 
-            this.mskGsmNummer.Location = new System.Drawing.Point(184, 289);
+            this.mskGsmNummer.Location = new System.Drawing.Point(184, 314);
             this.mskGsmNummer.Mask = "0000 00 00 00";
             this.mskGsmNummer.Name = "mskGsmNummer";
             this.mskGsmNummer.Size = new System.Drawing.Size(100, 20);
@@ -314,7 +316,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(42, 323);
+            this.label8.Location = new System.Drawing.Point(42, 348);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 57;
@@ -323,7 +325,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 291);
+            this.label4.Location = new System.Drawing.Point(42, 316);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 56;
@@ -331,21 +333,21 @@
             // 
             // txtNationaliteit
             // 
-            this.txtNationaliteit.Location = new System.Drawing.Point(184, 254);
+            this.txtNationaliteit.Location = new System.Drawing.Point(184, 279);
             this.txtNationaliteit.Name = "txtNationaliteit";
             this.txtNationaliteit.Size = new System.Drawing.Size(100, 20);
             this.txtNationaliteit.TabIndex = 55;
             // 
             // txtGeboorteDatum
             // 
-            this.txtGeboorteDatum.Location = new System.Drawing.Point(184, 176);
+            this.txtGeboorteDatum.Location = new System.Drawing.Point(184, 201);
             this.txtGeboorteDatum.Name = "txtGeboorteDatum";
             this.txtGeboorteDatum.Size = new System.Drawing.Size(100, 20);
             this.txtGeboorteDatum.TabIndex = 54;
             // 
             // txtGeboortePlaats
             // 
-            this.txtGeboortePlaats.Location = new System.Drawing.Point(184, 137);
+            this.txtGeboortePlaats.Location = new System.Drawing.Point(184, 162);
             this.txtGeboortePlaats.Name = "txtGeboortePlaats";
             this.txtGeboortePlaats.Size = new System.Drawing.Size(100, 20);
             this.txtGeboortePlaats.TabIndex = 53;
@@ -360,7 +362,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 257);
+            this.label7.Location = new System.Drawing.Point(39, 282);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 51;
@@ -369,7 +371,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 218);
+            this.label6.Location = new System.Drawing.Point(39, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 13);
             this.label6.TabIndex = 50;
@@ -378,7 +380,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(39, 179);
+            this.label5.Location = new System.Drawing.Point(39, 204);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 49;
@@ -387,7 +389,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 140);
+            this.label3.Location = new System.Drawing.Point(39, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 48;
@@ -396,7 +398,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 101);
+            this.label2.Location = new System.Drawing.Point(39, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 47;
@@ -427,10 +429,28 @@
             this.txtVoornaam.Size = new System.Drawing.Size(100, 20);
             this.txtVoornaam.TabIndex = 44;
             // 
+            // txtBijkVoornaam
+            // 
+            this.txtBijkVoornaam.Location = new System.Drawing.Point(184, 89);
+            this.txtBijkVoornaam.Name = "txtBijkVoornaam";
+            this.txtBijkVoornaam.Size = new System.Drawing.Size(100, 20);
+            this.txtBijkVoornaam.TabIndex = 85;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(39, 92);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 13);
+            this.label17.TabIndex = 84;
+            this.label17.Text = "Bijk voornaam";
+            // 
             // Leerling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtBijkVoornaam);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.mskRijksregisterNummer);
             this.Controls.Add(this.cmbGeslacht);
             this.Controls.Add(this.Bevestigen);
@@ -521,5 +541,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Voornaam;
         private System.Windows.Forms.TextBox txtVoornaam;
+        private System.Windows.Forms.TextBox txtBijkVoornaam;
+        private System.Windows.Forms.Label label17;
     }
 }

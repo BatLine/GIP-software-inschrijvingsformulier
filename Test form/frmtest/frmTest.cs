@@ -101,5 +101,8 @@ namespace frmtest
             Test2 test2 = new Test2();
             test2.Show();
         }
+
+       
+        
     }
 }

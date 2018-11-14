@@ -112,34 +112,89 @@ namespace frmtest
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             //wijzigingen
-            xlWorkSheet.Cells[1, 1] = "Voornaam";
-            xlWorkSheet.Cells[2, 1] = txtVoornaam.Text;
-            xlWorkSheet.Cells[1, 2] = "Familienaam";
-            xlWorkSheet.Cells[2, 2] = txtFamilienaam.Text;
-            xlWorkSheet.Cells[1, 3] = "Geslacht";
-            xlWorkSheet.Cells[2, 3] = cmbGeslacht.Text;
-            xlWorkSheet.Cells[1, 4] = "Geboorteplaats";
-            xlWorkSheet.Cells[2, 4] = txtGeboortePlaats.Text;
+            xlWorkSheet.Cells[1, 1] = "Familienaam";
+            xlWorkSheet.Cells[2, 1] = txtFamilienaam.Text;
+            xlWorkSheet.Cells[1, 2] = "Voornaam";
+            xlWorkSheet.Cells[2, 2] = txtVoornaam.Text;
+            xlWorkSheet.Cells[1, 3] = "Bijk voornaam";
+            xlWorkSheet.Cells[2, 3] = txtBijkVoornaam.Text;
+            xlWorkSheet.Cells[1, 4] = "Geslacht";
+            xlWorkSheet.Cells[2, 4] = cmbGeslacht.Text;
             xlWorkSheet.Cells[1, 5] = "Geboortedatum";
             xlWorkSheet.Cells[2, 5] = txtGeboorteDatum.Text;
-            xlWorkSheet.Cells[1, 6] = "Rijksregisternummer";
-            xlWorkSheet.Cells[2, 6] = mskRijksregisterNummer.Text;
-            xlWorkSheet.Cells[1, 7] = "Nationaliteit";
-            xlWorkSheet.Cells[2, 7] = txtNationaliteit.Text;
-            xlWorkSheet.Cells[1, 8] = "GSM-Nummer";
-            xlWorkSheet.Cells[2, 8] = mskGsmNummer.Text;
-            xlWorkSheet.Cells[1, 9] = "E-Mail";
-            xlWorkSheet.Cells[2, 9] = txtMail.Text;
-            xlWorkSheet.Cells[1, 10] = "Straat";
-            xlWorkSheet.Cells[2, 10] = txtStraat.Text;
-            xlWorkSheet.Cells[1, 11] = "Bus";
-            xlWorkSheet.Cells[2, 11] = txtBus.Text;
-            xlWorkSheet.Cells[1, 12] = "Gemeente";
-            xlWorkSheet.Cells[2, 12] = txtGemeente.Text;
-            xlWorkSheet.Cells[1, 13] = "Postcode";
-            xlWorkSheet.Cells[2, 13] = mskPostcode.Text;
-            xlWorkSheet.Cells[1, 14] = "Richting";
-            xlWorkSheet.Cells[2, 14] = cmbRichting.Text;
+            xlWorkSheet.Cells[1, 6] = "Geboorteplaats";
+            xlWorkSheet.Cells[2, 6] = txtGeboortePlaats.Text;
+            xlWorkSheet.Cells[1, 7] = "Rijksregisternummer";
+            xlWorkSheet.Cells[2, 7] = mskRijksregisterNummer.Text;
+            xlWorkSheet.Cells[1, 8] = "Straat";
+            xlWorkSheet.Cells[2, 8] = txtStraat.Text;
+            xlWorkSheet.Cells[1, 9] = "Bus";
+            xlWorkSheet.Cells[2, 9] = txtBus.Text;
+            xlWorkSheet.Cells[1, 10] = "Huisnummer";
+            xlWorkSheet.Cells[2, 10] = txtHuisnummer.Text;
+            xlWorkSheet.Cells[1, 11] = "Gemeente";
+            xlWorkSheet.Cells[2, 11] = txtGemeente.Text;
+            xlWorkSheet.Cells[1, 12] = "Land";
+            xlWorkSheet.Cells[2, 12] = txtLand.Text;
+            xlWorkSheet.Cells[1, 13] = "Nationaliteit";
+            xlWorkSheet.Cells[2, 13] = txtNationaliteit.Text;
+            xlWorkSheet.Cells[1, 14] = "Telefoon Domicile";
+            //xlWorkSheet.Cells[2, 14] = .Text;
+            xlWorkSheet.Cells[1, 15] = "GSM Domicile";
+            //xlWorkSheet.Cells[2, 15] = ;
+            xlWorkSheet.Cells[1, 16] = "Gsm-Nummer Leerling";
+            xlWorkSheet.Cells[2, 16] = mskGsmNummer.Text;
+            xlWorkSheet.Cells[1, 17] = "Gsm Ouder";
+            //xlWorkSheet.Cells[2, 17] = mskGsmOuder.Text;
+            xlWorkSheet.Cells[1, 18] = "E-Mail Leerling";
+            xlWorkSheet.Cells[2, 18] = txtMail.Text;
+            xlWorkSheet.Cells[1, 19] = "E-Mail Ouder";
+
+            xlWorkSheet.Cells[1, 20] = "Aanmeldings tijdstip";
+
+            xlWorkSheet.Cells[1, 21] = "Klascode";
+
+            xlWorkSheet.Cells[1, 22] = "Klasnummer";
+
+            xlWorkSheet.Cells[1, 23] = "Gebruikersnaam netwerk";
+
+            xlWorkSheet.Cells[1, 24] = "Wachtwoord netwerk";
+
+            //Moeder
+
+            xlWorkSheet.Cells[1, 25] = "Naam Moeder";
+
+            xlWorkSheet.Cells[1, 26] = "Voornaam Moeder";
+
+            xlWorkSheet.Cells[1, 27] = "Geboortedatum Moeder";
+
+            xlWorkSheet.Cells[1, 28] = "Rijksregisternummer Moeder";
+
+            xlWorkSheet.Cells[1, 29] = "Beroep Moeder";
+
+            xlWorkSheet.Cells[1, 30] = "GSM Moeder";
+
+            xlWorkSheet.Cells[1, 31] = "Telefoon werk Moeder";
+
+            xlWorkSheet.Cells[2, 32] = "E-Mail Moeder";
+
+            //Vader
+            xlWorkSheet.Cells[1, 33] = "Naam Vader";
+
+            xlWorkSheet.Cells[1, 34] = "Voornaam Vader";
+
+            xlWorkSheet.Cells[1, 35] = "Geboortedatum Vader";
+
+            xlWorkSheet.Cells[1, 36] = "Rijksregisternummer Vader";
+
+            xlWorkSheet.Cells[1, 37] = "Beroep Vader";
+
+            xlWorkSheet.Cells[1, 38] = "GSM Vader";
+
+            xlWorkSheet.Cells[1, 39] = "Telefoon werk Vader";
+
+            xlWorkSheet.Cells[2, 40] = "E-Mail Vader";
+
 
             //opslaan als..
             xlWorkBook.Close(true, path + @"\Resultaat.xlsx", misValue);

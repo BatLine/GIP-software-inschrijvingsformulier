@@ -30,16 +30,22 @@
         {
             this.TabLeerling = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.leerling2 = new frmtest.Leerling();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.leerling1 = new frmtest.Leerling();
+            this.ouders1 = new frmtest.Ouders();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.TabLeerling.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabLeerling
             // 
             this.TabLeerling.Controls.Add(this.tabPage1);
             this.TabLeerling.Controls.Add(this.tabPage2);
+            this.TabLeerling.Controls.Add(this.tabPage3);
             this.TabLeerling.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabLeerling.Location = new System.Drawing.Point(0, 0);
             this.TabLeerling.Name = "TabLeerling";
@@ -49,7 +55,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.leerling1);
+            this.tabPage1.Controls.Add(this.leerling2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -59,8 +65,16 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // leerling2
+            // 
+            this.leerling2.Location = new System.Drawing.Point(9, 4);
+            this.leerling2.Name = "leerling2";
+            this.leerling2.Size = new System.Drawing.Size(771, 394);
+            this.leerling2.TabIndex = 0;
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.ouders1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -69,12 +83,33 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // leerling1
+            // ouders1
             // 
-            this.leerling1.Location = new System.Drawing.Point(3, 22);
-            this.leerling1.Name = "leerling1";
-            this.leerling1.Size = new System.Drawing.Size(771, 394);
-            this.leerling1.TabIndex = 0;
+            this.ouders1.Location = new System.Drawing.Point(3, 3);
+            this.ouders1.Name = "ouders1";
+            this.ouders1.Size = new System.Drawing.Size(772, 418);
+            this.ouders1.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(778, 424);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(669, 365);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 51);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Test2
             // 
@@ -84,8 +119,11 @@
             this.Controls.Add(this.TabLeerling);
             this.Name = "Test2";
             this.Text = "Test2";
+            this.Load += new System.EventHandler(this.Test2_Load);
             this.TabLeerling.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +134,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private Leerling leerling1;
+        private Ouders ouders1;
+        private Leerling leerling2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button1;
     }
 }
