@@ -34,7 +34,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ouders1 = new frmtest.Ouders();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBevestigen = new System.Windows.Forms.Button();
+            this.btnUploaden = new System.Windows.Forms.Button();
             this.TabLeerling.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -46,11 +47,10 @@
             this.TabLeerling.Controls.Add(this.tabPage1);
             this.TabLeerling.Controls.Add(this.tabPage2);
             this.TabLeerling.Controls.Add(this.tabPage3);
-            this.TabLeerling.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabLeerling.Location = new System.Drawing.Point(0, 0);
             this.TabLeerling.Name = "TabLeerling";
             this.TabLeerling.SelectedIndex = 0;
-            this.TabLeerling.Size = new System.Drawing.Size(786, 450);
+            this.TabLeerling.Size = new System.Drawing.Size(786, 446);
             this.TabLeerling.TabIndex = 0;
             // 
             // tabPage1
@@ -59,7 +59,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(778, 424);
+            this.tabPage1.Size = new System.Drawing.Size(778, 420);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -67,10 +67,11 @@
             // 
             // leerling2
             // 
-            this.leerling2.Location = new System.Drawing.Point(9, 4);
+            this.leerling2.Location = new System.Drawing.Point(4, 6);
             this.leerling2.Name = "leerling2";
-            this.leerling2.Size = new System.Drawing.Size(771, 394);
+            this.leerling2.Size = new System.Drawing.Size(771, 379);
             this.leerling2.TabIndex = 0;
+            this.leerling2.Load += new System.EventHandler(this.leerling2_Load);
             // 
             // tabPage2
             // 
@@ -78,7 +79,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(778, 424);
+            this.tabPage2.Size = new System.Drawing.Size(778, 420);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -92,30 +93,42 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.btnBevestigen);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(778, 424);
+            this.tabPage3.Size = new System.Drawing.Size(778, 420);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnBevestigen
             // 
-            this.button1.Location = new System.Drawing.Point(669, 365);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 51);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnBevestigen.Location = new System.Drawing.Point(669, 365);
+            this.btnBevestigen.Name = "btnBevestigen";
+            this.btnBevestigen.Size = new System.Drawing.Size(101, 51);
+            this.btnBevestigen.TabIndex = 0;
+            this.btnBevestigen.Text = "Bevestigen";
+            this.btnBevestigen.UseVisualStyleBackColor = true;
+            this.btnBevestigen.Click += new System.EventHandler(this.btnBevestigen_Click);
+            // 
+            // btnUploaden
+            // 
+            this.btnUploaden.Location = new System.Drawing.Point(673, 490);
+            this.btnUploaden.Name = "btnUploaden";
+            this.btnUploaden.Size = new System.Drawing.Size(101, 22);
+            this.btnUploaden.TabIndex = 1;
+            this.btnUploaden.Text = "Uploaden";
+            this.btnUploaden.UseVisualStyleBackColor = true;
+            this.btnUploaden.Visible = false;
+            this.btnUploaden.Click += new System.EventHandler(this.button2_Click);
             // 
             // Test2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 450);
+            this.ClientSize = new System.Drawing.Size(786, 524);
+            this.Controls.Add(this.btnUploaden);
             this.Controls.Add(this.TabLeerling);
             this.Name = "Test2";
             this.Text = "Test2";
@@ -137,6 +150,7 @@
         private Ouders ouders1;
         private Leerling leerling2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBevestigen;
+        private System.Windows.Forms.Button btnUploaden;
     }
 }

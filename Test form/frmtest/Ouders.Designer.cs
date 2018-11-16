@@ -311,6 +311,7 @@
             this.txtVoornaamVader.Name = "txtVoornaamVader";
             this.txtVoornaamVader.Size = new System.Drawing.Size(100, 20);
             this.txtVoornaamVader.TabIndex = 27;
+            this.txtVoornaamVader.TextChanged += new System.EventHandler(this.txtVoornaamVader_TextChanged);
             // 
             // txtNaamVader
             // 
@@ -372,14 +373,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtFamilieNaamMoeder;
-        private System.Windows.Forms.TextBox txtVoornaamMoeder;
-        private System.Windows.Forms.TextBox txtBeroepMoeder;
-        private System.Windows.Forms.TextBox txtEMailMoeder;
-        private System.Windows.Forms.MaskedTextBox mskGeboortedatumMoeder;
-        private System.Windows.Forms.MaskedTextBox mskRijksregisterNrMoeder;
-        private System.Windows.Forms.MaskedTextBox mskGsmMoeder;
-        private System.Windows.Forms.MaskedTextBox mskTelefoonWerkMoeder;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -388,13 +381,21 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.MaskedTextBox mskTelefoonWerkVader;
-        private System.Windows.Forms.MaskedTextBox mskGsmVader;
-        private System.Windows.Forms.MaskedTextBox mskRijksregisterNrVader;
-        private System.Windows.Forms.MaskedTextBox mskGeboortedatumVader;
-        private System.Windows.Forms.TextBox txtEMailVader;
-        private System.Windows.Forms.TextBox txtBeroepVader;
-        private System.Windows.Forms.TextBox txtVoornaamVader;
-        private System.Windows.Forms.TextBox txtNaamVader;
+        public System.Windows.Forms.TextBox txtFamilieNaamMoeder;
+        public System.Windows.Forms.TextBox txtVoornaamMoeder;
+        public System.Windows.Forms.TextBox txtBeroepMoeder;
+        public System.Windows.Forms.TextBox txtEMailMoeder;
+        public System.Windows.Forms.MaskedTextBox mskGeboortedatumMoeder;
+        public System.Windows.Forms.MaskedTextBox mskRijksregisterNrMoeder;
+        public System.Windows.Forms.MaskedTextBox mskGsmMoeder;
+        public System.Windows.Forms.MaskedTextBox mskTelefoonWerkMoeder;
+        public System.Windows.Forms.TextBox txtNaamVader;
+        public System.Windows.Forms.MaskedTextBox mskTelefoonWerkVader;
+        public System.Windows.Forms.MaskedTextBox mskGsmVader;
+        public System.Windows.Forms.MaskedTextBox mskRijksregisterNrVader;
+        public System.Windows.Forms.MaskedTextBox mskGeboortedatumVader;
+        public System.Windows.Forms.TextBox txtEMailVader;
+        public System.Windows.Forms.TextBox txtBeroepVader;
+        public System.Windows.Forms.TextBox txtVoornaamVader;
     }
 }

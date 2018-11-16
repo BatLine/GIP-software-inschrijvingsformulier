@@ -21,5 +21,10 @@ namespace frmtest
         {
 
         }
+
+        private void txtVoornaamVader_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

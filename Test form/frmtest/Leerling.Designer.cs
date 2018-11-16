@@ -500,26 +500,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MaskedTextBox mskRijksregisterNummer;
-        private System.Windows.Forms.ComboBox cmbGeslacht;
-        private System.Windows.Forms.Button Bevestigen;
-        private System.Windows.Forms.RadioButton rdb6;
-        private System.Windows.Forms.RadioButton rdb5;
-        private System.Windows.Forms.RadioButton rdb4;
-        private System.Windows.Forms.RadioButton rdb3;
-        private System.Windows.Forms.RadioButton rdb2;
-        protected System.Windows.Forms.RadioButton rdb1;
-        private System.Windows.Forms.TextBox txtMail;
-        private System.Windows.Forms.MaskedTextBox mskPostcode;
-        private System.Windows.Forms.TextBox txtLand;
-        private System.Windows.Forms.TextBox txtGemeente;
-        private System.Windows.Forms.TextBox txtBus;
-        private System.Windows.Forms.TextBox txtHuisnummer;
-        private System.Windows.Forms.TextBox txtStraat;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.MaskedTextBox mskGsmNummer;
-        private System.Windows.Forms.ComboBox cmbRichting;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -529,10 +510,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtNationaliteit;
-        private System.Windows.Forms.TextBox txtGeboorteDatum;
-        private System.Windows.Forms.TextBox txtGeboortePlaats;
-        private System.Windows.Forms.TextBox txtFamilienaam;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -540,8 +517,30 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Voornaam;
-        private System.Windows.Forms.TextBox txtVoornaam;
-        private System.Windows.Forms.TextBox txtBijkVoornaam;
         private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.MaskedTextBox mskRijksregisterNummer;
+        public System.Windows.Forms.ComboBox cmbGeslacht;
+        public System.Windows.Forms.Button Bevestigen;
+        public System.Windows.Forms.RadioButton rdb6;
+        public System.Windows.Forms.RadioButton rdb5;
+        public System.Windows.Forms.RadioButton rdb4;
+        public System.Windows.Forms.RadioButton rdb3;
+        public System.Windows.Forms.RadioButton rdb2;
+        public System.Windows.Forms.RadioButton rdb1;
+        public System.Windows.Forms.TextBox txtMail;
+        public System.Windows.Forms.MaskedTextBox mskPostcode;
+        public System.Windows.Forms.TextBox txtLand;
+        public System.Windows.Forms.TextBox txtGemeente;
+        public System.Windows.Forms.TextBox txtBus;
+        public System.Windows.Forms.TextBox txtHuisnummer;
+        public System.Windows.Forms.TextBox txtStraat;
+        public System.Windows.Forms.MaskedTextBox mskGsmNummer;
+        public System.Windows.Forms.ComboBox cmbRichting;
+        public System.Windows.Forms.TextBox txtNationaliteit;
+        public System.Windows.Forms.TextBox txtGeboorteDatum;
+        public System.Windows.Forms.TextBox txtGeboortePlaats;
+        public System.Windows.Forms.TextBox txtFamilienaam;
+        public System.Windows.Forms.TextBox txtVoornaam;
+        public System.Windows.Forms.TextBox txtBijkVoornaam;
     }
 }
