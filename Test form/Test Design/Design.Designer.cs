@@ -31,9 +31,7 @@
             this.xylosTabControl1 = new XylosTabControl();
             this.lln = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.xylosSeparator1 = new XylosSeparator();
             this.xylosTabControl1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xylosTabControl1
@@ -67,7 +65,6 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Controls.Add(this.xylosSeparator1);
             this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tabPage2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.tabPage2.Location = new System.Drawing.Point(184, 4);
@@ -77,14 +74,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ouder";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // xylosSeparator1
-            // 
-            this.xylosSeparator1.Location = new System.Drawing.Point(59, 192);
-            this.xylosSeparator1.Name = "xylosSeparator1";
-            this.xylosSeparator1.Size = new System.Drawing.Size(275, 2);
-            this.xylosSeparator1.TabIndex = 0;
-            this.xylosSeparator1.Text = "xylosSeparator1";
             // 
             // Design
             // 
@@ -96,9 +85,9 @@
             this.Controls.Add(this.xylosTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Design";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inschrijving";
             this.xylosTabControl1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -108,7 +97,6 @@
         private XylosTabControl xylosTabControl1;
         private System.Windows.Forms.TabPage lln;
         private System.Windows.Forms.TabPage tabPage2;
-        private XylosSeparator xylosSeparator1;
     }
 }
 

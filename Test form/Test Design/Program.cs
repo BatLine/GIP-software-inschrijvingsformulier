@@ -16,7 +16,8 @@ namespace Test_Design
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Design());
+            new Menu().Show();
+            Application.Run();
         }
     }
 }
