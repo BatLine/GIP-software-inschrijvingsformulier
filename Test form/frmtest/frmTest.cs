@@ -102,7 +102,10 @@ namespace frmtest
             test2.Show();
         }
 
-       
-        
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Gegevens_uit_database_halen frm = new Gegevens_uit_database_halen();
+            frm.Show();
+        }
     }
 }

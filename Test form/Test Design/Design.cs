@@ -21,5 +21,11 @@ namespace Test_Design
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Loading l = new Loading();
+            l.ShowDialog();
+        }
     }
 }

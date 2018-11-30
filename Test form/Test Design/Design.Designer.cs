@@ -31,7 +31,9 @@
             this.xylosTabControl1 = new XylosTabControl();
             this.lln = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.xylosTabControl1.SuspendLayout();
+            this.lln.SuspendLayout();
             this.SuspendLayout();
             // 
             // xylosTabControl1
@@ -53,6 +55,7 @@
             // lln
             // 
             this.lln.BackColor = System.Drawing.Color.White;
+            this.lln.Controls.Add(this.button1);
             this.lln.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lln.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.lln.Location = new System.Drawing.Point(184, 4);
@@ -75,6 +78,16 @@
             this.tabPage2.Text = "Ouder";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(96, 236);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Open loading";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,6 +101,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inschrijving";
             this.xylosTabControl1.ResumeLayout(false);
+            this.lln.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -97,6 +111,7 @@
         private XylosTabControl xylosTabControl1;
         private System.Windows.Forms.TabPage lln;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
