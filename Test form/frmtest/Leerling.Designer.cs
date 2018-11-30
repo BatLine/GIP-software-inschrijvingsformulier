@@ -70,6 +70,7 @@
             this.txtVoornaam = new System.Windows.Forms.TextBox();
             this.txtBijkVoornaam = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.chkExcel = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // mskRijksregisterNummer
@@ -93,11 +94,11 @@
             // 
             // Bevestigen
             // 
-            this.Bevestigen.Location = new System.Drawing.Point(657, 349);
+            this.Bevestigen.Location = new System.Drawing.Point(596, 352);
             this.Bevestigen.Name = "Bevestigen";
-            this.Bevestigen.Size = new System.Drawing.Size(75, 23);
+            this.Bevestigen.Size = new System.Drawing.Size(172, 23);
             this.Bevestigen.TabIndex = 81;
-            this.Bevestigen.Text = "button1";
+            this.Bevestigen.Text = "Export";
             this.Bevestigen.UseVisualStyleBackColor = true;
             this.Bevestigen.Click += new System.EventHandler(this.Bevestigen_Click);
             // 
@@ -445,10 +446,21 @@
             this.label17.TabIndex = 84;
             this.label17.Text = "Bijk voornaam";
             // 
+            // chkExcel
+            // 
+            this.chkExcel.AutoSize = true;
+            this.chkExcel.Location = new System.Drawing.Point(588, 326);
+            this.chkExcel.Name = "chkExcel";
+            this.chkExcel.Size = new System.Drawing.Size(180, 17);
+            this.chkExcel.TabIndex = 86;
+            this.chkExcel.Text = "naar excel bestand ipv database";
+            this.chkExcel.UseVisualStyleBackColor = true;
+            // 
             // Leerling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkExcel);
             this.Controls.Add(this.txtBijkVoornaam);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.mskRijksregisterNummer);
@@ -542,5 +554,6 @@
         public System.Windows.Forms.TextBox txtFamilienaam;
         public System.Windows.Forms.TextBox txtVoornaam;
         public System.Windows.Forms.TextBox txtBijkVoornaam;
+        private System.Windows.Forms.CheckBox chkExcel;
     }
 }
