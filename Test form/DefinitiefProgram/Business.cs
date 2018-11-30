@@ -8,5 +8,17 @@ namespace DefinitiefProgram
 {
     class Business
     {
+        Percistence p = new Percistence();
+        List<Leerling> Leerlingen = new List<Leerling>();
+
+        public Business()
+        {
+
+        }
+
+        
+       
+
+
     }
 }
