@@ -14,9 +14,9 @@ namespace frmtest
 {
     public partial class frmTest : Form
     {
-        Microsoft.Office.Interop.Excel.Application xlexcel;
-        Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-        Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+        Excel.Application xlexcel;
+        Excel.Workbook xlWorkBook;
+        Excel.Worksheet xlWorkSheet;
         object misValue = System.Reflection.Missing.Value;
         string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 

@@ -14,7 +14,7 @@ namespace DefinitiefProgram
         private string strGeslacht;
         private string strGeboorteplaats;
         private string strGeboortedatum;
-        private int intRijkregisternummer;
+        private string strRijkregisternummer;
         private string strNationaliteit;
         private string strGSM_Nummer;
         private string strE_Mail;
@@ -27,6 +27,7 @@ namespace DefinitiefProgram
         private int intStudieKeuzeID;
         private int intMiddelbaar;
         private int intSchoolstatuutID;
+        private Ouders o;
 
         public string StrNaam { get => strNaam; set => strNaam = value; }
         public string StrVoornaam { get => strVoornaam; set => strVoornaam = value; }
@@ -34,7 +35,7 @@ namespace DefinitiefProgram
         public string StrGeslacht { get => strGeslacht; set => strGeslacht = value; }
         public string StrGeboorteplaats { get => strGeboorteplaats; set => strGeboorteplaats = value; }
         public string StrGeboortedatum { get => strGeboortedatum; set => strGeboortedatum = value; }
-        public int IntRijkregisternummer { get => intRijkregisternummer; set => intRijkregisternummer = value; }
+        public string StrRijkregisternummer { get => strRijkregisternummer; set => strRijkregisternummer = value; }
         public string StrNationaliteit { get => strNationaliteit; set => strNationaliteit = value; }
         public string StrGSM_Nummer { get => strGSM_Nummer; set => strGSM_Nummer = value; }
         public string StrE_Mail { get => strE_Mail; set => strE_Mail = value; }
@@ -47,5 +48,6 @@ namespace DefinitiefProgram
         public int IntStudieKeuzeID { get => intStudieKeuzeID; set => intStudieKeuzeID = value; }
         public int IntMiddelbaar { get => intMiddelbaar; set => intMiddelbaar = value; }
         public int IntSchoolstatuutID { get => intSchoolstatuutID; set => intSchoolstatuutID = value; }
+        internal Ouders O { get => o; set => o = value; }
     }
 }

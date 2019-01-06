@@ -13,19 +13,26 @@ namespace Test_Design
     public partial class Design : Form
     {
         public Design()
-        {
-            InitializeComponent();
-        }
+        { InitializeComponent(); }
 
         private void tabPage2_Click(object sender, EventArgs e)
+        { }
+
+        private void xylosTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        { }
+
+        private void Design_Load(object sender, EventArgs e)
+        { }
+
+        private void tpLLN_Click(object sender, EventArgs e)
+        { }
+
+        private void btnBevestig_Click(object sender, EventArgs e)
+        { exportToDB(); }
+
+        void exportToDB()
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Loading l = new Loading();
-            l.ShowDialog();
         }
     }
 }

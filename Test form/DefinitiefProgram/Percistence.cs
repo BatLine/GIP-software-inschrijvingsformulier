@@ -9,16 +9,12 @@ namespace DefinitiefProgram
 {
     class Percistence
     {
-        string strConnectionString;
-
+        MySqlConnection conn = new MySqlConnection("server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=ILiWO2dm");
         public Percistence()
-        {
-            strConnectionString = "server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=";
-        }
-
+        { }
+        
         public List<Leerling> GetLeerlingenFromDB()
         {
-            MySqlConnection conn = new MySqlConnection(strConnectionString);
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM ID191774_6itngip9.leerling;", conn);
             conn.Open();
             
@@ -34,7 +30,7 @@ namespace DefinitiefProgram
                 l.StrGeslacht = dataReader["Geslacht"].ToString();
                 l.StrGeboorteplaats = dataReader["Geboorteplaats"].ToString();
                 l.StrGeboortedatum = dataReader["Geboortedatum"].ToString();
-                l.IntRijkregisternummer = Convert.ToInt32(dataReader["Rijksregisternummer"]);
+                l.StrRijkregisternummer = dataReader["Rijksregisternummer"].ToString();
                 l.StrGSM_Nummer = dataReader["GSM-nummer"].ToString();
                 l.StrE_Mail = dataReader["E-mail"].ToString();
                 l.StrStraat = dataReader["Straat"].ToString();
@@ -50,6 +46,45 @@ namespace DefinitiefProgram
             }
             conn.Close();
             return leerlingen;
+        }
+        
+        public void addToDB(Leerling lln)
+        {
+            conn.Open();
+            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID) VALUES (" +
+                "'" + lln.StrNaam + "','" +
+                lln.StrVoornaam + "','" +
+                lln.StrBijkNaam + "','" +
+                lln.StrGeslacht + "','" +
+                lln.StrGeboorteplaats + "','" +
+                lln.StrGeboortedatum + "','" +
+                lln.StrRijkregisternummer + "','" +
+                lln.StrNationaliteit + "','" +
+                lln.StrGSM_Nummer + "','" +
+                lln.StrE_Mail + "','" +
+                lln.StrStraat + "','" +
+                lln.StrHuisnummer + "','" +
+                lln.StrBus + "','" +
+                lln.StrGemeente + "','" +
+                lln.StrPostcode + "','" +
+                lln.StrLand + "','" +
+                lln.IntStudieKeuzeID + "','" +
+                lln.IntMiddelbaar + "','" +
+                lln.IntSchoolstatuutID +"')"
+                , conn);
+            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO leerling (VNaam, Naam, Mailadres, GSM, Straat, Postcode, Tel, Gemeente, RelatieID) VALUES (" +
+                "'" + lln.O.StrVNaamMoeder + "','" +
+                lln.O.StrNaamMoeder + "','" +
+                lln.O.StrEmailMoeder + "','" +
+                lln.O.StrGSMMoeder + "','" +
+                lln.O. + "','" + //straat
+                lln.StrGeboorteplaats + "','" + //postcode
+                lln.O.StrTelefoonWerkMoeder + "','" +
+                lln.O. + "','" + //gemeebte
+                2 + "')" //relateID
+                , conn);
+            cmdLLN.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }
