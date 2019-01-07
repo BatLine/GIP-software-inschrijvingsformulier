@@ -77,10 +77,10 @@ namespace DefinitiefProgram
                 lln.O.StrNaamMoeder + "','" +
                 lln.O.StrEmailMoeder + "','" +
                 lln.O.StrGSMMoeder + "','" +
-                lln.O. + "','" + //straat
+                //lln.O. + "','" + //straat
                 lln.StrGeboorteplaats + "','" + //postcode
                 lln.O.StrTelefoonWerkMoeder + "','" +
-                lln.O. + "','" + //gemeebte
+                //lln.O. + "','" + //gemeebte
                 2 + "')" //relateID
                 , conn);
             cmdLLN.ExecuteNonQuery();

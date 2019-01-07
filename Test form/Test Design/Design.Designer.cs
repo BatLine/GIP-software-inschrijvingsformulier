@@ -406,6 +406,9 @@
             this.xylosCombobox1.EnabledCalc = true;
             this.xylosCombobox1.FormattingEnabled = true;
             this.xylosCombobox1.ItemHeight = 20;
+            this.xylosCombobox1.Items.AddRange(new object[] {
+            "Man",
+            "Vrouw"});
             this.xylosCombobox1.Location = new System.Drawing.Point(137, 113);
             this.xylosCombobox1.Name = "xylosCombobox1";
             this.xylosCombobox1.Size = new System.Drawing.Size(130, 26);

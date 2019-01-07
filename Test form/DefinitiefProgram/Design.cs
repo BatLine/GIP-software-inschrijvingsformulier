@@ -53,20 +53,20 @@ namespace DefinitiefProgram
             //Moeder
             o.StrNaamMoeder = txtNaamMoeder.Text;
             o.StrVNaamMoeder = txtNaamMoeder.Text;
-            o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
-            o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
-            o.StrBeroepMoeder = txtBeroepMoeder.Text;
+            //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
+            //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
+            //o.StrBeroepMoeder = txtBeroepMoeder.Text;
             o.StrGSMMoeder = mtxtGSMMoeder.Text;
             o.StrTelefoonWerkMoeder = mtxtTelfoonWerkMoeder.Text;
             o.StrEmailMoeder = txtEmailMoeder.Text;
             //Vader
             o.StrNaamVader = txtNaamVader.Text;
             o.StrVNaamVader = txtNaamVader.Text;
-            o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
-            o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
-            o.StrBeroepVader = txtBeroepVader.Text;
+            //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
+            //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
+            //o.StrBeroepVader = txtBeroepVader.Text;
             o.StrGSMVader = mtxtGSMVader.Text;
-            o.StrTelefoonWerkVader = mtxtTelefoonWerkVader.Text;
+            //o.StrTelefoonWerkVader = mtxtTelefoonWerkVader.Text;
             o.StrEmailVader = txtEmailVader.Text;
 
             lln.O = o;
