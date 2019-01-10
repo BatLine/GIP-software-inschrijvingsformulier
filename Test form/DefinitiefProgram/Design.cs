@@ -30,6 +30,7 @@ namespace DefinitiefProgram
             Leerling lln = new Leerling();
 
             //leerling
+            //correspondentie, gezinssituatie, gezinshoofd
             lln.StrVoornaam = txtVoornaam.Text;
             lln.StrNaam = txtFamilieNaam.Text;
             lln.StrBijkNaam = txtBijkvoornaam.Text;
@@ -47,27 +48,38 @@ namespace DefinitiefProgram
             lln.StrPostcode = mtxtPostcode.Text;
             lln.StrLand = cmbLand.Text;
             lln.IntMiddelbaar = Studiejaar;
+            lln.IntKlasNR = Convert.ToInt16(lblKlasNR.Text);
+            lln.StrKlas = cmbKlas.SelectedItem.ToString();
+            lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
+            lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
 
             //Ouders
             Ouders o = new Ouders();
             //Moeder
             o.StrNaamMoeder = txtNaamMoeder.Text;
-            o.StrVNaamMoeder = txtNaamMoeder.Text;
             //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
             //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
             //o.StrBeroepMoeder = txtBeroepMoeder.Text;
             o.StrGSMMoeder = mtxtGSMMoeder.Text;
             o.StrTelefoonWerkMoeder = mtxtTelfoonWerkMoeder.Text;
             o.StrEmailMoeder = txtEmailMoeder.Text;
+            o.StrStraatMoeder = txtStraatMoeder.Text;
+            o.StrHuisnrMoeder = txtHuisNRMoeder.Text;
+            o.StrGemeenteMoeder = txtGemeenteMoeder.Text;
+            o.StrPostcodeMoeder = mtxtPostcodeMoeder.Text;
+
             //Vader
             o.StrNaamVader = txtNaamVader.Text;
-            o.StrVNaamVader = txtNaamVader.Text;
             //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
             //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
             //o.StrBeroepVader = txtBeroepVader.Text;
             o.StrGSMVader = mtxtGSMVader.Text;
-            //o.StrTelefoonWerkVader = mtxtTelefoonWerkVader.Text;
+            o.StrTelefoonWerkVader = mtxtTelfoonWerkVader.Text;
             o.StrEmailVader = txtEmailVader.Text;
+            o.StrStraatVader = txtStraatVader.Text;
+            o.StrHuisnrVader = txtHuisNRVader.Text;
+            o.StrGemeenteVader = txtGemeenteVader.Text;
+            o.StrPostcodeVader = mtxtPostcodeVader.Text;
 
             lln.O = o;
 
@@ -142,5 +154,8 @@ namespace DefinitiefProgram
 
         private void btnToonWachtwoord_Click(object sender, EventArgs e)
         { btnToonWachtwoord.Text = "Verbergen"; }
+
+        private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
+        { }
     }
 }

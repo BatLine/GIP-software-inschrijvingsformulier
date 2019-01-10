@@ -24,9 +24,13 @@ namespace DefinitiefProgram
         private string strGemeente;
         private string strPostcode;
         private string strLand;
+        private string strKlas;
+        private string strGebruikersnaamNetwerk;
+        private string strWachtwoordNetwerk;
         private int intStudieKeuzeID;
         private int intMiddelbaar;
         private int intSchoolstatuutID;
+        private int intKlasNR;
         private Ouders o;
 
         public string StrNaam { get => strNaam; set => strNaam = value; }
@@ -48,6 +52,10 @@ namespace DefinitiefProgram
         public int IntStudieKeuzeID { get => intStudieKeuzeID; set => intStudieKeuzeID = value; }
         public int IntMiddelbaar { get => intMiddelbaar; set => intMiddelbaar = value; }
         public int IntSchoolstatuutID { get => intSchoolstatuutID; set => intSchoolstatuutID = value; }
+        public string StrKlas { get => strKlas; set => strKlas = value; }
+        public string StrGebruikersnaamNetwerk { get => strGebruikersnaamNetwerk; set => strGebruikersnaamNetwerk = value; }
+        public string StrWachtwoordNetwerk { get => strWachtwoordNetwerk; set => strWachtwoordNetwerk = value; }
+        public int IntKlasNR { get => intKlasNR; set => intKlasNR = value; }
         internal Ouders O { get => o; set => o = value; }
     }
 }
