@@ -73,7 +73,7 @@ namespace DefinitiefProgram
                 lln.IntSchoolstatuutID +"')"
                 , conn);
             MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO leerling (VNaam, Naam, Mailadres, GSM, Straat, Postcode, Tel, Gemeente, RelatieID) VALUES (" +
-                "'" + lln.O.StrVNaamMoeder + "','" +
+                //"'" + lln.O.StrVNaamMoeder + "','" +
                 lln.O.StrNaamMoeder + "','" +
                 lln.O.StrEmailMoeder + "','" +
                 lln.O.StrGSMMoeder + "','" +

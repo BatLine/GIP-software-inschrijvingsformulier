@@ -34,5 +34,27 @@ namespace Test_Design
         {
 
         }
+
+        private void Design_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void mskRijksregisterNummer_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void mskRijksregisterNummer_Leave(object sender, EventArgs e)
+        { }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        { }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        { }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //textBox1.bord
+        }
     }
 }

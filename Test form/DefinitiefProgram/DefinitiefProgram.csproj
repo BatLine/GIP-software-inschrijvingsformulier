@@ -72,6 +72,9 @@
     <Compile Include="Design.Designer.cs">
       <DependentUpon>Design.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\ctb.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Layout\helpers.cs" />
     <Compile Include="Leerling.cs" />
     <Compile Include="Menu.cs">

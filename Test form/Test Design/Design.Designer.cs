@@ -31,7 +31,6 @@
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
             this.xylosCombobox2 = new XylosCombobox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.xylosTextBox11 = new XylosTextBox();
             this.xylosTextBox10 = new XylosTextBox();
             this.xylosTextBox9 = new XylosTextBox();
@@ -42,8 +41,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.mskGsmNummer = new System.Windows.Forms.MaskedTextBox();
-            this.mskRijksregisterNummer = new System.Windows.Forms.MaskedTextBox();
             this.xylosTextBox7 = new XylosTextBox();
             this.xylosTextBox6 = new XylosTextBox();
             this.xylosTextBox5 = new XylosTextBox();
@@ -107,6 +104,9 @@
             this.label33 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.xylosButton1 = new XylosButton();
+            this.mskRijksregisterNummer = new BorderColorTextBox.CustomMaskedTextbox();
+            this.mskGsmNummer = new BorderColorTextBox.CustomMaskedTextbox();
+            this.mskPostcode = new BorderColorTextBox.CustomMaskedTextbox();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
@@ -136,8 +136,10 @@
             // tpLLN
             // 
             this.tpLLN.BackColor = System.Drawing.Color.White;
+            this.tpLLN.Controls.Add(this.mskPostcode);
+            this.tpLLN.Controls.Add(this.mskGsmNummer);
+            this.tpLLN.Controls.Add(this.mskRijksregisterNummer);
             this.tpLLN.Controls.Add(this.xylosCombobox2);
-            this.tpLLN.Controls.Add(this.maskedTextBox1);
             this.tpLLN.Controls.Add(this.xylosTextBox11);
             this.tpLLN.Controls.Add(this.xylosTextBox10);
             this.tpLLN.Controls.Add(this.xylosTextBox9);
@@ -148,8 +150,6 @@
             this.tpLLN.Controls.Add(this.label11);
             this.tpLLN.Controls.Add(this.label10);
             this.tpLLN.Controls.Add(this.label9);
-            this.tpLLN.Controls.Add(this.mskGsmNummer);
-            this.tpLLN.Controls.Add(this.mskRijksregisterNummer);
             this.tpLLN.Controls.Add(this.xylosTextBox7);
             this.tpLLN.Controls.Add(this.xylosTextBox6);
             this.tpLLN.Controls.Add(this.xylosTextBox5);
@@ -190,18 +190,6 @@
             this.xylosCombobox2.Name = "xylosCombobox2";
             this.xylosCombobox2.Size = new System.Drawing.Size(130, 26);
             this.xylosCombobox2.TabIndex = 155;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.maskedTextBox1.Location = new System.Drawing.Point(407, 146);
-            this.maskedTextBox1.Mask = "0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(34, 23);
-            this.maskedTextBox1.TabIndex = 154;
-            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox1.ValidatingType = typeof(int);
             // 
             // xylosTextBox11
             // 
@@ -316,27 +304,6 @@
             this.label9.Size = new System.Drawing.Size(37, 15);
             this.label9.TabIndex = 137;
             this.label9.Text = "Straat";
-            // 
-            // mskGsmNummer
-            // 
-            this.mskGsmNummer.BackColor = System.Drawing.Color.White;
-            this.mskGsmNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskGsmNummer.Location = new System.Drawing.Point(137, 279);
-            this.mskGsmNummer.Mask = "0000 00 00 00";
-            this.mskGsmNummer.Name = "mskGsmNummer";
-            this.mskGsmNummer.Size = new System.Drawing.Size(130, 23);
-            this.mskGsmNummer.TabIndex = 136;
-            this.mskGsmNummer.ValidatingType = typeof(int);
-            // 
-            // mskRijksregisterNummer
-            // 
-            this.mskRijksregisterNummer.BackColor = System.Drawing.Color.White;
-            this.mskRijksregisterNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskRijksregisterNummer.Location = new System.Drawing.Point(137, 215);
-            this.mskRijksregisterNummer.Mask = "00.00.00-000.00";
-            this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
-            this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 23);
-            this.mskRijksregisterNummer.TabIndex = 135;
             // 
             // xylosTextBox7
             // 
@@ -1091,6 +1058,56 @@
             this.xylosButton1.Text = "Bevestigen";
             this.xylosButton1.Click += new XylosButton.ClickEventHandler(this.btnBevestig_Click);
             // 
+            // mskRijksregisterNummer
+            // 
+            this.mskRijksregisterNummer.EnabledCalc = true;
+            this.mskRijksregisterNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskRijksregisterNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskRijksregisterNummer.Location = new System.Drawing.Point(137, 215);
+            this.mskRijksregisterNummer.Mask = "00.00.00-000.00";
+            this.mskRijksregisterNummer.MaxLength = 32767;
+            this.mskRijksregisterNummer.MultiLine = false;
+            this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
+            this.mskRijksregisterNummer.ReadOnly = false;
+            this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
+            this.mskRijksregisterNummer.TabIndex = 157;
+            this.mskRijksregisterNummer.Text = "  .  .  -   .";
+            this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskRijksregisterNummer.UseSystemPasswordChar = false;
+            // 
+            // mskGsmNummer
+            // 
+            this.mskGsmNummer.EnabledCalc = true;
+            this.mskGsmNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskGsmNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskGsmNummer.Location = new System.Drawing.Point(137, 273);
+            this.mskGsmNummer.Mask = "0000 00 00 00";
+            this.mskGsmNummer.MaxLength = 32767;
+            this.mskGsmNummer.MultiLine = false;
+            this.mskGsmNummer.Name = "mskGsmNummer";
+            this.mskGsmNummer.ReadOnly = false;
+            this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
+            this.mskGsmNummer.TabIndex = 158;
+            this.mskGsmNummer.Text = "           ";
+            this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskGsmNummer.UseSystemPasswordChar = false;
+            // 
+            // mskPostcode
+            // 
+            this.mskPostcode.EnabledCalc = true;
+            this.mskPostcode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskPostcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskPostcode.Location = new System.Drawing.Point(407, 140);
+            this.mskPostcode.Mask = "0000";
+            this.mskPostcode.MaxLength = 32767;
+            this.mskPostcode.MultiLine = false;
+            this.mskPostcode.Name = "mskPostcode";
+            this.mskPostcode.ReadOnly = false;
+            this.mskPostcode.Size = new System.Drawing.Size(40, 29);
+            this.mskPostcode.TabIndex = 159;
+            this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskPostcode.UseSystemPasswordChar = false;
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1104,6 +1121,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inschrijving";
             this.Load += new System.EventHandler(this.Design_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Design_Paint);
             this.xylosTabControl1.ResumeLayout(false);
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
@@ -1139,8 +1157,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Voornaam;
-        public System.Windows.Forms.MaskedTextBox mskRijksregisterNummer;
-        public System.Windows.Forms.MaskedTextBox mskGsmNummer;
         private XylosTextBox xylosTextBox11;
         private XylosTextBox xylosTextBox10;
         private XylosTextBox xylosTextBox9;
@@ -1151,7 +1167,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private XylosCombobox xylosCombobox2;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -1197,6 +1212,9 @@
         private XylosRadioButton xylosRadioButton1;
         private System.Windows.Forms.TabPage tpBevestigen;
         private XylosButton xylosButton1;
+        private BorderColorTextBox.CustomMaskedTextbox mskGsmNummer;
+        private BorderColorTextBox.CustomMaskedTextbox mskRijksregisterNummer;
+        private BorderColorTextBox.CustomMaskedTextbox mskPostcode;
     }
 }
 

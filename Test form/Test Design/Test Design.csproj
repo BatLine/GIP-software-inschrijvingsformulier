@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ctb.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Design.cs">
       <SubType>Form</SubType>
     </Compile>
