@@ -14,9 +14,14 @@ namespace DefinitiefProgram
         public Business()
         { p = new Percistence(); }
 
-        public void addToDatabase(Leerling lln, string pRichting, string pStatuut)
+        public List<string> getAlleKlassen()
+        { return p.getAlleKlassen(); }
+
+        public void addToDatabase(Leerling lln, string pRichting, string pStatuut, string pGezinshoofd)
         {
             int intKeuzeID=0, intStatuut=0;
+            if (pGezinshoofd == "Moeder")
+            { lln.O.StrGezinshoofdMoeder = "1"; lln.O.StrGezinshoofdVader = "0"; } else if (pGezinshoofd  == "Vader") { lln.O.StrGezinshoofdMoeder = "0"; lln.O.StrGezinshoofdVader = "1"; }
             switch (pStatuut)
             {
                 case "Intern":
@@ -63,6 +68,7 @@ namespace DefinitiefProgram
                     else if (lln.IntMiddelbaar == 6) { intKeuzeID = 14; }
                     break;
             }
+            lln.IntKlasID = p.getKlasID(lln.StrKlas);
             lln.IntStudieKeuzeID = intKeuzeID;
             lln.IntSchoolstatuutID = intStatuut;
             p.addToDB(lln);

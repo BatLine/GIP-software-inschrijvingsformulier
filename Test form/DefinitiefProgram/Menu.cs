@@ -24,7 +24,7 @@ namespace DefinitiefProgram
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
             Design d = new Design(); d.Show();
-            //alle velden vulle me stuff
+
             this.Close();
         }
     }

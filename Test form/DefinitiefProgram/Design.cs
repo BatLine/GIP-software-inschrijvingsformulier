@@ -12,16 +12,21 @@ namespace DefinitiefProgram
 {
     public partial class Design : Form
     {
-        //textbox geboortedatum bij ouders en lln naar masked?
-        //gemeente checken met elke gemeente in belgie
-        //postcode automatisch laten invullen?
-        //cmb land opvullen met alle landen
-        //cmbNationaliteit invullen met alle nationaliteiten
-        //sommige velden verifieren als ze mogen gebruikt worden
-        //comboboxen laten opvullen met dingen
+
+        /// <TODO>
+        /// TODO
+        /// textbox geboortedatum bij ouders en lln naar masked?
+        /// postcode automatisch laten invullen? => of omgekeerd en bovenstaand puntje skippen
+        /// cmb land opvullen met alle landen
+        /// cmbNationaliteit invullen met alle nationaliteiten
+        /// eerst checken op oudernaam om dan alles automatisch te laten invullen als ouder al bestaat
+        /// als er zo aangeduid wordt dat die persoon maar 1 ouder heeft, ervoor zorgen dat de rest niet moet ingevuld worden
+        /// wachtwoorden misschien versleuteld opslaan?
+        /// </TODO>
         Business b = new Business();
         int Studiejaar = 0;
         string Schoolstatuut = "Extern";
+        string Gezinshoofd = "Moeder";
         public Design()
         { InitializeComponent(); }
 
@@ -30,7 +35,7 @@ namespace DefinitiefProgram
             Leerling lln = new Leerling();
 
             //leerling
-            //correspondentie, gezinssituatie, gezinshoofd
+            //correspondentie
             lln.StrVoornaam = txtVoornaam.Text;
             lln.StrNaam = txtFamilieNaam.Text;
             lln.StrBijkNaam = txtBijkvoornaam.Text;
@@ -45,7 +50,7 @@ namespace DefinitiefProgram
             lln.StrHuisnummer = txtHuisnr.Text;
             lln.StrBus = txtBus.Text;
             lln.StrGemeente = txtGemeente.Text;
-            lln.StrPostcode = mtxtPostcode.Text;
+            lln.StrPostcode = mskPostcode.Text;
             lln.StrLand = cmbLand.Text;
             lln.IntMiddelbaar = Studiejaar;
             lln.IntKlasNR = Convert.ToInt16(lblKlasNR.Text);
@@ -55,6 +60,7 @@ namespace DefinitiefProgram
 
             //Ouders
             Ouders o = new Ouders();
+            o.StrGezinssituatie = cmbGezinssituatie.SelectedItem.ToString();
             //Moeder
             o.StrNaamMoeder = txtNaamMoeder.Text;
             //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
@@ -83,14 +89,21 @@ namespace DefinitiefProgram
 
             lln.O = o;
 
-            b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut);
+            b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut, Gezinshoofd);
+            this.Close();
         }
 
         private void Design_Load(object sender, EventArgs e)
-        { }
+        { refreshAlleKlassen(); checkdebug(); }
 
         private void tpLLN_Click(object sender, EventArgs e)
         { }
+
+        void refreshAlleKlassen()
+        {
+            foreach (string s in b.getAlleKlassen())
+            { cmbKlas.Items.Add(s); }
+        }
 
         //Check studiejaar
         void checkStudieJaar()
@@ -153,9 +166,72 @@ namespace DefinitiefProgram
         { }
 
         private void btnToonWachtwoord_Click(object sender, EventArgs e)
-        { btnToonWachtwoord.Text = "Verbergen"; }
+        { if (btnToonWachtwoord.Text == "Tonen") { btnToonWachtwoord.Text = "Verbergen"; } else { btnToonWachtwoord.Text = "Tonen"; } }
 
         private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
-        { }
+        { if (rdbGezinshoofdMoeder.Checked) { Gezinshoofd = "Moeder"; } }
+        private void rdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
+        { if (rdbGezinshoofdVader.Checked) { Gezinshoofd = "Vader"; } }
+
+        void checkdebug()
+        {
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                //alle velden vullen om te testen
+                txtVoornaam.Text = "Voornaam";
+                txtFamilieNaam.Text = "Familienaam";
+                txtBijkvoornaam.Text = "bijk. vnaam";
+                cmbGeslacht.SelectedIndex = 1;
+                txtGeboorteplaats.Text = "geboorteplaats";
+                txtGeboortedatum.Text = "01/01/0001";
+                mskRijksregisterNummer.Text = "1";
+                txtNationaliteit.Text = "Nationaliteit";
+                mskGsmNummer.Text = "04711";
+                txtStraat.Text = "Straat";
+                txtEmail.Text = "email@email.com";
+                txtHuisnr.Text = "1";
+                txtBus.Text = "a";
+                txtGemeente.Text = "Gemeente";
+                mskPostcode.Text = "9000";
+                cmbLand.SelectedIndex = 1;
+
+                txtNaamMoeder.Text = "naam";
+                txtHuisNRMoeder.Text = "1";
+                txtGemeenteMoeder.Text = "Gemeente";
+                txtEmailMoeder.Text = "email@mail.com";
+                mtxtPostcodeMoeder.Text = "9000";
+                txtStraatMoeder.Text = "straat";
+                mtxtTelfoonWerkMoeder.Text = "04711";
+                mtxtGSMMoeder.Text = "04711";
+                txtNaamVader.Text = "naam";
+                txtHuisNRVader.Text = "1";
+                txtGemeenteVader.Text = "Gemeente";
+                txtEmailVader.Text = "email@mail.com";
+                mtxtPostcodeVader.Text = "9000";
+                txtStraatVader.Text = "straat";
+                mtxtTelfoonWerkVader.Text = "04711";
+                mtxtGSMVader.Text = "04711";
+                rdbGezinshoofdMoeder.Checked = true;
+                cmbGezinssituatie.SelectedIndex = 1;
+
+                rdbJaar6.Checked = true;
+                checkStudieJaar();
+                cmbRichting.SelectedIndex = 0;
+                rdbExtern.Checked = true;
+
+                lblKlasNR.Text = "1";
+                cmbKlas.SelectedIndex = 1;
+                txtGebruikersnaamNetwerk.Text = "gebruikersnaam";
+                txtWachtwoordNetwerk.Text = "wachtwoord";
+                cmbCorrespondentie.SelectedIndex = 1;
+
+                checkSchoolstatuut();
+            }
+        }
+
+        private void Design_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            new Menu().Show();
+        }
     }
 }
