@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Design));
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -114,11 +116,11 @@
             this.label17 = new System.Windows.Forms.Label();
             this.xylosTabControl1 = new XylosTabControl();
             this.tpExtra = new System.Windows.Forms.TabPage();
+            this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
             this.cmbKlas = new XylosCombobox();
             this.cmbCorrespondentie = new XylosCombobox();
             this.xylosSeparator3 = new XylosSeparator();
             this.label26 = new System.Windows.Forms.Label();
-            this.btnToonWachtwoord = new XylosButton();
             this.txtWachtwoordNetwerk = new XylosTextBox();
             this.txtGebruikersnaamNetwerk = new XylosTextBox();
             this.label38 = new System.Windows.Forms.Label();
@@ -131,6 +133,7 @@
             this.btnGenereerKlasnummer = new XylosButton();
             this.lblKlasNR = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.tpOuder.SuspendLayout();
             this.tpSchool.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -138,6 +141,7 @@
             this.tpLLN.SuspendLayout();
             this.xylosTabControl1.SuspendLayout();
             this.tpExtra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -1273,11 +1277,11 @@
             // tpExtra
             // 
             this.tpExtra.BackColor = System.Drawing.Color.White;
+            this.tpExtra.Controls.Add(this.pbToonWachtwoord);
             this.tpExtra.Controls.Add(this.cmbKlas);
             this.tpExtra.Controls.Add(this.cmbCorrespondentie);
             this.tpExtra.Controls.Add(this.xylosSeparator3);
             this.tpExtra.Controls.Add(this.label26);
-            this.tpExtra.Controls.Add(this.btnToonWachtwoord);
             this.tpExtra.Controls.Add(this.txtWachtwoordNetwerk);
             this.tpExtra.Controls.Add(this.txtGebruikersnaamNetwerk);
             this.tpExtra.Controls.Add(this.label38);
@@ -1298,6 +1302,15 @@
             this.tpExtra.Size = new System.Drawing.Size(556, 447);
             this.tpExtra.TabIndex = 11;
             this.tpExtra.Text = "Extra";
+            // 
+            // pbToonWachtwoord
+            // 
+            this.pbToonWachtwoord.Location = new System.Drawing.Point(164, 190);
+            this.pbToonWachtwoord.Name = "pbToonWachtwoord";
+            this.pbToonWachtwoord.Size = new System.Drawing.Size(20, 29);
+            this.pbToonWachtwoord.TabIndex = 209;
+            this.pbToonWachtwoord.TabStop = false;
+            this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
             // 
             // cmbKlas
             // 
@@ -1347,16 +1360,6 @@
             this.label26.Size = new System.Drawing.Size(311, 15);
             this.label26.TabIndex = 205;
             this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
-            // 
-            // btnToonWachtwoord
-            // 
-            this.btnToonWachtwoord.EnabledCalc = true;
-            this.btnToonWachtwoord.Location = new System.Drawing.Point(199, 190);
-            this.btnToonWachtwoord.Name = "btnToonWachtwoord";
-            this.btnToonWachtwoord.Size = new System.Drawing.Size(67, 29);
-            this.btnToonWachtwoord.TabIndex = 204;
-            this.btnToonWachtwoord.Text = "Tonen";
-            this.btnToonWachtwoord.Click += new XylosButton.ClickEventHandler(this.btnToonWachtwoord_Click);
             // 
             // txtWachtwoordNetwerk
             // 
@@ -1479,6 +1482,13 @@
             this.label27.TabIndex = 90;
             this.label27.Text = "Klasnummer:";
             // 
+            // ilPassword
+            // 
+            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
+            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
+            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1505,6 +1515,7 @@
             this.xylosTabControl1.ResumeLayout(false);
             this.tpExtra.ResumeLayout(false);
             this.tpExtra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1597,7 +1608,6 @@
         private System.Windows.Forms.Label label30;
         private XylosButton btnNieuweKlas;
         private XylosTextBox txtWachtwoordNetwerk;
-        private XylosButton btnToonWachtwoord;
         private XylosCombobox cmbGeslacht;
         private XylosCombobox cmbLand;
         private XylosCombobox cmbGezinssituatie;
@@ -1614,5 +1624,7 @@
         private XylosCombobox cmbKlas;
         private CustomMaskedTextbox mtxtPostcodeMoeder;
         private CustomMaskedTextbox mtxtPostcodeVader;
+        private System.Windows.Forms.PictureBox pbToonWachtwoord;
+        private System.Windows.Forms.ImageList ilPassword;
     }
 }

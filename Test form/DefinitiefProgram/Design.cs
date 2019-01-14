@@ -27,6 +27,7 @@ namespace DefinitiefProgram
         int Studiejaar = 0;
         string Schoolstatuut = "Extern";
         string Gezinshoofd = "Moeder";
+        bool blnShowPassword = false;
         public Design()
         { InitializeComponent(); }
 
@@ -94,7 +95,7 @@ namespace DefinitiefProgram
         }
 
         private void Design_Load(object sender, EventArgs e)
-        { refreshAlleKlassen(); checkdebug(); }
+        { refreshAlleKlassen(); checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
 
         private void tpLLN_Click(object sender, EventArgs e)
         { }
@@ -165,9 +166,6 @@ namespace DefinitiefProgram
         private void tpOuder_Click(object sender, EventArgs e)
         { }
 
-        private void btnToonWachtwoord_Click(object sender, EventArgs e)
-        { if (btnToonWachtwoord.Text == "Tonen") { btnToonWachtwoord.Text = "Verbergen"; } else { btnToonWachtwoord.Text = "Tonen"; } }
-
         private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
         { if (rdbGezinshoofdMoeder.Checked) { Gezinshoofd = "Moeder"; } }
         private void rdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
@@ -230,8 +228,12 @@ namespace DefinitiefProgram
         }
 
         private void Design_FormClosing(object sender, FormClosingEventArgs e)
+        { new Menu().Show(); }
+
+        private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
-            new Menu().Show();
+            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; }
+            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; }
         }
     }
 }
