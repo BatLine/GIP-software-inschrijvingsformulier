@@ -134,6 +134,7 @@
             this.lblKlasNR = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.ilPassword = new System.Windows.Forms.ImageList(this.components);
+            this.tpResultaten = new System.Windows.Forms.TabPage();
             this.tpOuder.SuspendLayout();
             this.tpSchool.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1261,6 +1262,7 @@
             this.xylosTabControl1.Controls.Add(this.tpLLN);
             this.xylosTabControl1.Controls.Add(this.tpOuder);
             this.xylosTabControl1.Controls.Add(this.tpSchool);
+            this.xylosTabControl1.Controls.Add(this.tpResultaten);
             this.xylosTabControl1.Controls.Add(this.tpExtra);
             this.xylosTabControl1.Controls.Add(this.tpBevestigen);
             this.xylosTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1305,9 +1307,9 @@
             // 
             // pbToonWachtwoord
             // 
-            this.pbToonWachtwoord.Location = new System.Drawing.Point(164, 190);
+            this.pbToonWachtwoord.Location = new System.Drawing.Point(164, 196);
             this.pbToonWachtwoord.Name = "pbToonWachtwoord";
-            this.pbToonWachtwoord.Size = new System.Drawing.Size(20, 29);
+            this.pbToonWachtwoord.Size = new System.Drawing.Size(18, 16);
             this.pbToonWachtwoord.TabIndex = 209;
             this.pbToonWachtwoord.TabStop = false;
             this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
@@ -1489,6 +1491,18 @@
             this.ilPassword.Images.SetKeyName(0, "eye visible.png");
             this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
             // 
+            // tpResultaten
+            // 
+            this.tpResultaten.BackColor = System.Drawing.Color.White;
+            this.tpResultaten.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tpResultaten.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tpResultaten.Location = new System.Drawing.Point(184, 4);
+            this.tpResultaten.Name = "tpResultaten";
+            this.tpResultaten.Padding = new System.Windows.Forms.Padding(3);
+            this.tpResultaten.Size = new System.Drawing.Size(556, 447);
+            this.tpResultaten.TabIndex = 12;
+            this.tpResultaten.Text = "Resultaten";
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1500,7 +1514,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Design";
-            this.Text = "Design";
+            this.Text = "Leerling Toevoegen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Design_FormClosing);
             this.Load += new System.EventHandler(this.Design_Load);
             this.tpOuder.ResumeLayout(false);
@@ -1626,5 +1640,6 @@
         private CustomMaskedTextbox mtxtPostcodeVader;
         private System.Windows.Forms.PictureBox pbToonWachtwoord;
         private System.Windows.Forms.ImageList ilPassword;
+        private System.Windows.Forms.TabPage tpResultaten;
     }
 }

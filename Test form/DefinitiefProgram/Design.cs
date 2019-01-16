@@ -232,8 +232,8 @@ namespace DefinitiefProgram
 
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
-            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; }
-            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; }
+            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
+            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
         }
     }
 }
