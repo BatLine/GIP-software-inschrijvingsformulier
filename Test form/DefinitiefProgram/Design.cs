@@ -229,5 +229,21 @@ namespace DefinitiefProgram
             if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
             else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
         }
+
+        private void txtVoornaam_TextChanged(object sender, EventArgs e)
+        { updateNetwerkNaam(); }
+        private void txtFamilieNaam_TextChanged(object sender, EventArgs e)
+        { updateNetwerkNaam(); }
+        void updateNetwerkNaam()
+        { txtGebruikersnaamNetwerk.Text = txtVoornaam.Text + "." + txtFamilieNaam.Text.Replace(" ", ""); }
+
+        public void veldenvullen(int pintID)
+        {
+            Leerling l = b.GetLeerling(pintID);
+            txtVoornaam.Text = l.StrVoornaam;
+            txtFamilieNaam.Text = l.StrNaam;
+
+            //bij bevestigen de origenele updaten/eerst verwijderen en dan toevoegen
+        }
     }
 }

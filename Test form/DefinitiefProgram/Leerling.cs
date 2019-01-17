@@ -32,6 +32,7 @@ namespace DefinitiefProgram
         private int intSchoolstatuutID;
         private int intKlasNR;
         private int intKlasID;
+        private int databaseID;
         private Ouders o;
 
         public string StrNaam { get => strNaam; set => strNaam = value; }
@@ -58,6 +59,7 @@ namespace DefinitiefProgram
         public string StrWachtwoordNetwerk { get => strWachtwoordNetwerk; set => strWachtwoordNetwerk = value; }
         public int IntKlasNR { get => intKlasNR; set => intKlasNR = value; }
         public int IntKlasID { get => intKlasID; set => intKlasID = value; }
+        public int DatabaseID { get => databaseID; set => databaseID = value; }
         internal Ouders O { get => o; set => o = value; }
     }
 }

@@ -116,25 +116,25 @@
             this.label17 = new System.Windows.Forms.Label();
             this.xylosTabControl1 = new XylosTabControl();
             this.tpResultaten = new System.Windows.Forms.TabPage();
-            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txtGebruikersnaamNetwerk = new XylosTextBox();
-            this.txtWachtwoordNetwerk = new XylosTextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.xylosSeparator3 = new XylosSeparator();
-            this.cmbCorrespondentie = new XylosCombobox();
-            this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
             this.tpExtra = new System.Windows.Forms.TabPage();
+            this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
+            this.cmbCorrespondentie = new XylosCombobox();
+            this.xylosSeparator3 = new XylosSeparator();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtWachtwoordNetwerk = new XylosTextBox();
+            this.txtGebruikersnaamNetwerk = new XylosTextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.tpOuder.SuspendLayout();
             this.tpSchool.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tpBevestigen.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.xylosTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpExtra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -1223,6 +1223,7 @@
             this.txtFamilieNaam.TabIndex = 126;
             this.txtFamilieNaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFamilieNaam.UseSystemPasswordChar = false;
+            this.txtFamilieNaam.TextChanged += new System.EventHandler(this.txtFamilieNaam_TextChanged);
             // 
             // txtVoornaam
             // 
@@ -1238,6 +1239,7 @@
             this.txtVoornaam.TabIndex = 125;
             this.txtVoornaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVoornaam.UseSystemPasswordChar = false;
+            this.txtVoornaam.TextChanged += new System.EventHandler(this.txtVoornaam_TextChanged);
             // 
             // label17
             // 
@@ -1280,115 +1282,6 @@
             this.tpResultaten.TabIndex = 12;
             this.tpResultaten.Text = "Resultaten";
             // 
-            // ilPassword
-            // 
-            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
-            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
-            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(7, 26);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(138, 15);
-            this.label30.TabIndex = 197;
-            this.label30.Text = "Gebruikersnaam netwerk";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(7, 76);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(120, 15);
-            this.label31.TabIndex = 199;
-            this.label31.Text = "Wachtwoord netwerk";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(6, 5);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(72, 21);
-            this.label38.TabIndex = 201;
-            this.label38.Text = "Netwerk";
-            // 
-            // txtGebruikersnaamNetwerk
-            // 
-            this.txtGebruikersnaamNetwerk.EnabledCalc = true;
-            this.txtGebruikersnaamNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtGebruikersnaamNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGebruikersnaamNetwerk.Location = new System.Drawing.Point(10, 44);
-            this.txtGebruikersnaamNetwerk.MaxLength = 32767;
-            this.txtGebruikersnaamNetwerk.MultiLine = false;
-            this.txtGebruikersnaamNetwerk.Name = "txtGebruikersnaamNetwerk";
-            this.txtGebruikersnaamNetwerk.ReadOnly = false;
-            this.txtGebruikersnaamNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtGebruikersnaamNetwerk.TabIndex = 202;
-            this.txtGebruikersnaamNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtGebruikersnaamNetwerk.UseSystemPasswordChar = false;
-            // 
-            // txtWachtwoordNetwerk
-            // 
-            this.txtWachtwoordNetwerk.EnabledCalc = true;
-            this.txtWachtwoordNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtWachtwoordNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtWachtwoordNetwerk.Location = new System.Drawing.Point(10, 94);
-            this.txtWachtwoordNetwerk.MaxLength = 32767;
-            this.txtWachtwoordNetwerk.MultiLine = false;
-            this.txtWachtwoordNetwerk.Name = "txtWachtwoordNetwerk";
-            this.txtWachtwoordNetwerk.ReadOnly = false;
-            this.txtWachtwoordNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtWachtwoordNetwerk.TabIndex = 203;
-            this.txtWachtwoordNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtWachtwoordNetwerk.UseSystemPasswordChar = true;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(7, 134);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(311, 15);
-            this.label26.TabIndex = 205;
-            this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
-            // 
-            // xylosSeparator3
-            // 
-            this.xylosSeparator3.Location = new System.Drawing.Point(10, 129);
-            this.xylosSeparator3.Name = "xylosSeparator3";
-            this.xylosSeparator3.Size = new System.Drawing.Size(529, 2);
-            this.xylosSeparator3.TabIndex = 206;
-            this.xylosSeparator3.Text = "xylosSeparator3";
-            // 
-            // cmbCorrespondentie
-            // 
-            this.cmbCorrespondentie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbCorrespondentie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbCorrespondentie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCorrespondentie.Enabled = false;
-            this.cmbCorrespondentie.EnabledCalc = true;
-            this.cmbCorrespondentie.FormattingEnabled = true;
-            this.cmbCorrespondentie.ItemHeight = 20;
-            this.cmbCorrespondentie.Items.AddRange(new object[] {
-            "Beide",
-            "Moeder",
-            "Vader"});
-            this.cmbCorrespondentie.Location = new System.Drawing.Point(10, 152);
-            this.cmbCorrespondentie.Name = "cmbCorrespondentie";
-            this.cmbCorrespondentie.Size = new System.Drawing.Size(209, 26);
-            this.cmbCorrespondentie.TabIndex = 207;
-            // 
-            // pbToonWachtwoord
-            // 
-            this.pbToonWachtwoord.Location = new System.Drawing.Point(162, 100);
-            this.pbToonWachtwoord.Name = "pbToonWachtwoord";
-            this.pbToonWachtwoord.Size = new System.Drawing.Size(18, 16);
-            this.pbToonWachtwoord.TabIndex = 209;
-            this.pbToonWachtwoord.TabStop = false;
-            this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
-            // 
             // tpExtra
             // 
             this.tpExtra.BackColor = System.Drawing.Color.White;
@@ -1410,6 +1303,115 @@
             this.tpExtra.TabIndex = 11;
             this.tpExtra.Text = "Extra";
             // 
+            // pbToonWachtwoord
+            // 
+            this.pbToonWachtwoord.Location = new System.Drawing.Point(162, 100);
+            this.pbToonWachtwoord.Name = "pbToonWachtwoord";
+            this.pbToonWachtwoord.Size = new System.Drawing.Size(18, 16);
+            this.pbToonWachtwoord.TabIndex = 209;
+            this.pbToonWachtwoord.TabStop = false;
+            this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
+            // 
+            // cmbCorrespondentie
+            // 
+            this.cmbCorrespondentie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbCorrespondentie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbCorrespondentie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCorrespondentie.Enabled = false;
+            this.cmbCorrespondentie.EnabledCalc = true;
+            this.cmbCorrespondentie.FormattingEnabled = true;
+            this.cmbCorrespondentie.ItemHeight = 20;
+            this.cmbCorrespondentie.Items.AddRange(new object[] {
+            "Beide",
+            "Moeder",
+            "Vader"});
+            this.cmbCorrespondentie.Location = new System.Drawing.Point(10, 152);
+            this.cmbCorrespondentie.Name = "cmbCorrespondentie";
+            this.cmbCorrespondentie.Size = new System.Drawing.Size(209, 26);
+            this.cmbCorrespondentie.TabIndex = 207;
+            // 
+            // xylosSeparator3
+            // 
+            this.xylosSeparator3.Location = new System.Drawing.Point(10, 129);
+            this.xylosSeparator3.Name = "xylosSeparator3";
+            this.xylosSeparator3.Size = new System.Drawing.Size(529, 2);
+            this.xylosSeparator3.TabIndex = 206;
+            this.xylosSeparator3.Text = "xylosSeparator3";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(7, 134);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(311, 15);
+            this.label26.TabIndex = 205;
+            this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
+            // 
+            // txtWachtwoordNetwerk
+            // 
+            this.txtWachtwoordNetwerk.EnabledCalc = true;
+            this.txtWachtwoordNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtWachtwoordNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtWachtwoordNetwerk.Location = new System.Drawing.Point(10, 94);
+            this.txtWachtwoordNetwerk.MaxLength = 32767;
+            this.txtWachtwoordNetwerk.MultiLine = false;
+            this.txtWachtwoordNetwerk.Name = "txtWachtwoordNetwerk";
+            this.txtWachtwoordNetwerk.ReadOnly = false;
+            this.txtWachtwoordNetwerk.Size = new System.Drawing.Size(181, 29);
+            this.txtWachtwoordNetwerk.TabIndex = 203;
+            this.txtWachtwoordNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtWachtwoordNetwerk.UseSystemPasswordChar = true;
+            // 
+            // txtGebruikersnaamNetwerk
+            // 
+            this.txtGebruikersnaamNetwerk.EnabledCalc = true;
+            this.txtGebruikersnaamNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtGebruikersnaamNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtGebruikersnaamNetwerk.Location = new System.Drawing.Point(10, 44);
+            this.txtGebruikersnaamNetwerk.MaxLength = 32767;
+            this.txtGebruikersnaamNetwerk.MultiLine = false;
+            this.txtGebruikersnaamNetwerk.Name = "txtGebruikersnaamNetwerk";
+            this.txtGebruikersnaamNetwerk.ReadOnly = false;
+            this.txtGebruikersnaamNetwerk.Size = new System.Drawing.Size(181, 29);
+            this.txtGebruikersnaamNetwerk.TabIndex = 202;
+            this.txtGebruikersnaamNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtGebruikersnaamNetwerk.UseSystemPasswordChar = false;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(6, 5);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(72, 21);
+            this.label38.TabIndex = 201;
+            this.label38.Text = "Netwerk";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 76);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(120, 15);
+            this.label31.TabIndex = 199;
+            this.label31.Text = "Wachtwoord netwerk";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 26);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(138, 15);
+            this.label30.TabIndex = 197;
+            this.label30.Text = "Gebruikersnaam netwerk";
+            // 
+            // ilPassword
+            // 
+            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
+            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
+            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1421,6 +1423,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Design";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leerling Toevoegen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Design_FormClosing);
             this.Load += new System.EventHandler(this.Design_Load);
@@ -1434,9 +1437,9 @@
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
             this.xylosTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpExtra.ResumeLayout(false);
             this.tpExtra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.ResumeLayout(false);
 
         }

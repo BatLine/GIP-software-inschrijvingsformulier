@@ -69,5 +69,17 @@ namespace DefinitiefProgram
             lln.IntSchoolstatuutID = intStatuut;
             p.addToDB(lln);
         }
+
+        public List<Leerling> getAlleLeerlingen()
+        {
+            List<Leerling> l = new List<Leerling>();
+            l = p.getAlleLeerlingenFromDB();
+            return l;
+        }
+        public Leerling GetLeerling(int pintID)
+        {
+            Leerling l = p.getLeerling(pintID);
+            return l;
+        }
     }
 }

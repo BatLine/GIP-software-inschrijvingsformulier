@@ -12,6 +12,7 @@ namespace DefinitiefProgram
 {
     public partial class Menu : Form
     {
+        public int selectedLeerlingID=-1;
         public Menu()
         { InitializeComponent(); }
 
@@ -23,9 +24,15 @@ namespace DefinitiefProgram
 
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
-            Design d = new Design(); d.Show();
-
-            this.Close();
+            Lijstleerlingen lijstleerlingen = new Lijstleerlingen();
+            lijstleerlingen.m = this;
+            lijstleerlingen.ShowDialog();
+            if ((lijstleerlingen.DialogResult == DialogResult.OK) && (selectedLeerlingID != -1))
+            {
+                Design d = new Design(); d.Text = "Leerling wijzigen"; d.Show();
+                d.veldenvullen(selectedLeerlingID);
+                this.Close();
+            }
         }
     }
 }

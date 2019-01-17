@@ -13,6 +13,62 @@ namespace DefinitiefProgram
         public Percistence()
         { }
         
+        public Leerling getLeerling(int pintID)
+        {
+            Leerling l = new Leerling();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.StrNaam = dr["Naam"].ToString();
+                l.StrVoornaam = dr["Voornaam"].ToString();
+            }
+            conn.Close();
+            return l;
+        }
+
+        public List<Leerling> getAlleLeerlingenFromDB()
+        {
+            List<Leerling> lln = new List<Leerling>();
+            List<int> ids = getAlleIDs();
+
+            foreach (int i in ids) //voor elke leerling
+            {
+                conn.Open();
+                Leerling l = new Leerling();
+                MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + i, conn);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    l.DatabaseID = i;
+                    l.StrNaam = dr["Naam"].ToString();
+                    l.StrVoornaam = dr["Voornaam"].ToString();
+                    l.StrPostcode = dr["Postcode"].ToString();
+                }
+                lln.Add(l);
+                conn.Close();
+            }
+            return lln;
+        }
+
+        public List<int> getAlleIDs()
+        {
+            conn.Open();
+            List<int> ids = new List<int>();
+            MySqlCommand cmd = new MySqlCommand("select idLeerling from leerling", conn);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            { ids.Add(Convert.ToInt16(dr["idLeerling"])); }
+            conn.Close();
+            return ids;
+        }
+
+
+
+
+
+
         public List<Leerling> GetLeerlingenFromDB() //herdoen
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM ID191774_6itngip9.leerling;", conn);
