@@ -14,9 +14,6 @@ namespace DefinitiefProgram
         public Business()
         { p = new Percistence(); }
 
-        public List<string> getAlleKlassen()
-        { return p.getAlleKlassen(); }
-
         public void addToDatabase(Leerling lln, string pRichting, string pStatuut, string pGezinshoofd)
         {
             int intKeuzeID=0, intStatuut=0;

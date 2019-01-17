@@ -17,7 +17,7 @@ namespace DefinitiefProgram
         /// <TODO>
         /// TODO
         /// textbox geboortedatum bij ouders en lln naar masked?
-        /// postcode automatisch laten invullen? => of omgekeerd en bovenstaand puntje skippen
+        /// postcode automatisch laten invullen? => of omgekeerd
         /// cmb land opvullen met alle landen
         /// cmbNationaliteit invullen met alle nationaliteiten
         /// eerst checken op oudernaam om dan alles automatisch te laten invullen als ouder al bestaat
@@ -35,13 +35,7 @@ namespace DefinitiefProgram
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Loading loadingscreen = new Loading();
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                Loading l = new Loading();
-                l.Show();
-                loadingscreen = l;
-            }).Start();
+            loadingscreen.Show();
             Leerling lln = new Leerling();
 
             //leerling
@@ -98,10 +92,7 @@ namespace DefinitiefProgram
             lln.O = o;
 
             b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut, Gezinshoofd);
-            loadingscreen.BeginInvoke((MethodInvoker)delegate ()
-            {
-                loadingscreen.Close();
-            });
+            loadingscreen.Close();
             this.Close();
         }
 

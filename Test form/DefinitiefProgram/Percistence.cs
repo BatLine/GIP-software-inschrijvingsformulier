@@ -13,7 +13,7 @@ namespace DefinitiefProgram
         public Percistence()
         { }
         
-        public List<Leerling> GetLeerlingenFromDB()
+        public List<Leerling> GetLeerlingenFromDB() //herdoen
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM ID191774_6itngip9.leerling;", conn);
             conn.Open();
@@ -46,18 +46,6 @@ namespace DefinitiefProgram
             }
             conn.Close();
             return leerlingen;
-        }
-
-        public List<string> getAlleKlassen()
-        {
-            conn.Open();
-            List<string> klassen = new List<string>();
-            MySqlCommand cmd = new MySqlCommand("select * from klassen", conn);
-            MySqlDataReader dr = cmd.ExecuteReader();
-            while (dr.Read())
-            { klassen.Add(dr["naamKlas"].ToString()); }
-            conn.Close();
-            return klassen;
         }
 
         public void addToDB(Leerling lln)
