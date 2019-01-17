@@ -30,6 +30,9 @@
         {
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
+            this.mskPostcode = new BorderColorTextBox.CustomMaskedTextbox();
+            this.mskGsmNummer = new BorderColorTextBox.CustomMaskedTextbox();
+            this.mskRijksregisterNummer = new BorderColorTextBox.CustomMaskedTextbox();
             this.xylosCombobox2 = new XylosCombobox();
             this.xylosTextBox11 = new XylosTextBox();
             this.xylosTextBox10 = new XylosTextBox();
@@ -104,9 +107,7 @@
             this.label33 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.xylosButton1 = new XylosButton();
-            this.mskRijksregisterNummer = new BorderColorTextBox.CustomMaskedTextbox();
-            this.mskGsmNummer = new BorderColorTextBox.CustomMaskedTextbox();
-            this.mskPostcode = new BorderColorTextBox.CustomMaskedTextbox();
+            this.xylosButton2 = new XylosButton();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
@@ -136,6 +137,7 @@
             // tpLLN
             // 
             this.tpLLN.BackColor = System.Drawing.Color.White;
+            this.tpLLN.Controls.Add(this.xylosButton2);
             this.tpLLN.Controls.Add(this.mskPostcode);
             this.tpLLN.Controls.Add(this.mskGsmNummer);
             this.tpLLN.Controls.Add(this.mskRijksregisterNummer);
@@ -177,6 +179,56 @@
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
             this.tpLLN.Click += new System.EventHandler(this.tpLLN_Click);
+            // 
+            // mskPostcode
+            // 
+            this.mskPostcode.EnabledCalc = true;
+            this.mskPostcode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskPostcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskPostcode.Location = new System.Drawing.Point(407, 140);
+            this.mskPostcode.Mask = "0000";
+            this.mskPostcode.MaxLength = 32767;
+            this.mskPostcode.MultiLine = false;
+            this.mskPostcode.Name = "mskPostcode";
+            this.mskPostcode.ReadOnly = false;
+            this.mskPostcode.Size = new System.Drawing.Size(40, 29);
+            this.mskPostcode.TabIndex = 159;
+            this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskPostcode.UseSystemPasswordChar = false;
+            // 
+            // mskGsmNummer
+            // 
+            this.mskGsmNummer.EnabledCalc = true;
+            this.mskGsmNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskGsmNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskGsmNummer.Location = new System.Drawing.Point(137, 273);
+            this.mskGsmNummer.Mask = "0000 00 00 00";
+            this.mskGsmNummer.MaxLength = 32767;
+            this.mskGsmNummer.MultiLine = false;
+            this.mskGsmNummer.Name = "mskGsmNummer";
+            this.mskGsmNummer.ReadOnly = false;
+            this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
+            this.mskGsmNummer.TabIndex = 158;
+            this.mskGsmNummer.Text = "           ";
+            this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskGsmNummer.UseSystemPasswordChar = false;
+            // 
+            // mskRijksregisterNummer
+            // 
+            this.mskRijksregisterNummer.EnabledCalc = true;
+            this.mskRijksregisterNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskRijksregisterNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskRijksregisterNummer.Location = new System.Drawing.Point(137, 215);
+            this.mskRijksregisterNummer.Mask = "00.00.00-000.00";
+            this.mskRijksregisterNummer.MaxLength = 32767;
+            this.mskRijksregisterNummer.MultiLine = false;
+            this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
+            this.mskRijksregisterNummer.ReadOnly = false;
+            this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
+            this.mskRijksregisterNummer.TabIndex = 157;
+            this.mskRijksregisterNummer.Text = "  .  .  -   .";
+            this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskRijksregisterNummer.UseSystemPasswordChar = false;
             // 
             // xylosCombobox2
             // 
@@ -1058,55 +1110,15 @@
             this.xylosButton1.Text = "Bevestigen";
             this.xylosButton1.Click += new XylosButton.ClickEventHandler(this.btnBevestig_Click);
             // 
-            // mskRijksregisterNummer
+            // xylosButton2
             // 
-            this.mskRijksregisterNummer.EnabledCalc = true;
-            this.mskRijksregisterNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mskRijksregisterNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskRijksregisterNummer.Location = new System.Drawing.Point(137, 215);
-            this.mskRijksregisterNummer.Mask = "00.00.00-000.00";
-            this.mskRijksregisterNummer.MaxLength = 32767;
-            this.mskRijksregisterNummer.MultiLine = false;
-            this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
-            this.mskRijksregisterNummer.ReadOnly = false;
-            this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskRijksregisterNummer.TabIndex = 157;
-            this.mskRijksregisterNummer.Text = "  .  .  -   .";
-            this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mskRijksregisterNummer.UseSystemPasswordChar = false;
-            // 
-            // mskGsmNummer
-            // 
-            this.mskGsmNummer.EnabledCalc = true;
-            this.mskGsmNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mskGsmNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskGsmNummer.Location = new System.Drawing.Point(137, 273);
-            this.mskGsmNummer.Mask = "0000 00 00 00";
-            this.mskGsmNummer.MaxLength = 32767;
-            this.mskGsmNummer.MultiLine = false;
-            this.mskGsmNummer.Name = "mskGsmNummer";
-            this.mskGsmNummer.ReadOnly = false;
-            this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskGsmNummer.TabIndex = 158;
-            this.mskGsmNummer.Text = "           ";
-            this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mskGsmNummer.UseSystemPasswordChar = false;
-            // 
-            // mskPostcode
-            // 
-            this.mskPostcode.EnabledCalc = true;
-            this.mskPostcode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mskPostcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskPostcode.Location = new System.Drawing.Point(407, 140);
-            this.mskPostcode.Mask = "0000";
-            this.mskPostcode.MaxLength = 32767;
-            this.mskPostcode.MultiLine = false;
-            this.mskPostcode.Name = "mskPostcode";
-            this.mskPostcode.ReadOnly = false;
-            this.mskPostcode.Size = new System.Drawing.Size(40, 29);
-            this.mskPostcode.TabIndex = 159;
-            this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mskPostcode.UseSystemPasswordChar = false;
+            this.xylosButton2.EnabledCalc = true;
+            this.xylosButton2.Location = new System.Drawing.Point(229, 386);
+            this.xylosButton2.Name = "xylosButton2";
+            this.xylosButton2.Size = new System.Drawing.Size(75, 23);
+            this.xylosButton2.TabIndex = 160;
+            this.xylosButton2.Text = "xylosButton2";
+            this.xylosButton2.Click += new XylosButton.ClickEventHandler(this.xylosButton2_Click);
             // 
             // Design
             // 
@@ -1215,6 +1227,7 @@
         private BorderColorTextBox.CustomMaskedTextbox mskGsmNummer;
         private BorderColorTextBox.CustomMaskedTextbox mskRijksregisterNummer;
         private BorderColorTextBox.CustomMaskedTextbox mskPostcode;
+        private XylosButton xylosButton2;
     }
 }
 

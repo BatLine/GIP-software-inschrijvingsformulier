@@ -47,8 +47,6 @@ namespace DefinitiefProgram
             conn.Close();
             return leerlingen;
         }
-        public int getKlasID(string pstrKlasnaam)
-        { conn.Open(); int intKlasID = Convert.ToInt16(new MySqlCommand("select klasID from klassen where naamKlas=" + pstrKlasnaam, conn).ExecuteScalar()); conn.Close(); return intKlasID; }
 
         public List<string> getAlleKlassen()
         {

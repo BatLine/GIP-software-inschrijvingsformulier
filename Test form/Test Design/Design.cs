@@ -56,5 +56,11 @@ namespace Test_Design
         {
             //textBox1.bord
         }
+
+        private void xylosButton2_Click(object sender, EventArgs e)
+        {
+            Loading l = new Loading();
+            l.Show();
+        }
     }
 }

@@ -68,7 +68,6 @@ namespace DefinitiefProgram
                     else if (lln.IntMiddelbaar == 6) { intKeuzeID = 14; }
                     break;
             }
-            lln.IntKlasID = p.getKlasID(lln.StrKlas);
             lln.IntStudieKeuzeID = intKeuzeID;
             lln.IntSchoolstatuutID = intStatuut;
             p.addToDB(lln);

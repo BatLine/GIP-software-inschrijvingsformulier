@@ -1,4 +1,4 @@
-﻿namespace Test_Design
+﻿namespace DefinitiefProgram
 {
     partial class Loading
     {

@@ -115,34 +115,26 @@
             this.txtVoornaam = new XylosTextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.xylosTabControl1 = new XylosTabControl();
-            this.tpExtra = new System.Windows.Forms.TabPage();
-            this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
-            this.cmbKlas = new XylosCombobox();
-            this.cmbCorrespondentie = new XylosCombobox();
-            this.xylosSeparator3 = new XylosSeparator();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtWachtwoordNetwerk = new XylosTextBox();
-            this.txtGebruikersnaamNetwerk = new XylosTextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.xylosSeparator4 = new XylosSeparator();
-            this.label30 = new System.Windows.Forms.Label();
-            this.btnNieuweKlas = new XylosButton();
-            this.label29 = new System.Windows.Forms.Label();
-            this.btnGenereerKlasnummer = new XylosButton();
-            this.lblKlasNR = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.tpResultaten = new System.Windows.Forms.TabPage();
+            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtGebruikersnaamNetwerk = new XylosTextBox();
+            this.txtWachtwoordNetwerk = new XylosTextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.xylosSeparator3 = new XylosSeparator();
+            this.cmbCorrespondentie = new XylosCombobox();
+            this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
+            this.tpExtra = new System.Windows.Forms.TabPage();
             this.tpOuder.SuspendLayout();
             this.tpSchool.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tpBevestigen.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.xylosTabControl1.SuspendLayout();
-            this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
+            this.tpExtra.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -1276,57 +1268,99 @@
             this.xylosTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.xylosTabControl1.TabIndex = 1;
             // 
-            // tpExtra
+            // tpResultaten
             // 
-            this.tpExtra.BackColor = System.Drawing.Color.White;
-            this.tpExtra.Controls.Add(this.pbToonWachtwoord);
-            this.tpExtra.Controls.Add(this.cmbKlas);
-            this.tpExtra.Controls.Add(this.cmbCorrespondentie);
-            this.tpExtra.Controls.Add(this.xylosSeparator3);
-            this.tpExtra.Controls.Add(this.label26);
-            this.tpExtra.Controls.Add(this.txtWachtwoordNetwerk);
-            this.tpExtra.Controls.Add(this.txtGebruikersnaamNetwerk);
-            this.tpExtra.Controls.Add(this.label38);
-            this.tpExtra.Controls.Add(this.label37);
-            this.tpExtra.Controls.Add(this.label31);
-            this.tpExtra.Controls.Add(this.xylosSeparator4);
-            this.tpExtra.Controls.Add(this.label30);
-            this.tpExtra.Controls.Add(this.btnNieuweKlas);
-            this.tpExtra.Controls.Add(this.label29);
-            this.tpExtra.Controls.Add(this.btnGenereerKlasnummer);
-            this.tpExtra.Controls.Add(this.lblKlasNR);
-            this.tpExtra.Controls.Add(this.label27);
-            this.tpExtra.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tpExtra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.tpExtra.Location = new System.Drawing.Point(184, 4);
-            this.tpExtra.Name = "tpExtra";
-            this.tpExtra.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExtra.Size = new System.Drawing.Size(556, 447);
-            this.tpExtra.TabIndex = 11;
-            this.tpExtra.Text = "Extra";
+            this.tpResultaten.BackColor = System.Drawing.Color.White;
+            this.tpResultaten.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tpResultaten.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tpResultaten.Location = new System.Drawing.Point(184, 4);
+            this.tpResultaten.Name = "tpResultaten";
+            this.tpResultaten.Padding = new System.Windows.Forms.Padding(3);
+            this.tpResultaten.Size = new System.Drawing.Size(556, 447);
+            this.tpResultaten.TabIndex = 12;
+            this.tpResultaten.Text = "Resultaten";
             // 
-            // pbToonWachtwoord
+            // ilPassword
             // 
-            this.pbToonWachtwoord.Location = new System.Drawing.Point(164, 196);
-            this.pbToonWachtwoord.Name = "pbToonWachtwoord";
-            this.pbToonWachtwoord.Size = new System.Drawing.Size(18, 16);
-            this.pbToonWachtwoord.TabIndex = 209;
-            this.pbToonWachtwoord.TabStop = false;
-            this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
+            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
+            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
+            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
             // 
-            // cmbKlas
+            // label30
             // 
-            this.cmbKlas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbKlas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbKlas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKlas.Enabled = false;
-            this.cmbKlas.EnabledCalc = true;
-            this.cmbKlas.FormattingEnabled = true;
-            this.cmbKlas.ItemHeight = 20;
-            this.cmbKlas.Location = new System.Drawing.Point(226, 29);
-            this.cmbKlas.Name = "cmbKlas";
-            this.cmbKlas.Size = new System.Drawing.Size(63, 26);
-            this.cmbKlas.TabIndex = 208;
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(7, 26);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(138, 15);
+            this.label30.TabIndex = 197;
+            this.label30.Text = "Gebruikersnaam netwerk";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(7, 76);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(120, 15);
+            this.label31.TabIndex = 199;
+            this.label31.Text = "Wachtwoord netwerk";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(6, 5);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(72, 21);
+            this.label38.TabIndex = 201;
+            this.label38.Text = "Netwerk";
+            // 
+            // txtGebruikersnaamNetwerk
+            // 
+            this.txtGebruikersnaamNetwerk.EnabledCalc = true;
+            this.txtGebruikersnaamNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtGebruikersnaamNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtGebruikersnaamNetwerk.Location = new System.Drawing.Point(10, 44);
+            this.txtGebruikersnaamNetwerk.MaxLength = 32767;
+            this.txtGebruikersnaamNetwerk.MultiLine = false;
+            this.txtGebruikersnaamNetwerk.Name = "txtGebruikersnaamNetwerk";
+            this.txtGebruikersnaamNetwerk.ReadOnly = false;
+            this.txtGebruikersnaamNetwerk.Size = new System.Drawing.Size(181, 29);
+            this.txtGebruikersnaamNetwerk.TabIndex = 202;
+            this.txtGebruikersnaamNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtGebruikersnaamNetwerk.UseSystemPasswordChar = false;
+            // 
+            // txtWachtwoordNetwerk
+            // 
+            this.txtWachtwoordNetwerk.EnabledCalc = true;
+            this.txtWachtwoordNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtWachtwoordNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtWachtwoordNetwerk.Location = new System.Drawing.Point(10, 94);
+            this.txtWachtwoordNetwerk.MaxLength = 32767;
+            this.txtWachtwoordNetwerk.MultiLine = false;
+            this.txtWachtwoordNetwerk.Name = "txtWachtwoordNetwerk";
+            this.txtWachtwoordNetwerk.ReadOnly = false;
+            this.txtWachtwoordNetwerk.Size = new System.Drawing.Size(181, 29);
+            this.txtWachtwoordNetwerk.TabIndex = 203;
+            this.txtWachtwoordNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtWachtwoordNetwerk.UseSystemPasswordChar = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(7, 134);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(311, 15);
+            this.label26.TabIndex = 205;
+            this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
+            // 
+            // xylosSeparator3
+            // 
+            this.xylosSeparator3.Location = new System.Drawing.Point(10, 129);
+            this.xylosSeparator3.Name = "xylosSeparator3";
+            this.xylosSeparator3.Size = new System.Drawing.Size(529, 2);
+            this.xylosSeparator3.TabIndex = 206;
+            this.xylosSeparator3.Text = "xylosSeparator3";
             // 
             // cmbCorrespondentie
             // 
@@ -1341,167 +1375,40 @@
             "Beide",
             "Moeder",
             "Vader"});
-            this.cmbCorrespondentie.Location = new System.Drawing.Point(12, 248);
+            this.cmbCorrespondentie.Location = new System.Drawing.Point(10, 152);
             this.cmbCorrespondentie.Name = "cmbCorrespondentie";
             this.cmbCorrespondentie.Size = new System.Drawing.Size(209, 26);
             this.cmbCorrespondentie.TabIndex = 207;
             // 
-            // xylosSeparator3
+            // pbToonWachtwoord
             // 
-            this.xylosSeparator3.Location = new System.Drawing.Point(12, 225);
-            this.xylosSeparator3.Name = "xylosSeparator3";
-            this.xylosSeparator3.Size = new System.Drawing.Size(529, 2);
-            this.xylosSeparator3.TabIndex = 206;
-            this.xylosSeparator3.Text = "xylosSeparator3";
+            this.pbToonWachtwoord.Location = new System.Drawing.Point(162, 100);
+            this.pbToonWachtwoord.Name = "pbToonWachtwoord";
+            this.pbToonWachtwoord.Size = new System.Drawing.Size(18, 16);
+            this.pbToonWachtwoord.TabIndex = 209;
+            this.pbToonWachtwoord.TabStop = false;
+            this.pbToonWachtwoord.Click += new System.EventHandler(this.pbToonWachtwoord_Click);
             // 
-            // label26
+            // tpExtra
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(9, 230);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(311, 15);
-            this.label26.TabIndex = 205;
-            this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
-            // 
-            // txtWachtwoordNetwerk
-            // 
-            this.txtWachtwoordNetwerk.EnabledCalc = true;
-            this.txtWachtwoordNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtWachtwoordNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtWachtwoordNetwerk.Location = new System.Drawing.Point(12, 190);
-            this.txtWachtwoordNetwerk.MaxLength = 32767;
-            this.txtWachtwoordNetwerk.MultiLine = false;
-            this.txtWachtwoordNetwerk.Name = "txtWachtwoordNetwerk";
-            this.txtWachtwoordNetwerk.ReadOnly = false;
-            this.txtWachtwoordNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtWachtwoordNetwerk.TabIndex = 203;
-            this.txtWachtwoordNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtWachtwoordNetwerk.UseSystemPasswordChar = true;
-            // 
-            // txtGebruikersnaamNetwerk
-            // 
-            this.txtGebruikersnaamNetwerk.EnabledCalc = true;
-            this.txtGebruikersnaamNetwerk.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtGebruikersnaamNetwerk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGebruikersnaamNetwerk.Location = new System.Drawing.Point(12, 140);
-            this.txtGebruikersnaamNetwerk.MaxLength = 32767;
-            this.txtGebruikersnaamNetwerk.MultiLine = false;
-            this.txtGebruikersnaamNetwerk.Name = "txtGebruikersnaamNetwerk";
-            this.txtGebruikersnaamNetwerk.ReadOnly = false;
-            this.txtGebruikersnaamNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtGebruikersnaamNetwerk.TabIndex = 202;
-            this.txtGebruikersnaamNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtGebruikersnaamNetwerk.UseSystemPasswordChar = false;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(8, 101);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(72, 21);
-            this.label38.TabIndex = 201;
-            this.label38.Text = "Netwerk";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(8, 5);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(39, 21);
-            this.label37.TabIndex = 200;
-            this.label37.Text = "Klas";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(9, 172);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(120, 15);
-            this.label31.TabIndex = 199;
-            this.label31.Text = "Wachtwoord netwerk";
-            // 
-            // xylosSeparator4
-            // 
-            this.xylosSeparator4.Location = new System.Drawing.Point(12, 96);
-            this.xylosSeparator4.Name = "xylosSeparator4";
-            this.xylosSeparator4.Size = new System.Drawing.Size(391, 2);
-            this.xylosSeparator4.TabIndex = 198;
-            this.xylosSeparator4.Text = "xylosSeparator4";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(9, 122);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(138, 15);
-            this.label30.TabIndex = 197;
-            this.label30.Text = "Gebruikersnaam netwerk";
-            // 
-            // btnNieuweKlas
-            // 
-            this.btnNieuweKlas.EnabledCalc = true;
-            this.btnNieuweKlas.Location = new System.Drawing.Point(12, 58);
-            this.btnNieuweKlas.Name = "btnNieuweKlas";
-            this.btnNieuweKlas.Size = new System.Drawing.Size(123, 32);
-            this.btnNieuweKlas.TabIndex = 196;
-            this.btnNieuweKlas.Text = "Nieuwe klas maken";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(189, 32);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(31, 15);
-            this.label29.TabIndex = 93;
-            this.label29.Text = "Klas:";
-            // 
-            // btnGenereerKlasnummer
-            // 
-            this.btnGenereerKlasnummer.EnabledCalc = true;
-            this.btnGenereerKlasnummer.Location = new System.Drawing.Point(141, 58);
-            this.btnGenereerKlasnummer.Name = "btnGenereerKlasnummer";
-            this.btnGenereerKlasnummer.Size = new System.Drawing.Size(262, 32);
-            this.btnGenereerKlasnummer.TabIndex = 92;
-            this.btnGenereerKlasnummer.Text = "Genereer klasnummer voor de volledige klas";
-            // 
-            // lblKlasNR
-            // 
-            this.lblKlasNR.AutoSize = true;
-            this.lblKlasNR.Location = new System.Drawing.Point(92, 32);
-            this.lblKlasNR.Name = "lblKlasNR";
-            this.lblKlasNR.Size = new System.Drawing.Size(13, 15);
-            this.lblKlasNR.TabIndex = 91;
-            this.lblKlasNR.Text = "0";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(9, 32);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(77, 15);
-            this.label27.TabIndex = 90;
-            this.label27.Text = "Klasnummer:";
-            // 
-            // ilPassword
-            // 
-            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
-            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
-            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
-            // 
-            // tpResultaten
-            // 
-            this.tpResultaten.BackColor = System.Drawing.Color.White;
-            this.tpResultaten.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tpResultaten.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.tpResultaten.Location = new System.Drawing.Point(184, 4);
-            this.tpResultaten.Name = "tpResultaten";
-            this.tpResultaten.Padding = new System.Windows.Forms.Padding(3);
-            this.tpResultaten.Size = new System.Drawing.Size(556, 447);
-            this.tpResultaten.TabIndex = 12;
-            this.tpResultaten.Text = "Resultaten";
+            this.tpExtra.BackColor = System.Drawing.Color.White;
+            this.tpExtra.Controls.Add(this.pbToonWachtwoord);
+            this.tpExtra.Controls.Add(this.cmbCorrespondentie);
+            this.tpExtra.Controls.Add(this.xylosSeparator3);
+            this.tpExtra.Controls.Add(this.label26);
+            this.tpExtra.Controls.Add(this.txtWachtwoordNetwerk);
+            this.tpExtra.Controls.Add(this.txtGebruikersnaamNetwerk);
+            this.tpExtra.Controls.Add(this.label38);
+            this.tpExtra.Controls.Add(this.label31);
+            this.tpExtra.Controls.Add(this.label30);
+            this.tpExtra.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tpExtra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.tpExtra.Location = new System.Drawing.Point(184, 4);
+            this.tpExtra.Name = "tpExtra";
+            this.tpExtra.Padding = new System.Windows.Forms.Padding(3);
+            this.tpExtra.Size = new System.Drawing.Size(556, 447);
+            this.tpExtra.TabIndex = 11;
+            this.tpExtra.Text = "Extra";
             // 
             // Design
             // 
@@ -1527,9 +1434,9 @@
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
             this.xylosTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpExtra.ResumeLayout(false);
             this.tpExtra.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1609,25 +1516,9 @@
         private XylosSeparator xylosSeparator1;
         private System.Windows.Forms.Label label25;
         private XylosSeparator xylosSeparator2;
-        private System.Windows.Forms.TabPage tpExtra;
-        private System.Windows.Forms.Label label29;
-        private XylosButton btnGenereerKlasnummer;
-        private System.Windows.Forms.Label lblKlasNR;
-        private System.Windows.Forms.Label label27;
-        private XylosTextBox txtGebruikersnaamNetwerk;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label31;
-        private XylosSeparator xylosSeparator4;
-        private System.Windows.Forms.Label label30;
-        private XylosButton btnNieuweKlas;
-        private XylosTextBox txtWachtwoordNetwerk;
         private XylosCombobox cmbGeslacht;
         private XylosCombobox cmbLand;
         private XylosCombobox cmbGezinssituatie;
-        private XylosCombobox cmbCorrespondentie;
-        private XylosSeparator xylosSeparator3;
-        private System.Windows.Forms.Label label26;
         private CustomMaskedTextbox mskRijksregisterNummer;
         private CustomMaskedTextbox mskPostcode;
         private CustomMaskedTextbox mskGsmNummer;
@@ -1635,11 +1526,19 @@
         private CustomMaskedTextbox mtxtTelfoonWerkMoeder;
         private CustomMaskedTextbox mtxtGSMMoeder;
         private CustomMaskedTextbox mtxtGSMVader;
-        private XylosCombobox cmbKlas;
         private CustomMaskedTextbox mtxtPostcodeMoeder;
         private CustomMaskedTextbox mtxtPostcodeVader;
-        private System.Windows.Forms.PictureBox pbToonWachtwoord;
         private System.Windows.Forms.ImageList ilPassword;
         private System.Windows.Forms.TabPage tpResultaten;
+        private System.Windows.Forms.TabPage tpExtra;
+        private System.Windows.Forms.PictureBox pbToonWachtwoord;
+        private XylosCombobox cmbCorrespondentie;
+        private XylosSeparator xylosSeparator3;
+        private System.Windows.Forms.Label label26;
+        private XylosTextBox txtWachtwoordNetwerk;
+        private XylosTextBox txtGebruikersnaamNetwerk;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
     }
 }

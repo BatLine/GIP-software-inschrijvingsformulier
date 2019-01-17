@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,6 +34,14 @@ namespace DefinitiefProgram
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            Loading loadingscreen = new Loading();
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                Loading l = new Loading();
+                l.Show();
+                loadingscreen = l;
+            }).Start();
             Leerling lln = new Leerling();
 
             //leerling
@@ -54,8 +63,6 @@ namespace DefinitiefProgram
             lln.StrPostcode = mskPostcode.Text;
             lln.StrLand = cmbLand.Text;
             lln.IntMiddelbaar = Studiejaar;
-            lln.IntKlasNR = Convert.ToInt16(lblKlasNR.Text);
-            lln.StrKlas = cmbKlas.SelectedItem.ToString();
             lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
             lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
 
@@ -91,20 +98,18 @@ namespace DefinitiefProgram
             lln.O = o;
 
             b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut, Gezinshoofd);
+            loadingscreen.BeginInvoke((MethodInvoker)delegate ()
+            {
+                loadingscreen.Close();
+            });
             this.Close();
         }
 
         private void Design_Load(object sender, EventArgs e)
-        { refreshAlleKlassen(); checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
+        { checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
 
         private void tpLLN_Click(object sender, EventArgs e)
         { }
-
-        void refreshAlleKlassen()
-        {
-            foreach (string s in b.getAlleKlassen())
-            { cmbKlas.Items.Add(s); }
-        }
 
         //Check studiejaar
         void checkStudieJaar()
@@ -217,8 +222,6 @@ namespace DefinitiefProgram
                 cmbRichting.SelectedIndex = 0;
                 rdbExtern.Checked = true;
 
-                lblKlasNR.Text = "1";
-                cmbKlas.SelectedIndex = 1;
                 txtGebruikersnaamNetwerk.Text = "gebruikersnaam";
                 txtWachtwoordNetwerk.Text = "wachtwoord";
                 cmbCorrespondentie.SelectedIndex = 1;
