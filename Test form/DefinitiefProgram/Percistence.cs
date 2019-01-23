@@ -102,43 +102,8 @@ namespace DefinitiefProgram
             List<Leerling> lln = new List<Leerling>();
             List<int> ids = getAlleIDs();
 
-            foreach (int i in ids) //voor elke leerling
-            {
-                int moederID = 0;
-                int vaderID = 0;
-                conn.Open();
-                Leerling l = new Leerling();
-                MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + i, conn);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    l.DatabaseID = i;
-                    l.StrNaam = dr["Naam"].ToString();
-                    l.StrVoornaam = dr["Voornaam"].ToString();
-                    l.StrBijkNaam = dr["BijkVoornaam"].ToString();
-                    l.StrGeslacht = dr["Geslacht"].ToString();
-                    l.StrGeboortedatum = dr["Geboortedatum"].ToString();
-                    l.StrGeboorteplaats = dr["Geboorteplaats"].ToString();
-                    l.StrRijkregisternummer = dr["Rijksregisternummer"].ToString();
-                    l.StrNationaliteit = dr["Nationaliteit"].ToString();
-                    l.StrGSM_Nummer = dr["GSMnummer"].ToString();
-                    l.StrE_Mail = dr["Email"].ToString();
-                    l.StrStraat = dr["Straat"].ToString();
-                    l.StrHuisnummer = dr["Huisnummer"].ToString();
-                    l.StrBus = dr["Bus"].ToString();
-                    l.StrGemeente = dr["Gemeente"].ToString();
-                    l.StrPostcode = dr["Postcode"].ToString();
-                    l.StrLand = dr["Land"].ToString();
-                    l.IntMiddelbaar = Convert.ToInt16(dr["Middelbaar"].ToString());
-                    l.IntStudieKeuzeID = Convert.ToInt16(dr["StudiekeuzeID"].ToString());
-                    l.StrGebruikersnaamNetwerk = dr["GebruikersnaamNetwerk"].ToString();
-                    l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
-                    moederID = Convert.ToInt16(dr["IDmoeder"]);
-                    vaderID = Convert.ToInt16(dr["IDvader"]);
-                }
-                lln.Add(l);
-                conn.Close();
-            }
+            foreach (int i in ids)
+            { lln.Add(getLeerling(i)); }
             return lln;
         }
 
