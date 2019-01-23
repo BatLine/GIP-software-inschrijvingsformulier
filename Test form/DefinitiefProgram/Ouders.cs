@@ -31,8 +31,7 @@ namespace DefinitiefProgram
         string strPostcodeVader;
         string strGemeenteVader;
         string strGezinssituatie;
-        string strGezinshoofdMoeder;
-        string strGezinshoofdVader;
+        string strGezinshoofd;
 
         public string StrNaamMoeder { get => strNaamMoeder; set => strNaamMoeder = value; }
         public string StrGeboorteDatumMoeder { get => strGeboorteDatumMoeder; set => strGeboorteDatumMoeder = value; }
@@ -57,7 +56,6 @@ namespace DefinitiefProgram
         public string StrPostcodeVader { get => strPostcodeVader; set => strPostcodeVader = value; }
         public string StrGemeenteVader { get => strGemeenteVader; set => strGemeenteVader = value; }
         public string StrGezinssituatie { get => strGezinssituatie; set => strGezinssituatie = value; }
-        public string StrGezinshoofdMoeder { get => strGezinshoofdMoeder; set => strGezinshoofdMoeder = value; }
-        public string StrGezinshoofdVader { get => strGezinshoofdVader; set => strGezinshoofdVader = value; }
+        public string StrGezinshoofd { get => strGezinshoofd; set => strGezinshoofd = value; }
     }
 }

@@ -12,6 +12,7 @@ namespace DefinitiefProgram
 {
     public partial class Menu : Form
     {
+        Business b = new Business();
         public int selectedLeerlingID=-1;
         public Menu()
         { InitializeComponent(); }
@@ -33,6 +34,15 @@ namespace DefinitiefProgram
                 d.veldenvullen(selectedLeerlingID);
                 this.Close();
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            foreach (Leerling l in b.getAlleLeerlingen())
+            {
+
+            }
+            MessageBox.Show("Done");
         }
     }
 }
