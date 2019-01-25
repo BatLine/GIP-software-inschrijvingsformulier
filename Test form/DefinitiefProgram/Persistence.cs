@@ -7,10 +7,10 @@ using MySql.Data.MySqlClient;
 
 namespace DefinitiefProgram
 {
-    class Percistence
+    class Persistence
     {
         MySqlConnection conn = new MySqlConnection("server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=ILiWO2dm");
-        public Percistence()
+        public Persistence()
         { }
         
         public Leerling getLeerling(int pintID)

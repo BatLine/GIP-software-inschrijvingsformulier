@@ -26,13 +26,15 @@ namespace DefinitiefProgram
         string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         Business b = new Business();
         public int selectedLeerlingID=-1;
+        bool blnVolledigSluiten = false;
         public Menu()
         { InitializeComponent(); }
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            new Design().Show();
-            this.Close();
+            Design d = new Design();
+            this.Hide();
+            d.Show();
         }
 
         private void btnWijzigen_Click(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace DefinitiefProgram
             {
                 Design d = new Design(); d.Text = "Leerling wijzigen"; d.Show();
                 d.veldenvullen(selectedLeerlingID);
-                this.Close();
+                this.Hide();
             }
         }
 
@@ -109,7 +111,7 @@ namespace DefinitiefProgram
 
                 xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
                 xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
-                xlWorkSheet.Cells[intTeller, 27] = l.O.StrGeboorteDatumMoeder;
+                xlWorkSheet.Cells[intTeller, 27] = l.O.StrGeboorteDatumMoeder; //nog invullen
                 xlWorkSheet.Cells[intTeller, 28] = l.O.StrRijksregisterNRMoeder; //nog invullen
                 xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder; //nog invullen
                 xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
@@ -118,13 +120,13 @@ namespace DefinitiefProgram
 
                 xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
                 xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
-                xlWorkSheet.Cells[intTeller, 35] = l.O.StrGeboorteDatumVader;
+                xlWorkSheet.Cells[intTeller, 35] = l.O.StrGeboorteDatumVader; //nog invullen
                 xlWorkSheet.Cells[intTeller, 36] = l.O.StrRijksregisterNRVader; //nog invullen
                 xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader; //nog invullen
                 xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                 xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
-
+                
                 //stiefmoeder
                 //stiefvader
 
@@ -159,6 +161,18 @@ namespace DefinitiefProgram
             }
             finally
             { GC.Collect(); }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            blnVolledigSluiten = true;
+            Application.Exit();
+        }
+
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!blnVolledigSluiten)
+            { e.Cancel = true; } else { this.Hide(); }
         }
     }
 }
