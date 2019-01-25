@@ -7,15 +7,18 @@ using MySql.Data.MySqlClient;
 
 namespace DefinitiefProgram
 {
-    class Percistence
+    class Persistence
     {
         MySqlConnection conn = new MySqlConnection("server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=ILiWO2dm");
-        public Percistence()
+        public Persistence()
         { }
         
         public Leerling getLeerling(int pintID)
         {
             Leerling l = new Leerling();
+            int IDMoeder = 0;
+            int IDVader = 0;
+            
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
             MySqlDataReader dr = cmd.ExecuteReader();
@@ -23,7 +26,74 @@ namespace DefinitiefProgram
             {
                 l.StrNaam = dr["Naam"].ToString();
                 l.StrVoornaam = dr["Voornaam"].ToString();
+                l.StrBijkNaam = dr["BijkVoornaam"].ToString();
+                l.StrGeslacht = dr["Geslacht"].ToString();
+                l.StrGeboorteplaats = dr["Geboorteplaats"].ToString();
+                l.StrGeboortedatum = dr["Rijksregisternummer"].ToString();
+                l.StrNationaliteit = dr["Nationaliteit"].ToString();
+                l.StrGSM_Nummer = dr["GSMnummer"].ToString();
+                l.StrE_Mail = dr["Email"].ToString();
+                l.StrStraat = dr["Huisnummer"].ToString();
+                l.StrBus = dr["Bus"].ToString();
+                l.StrGemeente = dr["Gemeente"].ToString();
+                l.StrPostcode = dr["Postcode"].ToString();
+                l.StrLand = dr["Land"].ToString();
+                l.IntMiddelbaar = Convert.ToInt32(dr["Middelbaar"]);
+                l.IntStudieKeuzeID = Convert.ToInt32(dr["StudiekeuzeID"]);
+                l.IntSchoolstatuutID = Convert.ToInt32(dr["SchoolstatuutID"]);
+                l.IntKlasID = Convert.ToInt32(dr["KlasID"]);
+                l.StrGebruikersnaamNetwerk = dr["GebruikernaamNetwerk"].ToString();
+                l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
+
+                IDMoeder = Convert.ToInt32(dr["IDMoeder"]);
+                IDVader = Convert.ToInt32(dr["IDVader"]);
             }
+            conn.Close();
+            
+
+            Ouders o = new Ouders();
+            
+            MySqlCommand cmd2 = new MySqlCommand("select * from Ouder where OuderID =" + IDMoeder, conn);
+            MySqlDataReader d = cmd.ExecuteReader();
+            conn.Open();
+
+            while (d.Read())
+            {
+                o.StrNaamMoeder = d["Naam"].ToString();
+                o.StrEmailMoeder = d["Mailadres"].ToString();
+                o.StrGSMMoeder = d["GSM"].ToString();
+                o.StrTelefoonWerkMoeder = d["Tel"].ToString();
+                o.StrStraatMoeder = d["Straat"].ToString();
+                o.StrPostcodeMoeder = d["Postcode"].ToString();
+                o.StrHuisnrMoeder = d["HuisNR"].ToString();
+                o.StrGemeenteMoeder = d["Gemeente"].ToString();
+                o.StrGezinshoofdMoeder = d["Gezinshoofd"].ToString();
+                o.StrGezinssituatie = d["GezinsSituatie"].ToString();
+                
+                //RelatieID ???????????????????????????????????????????
+            }
+
+            MySqlCommand cmd3 = new MySqlCommand("select * from Ouder where OuderID =" + IDVader, conn);
+            MySqlDataReader dV = cmd.ExecuteReader();
+            conn.Open();
+
+            while (d.Read())
+            {
+                o.StrNaamVader = dV["Naam"].ToString();
+                o.StrEmailVader = dV["Mailadres"].ToString();
+                o.StrGSMVader = dV["GSM"].ToString();
+                o.StrTelefoonWerkVader = dV["Tel"].ToString();
+                o.StrStraatVader = dV["Straat"].ToString();
+                o.StrPostcodeVader = dV["Postcode"].ToString();
+                o.StrHuisnrVader = dV["HuisNR"].ToString();
+                o.StrGemeenteVader = dV["Gemeente"].ToString();
+                o.StrGezinshoofdVader = dV["Gezinshoofd"].ToString();
+                o.StrGezinssituatie = dV["GezinsSituatie"].ToString();
+
+                //RelatieID ???????????????????????????????????????????
+            }
+
+
             conn.Close();
             return l;
         }

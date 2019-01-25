@@ -8,11 +8,11 @@ namespace DefinitiefProgram
 {
     class Business
     {
-        Percistence p;
+        Persistence p;
         List<Leerling> Leerlingen = new List<Leerling>();
 
         public Business()
-        { p = new Percistence(); }
+        { p = new Persistence(); }
 
         public void addToDatabase(Leerling lln, string pRichting, string pStatuut, string pGezinshoofd)
         {
