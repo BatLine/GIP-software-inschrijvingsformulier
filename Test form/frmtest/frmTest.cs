@@ -86,9 +86,7 @@ namespace frmtest
                 MessageBox.Show("Unable to release the Object " + ex.ToString());
             }
             finally
-            {
-                GC.Collect();
-            }
+            { GC.Collect(); }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

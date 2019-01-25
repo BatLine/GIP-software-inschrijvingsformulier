@@ -42,6 +42,7 @@
             this.btnExport.Size = new System.Drawing.Size(140, 34);
             this.btnExport.TabIndex = 5;
             this.btnExport.Text = "Leerlingen exporteren";
+            this.btnExport.Click += new XylosButton.ClickEventHandler(this.btnExport_Click);
             // 
             // btnWijzigen
             // 

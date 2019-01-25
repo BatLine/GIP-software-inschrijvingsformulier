@@ -7,94 +7,93 @@ using MySql.Data.MySqlClient;
 
 namespace DefinitiefProgram
 {
-    class Persistence
+    class Percistence
     {
         MySqlConnection conn = new MySqlConnection("server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=ILiWO2dm");
-        public Persistence()
+        public Percistence()
         { }
         
         public Leerling getLeerling(int pintID)
         {
+            int moederID = 0;
+            int vaderID = 0;
             Leerling l = new Leerling();
-            int IDMoeder = 0;
-            int IDVader = 0;
-            
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
+            MySqlCommand cmd4 = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
+                l.DatabaseID = Convert.ToInt16(dr["idLeerling"]);
                 l.StrNaam = dr["Naam"].ToString();
                 l.StrVoornaam = dr["Voornaam"].ToString();
                 l.StrBijkNaam = dr["BijkVoornaam"].ToString();
                 l.StrGeslacht = dr["Geslacht"].ToString();
+                l.StrGeboortedatum = dr["Geboortedatum"].ToString();
                 l.StrGeboorteplaats = dr["Geboorteplaats"].ToString();
-                l.StrGeboortedatum = dr["Rijksregisternummer"].ToString();
+                l.StrRijkregisternummer = dr["Rijksregisternummer"].ToString();
                 l.StrNationaliteit = dr["Nationaliteit"].ToString();
                 l.StrGSM_Nummer = dr["GSMnummer"].ToString();
                 l.StrE_Mail = dr["Email"].ToString();
-                l.StrStraat = dr["Huisnummer"].ToString();
+                l.StrStraat = dr["Straat"].ToString();
+                l.StrHuisnummer = dr["Huisnummer"].ToString();
                 l.StrBus = dr["Bus"].ToString();
                 l.StrGemeente = dr["Gemeente"].ToString();
                 l.StrPostcode = dr["Postcode"].ToString();
                 l.StrLand = dr["Land"].ToString();
-                l.IntMiddelbaar = Convert.ToInt32(dr["Middelbaar"]);
-                l.IntStudieKeuzeID = Convert.ToInt32(dr["StudiekeuzeID"]);
-                l.IntSchoolstatuutID = Convert.ToInt32(dr["SchoolstatuutID"]);
-                l.IntKlasID = Convert.ToInt32(dr["KlasID"]);
-                l.StrGebruikersnaamNetwerk = dr["GebruikernaamNetwerk"].ToString();
+                l.IntMiddelbaar = Convert.ToInt16(dr["Middelbaar"]);
+                l.IntStudieKeuzeID = Convert.ToInt16(dr["StudiekeuzeID"]);
+                l.IntSchoolstatuutID = Convert.ToInt16(dr["SchoolstatuutID"]);
+                l.StrGebruikersnaamNetwerk = dr["GebruikersnaamNetwerk"].ToString();
                 l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
-
-                IDMoeder = Convert.ToInt32(dr["IDMoeder"]);
-                IDVader = Convert.ToInt32(dr["IDVader"]);
+                moederID = Convert.ToInt16(dr["IDmoeder"]);
+                vaderID = Convert.ToInt16(dr["IDvader"]);
             }
             conn.Close();
-            
-
-            Ouders o = new Ouders();
-            
-            MySqlCommand cmd2 = new MySqlCommand("select * from Ouder where OuderID =" + IDMoeder, conn);
-            MySqlDataReader d = cmd.ExecuteReader();
+            //richtingnaam
+            cmd = new MySqlCommand("select Omschrijving,StudiekeuzeID from studiekeuze where StudiekeuzeID=" + l.IntStudieKeuzeID, conn);
             conn.Open();
-
-            while (d.Read())
-            {
-                o.StrNaamMoeder = d["Naam"].ToString();
-                o.StrEmailMoeder = d["Mailadres"].ToString();
-                o.StrGSMMoeder = d["GSM"].ToString();
-                o.StrTelefoonWerkMoeder = d["Tel"].ToString();
-                o.StrStraatMoeder = d["Straat"].ToString();
-                o.StrPostcodeMoeder = d["Postcode"].ToString();
-                o.StrHuisnrMoeder = d["HuisNR"].ToString();
-                o.StrGemeenteMoeder = d["Gemeente"].ToString();
-                o.StrGezinshoofdMoeder = d["Gezinshoofd"].ToString();
-                o.StrGezinssituatie = d["GezinsSituatie"].ToString();
-                
-                //RelatieID ???????????????????????????????????????????
-            }
-
-            MySqlCommand cmd3 = new MySqlCommand("select * from Ouder where OuderID =" + IDVader, conn);
-            MySqlDataReader dV = cmd.ExecuteReader();
-            conn.Open();
-
-            while (d.Read())
-            {
-                o.StrNaamVader = dV["Naam"].ToString();
-                o.StrEmailVader = dV["Mailadres"].ToString();
-                o.StrGSMVader = dV["GSM"].ToString();
-                o.StrTelefoonWerkVader = dV["Tel"].ToString();
-                o.StrStraatVader = dV["Straat"].ToString();
-                o.StrPostcodeVader = dV["Postcode"].ToString();
-                o.StrHuisnrVader = dV["HuisNR"].ToString();
-                o.StrGemeenteVader = dV["Gemeente"].ToString();
-                o.StrGezinshoofdVader = dV["Gezinshoofd"].ToString();
-                o.StrGezinssituatie = dV["GezinsSituatie"].ToString();
-
-                //RelatieID ???????????????????????????????????????????
-            }
-
-
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            { l.StrRichtingNaam = dr["Omschrijving"].ToString(); }
             conn.Close();
+            //moeder
+            cmd = new MySqlCommand("select * from ouder where OuderID=" + moederID, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.O.StrNaamMoeder = dr["Naam"].ToString();
+                l.O.StrEmailMoeder = dr["Mailadres"].ToString();
+                l.O.StrGSMMoeder = dr["GSM"].ToString();
+                l.O.StrTelefoonWerkMoeder = dr["Tel"].ToString();
+                l.O.StrStraatMoeder = dr["Straat"].ToString();
+                l.O.StrPostcodeMoeder = dr["Postcode"].ToString();
+                l.O.StrHuisnrMoeder = dr["HuisNR"].ToString();
+                l.O.StrGemeenteMoeder = dr["Gemeente"].ToString();
+
+                //algemeen
+                l.O.StrGezinshoofd = dr["Gezinshoofd"].ToString();
+                l.O.StrGezinssituatie = dr["GezinsSituatie"].ToString();
+            }
+            conn.Close();
+            //vader
+            cmd = new MySqlCommand("select * from ouder where OuderID=" + vaderID, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.O.StrNaamVader = dr["Naam"].ToString();
+                l.O.StrEmailVader = dr["Mailadres"].ToString();
+                l.O.StrGSMVader = dr["GSM"].ToString();
+                l.O.StrTelefoonWerkVader = dr["Tel"].ToString();
+                l.O.StrStraatVader = dr["Straat"].ToString();
+                l.O.StrPostcodeVader = dr["Postcode"].ToString();
+                l.O.StrHuisnrVader = dr["HuisNR"].ToString();
+                l.O.StrGemeenteVader = dr["Gemeente"].ToString();
+            }
+            conn.Close();
+
             return l;
         }
 
@@ -103,22 +102,8 @@ namespace DefinitiefProgram
             List<Leerling> lln = new List<Leerling>();
             List<int> ids = getAlleIDs();
 
-            foreach (int i in ids) //voor elke leerling
-            {
-                conn.Open();
-                Leerling l = new Leerling();
-                MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + i, conn);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    l.DatabaseID = i;
-                    l.StrNaam = dr["Naam"].ToString();
-                    l.StrVoornaam = dr["Voornaam"].ToString();
-                    l.StrPostcode = dr["Postcode"].ToString();
-                }
-                lln.Add(l);
-                conn.Close();
-            }
+            foreach (int i in ids)
+            { lln.Add(getLeerling(i)); }
             return lln;
         }
 
@@ -134,51 +119,11 @@ namespace DefinitiefProgram
             return ids;
         }
 
-
-
-
-
-
-        public List<Leerling> GetLeerlingenFromDB() //herdoen
-        {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM ID191774_6itngip9.leerling;", conn);
-            conn.Open();
-            
-            List<Leerling> leerlingen = new List<Leerling>();
-
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-            while (dataReader.Read())
-            {
-                Leerling l = new Leerling();
-                l.StrNaam = dataReader["Naam"].ToString();
-                l.StrVoornaam = dataReader["Voornaam"].ToString();
-                l.StrBijkNaam = dataReader["Bijk Voornaam"].ToString();
-                l.StrGeslacht = dataReader["Geslacht"].ToString();
-                l.StrGeboorteplaats = dataReader["Geboorteplaats"].ToString();
-                l.StrGeboortedatum = dataReader["Geboortedatum"].ToString();
-                l.StrRijkregisternummer = dataReader["Rijksregisternummer"].ToString();
-                l.StrGSM_Nummer = dataReader["GSM-nummer"].ToString();
-                l.StrE_Mail = dataReader["E-mail"].ToString();
-                l.StrStraat = dataReader["Straat"].ToString();
-                l.StrHuisnummer = dataReader["Huisnummer"].ToString();
-                l.StrBus = dataReader["Bus"].ToString();
-                l.StrGemeente = dataReader["Gemeente"].ToString();
-                l.StrPostcode = dataReader["Postcode"].ToString();
-                l.StrLand = dataReader["Land"].ToString();
-                l.IntStudieKeuzeID = Convert.ToInt32(dataReader["StudiekeuzeID"]);
-                l.IntMiddelbaar = Convert.ToInt32(dataReader["Middelbaar"]);
-                l.IntSchoolstatuutID = Convert.ToInt32(dataReader["SchoolstatuutID"]);
-
-            }
-            conn.Close();
-            return leerlingen;
-        }
-
         public void addToDB(Leerling lln)
         {
             string LLNID, MoederID, VaderID;
             conn.Open();
-            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, KlasID, KlasNR, GebruikersnaamNetwerk, WachtwoordNetwerk) VALUES (" +
+            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk) VALUES (" +
                 "'" + lln.StrNaam + "','" +
                 lln.StrVoornaam + "','" +
                 lln.StrBijkNaam + "','" +
@@ -198,8 +143,6 @@ namespace DefinitiefProgram
                 lln.IntStudieKeuzeID + "','" +
                 lln.IntMiddelbaar + "','" +
                 lln.IntSchoolstatuutID + "','" +
-                lln.StrKlas + "','" +
-                lln.IntKlasNR + "','" +
                 lln.StrGebruikersnaamNetwerk + "','" +
                 lln.StrWachtwoordNetwerk +"')"
                 , conn);
@@ -214,14 +157,14 @@ namespace DefinitiefProgram
                 lln.O.StrPostcodeMoeder + "','" +
                 lln.O.StrHuisnrMoeder + "','" +
                 lln.O.StrGemeenteMoeder + "','" +
-                lln.O.StrGezinshoofdMoeder + "','" +
+                lln.O.StrGezinshoofd + "','" +
                 lln.O.StrGezinssituatie + "'," +
                 2 + ")"
                 , conn);
             cmdMoeder.ExecuteNonQuery();
             MoederID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
             MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
-                "'" + lln.O.StrNaamMoeder + "','" +
+                "'" + lln.O.StrNaamVader + "','" +
                 lln.O.StrEmailVader + "','" +
                 lln.O.StrGSMVader + "','" +
                 lln.O.StrTelefoonWerkVader + "','" +
@@ -229,7 +172,7 @@ namespace DefinitiefProgram
                 lln.O.StrPostcodeVader + "','" +
                 lln.O.StrHuisnrVader + "','" +
                 lln.O.StrGemeenteVader + "','" +
-                lln.O.StrGezinshoofdVader + "','" +
+                lln.O.StrGezinshoofd + "','" +
                 lln.O.StrGezinssituatie + "'," +
                 1 + ")"
                 , conn);

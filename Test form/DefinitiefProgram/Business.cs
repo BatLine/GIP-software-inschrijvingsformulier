@@ -14,11 +14,9 @@ namespace DefinitiefProgram
         public Business()
         { p = new Persistence(); }
 
-        public void addToDatabase(Leerling lln, string pRichting, string pStatuut, string pGezinshoofd)
+        public void addToDatabase(Leerling lln, string pRichting, string pStatuut)
         {
             int intKeuzeID=0, intStatuut=0;
-            if (pGezinshoofd == "Moeder")
-            { lln.O.StrGezinshoofdMoeder = "1"; lln.O.StrGezinshoofdVader = "0"; } else if (pGezinshoofd  == "Vader") { lln.O.StrGezinshoofdMoeder = "0"; lln.O.StrGezinshoofdVader = "1"; }
             switch (pStatuut)
             {
                 case "Intern":

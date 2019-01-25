@@ -23,6 +23,7 @@ namespace DefinitiefProgram
         /// eerst checken op oudernaam om dan alles automatisch te laten invullen als ouder al bestaat
         /// als er zo aangeduid wordt dat die persoon maar 1 ouder heeft, ervoor zorgen dat de rest niet moet ingevuld worden
         /// wachtwoorden misschien versleuteld opslaan?
+        /// gezinssituatie moeder/vader overleven nieuwe vraag met de vraag welke dood is en  die disabele. ook bij geen contact meer met
         /// </TODO>
         Business b = new Business();
         int Studiejaar = 0;
@@ -89,9 +90,12 @@ namespace DefinitiefProgram
             o.StrGemeenteVader = txtGemeenteVader.Text;
             o.StrPostcodeVader = mtxtPostcodeVader.Text;
 
+            string strGezinshoofd;
+            if (rdbGezinshoofdMoeder.Checked) { strGezinshoofd = "Moeder"; } else { strGezinshoofd = "Vader"; }
+            o.StrGezinshoofd = strGezinshoofd;
             lln.O = o;
 
-            b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut, Gezinshoofd);
+            b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut);
             loadingscreen.Close();
             this.Close();
         }
@@ -235,15 +239,86 @@ namespace DefinitiefProgram
         private void txtFamilieNaam_TextChanged(object sender, EventArgs e)
         { updateNetwerkNaam(); }
         void updateNetwerkNaam()
-        { txtGebruikersnaamNetwerk.Text = txtVoornaam.Text + "." + txtFamilieNaam.Text.Replace(" ", ""); }
+        { txtGebruikersnaamNetwerk.Text = txtVoornaam.Text + "." + txtFamilieNaam.Text.Replace(" ", "").ToLower(); }
 
         public void veldenvullen(int pintID)
         {
             Leerling l = b.GetLeerling(pintID);
             txtVoornaam.Text = l.StrVoornaam;
             txtFamilieNaam.Text = l.StrNaam;
+            txtBijkvoornaam.Text = l.StrBijkNaam;
+            cmbGeslacht.SelectedItem = l.StrGeslacht;
+            txtGeboortedatum.Text = l.StrGeboortedatum;
+            txtGeboorteplaats.Text = l.StrGeboorteplaats;
+            mskRijksregisterNummer.Text = l.StrRijkregisternummer;
+            txtNationaliteit.Text = l.StrNationaliteit;
+            mskGsmNummer.Text = l.StrGSM_Nummer;
+            txtEmail.Text = l.StrE_Mail;
+            txtStraat.Text = l.StrStraat;
+            txtHuisnr.Text = l.StrHuisnummer;
+            txtBus.Text = l.StrBus;
+            txtGemeente.Text = l.StrGemeente;
+            mskPostcode.Text = l.StrPostcode;
+            cmbLand.SelectedItem = l.StrLand;
+            switch (l.IntMiddelbaar)
+            {
+                case 1:
+                    unselectAllrdbJaar(); rdbJaar1.Checked = true; break;
+                case 2:
+                    unselectAllrdbJaar(); rdbJaar2.Checked = true; break;
+                case 3:
+                    unselectAllrdbJaar(); rdbJaar3.Checked = true; break;
+                case 4:
+                    unselectAllrdbJaar(); rdbJaar4.Checked = true; break;
+                case 5:
+                    unselectAllrdbJaar(); rdbJaar5.Checked = true; break;
+                case 6:
+                    unselectAllrdbJaar(); rdbJaar6.Checked = true; break;
+            }
+            checkStudieJaar();
+            cmbRichting.SelectedItem = l.StrRichtingNaam;
+            txtGebruikersnaamNetwerk.Text = l.StrGebruikersnaamNetwerk;
+            txtWachtwoordNetwerk.Text = l.StrWachtwoordNetwerk;
+            switch (l.IntSchoolstatuutID)
+            {
+                case 1:
+                    rdbIntern.Checked = true; rdbExtern.Checked = false; rdbHalfIntern.Checked = false; break;
+                case 2:
+                    rdbIntern.Checked = false; rdbExtern.Checked = true; rdbHalfIntern.Checked = false; break;
+                case 3:
+                    rdbIntern.Checked = false; rdbExtern.Checked = false; rdbHalfIntern.Checked = true; break;
+            }
+            txtNaamMoeder.Text = l.O.StrNaamMoeder;
+            txtEmailMoeder.Text = l.O.StrEmailMoeder;
+            mtxtGSMMoeder.Text = l.O.StrGSMMoeder;
+            mtxtTelfoonWerkMoeder.Text = l.O.StrTelefoonWerkMoeder;
+            txtStraatMoeder.Text = l.O.StrStraatMoeder;
+            mtxtPostcodeMoeder.Text = l.O.StrPostcodeMoeder;
+            txtHuisNRMoeder.Text = l.O.StrHuisnrMoeder;
+            txtGemeenteMoeder.Text = l.O.StrGemeenteMoeder;
+
+            txtNaamVader.Text = l.O.StrNaamVader;
+            txtEmailVader.Text = l.O.StrEmailVader;
+            mtxtGSMVader.Text = l.O.StrGSMVader;
+            mtxtTelfoonWerkVader.Text = l.O.StrTelefoonWerkVader;
+            txtStraatVader.Text = l.O.StrStraatVader;
+            mtxtPostcodeVader.Text = l.O.StrPostcodeVader;
+            txtHuisNRVader.Text = l.O.StrHuisnrVader;
+            txtGemeenteVader.Text = l.O.StrGemeenteVader;
+
+            if (l.O.StrGezinshoofd == "Moeder") { rdbGezinshoofdMoeder.Checked = true; rdbGezinshoofdVader.Checked = false; } else { rdbGezinshoofdVader.Checked = true; rdbGezinshoofdMoeder.Checked = false; }
+            cmbGezinssituatie.SelectedItem = l.O.StrGezinssituatie;
 
             //bij bevestigen de origenele updaten/eerst verwijderen en dan toevoegen
+        }
+        void unselectAllrdbJaar()
+        {
+            rdbJaar1.Checked = false;
+            rdbJaar2.Checked = false;
+            rdbJaar3.Checked = false;
+            rdbJaar4.Checked = false;
+            rdbJaar5.Checked = false;
+            rdbJaar6.Checked = false;
         }
     }
 }
