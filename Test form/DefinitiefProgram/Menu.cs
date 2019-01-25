@@ -9,21 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-
+using prop = DefinitiefProgram.Properties.Settings;
 namespace DefinitiefProgram
 {
     public partial class Menu : Form
     {
         //naam en voornaam bij export nog aanpassen & mama en papa appart tablad bij design
         //beroep en rijk reg nog toevoegen
-        //path aanpassen met folderbrowser
-        //bestandsnaam ook kieze
-        //met tempfile werken in temp folder
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
         Excel.Worksheet xlWorkSheet;
         object misValue = System.Reflection.Missing.Value;
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        string tempPath = Path.GetTempPath();
         Business b = new Business();
         public int selectedLeerlingID=-1;
         bool blnVolledigSluiten = false;
@@ -52,6 +49,20 @@ namespace DefinitiefProgram
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.SelectedPath = prop.Default.lastSaveFolder;
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                prop.Default.lastSaveFolder = fbd.SelectedPath +  @"\"; prop.Default.Save();
+                if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
+                { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            }  
+        }
+        bool export(string locatie, string naam)
+        {
             int intTeller = 1;
             //alles in excel zetten
             //exel openen
@@ -59,21 +70,19 @@ namespace DefinitiefProgram
             xlexcel.Visible = false;
 
             //vorige resulaten verwijderen
-            if (File.Exists(path + @"\Resultaat.xlsx"))
-                File.Delete(path + @"\Resultaat.xlsx");
-            if (File.Exists(path + @"\TempFile.xlsx"))
-            {
-                File.Delete(path + @"\TempFile.xlsx");
-            }
+            if (File.Exists(locatie + naam))
+                File.Delete(locatie + naam);
+            if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
+            { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
             //leeg excel document aanmaken.
-            var app = new Microsoft.Office.Interop.Excel.Application();
+            var app = new Excel.Application();
             var wb = app.Workbooks.Add();
-            wb.SaveAs(path + @"\TempFile.xlsx");
+            wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
             wb.Close();
 
             //Bestand openen en wijzigen.
-            xlWorkBook = xlexcel.Workbooks.Open(path + @"\TempFile.xlsx", 0, true, 5, "", "", true,
-            Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
+            Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             foreach (Leerling l in b.getAlleLeerlingen())
@@ -126,7 +135,7 @@ namespace DefinitiefProgram
                 xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                 xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
-                
+
                 //stiefmoeder
                 //stiefvader
 
@@ -134,7 +143,7 @@ namespace DefinitiefProgram
             }
 
             //opslaan als..
-            xlWorkBook.Close(true, path + @"\Resultaat.xlsx", misValue);
+            xlWorkBook.Close(true, locatie + naam, misValue);
             xlexcel.Quit();
 
             //document terug sluiten
@@ -142,11 +151,9 @@ namespace DefinitiefProgram
             releaseObject(xlWorkBook);
             releaseObject(xlexcel);
 
-            //verwijder temp file
-            if (File.Exists(path + @"\TempFile.xlsx"))
-                File.Delete(path + @"\TempFile.xlsx");
-            MessageBox.Show("Done");
+            return true;
         }
+
         private void releaseObject(object obj)
         {
             try
@@ -173,6 +180,12 @@ namespace DefinitiefProgram
         {
             if (!blnVolledigSluiten)
             { e.Cancel = true; } else { this.Hide(); }
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
+            { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
         }
     }
 }

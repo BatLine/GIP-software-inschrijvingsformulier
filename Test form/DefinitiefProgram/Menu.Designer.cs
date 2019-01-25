@@ -28,11 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnClose = new XylosButton();
             this.btnExport = new XylosButton();
             this.btnWijzigen = new XylosButton();
             this.btnToevoegen = new XylosButton();
-            this.btnClose = new XylosButton();
             this.SuspendLayout();
+            // 
+            // btnClose
+            // 
+            this.btnClose.EnabledCalc = true;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(30, 159);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(140, 34);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new XylosButton.ClickEventHandler(this.btnClose_Click);
             // 
             // btnExport
             // 
@@ -67,17 +78,6 @@
             this.btnToevoegen.Text = "Leerling toevoegen";
             this.btnToevoegen.Click += new XylosButton.ClickEventHandler(this.btnToevoegen_Click);
             // 
-            // btnClose
-            // 
-            this.btnClose.EnabledCalc = true;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(30, 159);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(140, 34);
-            this.btnClose.TabIndex = 6;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new XylosButton.ClickEventHandler(this.btnClose_Click);
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,6 +96,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
 
         }
