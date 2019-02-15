@@ -62,7 +62,10 @@ namespace DefinitiefProgram
                 if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
                 { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            }  
+            }
+
+            Export ee = new Export();
+            ee.Show();
         }
         private void btnClose_Click(object sender, EventArgs e)
         { Application.Exit(); }
