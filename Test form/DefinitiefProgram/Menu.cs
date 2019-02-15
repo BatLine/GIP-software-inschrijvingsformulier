@@ -4,18 +4,24 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+#region usings
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using prop = DefinitiefProgram.Properties.Settings;
+#endregion
 namespace DefinitiefProgram
 {
     public partial class Menu : Form
     {
+        #region todo
         //naam en voornaam bij export nog aanpassen & mama en papa appart tablad bij design
         //beroep en rijk reg nog toevoegen
+        //exporteren kiezen + vanaf welke datum
+        #endregion
+        #region vars
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
         Excel.Worksheet xlWorkSheet;
@@ -23,17 +29,16 @@ namespace DefinitiefProgram
         string tempPath = Path.GetTempPath();
         Business b = new Business();
         public int selectedLeerlingID=-1;
-        bool blnVolledigSluiten = false;
+        #endregion
+
+        #region controls
         public Menu()
         { InitializeComponent(); }
-
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
             Design d = new Design();
-            this.Hide();
-            d.Show();
+            d.ShowDialog();
         }
-
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
             Lijstleerlingen lijstleerlingen = new Lijstleerlingen();
@@ -41,12 +46,10 @@ namespace DefinitiefProgram
             lijstleerlingen.ShowDialog();
             if ((lijstleerlingen.DialogResult == DialogResult.OK) && (selectedLeerlingID != -1))
             {
-                Design d = new Design(); d.Text = "Leerling wijzigen"; d.Show();
+                Design d = new Design(); d.Text = "Leerling wijzigen"; d.ShowDialog();
                 d.veldenvullen(selectedLeerlingID);
-                this.Hide();
             }
         }
-
         private void btnExport_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -61,6 +64,18 @@ namespace DefinitiefProgram
                 else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }  
         }
+        private void btnClose_Click(object sender, EventArgs e)
+        { Application.Exit(); }
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        { }
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
+            { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
+        }
+        #endregion
+
+        #region functions
         bool export(string locatie, string naam)
         {
             int intTeller = 1;
@@ -153,7 +168,6 @@ namespace DefinitiefProgram
 
             return true;
         }
-
         private void releaseObject(object obj)
         {
             try
@@ -169,23 +183,6 @@ namespace DefinitiefProgram
             finally
             { GC.Collect(); }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            blnVolledigSluiten = true;
-            Application.Exit();
-        }
-
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!blnVolledigSluiten)
-            { e.Cancel = true; } else { this.Hide(); }
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
-            { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
-        }
+        #endregion
     }
 }

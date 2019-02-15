@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region usings
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +9,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+#endregion
 namespace DefinitiefProgram
 {
     public partial class Design : Form
     {
-
         /// <TODO>
         /// TODO
         /// textbox geboortedatum bij ouders en lln naar masked?
@@ -25,14 +25,22 @@ namespace DefinitiefProgram
         /// wachtwoorden misschien versleuteld opslaan?
         /// gezinssituatie moeder/vader overleven nieuwe vraag met de vraag welke dood is en  die disabele. ook bij geen contact meer met
         /// </TODO>
+        #region vars
         Business b = new Business();
         int Studiejaar = 0;
         string Schoolstatuut = "Extern";
-        string Gezinshoofd = "Moeder";
         bool blnShowPassword = false;
+        #endregion
+
+        #region controls
+        #region Form
         public Design()
         { InitializeComponent(); }
-
+        private void Design_Load(object sender, EventArgs e)
+        { checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
+        private void Design_FormClosing(object sender, FormClosingEventArgs e)
+        { }
+        #endregion
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Loading loadingscreen = new Loading();
@@ -99,14 +107,28 @@ namespace DefinitiefProgram
             loadingscreen.Close();
             this.Close();
         }
-
-        private void Design_Load(object sender, EventArgs e)
-        { checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
-
         private void tpLLN_Click(object sender, EventArgs e)
         { }
-
-        //Check studiejaar
+        private void pbToonWachtwoord_Click(object sender, EventArgs e)
+        {
+            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
+            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
+        }
+        private void tpOuder_Click(object sender, EventArgs e)
+        { }
+        private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
+        { }
+        private void rdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
+        { }
+        #region updatenetwerknaam
+        private void txtVoornaam_TextChanged(object sender, EventArgs e)
+        { updateNetwerkNaam(); }
+        private void txtFamilieNaam_TextChanged(object sender, EventArgs e)
+        { updateNetwerkNaam(); }
+        void updateNetwerkNaam()
+        { txtGebruikersnaamNetwerk.Text = txtVoornaam.Text + "." + txtFamilieNaam.Text.Replace(" ", "").ToLower(); }
+        #endregion
+        #region checkstudiejaar
         void checkStudieJaar()
         {
             if (rdbJaar1.Checked) { Studiejaar = 1; }
@@ -148,8 +170,8 @@ namespace DefinitiefProgram
         { checkStudieJaar(); }
         private void rdbJaar6_CheckedChanged(object sender, EventArgs e)
         { checkStudieJaar(); }
-
-        //Check schoolstatuut
+        #endregion
+        #region checkschoolstatuut
         void checkSchoolstatuut()
         {
             if (rdbExtern.Checked) { Schoolstatuut = "Extern"; }
@@ -162,85 +184,10 @@ namespace DefinitiefProgram
         { checkSchoolstatuut(); }
         private void rdbHalfIntern_CheckedChanged(object sender, EventArgs e)
         { checkSchoolstatuut(); }
+        #endregion
+        #endregion
 
-        private void tpOuder_Click(object sender, EventArgs e)
-        { }
-
-        private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
-        { if (rdbGezinshoofdMoeder.Checked) { Gezinshoofd = "Moeder"; } }
-        private void rdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
-        { if (rdbGezinshoofdVader.Checked) { Gezinshoofd = "Vader"; } }
-
-        void checkdebug()
-        {
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                //alle velden vullen om te testen
-                txtVoornaam.Text = "Voornaam";
-                txtFamilieNaam.Text = "Familienaam";
-                txtBijkvoornaam.Text = "bijk. vnaam";
-                cmbGeslacht.SelectedIndex = 1;
-                txtGeboorteplaats.Text = "geboorteplaats";
-                txtGeboortedatum.Text = "01/01/0001";
-                mskRijksregisterNummer.Text = "1";
-                txtNationaliteit.Text = "Nationaliteit";
-                mskGsmNummer.Text = "04711";
-                txtStraat.Text = "Straat";
-                txtEmail.Text = "email@email.com";
-                txtHuisnr.Text = "1";
-                txtBus.Text = "a";
-                txtGemeente.Text = "Gemeente";
-                mskPostcode.Text = "9000";
-                cmbLand.SelectedIndex = 1;
-
-                txtNaamMoeder.Text = "naam";
-                txtHuisNRMoeder.Text = "1";
-                txtGemeenteMoeder.Text = "Gemeente";
-                txtEmailMoeder.Text = "email@mail.com";
-                mtxtPostcodeMoeder.Text = "9000";
-                txtStraatMoeder.Text = "straat";
-                mtxtTelfoonWerkMoeder.Text = "04711";
-                mtxtGSMMoeder.Text = "04711";
-                txtNaamVader.Text = "naam";
-                txtHuisNRVader.Text = "1";
-                txtGemeenteVader.Text = "Gemeente";
-                txtEmailVader.Text = "email@mail.com";
-                mtxtPostcodeVader.Text = "9000";
-                txtStraatVader.Text = "straat";
-                mtxtTelfoonWerkVader.Text = "04711";
-                mtxtGSMVader.Text = "04711";
-                rdbGezinshoofdMoeder.Checked = true;
-                cmbGezinssituatie.SelectedIndex = 1;
-
-                rdbJaar6.Checked = true;
-                checkStudieJaar();
-                cmbRichting.SelectedIndex = 0;
-                rdbExtern.Checked = true;
-
-                txtGebruikersnaamNetwerk.Text = "gebruikersnaam";
-                txtWachtwoordNetwerk.Text = "wachtwoord";
-                cmbCorrespondentie.SelectedIndex = 1;
-
-                checkSchoolstatuut();
-            }
-        }
-
-        private void Design_FormClosing(object sender, FormClosingEventArgs e)
-        { new Menu().Show(); }
-
-        private void pbToonWachtwoord_Click(object sender, EventArgs e)
-        {
-            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
-            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
-        }
-
-        private void txtVoornaam_TextChanged(object sender, EventArgs e)
-        { updateNetwerkNaam(); }
-        private void txtFamilieNaam_TextChanged(object sender, EventArgs e)
-        { updateNetwerkNaam(); }
-        void updateNetwerkNaam()
-        { txtGebruikersnaamNetwerk.Text = txtVoornaam.Text + "." + txtFamilieNaam.Text.Replace(" ", "").ToLower(); }
-
+        #region functions
         public void veldenvullen(int pintID)
         {
             Leerling l = b.GetLeerling(pintID);
@@ -320,5 +267,59 @@ namespace DefinitiefProgram
             rdbJaar5.Checked = false;
             rdbJaar6.Checked = false;
         }
+        void checkdebug()
+        {
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                //alle velden vullen om te testen
+                txtVoornaam.Text = "Voornaam";
+                txtFamilieNaam.Text = "Familienaam";
+                txtBijkvoornaam.Text = "bijk. vnaam";
+                cmbGeslacht.SelectedIndex = 1;
+                txtGeboorteplaats.Text = "geboorteplaats";
+                txtGeboortedatum.Text = "01/01/0001";
+                mskRijksregisterNummer.Text = "1";
+                txtNationaliteit.Text = "Nationaliteit";
+                mskGsmNummer.Text = "04711";
+                txtStraat.Text = "Straat";
+                txtEmail.Text = "email@email.com";
+                txtHuisnr.Text = "1";
+                txtBus.Text = "a";
+                txtGemeente.Text = "Gemeente";
+                mskPostcode.Text = "9000";
+                cmbLand.SelectedIndex = 1;
+
+                txtNaamMoeder.Text = "naam";
+                txtHuisNRMoeder.Text = "1";
+                txtGemeenteMoeder.Text = "Gemeente";
+                txtEmailMoeder.Text = "email@mail.com";
+                mtxtPostcodeMoeder.Text = "9000";
+                txtStraatMoeder.Text = "straat";
+                mtxtTelfoonWerkMoeder.Text = "04711";
+                mtxtGSMMoeder.Text = "04711";
+                txtNaamVader.Text = "naam";
+                txtHuisNRVader.Text = "1";
+                txtGemeenteVader.Text = "Gemeente";
+                txtEmailVader.Text = "email@mail.com";
+                mtxtPostcodeVader.Text = "9000";
+                txtStraatVader.Text = "straat";
+                mtxtTelfoonWerkVader.Text = "04711";
+                mtxtGSMVader.Text = "04711";
+                rdbGezinshoofdMoeder.Checked = true;
+                cmbGezinssituatie.SelectedIndex = 1;
+
+                rdbJaar6.Checked = true;
+                checkStudieJaar();
+                cmbRichting.SelectedIndex = 0;
+                rdbExtern.Checked = true;
+
+                txtGebruikersnaamNetwerk.Text = "gebruikersnaam";
+                txtWachtwoordNetwerk.Text = "wachtwoord";
+                cmbCorrespondentie.SelectedIndex = 1;
+
+                checkSchoolstatuut();
+            }
+        }
+        #endregion
     }
 }
