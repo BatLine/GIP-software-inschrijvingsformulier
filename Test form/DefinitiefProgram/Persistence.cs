@@ -13,6 +13,13 @@ namespace DefinitiefProgram
         public Persistence()
         { }
         
+        public int getAantalLLN(string strVan, string strTot)
+        {
+            int intAantal = 0;
+            //get alle leerlingen met die datum
+            return intAantal;
+        }
+
         public Leerling getLeerling(int pintID)
         {
             int moederID = 0;

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Naam");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Naam");
             this.label1 = new System.Windows.Forms.Label();
             this.rdbIedereen = new XylosRadioButton();
             this.rdbSpecifiek = new XylosRadioButton();
@@ -165,10 +165,10 @@
             this.lvSpecifieker.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.lvSpecifieker.FullRowSelect = true;
-            listViewItem4.Checked = true;
-            listViewItem4.StateImageIndex = 1;
+            listViewItem7.Checked = true;
+            listViewItem7.StateImageIndex = 1;
             this.lvSpecifieker.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem7});
             this.lvSpecifieker.Location = new System.Drawing.Point(6, 19);
             this.lvSpecifieker.Name = "lvSpecifieker";
             this.lvSpecifieker.Size = new System.Drawing.Size(265, 263);
@@ -184,7 +184,7 @@
             // btnExport
             // 
             this.btnExport.EnabledCalc = true;
-            this.btnExport.Location = new System.Drawing.Point(265, 73);
+            this.btnExport.Location = new System.Drawing.Point(264, 9);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(26, 23);
             this.btnExport.TabIndex = 5;
@@ -193,11 +193,12 @@
             // btnCancel
             // 
             this.btnCancel.EnabledCalc = true;
-            this.btnCancel.Location = new System.Drawing.Point(233, 73);
+            this.btnCancel.Location = new System.Drawing.Point(232, 9);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(26, 23);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "<=";
+            this.btnCancel.Click += new XylosButton.ClickEventHandler(this.btnCancel_Click);
             // 
             // Export
             // 
@@ -207,8 +208,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(302, 499);
             this.ControlBox = false;
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gpSpecifieker);
             this.Controls.Add(this.gpSpecifiek);
             this.Controls.Add(this.rdbSpecifiek);
@@ -221,6 +222,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Export";
+            this.Load += new System.EventHandler(this.Export_Load);
             this.gpSpecifiek.ResumeLayout(false);
             this.gpSpecifiek.PerformLayout();
             this.gpSpecifieker.ResumeLayout(false);

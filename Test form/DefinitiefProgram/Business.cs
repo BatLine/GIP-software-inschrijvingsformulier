@@ -14,6 +14,13 @@ namespace DefinitiefProgram
         public Business()
         { p = new Persistence(); }
 
+        public string getAantalLLN(DateTime dteVan, DateTime dteTot)
+        {
+            string van, tot;
+            van = dteVan.ToString("dd mm yyyy");
+            tot = dteTot.ToString("dd mm yyyy");
+            return p.getAantalLLN(van, tot) + " Leerlingen in deze periode";
+        }
         public void addToDatabase(Leerling lln, string pRichting, string pStatuut)
         {
             int intKeuzeID=0, intStatuut=0;
