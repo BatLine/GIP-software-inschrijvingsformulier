@@ -28,7 +28,7 @@ namespace DefinitiefProgram
             else
             {
                 showSpecifiek();
-                b.
+                //b.
                 //laad antal
             }
         }
