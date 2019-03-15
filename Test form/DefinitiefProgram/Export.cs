@@ -28,9 +28,19 @@ namespace DefinitiefProgram
             else
             {
                 showSpecifiek();
-                //b.
-                //laad antal
+                string van, tot;
+                van = dtpVan.Value.ToString("dd mm yyyy");
+                tot = dtpTot.Value.ToString("dd mm yyyy");
+
+                Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot);
+
+                lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
+                vulSpeciefieker(tuple.Item2);
             }
+        }
+        void vulSpeciefieker(List<Leerling> lln)
+        {
+
         }
         void hideAlles()
         {
