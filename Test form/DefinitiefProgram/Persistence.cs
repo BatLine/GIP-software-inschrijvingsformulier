@@ -21,11 +21,11 @@ namespace DefinitiefProgram
             MySqlConnection conn2 = conn;
             conn.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
-            leerlings = getAlleLeerlingenFromDB();
-
+            //leerlings = getAlleLeerlingenFromDB();
+            /*
             while (dr.Read())
             {
-                leerlings.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
+                //leerlings.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
 
             }
             foreach (Leerling l in leerlings)
@@ -38,9 +38,10 @@ namespace DefinitiefProgram
                     intAantal++;
                 }
             }
-
+            */
             conn.Close();
-            return new Tuple<int, List<Leerling>>(intAantal, leerlings);
+            //return new Tuple<int, List<Leerling>>(intAantal, leerlings);
+            return null;
         }
 
         public Leerling getLeerling(int pintID)
