@@ -21,14 +21,15 @@ namespace DefinitiefProgram
             MySqlConnection conn2 = conn;
             conn.Open();
             MySqlDataReader dr = cmd.ExecuteReader();
-            //leerlings = getAlleLeerlingenFromDB();
-            /*
+
+            List<Leerling> leerlingen = getAlleLeerlingenFromDB();
+            
             while (dr.Read())
             {
-                //leerlings.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
+                leerlingen.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
 
             }
-            foreach (Leerling l in leerlings)
+            foreach (Leerling l in leerlingen)
             {
                 DateTime dte = DateTime.Now;
                 MySqlCommand getDatum = new MySqlCommand("select * from leerling where idLeerling=" + l.DatabaseID, conn);
@@ -38,10 +39,10 @@ namespace DefinitiefProgram
                     intAantal++;
                 }
             }
-            */
+            
             conn.Close();
-            //return new Tuple<int, List<Leerling>>(intAantal, leerlings);
-            return null;
+            return new Tuple<int, List<Leerling>>(intAantal, leerlingen);
+            
         }
 
         public Leerling getLeerling(int pintID)
