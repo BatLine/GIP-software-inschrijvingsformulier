@@ -68,7 +68,7 @@ namespace DefinitiefProgram
             ee.Show();
         }
         private void btnClose_Click(object sender, EventArgs e)
-        { Application.Exit(); }
+        { Application.Exit();}
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         { }
         private void Menu_Load(object sender, EventArgs e)

@@ -923,7 +923,7 @@
             this.txtHuisnr.Name = "txtHuisnr";
             this.txtHuisnr.ReadOnly = false;
             this.txtHuisnr.Size = new System.Drawing.Size(52, 29);
-            this.txtHuisnr.TabIndex = 150;
+            this.txtHuisnr.TabIndex = 136;
             this.txtHuisnr.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtHuisnr.UseSystemPasswordChar = false;
             // 
@@ -938,7 +938,7 @@
             this.txtStraat.Name = "txtStraat";
             this.txtStraat.ReadOnly = false;
             this.txtStraat.Size = new System.Drawing.Size(130, 29);
-            this.txtStraat.TabIndex = 149;
+            this.txtStraat.TabIndex = 135;
             this.txtStraat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtStraat.UseSystemPasswordChar = false;
             // 
@@ -1051,7 +1051,7 @@
             this.mskGsmNummer.Name = "mskGsmNummer";
             this.mskGsmNummer.ReadOnly = false;
             this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskGsmNummer.TabIndex = 161;
+            this.mskGsmNummer.TabIndex = 133;
             this.mskGsmNummer.Text = "           ";
             this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskGsmNummer.UseSystemPasswordChar = false;
@@ -1068,7 +1068,7 @@
             this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
             this.mskRijksregisterNummer.ReadOnly = false;
             this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskRijksregisterNummer.TabIndex = 160;
+            this.mskRijksregisterNummer.TabIndex = 131;
             this.mskRijksregisterNummer.Text = "  .  .  -   .";
             this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskRijksregisterNummer.UseSystemPasswordChar = false;
@@ -1105,7 +1105,7 @@
             this.cmbGeslacht.Location = new System.Drawing.Point(137, 114);
             this.cmbGeslacht.Name = "cmbGeslacht";
             this.cmbGeslacht.Size = new System.Drawing.Size(130, 26);
-            this.cmbGeslacht.TabIndex = 158;
+            this.cmbGeslacht.TabIndex = 128;
             // 
             // label11
             // 

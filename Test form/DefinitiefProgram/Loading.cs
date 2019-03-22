@@ -54,6 +54,9 @@ namespace DefinitiefProgram
             move();
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        { }
+
         private void tmrPunt_Tick(object sender, EventArgs e)
         {
             switch (intPunten)
