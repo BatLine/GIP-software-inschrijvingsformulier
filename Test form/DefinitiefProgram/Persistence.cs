@@ -13,11 +13,34 @@ namespace DefinitiefProgram
         public Persistence()
         { }
         
-        public int getAantalLLN(string strVan, string strTot)
+        public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot)
         {
             int intAantal = 0;
-            //get alle leerlingen met die datum
-            return intAantal;
+            List<Leerling> alleleerlingen = new List<Leerling>();
+            MySqlCommand cmd = new MySqlCommand("select * from leerling", conn);
+            MySqlConnection conn2 = conn;
+            conn.Open();
+            MySqlDataReader dr = cmd.ExecuteReader();
+            leerlings = getAlleLeerlingenFromDB();
+
+            while (dr.Read())
+            {
+                leerlings.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
+
+            }
+            foreach (Leerling l in leerlings)
+            {
+                DateTime dte = DateTime.Now;
+                MySqlCommand getDatum = new MySqlCommand("select * from leerling where idLeerling=" + l.DatabaseID, conn);
+                dte = Convert.ToDateTime(getDatum.ExecuteScalar());
+                if ((dte <= Convert.ToDateTime(strVan)) && (dte >= Convert.ToDateTime(strTot)))
+                {
+                    intAantal++;
+                }
+            }
+
+            conn.Close();
+            return new Tuple<int, List<Leerling>>(intAantal, leerlings);
         }
 
         public Leerling getLeerling(int pintID)
