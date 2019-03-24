@@ -31,6 +31,7 @@ namespace DefinitiefProgram
         private int intMiddelbaar;
         private int intSchoolstatuutID;
         private int databaseID;
+        private string aanmaakDatum;
         private Ouders o = new Ouders();
 
         public string StrNaam { get => strNaam; set => strNaam = value; }
@@ -57,5 +58,6 @@ namespace DefinitiefProgram
         public int DatabaseID { get => databaseID; set => databaseID = value; }
         public string StrRichtingNaam { get => strRichtingNaam; set => strRichtingNaam = value; }
         public Ouders O { get => o; set => o = value; }
+        public string AanmaakDatum { get => aanmaakDatum; set => aanmaakDatum = value; }
     }
 }

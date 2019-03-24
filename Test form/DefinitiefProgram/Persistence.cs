@@ -16,33 +16,23 @@ namespace DefinitiefProgram
         public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot)
         {
             int intAantal = 0;
-            List<Leerling> alleleerlingen = new List<Leerling>();
-            MySqlCommand cmd = new MySqlCommand("select * from leerling", conn);
-            MySqlConnection conn2 = conn;
-            conn.Open();
-            MySqlDataReader dr = cmd.ExecuteReader();
+            List<Leerling> alleLeerlingenInDB = getAlleLeerlingenFromDB();
+            List<Leerling> specifiekeLLN = new List<Leerling>();
 
-            List<Leerling> leerlingen = getAlleLeerlingenFromDB();
-            
-            while (dr.Read())
+            //getallelln met de maakdatum al in klass leerling
+            DateTime dteVan = DateTime.ParseExact(strVan, "dd MM yyyy", null);
+            DateTime dteTot = DateTime.ParseExact(strTot, "dd MM yyyy", null);
+            foreach (Leerling l in alleLeerlingenInDB)
             {
-                leerlingen.Add(getLeerling(Convert.ToInt16(dr["idLeerling"])));
-
-            }
-            foreach (Leerling l in leerlingen)
-            {
-                DateTime dte = DateTime.Now;
-                MySqlCommand getDatum = new MySqlCommand("select * from leerling where idLeerling=" + l.DatabaseID, conn);
-                dte = Convert.ToDateTime(getDatum.ExecuteScalar());
-                if ((dte <= Convert.ToDateTime(strVan)) && (dte >= Convert.ToDateTime(strTot)))
+                DateTime dte = DateTime.ParseExact(l.AanmaakDatum, "dd/MM/yyyy", null);
+                if ((dte <= dteVan) && (dte >= dteTot))
                 {
                     intAantal++;
+                    specifiekeLLN.Add(l);
                 }
             }
             
-            conn.Close();
-            return new Tuple<int, List<Leerling>>(intAantal, leerlingen);
-            
+            return new Tuple<int, List<Leerling>>(intAantal, specifiekeLLN);            
         }
 
         public Leerling getLeerling(int pintID)
@@ -52,7 +42,6 @@ namespace DefinitiefProgram
             Leerling l = new Leerling();
             conn.Open();
             MySqlCommand cmd = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
-            MySqlCommand cmd4 = new MySqlCommand("select * from leerling where idLeerling=" + pintID, conn);
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -78,6 +67,7 @@ namespace DefinitiefProgram
                 l.IntSchoolstatuutID = Convert.ToInt16(dr["SchoolstatuutID"]);
                 l.StrGebruikersnaamNetwerk = dr["GebruikersnaamNetwerk"].ToString();
                 l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
+                l.AanmaakDatum = dr["Aanmaakdatum"].ToString();
                 moederID = Convert.ToInt16(dr["IDmoeder"]);
                 vaderID = Convert.ToInt16(dr["IDvader"]);
             }
@@ -155,7 +145,7 @@ namespace DefinitiefProgram
         {
             string LLNID, MoederID, VaderID;
             conn.Open();
-            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk) VALUES (" +
+            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk, Aanmaakdatum) VALUES (" +
                 "'" + lln.StrNaam + "','" +
                 lln.StrVoornaam + "','" +
                 lln.StrBijkNaam + "','" +
@@ -176,7 +166,8 @@ namespace DefinitiefProgram
                 lln.IntMiddelbaar + "','" +
                 lln.IntSchoolstatuutID + "','" +
                 lln.StrGebruikersnaamNetwerk + "','" +
-                lln.StrWachtwoordNetwerk +"')"
+                lln.StrWachtwoordNetwerk + "','" +
+                lln.AanmaakDatum +"')"
                 , conn);
             cmdLLN.ExecuteNonQuery();
             LLNID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();

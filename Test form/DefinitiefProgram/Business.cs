@@ -67,6 +67,7 @@ namespace DefinitiefProgram
             }
             lln.IntStudieKeuzeID = intKeuzeID;
             lln.IntSchoolstatuutID = intStatuut;
+            lln.AanmaakDatum = DateTime.Now.ToString("dd/MM/yyyy");
             p.addToDB(lln);
         }
 

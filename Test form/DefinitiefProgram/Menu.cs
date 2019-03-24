@@ -1,10 +1,10 @@
-﻿using System;
+﻿#region usings
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-#region usings
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,20 +52,21 @@ namespace DefinitiefProgram
         }
         private void btnExport_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = prop.Default.lastSaveFolder;
-            DialogResult result = fbd.ShowDialog();
+            //moet nog verplaatst worden naar export dinges
+            //FolderBrowserDialog fbd = new FolderBrowserDialog();
+            //fbd.SelectedPath = prop.Default.lastSaveFolder;
+            //DialogResult result = fbd.ShowDialog();
 
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            {
-                prop.Default.lastSaveFolder = fbd.SelectedPath +  @"\"; prop.Default.Save();
-                if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
-                { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            }
+            //if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            //{
+            //    prop.Default.lastSaveFolder = fbd.SelectedPath +  @"\"; prop.Default.Save();
+            //    if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
+            //    { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            //    else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            //}
 
-            Export ee = new Export();
-            ee.Show();
+            Export export = new Export();
+            export.Show();
         }
         private void btnClose_Click(object sender, EventArgs e)
         { Application.Exit();}

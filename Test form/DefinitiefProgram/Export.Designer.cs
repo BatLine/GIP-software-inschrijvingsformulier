@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Naam");
             this.label1 = new System.Windows.Forms.Label();
-            this.rdbIedereen = new XylosRadioButton();
-            this.rdbSpecifiek = new XylosRadioButton();
             this.gpSpecifiek = new System.Windows.Forms.GroupBox();
             this.chkSpecifiker = new XylosCheckBox();
             this.lblAantalLLN = new System.Windows.Forms.Label();
@@ -41,9 +38,13 @@
             this.dtpVan = new System.Windows.Forms.DateTimePicker();
             this.gpSpecifieker = new System.Windows.Forms.GroupBox();
             this.lvSpecifieker = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chNaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPostcode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chDatum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnExport = new XylosButton();
             this.btnCancel = new XylosButton();
+            this.rdbSpecifiek = new XylosRadioButton();
+            this.rdbIedereen = new XylosRadioButton();
             this.gpSpecifiek.SuspendLayout();
             this.gpSpecifieker.SuspendLayout();
             this.SuspendLayout();
@@ -56,30 +57,6 @@
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Selecteer een optie:";
-            // 
-            // rdbIedereen
-            // 
-            this.rdbIedereen.Checked = true;
-            this.rdbIedereen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbIedereen.EnabledCalc = true;
-            this.rdbIedereen.Location = new System.Drawing.Point(15, 25);
-            this.rdbIedereen.Name = "rdbIedereen";
-            this.rdbIedereen.Size = new System.Drawing.Size(283, 18);
-            this.rdbIedereen.TabIndex = 1;
-            this.rdbIedereen.Text = "Alle leerlingen uit de database exporteren";
-            this.rdbIedereen.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIedereen_CheckedChanged);
-            // 
-            // rdbSpecifiek
-            // 
-            this.rdbSpecifiek.Checked = false;
-            this.rdbSpecifiek.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbSpecifiek.EnabledCalc = true;
-            this.rdbSpecifiek.Location = new System.Drawing.Point(15, 49);
-            this.rdbSpecifiek.Name = "rdbSpecifiek";
-            this.rdbSpecifiek.Size = new System.Drawing.Size(283, 18);
-            this.rdbSpecifiek.TabIndex = 2;
-            this.rdbSpecifiek.Text = "Een specifiek aantal leerlingen";
-            this.rdbSpecifiek.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbSpecifiek_CheckedChanged);
             // 
             // gpSpecifiek
             // 
@@ -141,6 +118,7 @@
             this.dtpTot.Name = "dtpTot";
             this.dtpTot.Size = new System.Drawing.Size(230, 20);
             this.dtpTot.TabIndex = 1;
+            this.dtpTot.ValueChanged += new System.EventHandler(this.dtpTot_ValueChanged);
             // 
             // dtpVan
             // 
@@ -148,6 +126,7 @@
             this.dtpVan.Name = "dtpVan";
             this.dtpVan.Size = new System.Drawing.Size(230, 20);
             this.dtpVan.TabIndex = 0;
+            this.dtpVan.ValueChanged += new System.EventHandler(this.dtpVan_ValueChanged);
             // 
             // gpSpecifieker
             // 
@@ -163,12 +142,11 @@
             // 
             this.lvSpecifieker.CheckBoxes = true;
             this.lvSpecifieker.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
+            this.chNaam,
+            this.chPostcode,
+            this.chDatum});
             this.lvSpecifieker.FullRowSelect = true;
-            listViewItem7.Checked = true;
-            listViewItem7.StateImageIndex = 1;
-            this.lvSpecifieker.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7});
+            this.lvSpecifieker.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvSpecifieker.Location = new System.Drawing.Point(6, 19);
             this.lvSpecifieker.Name = "lvSpecifieker";
             this.lvSpecifieker.Size = new System.Drawing.Size(265, 263);
@@ -176,10 +154,20 @@
             this.lvSpecifieker.UseCompatibleStateImageBehavior = false;
             this.lvSpecifieker.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // chNaam
             // 
-            this.columnHeader1.Text = "Naam";
-            this.columnHeader1.Width = 251;
+            this.chNaam.Text = "Naam";
+            this.chNaam.Width = 120;
+            // 
+            // chPostcode
+            // 
+            this.chPostcode.Text = "Postcode";
+            this.chPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // chDatum
+            // 
+            this.chDatum.Text = "Gemaakt op";
+            this.chDatum.Width = 80;
             // 
             // btnExport
             // 
@@ -189,6 +177,7 @@
             this.btnExport.Size = new System.Drawing.Size(26, 23);
             this.btnExport.TabIndex = 5;
             this.btnExport.Text = "=>";
+            this.btnExport.Click += new XylosButton.ClickEventHandler(this.btnExport_Click);
             // 
             // btnCancel
             // 
@@ -199,6 +188,30 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "<=";
             this.btnCancel.Click += new XylosButton.ClickEventHandler(this.btnCancel_Click);
+            // 
+            // rdbSpecifiek
+            // 
+            this.rdbSpecifiek.Checked = false;
+            this.rdbSpecifiek.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbSpecifiek.EnabledCalc = true;
+            this.rdbSpecifiek.Location = new System.Drawing.Point(15, 49);
+            this.rdbSpecifiek.Name = "rdbSpecifiek";
+            this.rdbSpecifiek.Size = new System.Drawing.Size(283, 18);
+            this.rdbSpecifiek.TabIndex = 2;
+            this.rdbSpecifiek.Text = "Een specifiek aantal leerlingen";
+            this.rdbSpecifiek.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbSpecifiek_CheckedChanged);
+            // 
+            // rdbIedereen
+            // 
+            this.rdbIedereen.Checked = true;
+            this.rdbIedereen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbIedereen.EnabledCalc = true;
+            this.rdbIedereen.Location = new System.Drawing.Point(15, 25);
+            this.rdbIedereen.Name = "rdbIedereen";
+            this.rdbIedereen.Size = new System.Drawing.Size(283, 18);
+            this.rdbIedereen.TabIndex = 1;
+            this.rdbIedereen.Text = "Alle leerlingen uit de database exporteren";
+            this.rdbIedereen.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIedereen_CheckedChanged);
             // 
             // Export
             // 
@@ -245,8 +258,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox gpSpecifieker;
         private System.Windows.Forms.ListView lvSpecifieker;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader chNaam;
         private XylosButton btnExport;
         private XylosButton btnCancel;
+        private System.Windows.Forms.ColumnHeader chPostcode;
+        private System.Windows.Forms.ColumnHeader chDatum;
     }
 }

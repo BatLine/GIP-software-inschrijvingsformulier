@@ -20,28 +20,9 @@ namespace DefinitiefProgram
 
         public Export()
         { InitializeComponent(); }
-
-        void rdbChanged()
-        {
-            if (rdbIedereen.Checked)
-            { hideAlles(); }
-            else
-            {
-                showSpecifiek();
-                string van, tot;
-                van = dtpVan.Value.ToString("dd mm yyyy");
-                tot = dtpTot.Value.ToString("dd mm yyyy");
-
-                Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot);
-
-                lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
-                vulSpeciefieker(tuple.Item2);
-            }
-        }
-        void vulSpeciefieker(List<Leerling> lln)
-        {
-
-        }
+        private void Export_Load(object sender, EventArgs e)
+        { hideAlles(); }
+        
         void hideAlles()
         {
             this.Size = new Size(318, 140);
@@ -59,7 +40,6 @@ namespace DefinitiefProgram
         void showSpecifieker()
         {
             gpSpecifieker.Show();
-            refreshSpecifieker();
             setLocationButtons();
         }
         void hideSpecifieker()
@@ -68,22 +48,56 @@ namespace DefinitiefProgram
             this.Size = new Size(318, 270);
             setLocationButtons();
         }
+
         void refreshSpecifieker()
         {
+            string van, tot;
+            van = dtpVan.Value.ToString("dd MM yyyy");
+            tot = dtpTot.Value.ToString("dd MM yyyy");
+
+            //new thread & loading dinges?
+            Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot);
+            lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
+            vulSpeciefieker(tuple.Item2);
+        }
+        void vulSpeciefieker(List<Leerling> lln)
+        {
             lvSpecifieker.Clear();
+            foreach (Leerling l in lln)
+            {
+                ListViewItem lvi = new ListViewItem(l.StrNaam + " " + l.StrVoornaam);
+                lvi.Checked = false;
+                lvi.Focused = false;
+                lvi.Selected = false;
+                lvi.SubItems.Add(l.StrPostcode);
+                lvi.SubItems.Add(l.AanmaakDatum);
+                lvSpecifieker.Items.Add(lvi);
+            }
         }
 
         private void rdbIedereen_CheckedChanged(object sender, EventArgs e)
         { rdbChanged(); }
         private void rdbSpecifiek_CheckedChanged(object sender, EventArgs e)
         { rdbChanged(); }
-
         private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSpecifiker.Checked)
             { showSpecifieker(); this.Size = new Size(318, 538); } else { hideSpecifieker(); }
-            //laad alle mensen in die datum 
             setLocationButtons();
+        }
+        private void dtpVan_ValueChanged(object sender, EventArgs e)
+        { refreshSpecifieker(); }
+        private void dtpTot_ValueChanged(object sender, EventArgs e)
+        { refreshSpecifieker(); }
+        void rdbChanged()
+        {
+            if (rdbIedereen.Checked)
+            { hideAlles(); }
+            else
+            {
+                showSpecifiek();
+                refreshSpecifieker();
+            }
         }
         void setLocationButtons()
         {
@@ -114,14 +128,14 @@ namespace DefinitiefProgram
             CenterToScreen();
         }
 
-        private void Export_Load(object sender, EventArgs e)
-        {
-            hideAlles();
-        }
-
+        
         private void btnCancel_Click(object sender, EventArgs e)
+        { this.Close(); }
+
+        private void btnExport_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //laad scherm tonen tot einde adhv async method
+            //alles uit menu naar hier halen om te exporten
         }
     }
 }
