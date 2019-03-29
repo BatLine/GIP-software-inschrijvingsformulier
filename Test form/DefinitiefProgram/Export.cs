@@ -145,33 +145,50 @@ namespace DefinitiefProgram
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            bool cancel = false;
             //laad scherm tonen tot einde adhv async method
             //alles uit menu naar hier halen om te exporten
-
-            if (chkSpecifiker.Checked)
+            if (rdbSpecifiek.Checked)
             {
-                ListView.CheckedListViewItemCollection geselecteerdeLLN = this.lvSpecifieker.CheckedItems;
-                foreach (ListViewItem item in geselecteerdeLLN)
+                if (chkSpecifiker.Checked)
                 {
-                    foreach (Leerling l in lijstSpecifieker)
+                    ListView.CheckedListViewItemCollection geselecteerdeLLN = this.lvSpecifieker.CheckedItems;
+                    if (geselecteerdeLLN.Count > 0)
                     {
-                        if ((l.StrNaam + " " + l.StrVoornaam == item.Text) && (l.StrPostcode == item.SubItems[1].Text))
-                        { leerlingenOmteExporteren.Add(l); }
+                        foreach (ListViewItem item in geselecteerdeLLN)
+                        {
+                            foreach (Leerling l in lijstSpecifieker)
+                            {
+                                if ((l.StrNaam + " " + l.StrVoornaam == item.Text) && (l.StrPostcode == item.SubItems[1].Text))
+                                { leerlingenOmteExporteren.Add(l); }
+                            }
+                        }
                     }
+                    else
+                    { cancel = true; }
                 }
-            } else { leerlingenOmteExporteren = lijstSpecifieker; }
-
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.SelectedPath = prop.Default.lastSaveFolder;
-            DialogResult result = fbd.ShowDialog();
-
-            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            {
-                prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
-                if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
-                { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                else
+                { leerlingenOmteExporteren = lijstSpecifieker; }
             }
+            else
+            { leerlingenOmteExporteren = b.getAlleLeerlingen(); }
+            if (leerlingenOmteExporteren.Count == 0)
+            { cancel = true; }
+
+            if (!cancel)
+            {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.SelectedPath = prop.Default.lastSaveFolder;
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
+                    if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
+                    { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); this.Close(); }
+                    else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                }
+            } else { MessageBox.Show("Leerlingen exporteren mislukt."+Environment.NewLine+"Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
         bool export(string locatie, string naam)
         {
@@ -217,33 +234,27 @@ namespace DefinitiefProgram
                 { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkMoeder; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMMoeder; }
                 else { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkVader; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMVader; }
                 xlWorkSheet.Cells[intTeller, 17] = l.StrGSM_Nummer;
-                xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder; //gsm ouders
-                xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader; //gsm ouders
+                xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder;
+                xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 20] = l.StrE_Mail;
-                xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder; //email ouders
-                xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader; //email ouders
+                xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
+                xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
 
                 //aanmeldingstijdstip
-                //klascode
-                //klasnr
 
                 xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
                 xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
 
                 xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
                 xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
-                xlWorkSheet.Cells[intTeller, 27] = l.O.StrGeboorteDatumMoeder; //nog invullen
-                xlWorkSheet.Cells[intTeller, 28] = l.O.StrRijksregisterNRMoeder; //nog invullen
-                xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder; //nog invullen
+                xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder;
                 xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
                 xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
                 xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
 
                 xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
                 xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
-                xlWorkSheet.Cells[intTeller, 35] = l.O.StrGeboorteDatumVader; //nog invullen
-                xlWorkSheet.Cells[intTeller, 36] = l.O.StrRijksregisterNRVader; //nog invullen
-                xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader; //nog invullen
+                xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader;
                 xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                 xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
