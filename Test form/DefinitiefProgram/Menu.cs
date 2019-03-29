@@ -104,8 +104,11 @@ namespace DefinitiefProgram
             Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
+            
+
             foreach (Leerling l in b.getAlleLeerlingen())
             {
+
                 xlWorkSheet.Cells[intTeller, 1] = l.StrNaam;
                 xlWorkSheet.Cells[intTeller, 2] = l.StrVoornaam;
                 xlWorkSheet.Cells[intTeller, 3] = l.StrBijkNaam;
@@ -124,33 +127,27 @@ namespace DefinitiefProgram
                 { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkMoeder; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMMoeder; }
                 else { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkVader; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMVader; }
                 xlWorkSheet.Cells[intTeller, 17] = l.StrGSM_Nummer;
-                xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder; //gsm ouders
-                xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader; //gsm ouders
+                xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder;
+                xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 20] = l.StrE_Mail;
-                xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder; //email ouders
-                xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader; //email ouders
+                xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
+                xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
 
                 //aanmeldingstijdstip
-                //klascode
-                //klasnr
 
                 xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
                 xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
 
                 xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
                 xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
-                xlWorkSheet.Cells[intTeller, 27] = l.O.StrGeboorteDatumMoeder; //nog invullen
-                xlWorkSheet.Cells[intTeller, 28] = l.O.StrRijksregisterNRMoeder; //nog invullen
-                xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder; //nog invullen
+                xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder; 
                 xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
                 xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
                 xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
 
                 xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
                 xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
-                xlWorkSheet.Cells[intTeller, 35] = l.O.StrGeboorteDatumVader; //nog invullen
-                xlWorkSheet.Cells[intTeller, 36] = l.O.StrRijksregisterNRVader; //nog invullen
-                xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader; //nog invullen
+                xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader; 
                 xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                 xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                 xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;

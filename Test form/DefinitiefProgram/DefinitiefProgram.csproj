@@ -102,6 +102,12 @@
     <Compile Include="Export.Designer.cs">
       <DependentUpon>Export.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gegevens voogd\Vader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gegevens voogd\Vader.Designer.cs">
+      <DependentUpon>Vader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\ctb.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export.resx">
       <DependentUpon>Export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gegevens voogd\Vader.resx">
+      <DependentUpon>Vader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lijstleerlingen.resx">
       <DependentUpon>Lijstleerlingen.cs</DependentUpon>

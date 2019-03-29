@@ -73,7 +73,7 @@ namespace DefinitiefProgram
             Ouders o = new Ouders();
             o.StrGezinssituatie = cmbGezinssituatie.SelectedItem.ToString();
             //Moeder
-            o.StrNaamMoeder = txtNaamMoeder.Text;
+            o.StrNaamMoeder = txtVoornaamMoeder.Text;
             //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
             //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
             //o.StrBeroepMoeder = txtBeroepMoeder.Text;
@@ -86,7 +86,7 @@ namespace DefinitiefProgram
             o.StrPostcodeMoeder = mtxtPostcodeMoeder.Text;
 
             //Vader
-            o.StrNaamVader = txtNaamVader.Text;
+            o.StrNaamVader = txtVoornaamVader.Text;
             //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
             //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
             //o.StrBeroepVader = txtBeroepVader.Text;
@@ -235,7 +235,7 @@ namespace DefinitiefProgram
                 case 3:
                     rdbIntern.Checked = false; rdbExtern.Checked = false; rdbHalfIntern.Checked = true; break;
             }
-            txtNaamMoeder.Text = l.O.StrNaamMoeder;
+            txtVoornaamMoeder.Text = l.O.StrNaamMoeder;
             txtEmailMoeder.Text = l.O.StrEmailMoeder;
             mtxtGSMMoeder.Text = l.O.StrGSMMoeder;
             mtxtTelfoonWerkMoeder.Text = l.O.StrTelefoonWerkMoeder;
@@ -244,7 +244,7 @@ namespace DefinitiefProgram
             txtHuisNRMoeder.Text = l.O.StrHuisnrMoeder;
             txtGemeenteMoeder.Text = l.O.StrGemeenteMoeder;
 
-            txtNaamVader.Text = l.O.StrNaamVader;
+            txtVoornaamVader.Text = l.O.StrNaamVader;
             txtEmailVader.Text = l.O.StrEmailVader;
             mtxtGSMVader.Text = l.O.StrGSMVader;
             mtxtTelfoonWerkVader.Text = l.O.StrTelefoonWerkVader;
@@ -289,7 +289,7 @@ namespace DefinitiefProgram
                 mskPostcode.Text = "9000";
                 cmbLand.SelectedIndex = 1;
 
-                txtNaamMoeder.Text = "naam";
+                txtVoornaamMoeder.Text = "naam";
                 txtHuisNRMoeder.Text = "1";
                 txtGemeenteMoeder.Text = "Gemeente";
                 txtEmailMoeder.Text = "email@mail.com";
@@ -297,7 +297,7 @@ namespace DefinitiefProgram
                 txtStraatMoeder.Text = "straat";
                 mtxtTelfoonWerkMoeder.Text = "04711";
                 mtxtGSMMoeder.Text = "04711";
-                txtNaamVader.Text = "naam";
+                txtVoornaamVader.Text = "naam";
                 txtHuisNRVader.Text = "1";
                 txtGemeenteVader.Text = "Gemeente";
                 txtEmailVader.Text = "email@mail.com";
@@ -323,6 +323,16 @@ namespace DefinitiefProgram
         #endregion
 
         private void mtxtPostcodeMoeder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
