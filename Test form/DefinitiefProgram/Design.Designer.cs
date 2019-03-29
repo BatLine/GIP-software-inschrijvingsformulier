@@ -66,7 +66,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Voornaam = new System.Windows.Forms.Label();
             this.tpOuder = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlMoeder = new System.Windows.Forms.Panel();
             this.txtFamilienaamMoeder = new XylosTextBox();
             this.txtBeroepMoeder = new XylosTextBox();
             this.mtxtPostcodeMoeder = new DefinitiefProgram.CustomMaskedTextbox();
@@ -137,7 +137,7 @@
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlMoeder.SuspendLayout();
             this.pnlVader.SuspendLayout();
             this.tpSchool.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -622,7 +622,7 @@
             this.tpOuder.Controls.Add(this.rdbGezinshoofdVader);
             this.tpOuder.Controls.Add(this.rdbGezinshoofdMoeder);
             this.tpOuder.Controls.Add(this.label24);
-            this.tpOuder.Controls.Add(this.panel2);
+            this.tpOuder.Controls.Add(this.pnlMoeder);
             this.tpOuder.Controls.Add(this.pnlVader);
             this.tpOuder.Controls.Add(this.label28);
             this.tpOuder.Controls.Add(this.label27);
@@ -644,23 +644,23 @@
             this.tpOuder.Text = "Ouders";
             this.tpOuder.Click += new System.EventHandler(this.tpOuder_Click);
             // 
-            // panel2
+            // pnlMoeder
             // 
-            this.panel2.Controls.Add(this.txtFamilienaamMoeder);
-            this.panel2.Controls.Add(this.txtBeroepMoeder);
-            this.panel2.Controls.Add(this.mtxtPostcodeMoeder);
-            this.panel2.Controls.Add(this.mtxtGSMMoeder);
-            this.panel2.Controls.Add(this.mtxtTelfoonWerkMoeder);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.txtHuisNRMoeder);
-            this.panel2.Controls.Add(this.txtGemeenteMoeder);
-            this.panel2.Controls.Add(this.txtStraatMoeder);
-            this.panel2.Controls.Add(this.txtEmailMoeder);
-            this.panel2.Controls.Add(this.txtVoornaamMoeder);
-            this.panel2.Location = new System.Drawing.Point(114, 117);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 385);
-            this.panel2.TabIndex = 196;
+            this.pnlMoeder.Controls.Add(this.txtFamilienaamMoeder);
+            this.pnlMoeder.Controls.Add(this.txtBeroepMoeder);
+            this.pnlMoeder.Controls.Add(this.mtxtPostcodeMoeder);
+            this.pnlMoeder.Controls.Add(this.mtxtGSMMoeder);
+            this.pnlMoeder.Controls.Add(this.mtxtTelfoonWerkMoeder);
+            this.pnlMoeder.Controls.Add(this.label21);
+            this.pnlMoeder.Controls.Add(this.txtHuisNRMoeder);
+            this.pnlMoeder.Controls.Add(this.txtGemeenteMoeder);
+            this.pnlMoeder.Controls.Add(this.txtStraatMoeder);
+            this.pnlMoeder.Controls.Add(this.txtEmailMoeder);
+            this.pnlMoeder.Controls.Add(this.txtVoornaamMoeder);
+            this.pnlMoeder.Location = new System.Drawing.Point(114, 117);
+            this.pnlMoeder.Name = "pnlMoeder";
+            this.pnlMoeder.Size = new System.Drawing.Size(200, 385);
+            this.pnlMoeder.TabIndex = 196;
             // 
             // txtFamilienaamMoeder
             // 
@@ -1459,13 +1459,16 @@
             "Pleeggezin",
             "Éenoudergezin",
             "Gescheiden",
-            "Vader/Moeder overleden",
-            "Geen contact meer met vader/moeder",
+            "Moeder overleden",
+            "Vader overleden",
+            "Geen contact meer met moeder",
+            "Geen contact meer met vader",
             "Nieuw samengesteld gezin"});
             this.cmbGezinssituatie.Location = new System.Drawing.Point(146, 70);
             this.cmbGezinssituatie.Name = "cmbGezinssituatie";
             this.cmbGezinssituatie.Size = new System.Drawing.Size(209, 26);
             this.cmbGezinssituatie.TabIndex = 199;
+            this.cmbGezinssituatie.SelectedIndexChanged += new System.EventHandler(this.cmbGezinssituatie_SelectedIndexChanged);
             // 
             // label25
             // 
@@ -1535,8 +1538,8 @@
             this.tpLLN.PerformLayout();
             this.tpOuder.ResumeLayout(false);
             this.tpOuder.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlMoeder.ResumeLayout(false);
+            this.pnlMoeder.PerformLayout();
             this.pnlVader.ResumeLayout(false);
             this.pnlVader.PerformLayout();
             this.tpSchool.ResumeLayout(false);
@@ -1639,7 +1642,7 @@
         private XylosTextBox txtStraatVader;
         private XylosTextBox txtEmailVader;
         private XylosTextBox txtVoornaamVader;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlMoeder;
         private XylosTextBox txtFamilienaamMoeder;
         private XylosTextBox txtBeroepMoeder;
         private CustomMaskedTextbox mtxtPostcodeMoeder;
