@@ -333,7 +333,60 @@ namespace DefinitiefProgram
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {}
+
+        private void cmbGezinssituatie_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbGezinssituatie.SelectedItem.ToString() == "Gehuwd")
+            {
+                
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Co-Ouderschap")
+            {
+                
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Instelling")
+            {
+
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Pleeggezin")
+            {
+
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
+            {
+
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Gescheiden")
+            {
+
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Vader overleden")
+            {
+                pnlVader.Visible = false;
+                pnlMoeder.Visible = true;
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Moeder overleden")
+            {
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = false;
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Geen contact meer met vader")
+            {
+                pnlVader.Visible = false;
+                pnlMoeder.Visible = true;
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Geen contact meer met moeder")
+            {
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = false;
+            }
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Nieuw samengesteld gezin")
+            {
+                pnlMoeder.Visible = false;
+                pnlVader.Visible = false;
+            }
+
 
         }
     }
