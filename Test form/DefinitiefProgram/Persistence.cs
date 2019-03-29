@@ -25,7 +25,7 @@ namespace DefinitiefProgram
             foreach (Leerling l in alleLeerlingenInDB)
             {
                 DateTime dte = DateTime.ParseExact(l.AanmaakDatum, "dd/MM/yyyy", null);
-                if ((dte <= dteVan) && (dte >= dteTot))
+                if ((dte >= dteVan) && (dte <= dteTot))
                 {
                     intAantal++;
                     specifiekeLLN.Add(l);
