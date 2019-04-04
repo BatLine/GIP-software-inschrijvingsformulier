@@ -15,6 +15,7 @@ namespace DefinitiefProgram
 {
     public partial class Export : Form
     {
+        public LoadingCircle l = new LoadingCircle();
         Business b = new Business();
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
@@ -66,7 +67,7 @@ namespace DefinitiefProgram
             tot = dtpTot.Value.ToString("dd MM yyyy");
 
             //new thread & loading dinges?
-            Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot);
+            Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot, this);
             lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
             lijstSpecifieker = tuple.Item2;
             vulSpeciefieker(tuple.Item2);

@@ -123,6 +123,12 @@
     <Compile Include="Loading.Designer.cs">
       <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingCircle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingCircle.Designer.cs">
+      <DependentUpon>LoadingCircle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingCircle.resx">
+      <DependentUpon>LoadingCircle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>

@@ -44,7 +44,7 @@ namespace DefinitiefProgram
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Loading loadingscreen = new Loading();
-            loadingscreen.Show();
+            //loadingscreen.Show();
             Leerling lln = new Leerling();
 
             //leerling

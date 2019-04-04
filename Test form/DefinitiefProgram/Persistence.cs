@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace DefinitiefProgram
@@ -13,7 +16,7 @@ namespace DefinitiefProgram
         public Persistence()
         { }
         
-        public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot)
+        public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot, Export ex)
         {
             int intAantal = 0;
             List<Leerling> alleLeerlingenInDB = getAlleLeerlingenFromDB();
@@ -31,8 +34,16 @@ namespace DefinitiefProgram
                     specifiekeLLN.Add(l);
                 }
             }
-            
             return new Tuple<int, List<Leerling>>(intAantal, specifiekeLLN);            
+        }
+
+        int getTotaalAantalLLN()
+        {
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(idLeerling) FROM leerling;", conn);
+            int intAantal = Convert.ToInt16(cmd.ExecuteScalar());
+            conn.Close();
+            return intAantal;
         }
 
         public Leerling getLeerling(int pintID)
@@ -121,15 +132,58 @@ namespace DefinitiefProgram
             return l;
         }
 
+        LoadingCircle l;
         public List<Leerling> getAlleLeerlingenFromDB()
         {
-            List<Leerling> lln = new List<Leerling>();
-            List<int> ids = getAlleIDs();
+            
+            l = new LoadingCircle();
+            l.Show();
+            l.BringToFront();
+            l.Refresh();
+            int aantalLLN = getTotaalAantalLLN();
+            BackgroundWorker bw = new BackgroundWorker();
 
-            foreach (int i in ids)
-            { lln.Add(getLeerling(i)); }
+            bw.WorkerReportsProgress = true;
+            bw.ProgressChanged += new ProgressChangedEventHandler(
+            delegate (object o, ProgressChangedEventArgs args)
+            {
+                l.setValue(args.ProgressPercentage);
+                //l.Refresh();
+                l.circle.Invalidate();
+            });
+
+            // what to do in the background thread
+            bw.DoWork += new DoWorkEventHandler(
+            delegate (object o, DoWorkEventArgs args)
+            {
+                BackgroundWorker b = o as BackgroundWorker;
+
+                // do some simple processing for 10 seconds
+                lln = new List<Leerling>();
+                List<int> ids = getAlleIDs();
+                int intTeller = 1;
+                foreach (int i in ids)
+                {
+                    lln.Add(getLeerling(i));
+                    double dblGetal = Convert.ToDouble(intTeller) / Convert.ToDouble(aantalLLN);
+                    dblGetal *= 100;
+                    b.ReportProgress(Convert.ToInt16(dblGetal));
+                    intTeller++;
+                }
+
+            });
+
+            // what to do when worker completes its task (notify the user)
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
+            delegate (object o, RunWorkerCompletedEventArgs args)
+            {
+                l.Close();
+            });
+
+            bw.RunWorkerAsync();
             return lln;
         }
+        List<Leerling> lln;
 
         public List<int> getAlleIDs()
         {
@@ -174,7 +228,7 @@ namespace DefinitiefProgram
             cmdLLN.ExecuteNonQuery();
 
             LLNID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
-            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
+            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
                 "'" + lln.O.StrNaamMoeder + "','" +
                 lln.O.StrEmailMoeder + "','" +
                 lln.O.StrGSMMoeder + "','" +
@@ -184,14 +238,14 @@ namespace DefinitiefProgram
                 lln.O.StrHuisnrMoeder + "','" +
                 lln.O.StrGemeenteMoeder + "','" +
                 lln.O.StrGezinshoofd + "','" +
-                lln.O.StrGezinssituatie + "'," +
+                lln.O.StrGezinssituatie + "','" +
                 lln.O.StrVoornaamMoeder + "'," +
                 2 + ")"
                 , conn);
             cmdMoeder.ExecuteNonQuery();
             MoederID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
 
-            MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
+            MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
                 "'" + lln.O.StrNaamVader + "','" +
                 lln.O.StrEmailVader + "','" +
                 lln.O.StrGSMVader + "','" +
@@ -201,7 +255,7 @@ namespace DefinitiefProgram
                 lln.O.StrHuisnrVader + "','" +
                 lln.O.StrGemeenteVader + "','" +
                 lln.O.StrGezinshoofd + "','" +
-                lln.O.StrGezinssituatie + "'," +
+                lln.O.StrGezinssituatie + "','" +
                 lln.O.StrVoornaamVader + "'," +
                 1 + ")"
                 , conn);
