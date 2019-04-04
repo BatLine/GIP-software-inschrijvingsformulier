@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region usings
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,20 +9,36 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+#endregion
 
 namespace DefinitiefProgram
 {
     public partial class Lijstleerlingen : Form
     {
+        #region vars
         Business b = new Business();
         public Menu m = new Menu();
+        #endregion
 
+        #region controls
+        #region form
         public Lijstleerlingen()
         { InitializeComponent(); }
-
         private void Lijstleerlingen_Load(object sender, EventArgs e)
         { }
+        #endregion
+        private void btnKies_Click(object sender, EventArgs e)
+        {
+            if (lvLeerlingen.SelectedItems[0].Text.Length > 0)
+            {
+                m.wijzigLLN(Convert.ToInt16(lvLeerlingen.SelectedItems[0].Tag));
+                this.Close();
+            }
+            else { MessageBox.Show("Selecteer eerst een leerling."); }
+        }
+        #endregion
 
+        #region functions
         public async void refreshLLN()
         {
             LoadingCircle lo = new LoadingCircle();
@@ -45,17 +62,6 @@ namespace DefinitiefProgram
             Controls.Remove(pnl);
             lo.Close();
         }
-
-        private void btnKies_Click(object sender, EventArgs e)
-        {
-            if (lvLeerlingen.SelectedItems[0].Text.Length > 0)
-            {
-                m.wijzigLLN(Convert.ToInt16(lvLeerlingen.SelectedItems[0].Tag));
-                this.Close();
-            }
-            else { MessageBox.Show("Selecteer eerst een leerling."); }
-        }
-
         void getAlleLLN()
         {
             List<Leerling> lln = b.getAlleLeerlingen();
@@ -71,5 +77,6 @@ namespace DefinitiefProgram
                 this.Invoke(new Action(() => lvLeerlingen.Items.Add(lv))); 
             }
         }
+        #endregion
     }
 }

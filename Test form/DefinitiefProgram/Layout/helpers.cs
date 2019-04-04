@@ -34,27 +34,17 @@ internal sealed class Helpers
     {
         SizeF sizeF = G.MeasureString(T, F);
         using (SolidBrush solidBrush = new SolidBrush(C))
-        {
-            G.DrawString(T, F, solidBrush, checked(new Point((int)Math.Round(unchecked((double)R.Width / 2.0 - (double)(sizeF.Width / 2f))), (int)Math.Round(unchecked((double)R.Height / 2.0 - (double)(sizeF.Height / 2f))))));
-        }
+        { G.DrawString(T, F, solidBrush, checked(new Point((int)Math.Round(unchecked((double)R.Width / 2.0 - (double)(sizeF.Width / 2f))), (int)Math.Round(unchecked((double)R.Height / 2.0 - (double)(sizeF.Height / 2f)))))); }
     }
 
     public static Color ColorFromHex(string Hex)
-    {
-        return Color.FromArgb(checked((int)long.Parse(string.Format("FFFFFFFFFF{0}", Hex.Substring(1)), NumberStyles.HexNumber)));
-    }
+    { return Color.FromArgb(checked((int)long.Parse(string.Format("FFFFFFFFFF{0}", Hex.Substring(1)), NumberStyles.HexNumber))); }
 
     public static Rectangle FullRectangle(Size S, bool Subtract)
     {
         Rectangle result;
-        if (Subtract)
-        {
-            result = checked(new Rectangle(0, 0, S.Width - 1, S.Height - 1));
-        }
-        else
-        {
-            result = new Rectangle(0, 0, S.Width, S.Height);
-        }
+        if (Subtract) { result = checked(new Rectangle(0, 0, S.Width - 1, S.Height - 1)); }
+        else { result = new Rectangle(0, 0, S.Width, S.Height); }
         return result;
     }
 
@@ -134,17 +124,11 @@ public class XylosTabControl : TabControl
     private bool _FirstHeaderBorder;
 
     public bool FirstHeaderBorder
-    {
-        get;
-        set;
-    }
+    { get; set; }
 
     private int OverIndex
     {
-        get
-        {
-            return this._OverIndex;
-        }
+        get { return this._OverIndex; }
         set
         {
             this._OverIndex = value;
@@ -211,9 +195,7 @@ public class XylosTabControl : TabControl
                         using (SolidBrush solidBrush3 = new SolidBrush(Helpers.ColorFromHex("#919BA6")))
                         {
                             using (Font font2 = new Font("Segoe UI semibold", 9f))
-                            {
-                                this.G.DrawString(base.TabPages[i].Text, font2, solidBrush3, new Point(this.Rect.X + 50 + (base.ItemSize.Height - 180), this.Rect.Y + 12));
-                            }
+                            { this.G.DrawString(base.TabPages[i].Text, font2, solidBrush3, new Point(this.Rect.X + 50 + (base.ItemSize.Height - 180), this.Rect.Y + 12)); }
                         }
                     }
                     bool flag3 = this.OverIndex != -1 & base.SelectedIndex != this.OverIndex;
@@ -235,9 +217,7 @@ public class XylosTabControl : TabControl
                         {
                             bool flag5 = base.TabPages[this.OverIndex].ImageIndex >= 0;
                             if (flag5)
-                            {
-                                this.G.DrawImage(base.ImageList.Images[base.TabPages[this.OverIndex].ImageIndex], new Rectangle(base.GetTabRect(this.OverIndex).X + 25 + (base.ItemSize.Height - 180), (int)Math.Round(unchecked((double)base.GetTabRect(this.OverIndex).Y + ((double)base.GetTabRect(this.OverIndex).Height / 2.0 - 9.0))), 16, 16));
-                            }
+                            { this.G.DrawImage(base.ImageList.Images[base.TabPages[this.OverIndex].ImageIndex], new Rectangle(base.GetTabRect(this.OverIndex).X + 25 + (base.ItemSize.Height - 180), (int)Math.Round(unchecked((double)base.GetTabRect(this.OverIndex).Y + ((double)base.GetTabRect(this.OverIndex).Height / 2.0 - 9.0))), 16, 16)); }
                         }
                     }
                     bool flag6 = !Information.IsNothing(base.ImageList);
@@ -245,9 +225,7 @@ public class XylosTabControl : TabControl
                     {
                         bool flag7 = base.TabPages[i].ImageIndex >= 0;
                         if (flag7)
-                        {
-                            this.G.DrawImage(base.ImageList.Images[base.TabPages[i].ImageIndex], new Rectangle(this.Rect.X + 25 + (base.ItemSize.Height - 180), (int)Math.Round(unchecked((double)this.Rect.Y + ((double)this.Rect.Height / 2.0 - 9.0))), 16, 16));
-                        }
+                        { this.G.DrawImage(base.ImageList.Images[base.TabPages[i].ImageIndex], new Rectangle(this.Rect.X + 25 + (base.ItemSize.Height - 180), (int)Math.Round(unchecked((double)this.Rect.Y + ((double)this.Rect.Height / 2.0 - 9.0))), 16, 16)); }
                     }
                 }
                 else
@@ -260,16 +238,12 @@ public class XylosTabControl : TabControl
                             {
                                 bool firstHeaderBorder = this.FirstHeaderBorder;
                                 if (firstHeaderBorder)
-                                {
-                                    this.G.DrawLine(pen, new Point(this.Rect.X - 5, this.Rect.Y + 1), new Point(this.Rect.Width + 7, this.Rect.Y + 1));
-                                }
+                                { this.G.DrawLine(pen, new Point(this.Rect.X - 5, this.Rect.Y + 1), new Point(this.Rect.Width + 7, this.Rect.Y + 1)); }
                                 else
                                 {
                                     bool flag8 = i != 0;
                                     if (flag8)
-                                    {
-                                        this.G.DrawLine(pen, new Point(this.Rect.X - 5, this.Rect.Y + 1), new Point(this.Rect.Width + 7, this.Rect.Y + 1));
-                                    }
+                                    { this.G.DrawLine(pen, new Point(this.Rect.X - 5, this.Rect.Y + 1), new Point(this.Rect.Width + 7, this.Rect.Y + 1)); }
                                 }
                                 this.G.DrawString(base.TabPages[i].Text.ToUpper(), font4, solidBrush6, new Point(this.Rect.X + 25 + (base.ItemSize.Height - 180), this.Rect.Y + 16));
                             }
@@ -288,13 +262,9 @@ public class XylosTabControl : TabControl
         {
             bool flag2 = !string.IsNullOrEmpty(Conversions.ToString(e.TabPage.Tag));
             if (flag2)
-            {
-                e.Cancel = true;
-            }
+            { e.Cancel = true; }
             else
-            {
-                this.OverIndex = -1;
-            }
+            { this.OverIndex = -1; }
         }
     }
 
@@ -307,11 +277,7 @@ public class XylosTabControl : TabControl
             for (int i = 0; i <= num; i++)
             {
                 bool flag = base.GetTabRect(i).Contains(e.Location) & base.SelectedIndex != i & string.IsNullOrEmpty(Conversions.ToString(base.TabPages[i].Tag));
-                if (flag)
-                {
-                    this.OverIndex = i;
-                    break;
-                }
+                if (flag) { this.OverIndex = i; break; }
                 this.OverIndex = -1;
             }
         }
@@ -358,37 +324,26 @@ public class XylosTextBox : Control
     {
         [CompilerGenerated]
         get
-        {
-            return this._TB;
-        }
+        { return this._TB; }
         [CompilerGenerated]
         [MethodImpl(MethodImplOptions.Synchronized)]
         set
         {
             EventHandler value2 = delegate (object a0, EventArgs a1)
-            {
-                this.TextChangeTb();
-            };
+            { this.TextChangeTb(); };
             TextBox tB = this._TB;
             if (tB != null)
-            {
-                tB.TextChanged -= value2;
-            }
+            { tB.TextChanged -= value2; }
             this._TB = value;
             tB = this._TB;
             if (tB != null)
-            {
-                tB.TextChanged += value2;
-            }
+            { tB.TextChanged += value2; }
         }
     }
 
     public new bool Enabled
     {
-        get
-        {
-            return this.EnabledCalc;
-        }
+        get { return this.EnabledCalc; }
         set
         {
             this.TB.Enabled = value;
@@ -400,10 +355,7 @@ public class XylosTextBox : Control
     [DisplayName("Enabled")]
     public bool EnabledCalc
     {
-        get
-        {
-            return this._EnabledCalc;
-        }
+        get { return this._EnabledCalc; }
         set
         {
             this.Enabled = value;
@@ -413,10 +365,7 @@ public class XylosTextBox : Control
 
     public bool UseSystemPasswordChar
     {
-        get
-        {
-            return this._allowpassword;
-        }
+        get { return this._allowpassword; }
         set
         {
             this.TB.UseSystemPasswordChar = this.UseSystemPasswordChar;
@@ -427,10 +376,7 @@ public class XylosTextBox : Control
 
     public int MaxLength
     {
-        get
-        {
-            return this._maxChars;
-        }
+        get { return this._maxChars; }
         set
         {
             this._maxChars = value;
@@ -441,10 +387,7 @@ public class XylosTextBox : Control
 
     public HorizontalAlignment TextAlign
     {
-        get
-        {
-            return this._textAlignment;
-        }
+        get { return this._textAlignment; }
         set
         {
             this._textAlignment = value;
@@ -454,10 +397,7 @@ public class XylosTextBox : Control
 
     public bool MultiLine
     {
-        get
-        {
-            return this._multiLine;
-        }
+        get { return this._multiLine; }
         set
         {
             this._multiLine = value;
@@ -469,10 +409,7 @@ public class XylosTextBox : Control
 
     public bool ReadOnly
     {
-        get
-        {
-            return this._readOnly;
-        }
+        get { return this._readOnly; }
         set
         {
             this._readOnly = value;
@@ -516,14 +453,10 @@ public class XylosTextBox : Control
     }
 
     private void TextChangeTb()
-    {
-        this.Text = this.TB.Text;
-    }
+    { this.Text = this.TB.Text; }
 
     private void TextChng()
-    {
-        this.TB.Text = this.Text;
-    }
+    { this.TB.Text = this.Text; }
 
     public void NewTextBox()
     {
@@ -542,9 +475,7 @@ public class XylosTextBox : Control
     public XylosTextBox()
     {
         base.TextChanged += delegate (object a0, EventArgs a1)
-        {
-            this.TextChng();
-        };
+        { this.TextChng(); };
         this.TB = new TextBox();
         this._allowpassword = false;
         this._maxChars = 32767;
@@ -576,25 +507,19 @@ public class XylosTextBox : Control
             if (flag)
             {
                 using (Pen pen = new Pen(Helpers.ColorFromHex("#78B7E6")))
-                {
-                    this.G.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-                }
+                { this.G.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
             }
             else
             {
                 using (Pen pen2 = new Pen(Helpers.ColorFromHex("#D0D5D9")))
-                {
-                    this.G.DrawPath(pen2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-                }
+                { this.G.DrawPath(pen2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
             }
         }
         else
         {
             this.TB.ForeColor = Helpers.ColorFromHex("#7C858E");
             using (Pen pen3 = new Pen(Helpers.ColorFromHex("#E1E1E2")))
-            {
-                this.G.DrawPath(pen3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-            }
+            { this.G.DrawPath(pen3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
         }
         this.TB.TextAlign = this.TextAlign;
         this.TB.UseSystemPasswordChar = this.UseSystemPasswordChar;
@@ -686,10 +611,7 @@ public class XylosButton : Control
 
     public new bool Enabled
     {
-        get
-        {
-            return this.EnabledCalc;
-        }
+        get { return this.EnabledCalc; }
         set
         {
             this._EnabledCalc = value;
@@ -700,10 +622,7 @@ public class XylosButton : Control
     [DisplayName("Enabled")]
     public bool EnabledCalc
     {
-        get
-        {
-            return this._EnabledCalc;
-        }
+        get { return this._EnabledCalc; }
         set
         {
             this.Enabled = value;
@@ -732,24 +651,18 @@ public class XylosButton : Control
                 if (state != XylosButton.MouseState.Down)
                 {
                     using (SolidBrush solidBrush = new SolidBrush(Helpers.ColorFromHex("#F6F6F6")))
-                    {
-                        this.G.FillPath(solidBrush, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All));
-                    }
+                    { this.G.FillPath(solidBrush, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All)); }
                 }
                 else
                 {
                     using (SolidBrush solidBrush2 = new SolidBrush(Helpers.ColorFromHex("#F0F0F0")))
-                    {
-                        this.G.FillPath(solidBrush2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All));
-                    }
+                    { this.G.FillPath(solidBrush2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All)); }
                 }
             }
             else
             {
                 using (SolidBrush solidBrush3 = new SolidBrush(Helpers.ColorFromHex("#FDFDFD")))
-                {
-                    this.G.FillPath(solidBrush3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All));
-                }
+                { this.G.FillPath(solidBrush3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 3, Helpers.RoundingStyle.All)); }
             }
             using (Font font = new Font("Segoe UI", 9f))
             {
@@ -799,9 +712,7 @@ public class XylosButton : Control
         {
             XylosButton.ClickEventHandler clickEvent = this.ClickEvent;
             if (clickEvent != null)
-            {
-                clickEvent(this, e);
-            }
+            { clickEvent(this, e); }
         }
         this.State = XylosButton.MouseState.Over;
         base.Invalidate();
@@ -864,10 +775,7 @@ public class XylosCheckBox : Control
 
     public bool Checked
     {
-        get
-        {
-            return this._Checked;
-        }
+        get { return this._Checked; }
         set
         {
             this._Checked = value;
@@ -878,21 +786,15 @@ public class XylosCheckBox : Control
     public new bool Enabled
     {
         get
-        {
-            return this.EnabledCalc;
-        }
+        { return this.EnabledCalc; }
         set
         {
             this._EnabledCalc = value;
             bool enabled = this.Enabled;
             if (enabled)
-            {
-                this.Cursor = Cursors.Hand;
-            }
+            { this.Cursor = Cursors.Hand; }
             else
-            {
-                this.Cursor = Cursors.Default;
-            }
+            { this.Cursor = Cursors.Default; }
             base.Invalidate();
         }
     }
@@ -900,10 +802,7 @@ public class XylosCheckBox : Control
     [DisplayName("Enabled")]
     public bool EnabledCalc
     {
-        get
-        {
-            return this._EnabledCalc;
-        }
+        get { return this._EnabledCalc; }
         set
         {
             this.Enabled = value;
@@ -948,9 +847,7 @@ public class XylosCheckBox : Control
             if (@checked)
             {
                 using (Image image = Image.FromStream(new MemoryStream(Convert.FromBase64String(this.B64Enabled))))
-                {
-                    this.G.DrawImage(image, new Rectangle(3, 3, 11, 11));
-                }
+                { this.G.DrawImage(image, new Rectangle(3, 3, 11, 11)); }
             }
         }
         else
@@ -974,9 +871,7 @@ public class XylosCheckBox : Control
             if (checked2)
             {
                 using (Image image2 = Image.FromStream(new MemoryStream(Convert.FromBase64String(this.B64Disabled))))
-                {
-                    this.G.DrawImage(image2, new Rectangle(3, 3, 11, 11));
-                }
+                { this.G.DrawImage(image2, new Rectangle(3, 3, 11, 11)); }
             }
         }
     }
@@ -990,9 +885,7 @@ public class XylosCheckBox : Control
             this.Checked = !this.Checked;
             XylosCheckBox.CheckedChangedEventHandler checkedChangedEvent = this.CheckedChangedEvent;
             if (checkedChangedEvent != null)
-            {
-                checkedChangedEvent(this, e);
-            }
+            { checkedChangedEvent(this, e); }
         }
     }
 
@@ -1013,9 +906,7 @@ public class XylosCombobox : ComboBox
     public new bool Enabled
     {
         get
-        {
-            return this.EnabledCalc;
-        }
+        { return this.EnabledCalc; }
         set
         {
             this._EnabledCalc = value;
@@ -1027,9 +918,7 @@ public class XylosCombobox : ComboBox
     public bool EnabledCalc
     {
         get
-        {
-            return this._EnabledCalc;
-        }
+        { return this._EnabledCalc; }
         set
         {
             base.Enabled = value;
@@ -1104,15 +993,11 @@ public class XylosCombobox : ComboBox
                         {
                             bool flag2 = this.SelectedIndex != -1;
                             if (flag2)
-                            {
-                                this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[this.SelectedIndex])), font3, solidBrush3, new Point(7, 4));
-                            }
+                            { this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[this.SelectedIndex])), font3, solidBrush3, new Point(7, 4)); }
                             else
                             {
                                 try
-                                {
-                                    this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[0])), font3, solidBrush3, new Point(7, 4));
-                                }
+                                { this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[0])), font3, solidBrush3, new Point(7, 4)); }
                                 catch (Exception arg_272_0)
                                 {
                                     ProjectData.SetProjectError(arg_272_0);
@@ -1126,13 +1011,9 @@ public class XylosCombobox : ComboBox
                             {
                                 bool flag3 = this.SelectedIndex != -1;
                                 if (flag3)
-                                {
-                                    this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[this.SelectedIndex])), font3, solidBrush4, new Point(7, 4));
-                                }
+                                { this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[this.SelectedIndex])), font3, solidBrush4, new Point(7, 4)); }
                                 else
-                                {
-                                    this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[0])), font3, solidBrush4, new Point(7, 4));
-                                }
+                                { this.G.DrawString(base.GetItemText(RuntimeHelpers.GetObjectValue(base.Items[0])), font3, solidBrush4, new Point(7, 4)); }
                             }
                         }
                     }
@@ -1244,15 +1125,11 @@ public class XylosNotice : TextBox
             }
         }
         using (Image image = Image.FromStream(new MemoryStream(Convert.FromBase64String(this.B64))))
-        {
-            this.G.DrawImage(image, new Rectangle(8, checked((int)Math.Round(unchecked((double)base.Height / 2.0 - 8.0))), 16, 16));
-        }
+        { this.G.DrawImage(image, new Rectangle(8, checked((int)Math.Round(unchecked((double)base.Height / 2.0 - 8.0))), 16, 16)); }
     }
 
     protected override void OnMouseUp(MouseEventArgs e)
-    {
-        base.OnMouseUp(e);
-    }
+    { base.OnMouseUp(e); }
 }
 public class XylosProgressBar : Control
 {
@@ -1269,23 +1146,14 @@ public class XylosProgressBar : Control
     private Color _BackgroundColor;
 
     public Color Stripes
-    {
-        get;
-        set;
-    }
+    { get; set; }
 
     public Color BackgroundColor
-    {
-        get;
-        set;
-    }
+    { get; set; }
 
     public int Value
     {
-        get
-        {
-            return this._Val;
-        }
+        get { return this._Val; }
         set
         {
             this._Val = value;
@@ -1295,10 +1163,7 @@ public class XylosProgressBar : Control
 
     public int Minimum
     {
-        get
-        {
-            return this._Min;
-        }
+        get { return this._Min; }
         set
         {
             this._Min = value;
@@ -1308,10 +1173,7 @@ public class XylosProgressBar : Control
 
     public int Maximum
     {
-        get
-        {
-            return this._Max;
-        }
+        get { return this._Max; }
         set
         {
             this._Max = value;
@@ -1340,16 +1202,12 @@ public class XylosProgressBar : Control
         base.OnPaint(e);
         graphics.Clear(Color.White);
         using (Pen pen = new Pen(Helpers.ColorFromHex("#D0D5D9")))
-        {
-            graphics.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 6, Helpers.RoundingStyle.All));
-        }
+        { graphics.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 6, Helpers.RoundingStyle.All)); }
         bool flag = this.Value != 0;
         if (flag)
         {
             using (HatchBrush hatchBrush = new HatchBrush(HatchStyle.LightUpwardDiagonal, this.Stripes, this.BackgroundColor))
-            {
-                graphics.FillPath(hatchBrush, Helpers.RoundRect(checked(new Rectangle(0, 0, (int)Math.Round(unchecked((double)this.Value / (double)this.Maximum * (double)base.Width - 1.0)), base.Height - 1)), 6, Helpers.RoundingStyle.All));
-            }
+            { graphics.FillPath(hatchBrush, Helpers.RoundRect(checked(new Rectangle(0, 0, (int)Math.Round(unchecked((double)this.Value / (double)this.Maximum * (double)base.Width - 1.0)), base.Height - 1)), 6, Helpers.RoundingStyle.All)); }
         }
     }
 }
@@ -1399,10 +1257,7 @@ public class XylosRadioButton : Control
 
     public bool Checked
     {
-        get
-        {
-            return this._Checked;
-        }
+        get { return this._Checked; }
         set
         {
             this._Checked = value;
@@ -1412,22 +1267,15 @@ public class XylosRadioButton : Control
 
     public new bool Enabled
     {
-        get
-        {
-            return this.EnabledCalc;
-        }
+        get { return this.EnabledCalc; }
         set
         {
             this._EnabledCalc = value;
             bool enabled = this.Enabled;
             if (enabled)
-            {
-                this.Cursor = Cursors.Hand;
-            }
+            { this.Cursor = Cursors.Hand; }
             else
-            {
-                this.Cursor = Cursors.Default;
-            }
+            { this.Cursor = Cursors.Default; }
             base.Invalidate();
         }
     }
@@ -1436,9 +1284,7 @@ public class XylosRadioButton : Control
     public bool EnabledCalc
     {
         get
-        {
-            return this._EnabledCalc;
-        }
+        { return this._EnabledCalc; }
         set
         {
             this.Enabled = value;
@@ -1481,9 +1327,7 @@ public class XylosRadioButton : Control
             if (@checked)
             {
                 using (SolidBrush solidBrush3 = new SolidBrush(Helpers.ColorFromHex("#575C62")))
-                {
-                    this.G.FillEllipse(solidBrush3, new Rectangle(4, 4, 8, 8));
-                }
+                { this.G.FillEllipse(solidBrush3, new Rectangle(4, 4, 8, 8)); }
             }
         }
         else
@@ -1507,9 +1351,7 @@ public class XylosRadioButton : Control
             if (checked2)
             {
                 using (SolidBrush solidBrush6 = new SolidBrush(Helpers.ColorFromHex("#BCC1C6")))
-                {
-                    this.G.FillEllipse(solidBrush6, new Rectangle(4, 4, 8, 8));
-                }
+                {  this.G.FillEllipse(solidBrush6, new Rectangle(4, 4, 8, 8)); }
             }
         }
     }
@@ -1528,21 +1370,15 @@ public class XylosRadioButton : Control
                     Control control = (Control)enumerator.Current;
                     bool flag = control is XylosRadioButton;
                     if (flag)
-                    {
-                        ((XylosRadioButton)control).Checked = false;
-                    }
+                    { ((XylosRadioButton)control).Checked = false; }
                 }
             }
             finally
-            {
-
-            }
+            { }
             this.Checked = !this.Checked;
             XylosRadioButton.CheckedChangedEventHandler checkedChangedEvent = this.CheckedChangedEvent;
             if (checkedChangedEvent != null)
-            {
-                checkedChangedEvent(this, e);
-            }
+            { checkedChangedEvent(this, e); }
         }
     }
 
@@ -1557,9 +1393,7 @@ public class XylosSeparator : Control
     private Graphics G;
 
     public XylosSeparator()
-    {
-        this.DoubleBuffered = true;
-    }
+    { this.DoubleBuffered = true; }
 
     protected override void OnPaint(PaintEventArgs e)
     {
@@ -1568,9 +1402,7 @@ public class XylosSeparator : Control
         this.G.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
         base.OnPaint(e);
         using (Pen pen = new Pen(Helpers.ColorFromHex("#EBEBEC")))
-        {
-            this.G.DrawLine(pen, new Point(0, 0), new Point(base.Width, 0));
-        }
+        { this.G.DrawLine(pen, new Point(0, 0), new Point(base.Width, 0)); }
     }
 
     protected override void OnResize(EventArgs e)

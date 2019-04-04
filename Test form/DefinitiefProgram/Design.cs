@@ -15,14 +15,10 @@ namespace DefinitiefProgram
     public partial class Design : Form
     {
         /// <TODO>
-        /// TODO
         /// postcode automatisch laten invullen? => of omgekeerd
         /// cmb land opvullen met alle landen
         /// cmbNationaliteit invullen met alle nationaliteiten
         /// eerst checken op oudernaam om dan alles automatisch te laten invullen als ouder al bestaat
-        /// als er zo aangeduid wordt dat die persoon maar 1 ouder heeft, ervoor zorgen dat de rest niet moet ingevuld worden
-        /// wachtwoorden misschien versleuteld opslaan?
-        /// gezinssituatie moeder/vader overleven nieuwe vraag met de vraag welke dood is en  die disabele. ook bij geen contact meer met
         /// </TODO>
         #region vars
         Business b = new Business();
@@ -110,19 +106,12 @@ namespace DefinitiefProgram
             
             this.Close();
         }
-        private void tpLLN_Click(object sender, EventArgs e)
-        { }
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
             if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
             else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
         }
-        private void tpOuder_Click(object sender, EventArgs e)
-        { }
-        private void rdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
-        { }
-        private void rdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
-        { }
+
         #region updatenetwerknaam
         private void txtVoornaam_TextChanged(object sender, EventArgs e)
         { updateNetwerkNaam(); }
@@ -269,12 +258,10 @@ namespace DefinitiefProgram
             rdbJaar4.Checked = false;
             rdbJaar5.Checked = false;
             rdbJaar6.Checked = false;
-        }
-
-        
+        }    
         void checkdebug()
         {
-            if (System.Diagnostics.Debugger.IsAttached)
+            if ((System.Diagnostics.Debugger.IsAttached) && (this.Text != "Leerling wijzigen"))
             {
                 //alle velden vullen om te testen
                 txtVoornaam.Text = "Voornaam";
@@ -325,17 +312,6 @@ namespace DefinitiefProgram
                 checkSchoolstatuut();
             }
         }
-        
-        #endregion
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {}
-
         private void cmbGezinssituatie_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbGezinssituatie.SelectedItem.ToString() == "Gehuwd")
@@ -382,10 +358,6 @@ namespace DefinitiefProgram
                 pnlMoeder.Visible = false;
             }
         }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

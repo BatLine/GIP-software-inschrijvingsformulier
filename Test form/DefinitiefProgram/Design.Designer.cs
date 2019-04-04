@@ -33,6 +33,7 @@
             this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.txtGeboortedatum = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskPostcode = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskGsmNummer = new DefinitiefProgram.CustomMaskedTextbox();
@@ -134,9 +135,9 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.tpOuder.SuspendLayout();
             this.pnlMoeder.SuspendLayout();
             this.pnlVader.SuspendLayout();
@@ -145,7 +146,6 @@
             this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpBevestigen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // ilPassword
@@ -219,7 +219,19 @@
             this.tpLLN.Size = new System.Drawing.Size(555, 510);
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
-            this.tpLLN.Click += new System.EventHandler(this.tpLLN_Click);
+            // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.White;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(375, 183);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 26);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 143;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
             // 
             // txtGeboortedatum
             // 
@@ -647,7 +659,6 @@
             this.tpOuder.Size = new System.Drawing.Size(555, 510);
             this.tpOuder.TabIndex = 1;
             this.tpOuder.Text = "Ouders";
-            this.tpOuder.Click += new System.EventHandler(this.tpOuder_Click);
             // 
             // cmbGezinssituatie
             // 
@@ -827,7 +838,6 @@
             this.label21.Size = new System.Drawing.Size(69, 21);
             this.label21.TabIndex = 202;
             this.label21.Text = "Moeder";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // txtHuisNRMoeder
             // 
@@ -922,7 +932,6 @@
             this.pnlVader.Name = "pnlVader";
             this.pnlVader.Size = new System.Drawing.Size(200, 385);
             this.pnlVader.TabIndex = 195;
-            this.pnlVader.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtFamilienaamVader
             // 
@@ -1099,7 +1108,6 @@
             this.label28.Size = new System.Drawing.Size(75, 15);
             this.label28.TabIndex = 192;
             this.label28.Text = "Familienaam";
-            this.label28.Click += new System.EventHandler(this.label28_Click);
             // 
             // label27
             // 
@@ -1520,19 +1528,6 @@
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
-            // bunifuImageButton1
-            // 
-            this.bunifuImageButton1.BackColor = System.Drawing.Color.White;
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(375, 183);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 26);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 143;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 10;
-            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1551,6 +1546,7 @@
             this.xylosTabControl1.ResumeLayout(false);
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.tpOuder.ResumeLayout(false);
             this.tpOuder.PerformLayout();
             this.pnlMoeder.ResumeLayout(false);
@@ -1565,7 +1561,6 @@
             this.tpExtra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpBevestigen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }

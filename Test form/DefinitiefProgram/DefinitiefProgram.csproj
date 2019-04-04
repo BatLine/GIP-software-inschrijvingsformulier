@@ -117,12 +117,6 @@
     <Compile Include="Lijstleerlingen.Designer.cs">
       <DependentUpon>Lijstleerlingen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Loading.Designer.cs">
-      <DependentUpon>Loading.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoadingCircle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lijstleerlingen.resx">
       <DependentUpon>Lijstleerlingen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Loading.resx">
-      <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingCircle.resx">
       <DependentUpon>LoadingCircle.cs</DependentUpon>

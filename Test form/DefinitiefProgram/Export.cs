@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region usings
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,13 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using prop = DefinitiefProgram.Properties.Settings;
 using System.IO;
+#endregion
 
 namespace DefinitiefProgram
 {
     public partial class Export : Form
     {
+        #region vars
         Business b = new Business();
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
@@ -27,12 +30,77 @@ namespace DefinitiefProgram
         //size klein 318; 140
         //size med 318; 270
         //size large 318; 538
+        #endregion
 
+        #region controls
+        #region form
         public Export()
         { InitializeComponent(); }
         private void Export_Load(object sender, EventArgs e)
         { hideAlles(); }
-        
+        #endregion
+        private void rdbIedereen_CheckedChanged(object sender, EventArgs e)
+        { rdbChanged(); }
+        private void rdbSpecifiek_CheckedChanged(object sender, EventArgs e)
+        { rdbChanged(); }
+        private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSpecifiker.Checked)
+            { showSpecifieker(); this.Size = new Size(318, 538); }
+            else { hideSpecifieker(); }
+            setLocationButtons();
+        }
+        private void dtpVan_ValueChanged(object sender, EventArgs e)
+        { refreshSpecifieker(); }
+        private void dtpTot_ValueChanged(object sender, EventArgs e)
+        { refreshSpecifieker(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        { this.Close(); }
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            bool cancel = false;
+            if (rdbSpecifiek.Checked)
+            {
+                if (chkSpecifiker.Checked)
+                {
+                    ListView.CheckedListViewItemCollection geselecteerdeLLN = this.lvSpecifieker.CheckedItems;
+                    if (geselecteerdeLLN.Count > 0)
+                    {
+                        foreach (ListViewItem item in geselecteerdeLLN)
+                        {
+                            foreach (Leerling l in lijstSpecifieker)
+                            {
+                                if ((l.StrNaam + " " + l.StrVoornaam == item.Text) && (l.StrPostcode == item.SubItems[1].Text))
+                                { leerlingenOmteExporteren.Add(l); }
+                            }
+                        }
+                    }
+                    else { cancel = true; }
+                }
+                else { leerlingenOmteExporteren = lijstSpecifieker; }
+            }
+            else { leerlingenOmteExporteren = b.getAlleLeerlingen(); }
+
+            if (leerlingenOmteExporteren.Count == 0)
+            { cancel = true; }
+
+            if (!cancel)
+            {
+                FolderBrowserDialog fbd = new FolderBrowserDialog();
+                fbd.SelectedPath = prop.Default.lastSaveFolder;
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
+                    runExport(prop.Default.lastSaveFolder, "Leerlingen.xlsx");
+                }
+            }
+            else { MessageBox.Show("Leerlingen exporteren mislukt." + Environment.NewLine + "Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        #endregion
+
+        #region functions
         void hideAlles()
         {
             this.Size = new Size(318, 140);
@@ -58,7 +126,6 @@ namespace DefinitiefProgram
             this.Size = new Size(318, 270);
             setLocationButtons();
         }
-
         async void refreshSpecifieker()
         {
             LoadingCircle lo = new LoadingCircle();
@@ -109,21 +176,6 @@ namespace DefinitiefProgram
                 lvSpecifieker.Items.Add(lvi);
             }
         }
-
-        private void rdbIedereen_CheckedChanged(object sender, EventArgs e)
-        { rdbChanged(); }
-        private void rdbSpecifiek_CheckedChanged(object sender, EventArgs e)
-        { rdbChanged(); }
-        private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkSpecifiker.Checked)
-            { showSpecifieker(); this.Size = new Size(318, 538); } else { hideSpecifieker(); }
-            setLocationButtons();
-        }
-        private void dtpVan_ValueChanged(object sender, EventArgs e)
-        { refreshSpecifieker(); }
-        private void dtpTot_ValueChanged(object sender, EventArgs e)
-        { refreshSpecifieker(); }
         void rdbChanged()
         {
             if (rdbIedereen.Checked)
@@ -162,54 +214,6 @@ namespace DefinitiefProgram
             }
             CenterToScreen();
         }
-
-        
-        private void btnCancel_Click(object sender, EventArgs e)
-        { this.Close(); }
-
-        private void btnExport_Click(object sender, EventArgs e)
-        {
-            bool cancel = false;
-            if (rdbSpecifiek.Checked)
-            {
-                if (chkSpecifiker.Checked)
-                {
-                    ListView.CheckedListViewItemCollection geselecteerdeLLN = this.lvSpecifieker.CheckedItems;
-                    if (geselecteerdeLLN.Count > 0)
-                    {
-                        foreach (ListViewItem item in geselecteerdeLLN)
-                        {
-                            foreach (Leerling l in lijstSpecifieker)
-                            {
-                                if ((l.StrNaam + " " + l.StrVoornaam == item.Text) && (l.StrPostcode == item.SubItems[1].Text))
-                                { leerlingenOmteExporteren.Add(l); }
-                            }
-                        }
-                    }
-                    else
-                    { cancel = true; }
-                }
-                else
-                { leerlingenOmteExporteren = lijstSpecifieker; }
-            }
-            else
-            { leerlingenOmteExporteren = b.getAlleLeerlingen(); }
-            if (leerlingenOmteExporteren.Count == 0)
-            { cancel = true; }
-
-            if (!cancel)
-            {
-                FolderBrowserDialog fbd = new FolderBrowserDialog();
-                fbd.SelectedPath = prop.Default.lastSaveFolder;
-                DialogResult result = fbd.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                {
-                    prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
-                    runExport(prop.Default.lastSaveFolder, "Leerlingen.xlsx");
-                }
-            } else { MessageBox.Show("Leerlingen exporteren mislukt."+Environment.NewLine+"Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-        }
         async void runExport(string l, string n)
         {
             LoadingCircle lo = new LoadingCircle();
@@ -239,23 +243,19 @@ namespace DefinitiefProgram
                 try
                 {
                     int intTeller = 1;
-                    //alles in excel zetten
-                    //exel openen
                     xlexcel = new Excel.Application();
                     xlexcel.Visible = false;
 
-                    //vorige resulaten verwijderen
                     if (File.Exists(locatie + naam))
                         File.Delete(locatie + naam);
                     if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
                     { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
-                    //leeg excel document aanmaken.
+
                     var app = new Excel.Application();
                     var wb = app.Workbooks.Add();
                     wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
                     wb.Close();
 
-                    //Bestand openen en wijzigen.
                     xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
                     Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
                     xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
@@ -286,36 +286,29 @@ namespace DefinitiefProgram
                         xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
                         xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
 
-                        //aanmeldingstijdstip
-
                         xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
                         xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
 
-                        xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
-                        xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
+                        xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder;
+                        xlWorkSheet.Cells[intTeller, 26] = l.O.StrVoornaamMoeder;
                         xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder;
                         xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
                         xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
                         xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
 
-                        xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
-                        xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
+                        xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader;
+                        xlWorkSheet.Cells[intTeller, 34] = l.O.StrVoornaamVader;
                         xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader;
                         xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                         xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                         xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
 
-                        //stiefmoeder
-                        //stiefvader
-
                         intTeller++;
                     }
 
-                    //opslaan als..
                     xlWorkBook.Close(true, locatie + naam, misValue);
                     xlexcel.Quit();
 
-                    //document terug sluiten
                     releaseObject(xlWorkSheet);
                     releaseObject(xlWorkBook);
                     releaseObject(xlexcel);
@@ -323,8 +316,8 @@ namespace DefinitiefProgram
                 }
                 catch (Exception)
                 { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            this.Close();
-            }));          
+                this.Close();
+            }));
         }
         private void releaseObject(object obj)
         {
@@ -341,5 +334,6 @@ namespace DefinitiefProgram
             finally
             { GC.Collect(); }
         }
+        #endregion
     }
 }

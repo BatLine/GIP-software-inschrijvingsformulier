@@ -70,7 +70,6 @@ namespace DefinitiefProgram
             lln.AanmaakDatum = DateTime.Now.ToString("dd/MM/yyyy");
             p.addToDB(lln);
         }
-
         public List<Leerling> getAlleLeerlingen()
         {
             List<Leerling> l = new List<Leerling>();

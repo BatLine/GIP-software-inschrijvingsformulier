@@ -12,12 +12,7 @@ using System.Drawing.Text;
 
 namespace DefinitiefProgram
 {
-    public partial class ctb : UserControl
-    {
-
-        public ctb()
-        { }
-    }
+    public partial class ctb : UserControl { public ctb() { } }
     public class CustomMaskedTextbox : Control
     {
         public enum MouseState : byte
@@ -85,10 +80,7 @@ namespace DefinitiefProgram
 
         public new bool Enabled
         {
-            get
-            {
-                return this.EnabledCalc;
-            }
+            get { return this.EnabledCalc; }
             set
             {
                 this.TB.Enabled = value;
@@ -100,10 +92,7 @@ namespace DefinitiefProgram
         [DisplayName("Enabled")]
         public bool EnabledCalc
         {
-            get
-            {
-                return this._EnabledCalc;
-            }
+            get { return this._EnabledCalc; }
             set
             {
                 this.Enabled = value;
@@ -113,10 +102,7 @@ namespace DefinitiefProgram
 
         public bool UseSystemPasswordChar
         {
-            get
-            {
-                return this._allowpassword;
-            }
+            get { return this._allowpassword; }
             set
             {
                 this.TB.UseSystemPasswordChar = this.UseSystemPasswordChar;
@@ -127,10 +113,7 @@ namespace DefinitiefProgram
 
         public int MaxLength
         {
-            get
-            {
-                return this._maxChars;
-            }
+            get { return this._maxChars; }
             set
             {
                 this._maxChars = value;
@@ -141,10 +124,7 @@ namespace DefinitiefProgram
 
         public HorizontalAlignment TextAlign
         {
-            get
-            {
-                return this._textAlignment;
-            }
+            get { return this._textAlignment; }
             set
             {
                 this._textAlignment = value;
@@ -154,10 +134,7 @@ namespace DefinitiefProgram
 
         public bool MultiLine
         {
-            get
-            {
-                return this._multiLine;
-            }
+            get { return this._multiLine; }
             set
             {
                 this._multiLine = value;
@@ -169,18 +146,12 @@ namespace DefinitiefProgram
 
         public bool ReadOnly
         {
-            get
-            {
-                return this._readOnly;
-            }
+            get { return this._readOnly; }
             set
             {
                 this._readOnly = value;
                 bool flag = this.TB != null;
-                if (flag)
-                {
-                    this.TB.ReadOnly = value;
-                }
+                if (flag) { this.TB.ReadOnly = value; }
             }
         }
 
@@ -216,14 +187,10 @@ namespace DefinitiefProgram
         }
 
         private void TextChangeTb()
-        {
-            this.Text = this.TB.Text;
-        }
+        { this.Text = this.TB.Text; }
 
         private void TextChng()
-        {
-            this.TB.Text = this.Text;
-        }
+        { this.TB.Text = this.Text; }
 
         public void NewTextBox()
         {
@@ -242,9 +209,7 @@ namespace DefinitiefProgram
         public CustomMaskedTextbox()
         {
             base.TextChanged += delegate (object a0, EventArgs a1)
-            {
-                this.TextChng();
-            };
+            { this.TextChng(); };
             this.TB = new MaskedTextBox();
             this._allowpassword = false;
             this._maxChars = 32767;
@@ -276,25 +241,19 @@ namespace DefinitiefProgram
                 if (flag)
                 {
                     using (Pen pen = new Pen(Helpers.ColorFromHex("#78B7E6")))
-                    {
-                        this.G.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-                    }
+                    { this.G.DrawPath(pen, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
                 }
                 else
                 {
                     using (Pen pen2 = new Pen(Helpers.ColorFromHex("#D0D5D9")))
-                    {
-                        this.G.DrawPath(pen2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-                    }
+                    { this.G.DrawPath(pen2, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
                 }
             }
             else
             {
                 this.TB.ForeColor = Helpers.ColorFromHex("#7C858E");
                 using (Pen pen3 = new Pen(Helpers.ColorFromHex("#E1E1E2")))
-                {
-                    this.G.DrawPath(pen3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All));
-                }
+                { this.G.DrawPath(pen3, Helpers.RoundRect(Helpers.FullRectangle(base.Size, true), 12, Helpers.RoundingStyle.All)); }
             }
             this.TB.TextAlign = this.TextAlign;
             this.TB.UseSystemPasswordChar = this.UseSystemPasswordChar;
