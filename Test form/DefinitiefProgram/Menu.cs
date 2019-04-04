@@ -16,11 +16,8 @@ namespace DefinitiefProgram
 {
     public partial class Menu : Form
     {
-        #region todo
-        //naam en voornaam bij export nog aanpassen & mama en papa appart tablad bij design
-        //beroep en rijk reg nog toevoegen
-        //exporteren kiezen + vanaf welke datum
-        #endregion
+        
+        
         #region vars
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
@@ -46,8 +43,9 @@ namespace DefinitiefProgram
             lijstleerlingen.ShowDialog();
             if ((lijstleerlingen.DialogResult == DialogResult.OK) && (selectedLeerlingID != -1))
             {
-                Design d = new Design(); d.Text = "Leerling wijzigen"; d.ShowDialog();
+                Design d = new Design(); d.Text = "Leerling wijzigen";
                 d.veldenvullen(selectedLeerlingID);
+                d.ShowDialog();
             }
         }
         private void btnExport_Click(object sender, EventArgs e)

@@ -8,6 +8,7 @@ namespace DefinitiefProgram
 {
     class Ouders
     {
+        string strVoornaamMoeder;
         string strNaamMoeder;
         string strGeboorteDatumMoeder;
         string strRijksregisterNRMoeder;
@@ -19,6 +20,8 @@ namespace DefinitiefProgram
         string strHuisnrMoeder;
         string strPostcodeMoeder;
         string strGemeenteMoeder;
+
+        string strVoornaamVader;
         string strNaamVader;
         string strGeboorteDatumVader;
         string strRijksregisterNRVader;
@@ -33,6 +36,7 @@ namespace DefinitiefProgram
         string strGezinssituatie;
         string strGezinshoofd;
 
+        public string StrVoornaamMoeder { get => strVoornaamMoeder; set => strVoornaamMoeder = value; }
         public string StrNaamMoeder { get => strNaamMoeder; set => strNaamMoeder = value; }
         public string StrGeboorteDatumMoeder { get => strGeboorteDatumMoeder; set => strGeboorteDatumMoeder = value; }
         public string StrRijksregisterNRMoeder { get => strRijksregisterNRMoeder; set => strRijksregisterNRMoeder = value; }
@@ -40,6 +44,7 @@ namespace DefinitiefProgram
         public string StrGSMMoeder { get => strGSMMoeder; set => strGSMMoeder = value; }
         public string StrTelefoonWerkMoeder { get => strTelefoonWerkMoeder; set => strTelefoonWerkMoeder = value; }
         public string StrEmailMoeder { get => strEmailMoeder; set => strEmailMoeder = value; }
+        public string StrVoornaamVader { get => strVoornaamVader; set => strVoornaamVader = value; }
         public string StrNaamVader { get => strNaamVader; set => strNaamVader = value; }
         public string StrGeboorteDatumVader { get => strGeboorteDatumVader; set => strGeboorteDatumVader = value; }
         public string StrRijksregisterNRVader { get => strRijksregisterNRVader; set => strRijksregisterNRVader = value; }

@@ -85,6 +85,7 @@ namespace DefinitiefProgram
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
+                l.O.StrVoornaamMoeder = dr["Voornaam"].ToString();
                 l.O.StrNaamMoeder = dr["Naam"].ToString();
                 l.O.StrEmailMoeder = dr["Mailadres"].ToString();
                 l.O.StrGSMMoeder = dr["GSM"].ToString();
@@ -105,6 +106,7 @@ namespace DefinitiefProgram
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
+                l.O.StrVoornaamVader = dr["Voornaam"].ToString();
                 l.O.StrNaamVader = dr["Naam"].ToString();
                 l.O.StrEmailVader = dr["Mailadres"].ToString();
                 l.O.StrGSMVader = dr["GSM"].ToString();
@@ -170,8 +172,9 @@ namespace DefinitiefProgram
                 lln.AanmaakDatum +"')"
                 , conn);
             cmdLLN.ExecuteNonQuery();
+
             LLNID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
-            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
+            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
                 "'" + lln.O.StrNaamMoeder + "','" +
                 lln.O.StrEmailMoeder + "','" +
                 lln.O.StrGSMMoeder + "','" +
@@ -182,10 +185,12 @@ namespace DefinitiefProgram
                 lln.O.StrGemeenteMoeder + "','" +
                 lln.O.StrGezinshoofd + "','" +
                 lln.O.StrGezinssituatie + "'," +
+                lln.O.StrVoornaamMoeder + "'," +
                 2 + ")"
                 , conn);
             cmdMoeder.ExecuteNonQuery();
             MoederID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
+
             MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
                 "'" + lln.O.StrNaamVader + "','" +
                 lln.O.StrEmailVader + "','" +
@@ -197,6 +202,7 @@ namespace DefinitiefProgram
                 lln.O.StrGemeenteVader + "','" +
                 lln.O.StrGezinshoofd + "','" +
                 lln.O.StrGezinssituatie + "'," +
+                lln.O.StrVoornaamVader + "'," +
                 1 + ")"
                 , conn);
             cmdVader.ExecuteNonQuery();

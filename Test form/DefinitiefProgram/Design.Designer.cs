@@ -66,6 +66,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Voornaam = new System.Windows.Forms.Label();
             this.tpOuder = new System.Windows.Forms.TabPage();
+            this.cmbGezinssituatie = new XylosCombobox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.xylosSeparator2 = new XylosSeparator();
+            this.rdbGezinshoofdVader = new XylosRadioButton();
+            this.rdbGezinshoofdMoeder = new XylosRadioButton();
+            this.label24 = new System.Windows.Forms.Label();
             this.pnlMoeder = new System.Windows.Forms.Panel();
             this.txtFamilienaamMoeder = new XylosTextBox();
             this.txtBeroepMoeder = new XylosTextBox();
@@ -128,12 +134,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
-            this.cmbGezinssituatie = new XylosCombobox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.xylosSeparator2 = new XylosSeparator();
-            this.rdbGezinshoofdVader = new XylosRadioButton();
-            this.rdbGezinshoofdMoeder = new XylosRadioButton();
-            this.label24 = new System.Windows.Forms.Label();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
@@ -644,6 +644,77 @@
             this.tpOuder.Text = "Ouders";
             this.tpOuder.Click += new System.EventHandler(this.tpOuder_Click);
             // 
+            // cmbGezinssituatie
+            // 
+            this.cmbGezinssituatie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbGezinssituatie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGezinssituatie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGezinssituatie.Enabled = false;
+            this.cmbGezinssituatie.EnabledCalc = true;
+            this.cmbGezinssituatie.FormattingEnabled = true;
+            this.cmbGezinssituatie.ItemHeight = 20;
+            this.cmbGezinssituatie.Items.AddRange(new object[] {
+            "Gehuwd",
+            "Co-ouderschap",
+            "Pleeggezin",
+            "Éenoudergezin",
+            "Gescheiden",
+            "Moeder overleden",
+            "Vader overleden"});
+            this.cmbGezinssituatie.Location = new System.Drawing.Point(146, 70);
+            this.cmbGezinssituatie.Name = "cmbGezinssituatie";
+            this.cmbGezinssituatie.Size = new System.Drawing.Size(209, 26);
+            this.cmbGezinssituatie.TabIndex = 199;
+            this.cmbGezinssituatie.SelectedIndexChanged += new System.EventHandler(this.cmbGezinssituatie_SelectedIndexChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(16, 67);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(79, 15);
+            this.label25.TabIndex = 202;
+            this.label25.Text = "Gezinssituatie";
+            // 
+            // xylosSeparator2
+            // 
+            this.xylosSeparator2.Location = new System.Drawing.Point(18, 102);
+            this.xylosSeparator2.Name = "xylosSeparator2";
+            this.xylosSeparator2.Size = new System.Drawing.Size(529, 2);
+            this.xylosSeparator2.TabIndex = 201;
+            this.xylosSeparator2.Text = "xylosSeparator2";
+            // 
+            // rdbGezinshoofdVader
+            // 
+            this.rdbGezinshoofdVader.Checked = false;
+            this.rdbGezinshoofdVader.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbGezinshoofdVader.EnabledCalc = true;
+            this.rdbGezinshoofdVader.Location = new System.Drawing.Point(146, 38);
+            this.rdbGezinshoofdVader.Name = "rdbGezinshoofdVader";
+            this.rdbGezinshoofdVader.Size = new System.Drawing.Size(75, 18);
+            this.rdbGezinshoofdVader.TabIndex = 198;
+            this.rdbGezinshoofdVader.Text = "Vader";
+            // 
+            // rdbGezinshoofdMoeder
+            // 
+            this.rdbGezinshoofdMoeder.Checked = true;
+            this.rdbGezinshoofdMoeder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbGezinshoofdMoeder.EnabledCalc = true;
+            this.rdbGezinshoofdMoeder.Location = new System.Drawing.Point(146, 14);
+            this.rdbGezinshoofdMoeder.Name = "rdbGezinshoofdMoeder";
+            this.rdbGezinshoofdMoeder.Size = new System.Drawing.Size(75, 18);
+            this.rdbGezinshoofdMoeder.TabIndex = 197;
+            this.rdbGezinshoofdMoeder.Text = "Moeder";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(16, 14);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(73, 15);
+            this.label24.TabIndex = 200;
+            this.label24.Text = "Gezinshoofd";
+            // 
             // pnlMoeder
             // 
             this.pnlMoeder.Controls.Add(this.txtFamilienaamMoeder);
@@ -751,6 +822,7 @@
             this.label21.Size = new System.Drawing.Size(69, 21);
             this.label21.TabIndex = 202;
             this.label21.Text = "Moeder";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // txtHuisNRMoeder
             // 
@@ -1442,81 +1514,6 @@
             this.btnConfirm.TabIndex = 0;
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
-            // 
-            // cmbGezinssituatie
-            // 
-            this.cmbGezinssituatie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbGezinssituatie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGezinssituatie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGezinssituatie.Enabled = false;
-            this.cmbGezinssituatie.EnabledCalc = true;
-            this.cmbGezinssituatie.FormattingEnabled = true;
-            this.cmbGezinssituatie.ItemHeight = 20;
-            this.cmbGezinssituatie.Items.AddRange(new object[] {
-            "Gehuwd",
-            "Co-ouderschap",
-            "Instelling",
-            "Pleeggezin",
-            "Éenoudergezin",
-            "Gescheiden",
-            "Moeder overleden",
-            "Vader overleden",
-            "Geen contact meer met moeder",
-            "Geen contact meer met vader",
-            "Nieuw samengesteld gezin"});
-            this.cmbGezinssituatie.Location = new System.Drawing.Point(146, 70);
-            this.cmbGezinssituatie.Name = "cmbGezinssituatie";
-            this.cmbGezinssituatie.Size = new System.Drawing.Size(209, 26);
-            this.cmbGezinssituatie.TabIndex = 199;
-            this.cmbGezinssituatie.SelectedIndexChanged += new System.EventHandler(this.cmbGezinssituatie_SelectedIndexChanged);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(16, 67);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(79, 15);
-            this.label25.TabIndex = 202;
-            this.label25.Text = "Gezinssituatie";
-            // 
-            // xylosSeparator2
-            // 
-            this.xylosSeparator2.Location = new System.Drawing.Point(18, 102);
-            this.xylosSeparator2.Name = "xylosSeparator2";
-            this.xylosSeparator2.Size = new System.Drawing.Size(529, 2);
-            this.xylosSeparator2.TabIndex = 201;
-            this.xylosSeparator2.Text = "xylosSeparator2";
-            // 
-            // rdbGezinshoofdVader
-            // 
-            this.rdbGezinshoofdVader.Checked = false;
-            this.rdbGezinshoofdVader.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbGezinshoofdVader.EnabledCalc = true;
-            this.rdbGezinshoofdVader.Location = new System.Drawing.Point(146, 38);
-            this.rdbGezinshoofdVader.Name = "rdbGezinshoofdVader";
-            this.rdbGezinshoofdVader.Size = new System.Drawing.Size(75, 18);
-            this.rdbGezinshoofdVader.TabIndex = 198;
-            this.rdbGezinshoofdVader.Text = "Vader";
-            // 
-            // rdbGezinshoofdMoeder
-            // 
-            this.rdbGezinshoofdMoeder.Checked = true;
-            this.rdbGezinshoofdMoeder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rdbGezinshoofdMoeder.EnabledCalc = true;
-            this.rdbGezinshoofdMoeder.Location = new System.Drawing.Point(146, 14);
-            this.rdbGezinshoofdMoeder.Name = "rdbGezinshoofdMoeder";
-            this.rdbGezinshoofdMoeder.Size = new System.Drawing.Size(75, 18);
-            this.rdbGezinshoofdMoeder.TabIndex = 197;
-            this.rdbGezinshoofdMoeder.Text = "Moeder";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 14);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(73, 15);
-            this.label24.TabIndex = 200;
-            this.label24.Text = "Gezinshoofd";
             // 
             // Design
             // 

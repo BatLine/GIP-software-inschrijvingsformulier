@@ -267,6 +267,8 @@ namespace DefinitiefProgram
             rdbJaar5.Checked = false;
             rdbJaar6.Checked = false;
         }
+
+        
         void checkdebug()
         {
             if (System.Diagnostics.Debugger.IsAttached)
@@ -320,6 +322,7 @@ namespace DefinitiefProgram
                 checkSchoolstatuut();
             }
         }
+        
         #endregion
 
         private void mtxtPostcodeMoeder_Click(object sender, EventArgs e)
@@ -339,54 +342,53 @@ namespace DefinitiefProgram
         {
             if (cmbGezinssituatie.SelectedItem.ToString() == "Gehuwd")
             {
-                
+                label21.Text = "Moeder";
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Co-Ouderschap")
             {
-                
-            }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Instelling")
-            {
-
+                label21.Text = "Moeder";
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Pleeggezin")
             {
-
+                label21.Text = "Pleeg moeder";
+                label23.Text = "Pleeg vader";
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
             {
-
+                label21.Text = "Ouder";
+                pnlVader.Visible = false;
+                pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Gescheiden")
             {
-
+                label21.Text = "Moeder";
+                pnlVader.Visible = true;
+                pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Vader overleden")
             {
+                label21.Text = "Moeder";
                 pnlVader.Visible = false;
                 pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Moeder overleden")
             {
+                label21.Text = "Moeder";
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = false;
-            }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Geen contact meer met vader")
-            {
-                pnlVader.Visible = false;
-                pnlMoeder.Visible = true;
-            }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Geen contact meer met moeder")
-            {
-                pnlVader.Visible = true;
-                pnlMoeder.Visible = false;
-            }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Nieuw samengesteld gezin")
-            {
-                pnlMoeder.Visible = false;
-                pnlVader.Visible = false;
             }
 
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
 
         }
     }
