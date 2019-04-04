@@ -15,7 +15,6 @@ namespace DefinitiefProgram
 {
     public partial class Export : Form
     {
-        public LoadingCircle l = new LoadingCircle();
         Business b = new Business();
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
@@ -216,6 +215,7 @@ namespace DefinitiefProgram
             LoadingCircle lo = new LoadingCircle();
             lo.Show();
             lo.BringToFront();
+            lo.TopMost = true;
             Panel pnl = new Panel();
             this.Controls.Add(pnl);
             pnl.BackColor = this.BackColor;
@@ -224,103 +224,107 @@ namespace DefinitiefProgram
             pnl.BringToFront();
             string text = this.Text;
             this.Text = "";
+            this.Visible = false;
 
             await Task.Run(() => export(l, n));
 
-            Controls.Remove(pnl);
+            this.Visible = true;
             this.Text = text;
+            Controls.Remove(pnl);
             lo.Close();
         }
         void export(string locatie, string naam)
         {
-            try
-            {
-                int intTeller = 1;
-                //alles in excel zetten
-                //exel openen
-                xlexcel = new Excel.Application();
-                xlexcel.Visible = false;
-
-                //vorige resulaten verwijderen
-                if (File.Exists(locatie + naam))
-                    File.Delete(locatie + naam);
-                if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
-                { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
-                //leeg excel document aanmaken.
-                var app = new Excel.Application();
-                var wb = app.Workbooks.Add();
-                wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
-                wb.Close();
-
-                //Bestand openen en wijzigen.
-                xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
-                Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                foreach (Leerling l in leerlingenOmteExporteren)
+            this.Invoke(new Action(() => {
+                try
                 {
-                    xlWorkSheet.Cells[intTeller, 1] = l.StrNaam;
-                    xlWorkSheet.Cells[intTeller, 2] = l.StrVoornaam;
-                    xlWorkSheet.Cells[intTeller, 3] = l.StrBijkNaam;
-                    xlWorkSheet.Cells[intTeller, 4] = l.StrGeslacht;
-                    xlWorkSheet.Cells[intTeller, 5] = l.StrGeboortedatum;
-                    xlWorkSheet.Cells[intTeller, 6] = l.StrGeboorteplaats;
-                    xlWorkSheet.Cells[intTeller, 7] = l.StrRijkregisternummer;
-                    xlWorkSheet.Cells[intTeller, 8] = l.StrStraat;
-                    xlWorkSheet.Cells[intTeller, 9] = l.StrHuisnummer;
-                    xlWorkSheet.Cells[intTeller, 10] = l.StrBus;
-                    xlWorkSheet.Cells[intTeller, 11] = l.StrPostcode;
-                    xlWorkSheet.Cells[intTeller, 12] = l.StrGemeente;
-                    xlWorkSheet.Cells[intTeller, 13] = l.StrLand;
-                    xlWorkSheet.Cells[intTeller, 14] = l.StrNationaliteit;
-                    if (l.O.StrGezinshoofd == "Moeder")
-                    { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkMoeder; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMMoeder; }
-                    else { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkVader; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMVader; }
-                    xlWorkSheet.Cells[intTeller, 17] = l.StrGSM_Nummer;
-                    xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder;
-                    xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader;
-                    xlWorkSheet.Cells[intTeller, 20] = l.StrE_Mail;
-                    xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
-                    xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
+                    int intTeller = 1;
+                    //alles in excel zetten
+                    //exel openen
+                    xlexcel = new Excel.Application();
+                    xlexcel.Visible = false;
 
-                    //aanmeldingstijdstip
+                    //vorige resulaten verwijderen
+                    if (File.Exists(locatie + naam))
+                        File.Delete(locatie + naam);
+                    if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
+                    { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
+                    //leeg excel document aanmaken.
+                    var app = new Excel.Application();
+                    var wb = app.Workbooks.Add();
+                    wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
+                    wb.Close();
 
-                    xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
-                    xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
+                    //Bestand openen en wijzigen.
+                    xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
+                    Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                    xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
-                    xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
-                    xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder;
-                    xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
-                    xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
-                    xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
+                    foreach (Leerling l in leerlingenOmteExporteren)
+                    {
+                        xlWorkSheet.Cells[intTeller, 1] = l.StrNaam;
+                        xlWorkSheet.Cells[intTeller, 2] = l.StrVoornaam;
+                        xlWorkSheet.Cells[intTeller, 3] = l.StrBijkNaam;
+                        xlWorkSheet.Cells[intTeller, 4] = l.StrGeslacht;
+                        xlWorkSheet.Cells[intTeller, 5] = l.StrGeboortedatum;
+                        xlWorkSheet.Cells[intTeller, 6] = l.StrGeboorteplaats;
+                        xlWorkSheet.Cells[intTeller, 7] = l.StrRijkregisternummer;
+                        xlWorkSheet.Cells[intTeller, 8] = l.StrStraat;
+                        xlWorkSheet.Cells[intTeller, 9] = l.StrHuisnummer;
+                        xlWorkSheet.Cells[intTeller, 10] = l.StrBus;
+                        xlWorkSheet.Cells[intTeller, 11] = l.StrPostcode;
+                        xlWorkSheet.Cells[intTeller, 12] = l.StrGemeente;
+                        xlWorkSheet.Cells[intTeller, 13] = l.StrLand;
+                        xlWorkSheet.Cells[intTeller, 14] = l.StrNationaliteit;
+                        if (l.O.StrGezinshoofd == "Moeder")
+                        { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkMoeder; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMMoeder; }
+                        else { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkVader; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMVader; }
+                        xlWorkSheet.Cells[intTeller, 17] = l.StrGSM_Nummer;
+                        xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder;
+                        xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader;
+                        xlWorkSheet.Cells[intTeller, 20] = l.StrE_Mail;
+                        xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
+                        xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
 
-                    xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
-                    xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
-                    xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader;
-                    xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
-                    xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
-                    xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
+                        //aanmeldingstijdstip
 
-                    //stiefmoeder
-                    //stiefvader
+                        xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
+                        xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
 
-                    intTeller++;
+                        xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder; //naam
+                        xlWorkSheet.Cells[intTeller, 26] = l.O.StrNaamMoeder; //voornaam
+                        xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder;
+                        xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
+                        xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
+                        xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
+
+                        xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader; //naam
+                        xlWorkSheet.Cells[intTeller, 34] = l.O.StrNaamVader; //voornaam
+                        xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader;
+                        xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
+                        xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
+                        xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
+
+                        //stiefmoeder
+                        //stiefvader
+
+                        intTeller++;
+                    }
+
+                    //opslaan als..
+                    xlWorkBook.Close(true, locatie + naam, misValue);
+                    xlexcel.Quit();
+
+                    //document terug sluiten
+                    releaseObject(xlWorkSheet);
+                    releaseObject(xlWorkBook);
+                    releaseObject(xlexcel);
+                    MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                //opslaan als..
-                xlWorkBook.Close(true, locatie + naam, misValue);
-                xlexcel.Quit();
-
-                //document terug sluiten
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlexcel);
-                MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception)
-            { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            this.Invoke(new Action(() => this.Close()));          
+                catch (Exception)
+                { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            this.Close();
+            }));          
         }
         private void releaseObject(object obj)
         {

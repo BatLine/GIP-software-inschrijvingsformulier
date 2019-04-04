@@ -52,7 +52,10 @@ namespace DefinitiefProgram
             }
         }
         private void btnExport_Click(object sender, EventArgs e)
-        { new Export().Show(); }
+        {
+            Export export = new Export();
+            export.Show();
+        }
         private void btnClose_Click(object sender, EventArgs e)
         { Application.Exit();}
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
