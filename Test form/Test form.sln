@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "frmtest\Test.csproj", "{DEFEEE08-9561-4595-B870-715E634B5A58}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Design", "Test Design\Test Design.csproj", "{EDAB474C-791D-46F9-9CB3-1712886E8B2C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefinitiefProgram", "DefinitiefProgram\DefinitiefProgram.csproj", "{3FED4441-D743-405D-AE45-77BC184E9DB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{AF0A2889-D56A-42F2-A0D8-CB82003C5B62}"
@@ -17,14 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEFEEE08-9561-4595-B870-715E634B5A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEFEEE08-9561-4595-B870-715E634B5A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEFEEE08-9561-4595-B870-715E634B5A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEFEEE08-9561-4595-B870-715E634B5A58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDAB474C-791D-46F9-9CB3-1712886E8B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDAB474C-791D-46F9-9CB3-1712886E8B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDAB474C-791D-46F9-9CB3-1712886E8B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDAB474C-791D-46F9-9CB3-1712886E8B2C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FED4441-D743-405D-AE45-77BC184E9DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FED4441-D743-405D-AE45-77BC184E9DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FED4441-D743-405D-AE45-77BC184E9DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
