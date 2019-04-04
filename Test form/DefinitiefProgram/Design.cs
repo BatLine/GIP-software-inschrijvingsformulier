@@ -16,7 +16,6 @@ namespace DefinitiefProgram
     {
         /// <TODO>
         /// TODO
-        /// textbox geboortedatum bij ouders en lln naar masked?
         /// postcode automatisch laten invullen? => of omgekeerd
         /// cmb land opvullen met alle landen
         /// cmbNationaliteit invullen met alle nationaliteiten
@@ -43,8 +42,6 @@ namespace DefinitiefProgram
         #endregion
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Loading loadingscreen = new Loading();
-            //loadingscreen.Show();
             Leerling lln = new Leerling();
 
             //leerling
@@ -103,8 +100,14 @@ namespace DefinitiefProgram
             o.StrGezinshoofd = strGezinshoofd;
             lln.O = o;
 
-            b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut);
-            loadingscreen.Close();
+            try
+            {
+                this.Hide();
+                b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut);
+            }
+            catch (Exception)
+            { MessageBox.Show("Toevoegen mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            
             this.Close();
         }
         private void tpLLN_Click(object sender, EventArgs e)
@@ -289,7 +292,7 @@ namespace DefinitiefProgram
                 txtBus.Text = "a";
                 txtGemeente.Text = "Gemeente";
                 mskPostcode.Text = "9000";
-                cmbLand.SelectedIndex = 1;
+                cmbLand.SelectedIndex = 0;
 
                 txtVoornaamMoeder.Text = "naam";
                 txtHuisNRMoeder.Text = "1";
@@ -324,11 +327,6 @@ namespace DefinitiefProgram
         }
         
         #endregion
-
-        private void mtxtPostcodeMoeder_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label28_Click(object sender, EventArgs e)
         {
@@ -383,8 +381,6 @@ namespace DefinitiefProgram
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = false;
             }
-
-
         }
 
         private void label21_Click(object sender, EventArgs e)

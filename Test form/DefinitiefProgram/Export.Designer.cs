@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Export));
             this.label1 = new System.Windows.Forms.Label();
             this.gpSpecifiek = new System.Windows.Forms.GroupBox();
             this.chkSpecifiker = new XylosCheckBox();
@@ -46,7 +45,6 @@
             this.btnCancel = new XylosButton();
             this.rdbSpecifiek = new XylosRadioButton();
             this.rdbIedereen = new XylosRadioButton();
-            this.bunifuCircleProgressbar1 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.gpSpecifiek.SuspendLayout();
             this.gpSpecifieker.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +130,6 @@
             // 
             // gpSpecifieker
             // 
-            this.gpSpecifieker.Controls.Add(this.bunifuCircleProgressbar1);
             this.gpSpecifieker.Controls.Add(this.lvSpecifieker);
             this.gpSpecifieker.Location = new System.Drawing.Point(14, 204);
             this.gpSpecifieker.Name = "gpSpecifieker";
@@ -150,6 +147,7 @@
             this.chDatum});
             this.lvSpecifieker.FullRowSelect = true;
             this.lvSpecifieker.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvSpecifieker.HideSelection = false;
             this.lvSpecifieker.Location = new System.Drawing.Point(6, 19);
             this.lvSpecifieker.Name = "lvSpecifieker";
             this.lvSpecifieker.Size = new System.Drawing.Size(265, 263);
@@ -216,28 +214,6 @@
             this.rdbIedereen.Text = "Alle leerlingen uit de database exporteren";
             this.rdbIedereen.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIedereen_CheckedChanged);
             // 
-            // bunifuCircleProgressbar1
-            // 
-            this.bunifuCircleProgressbar1.animated = true;
-            this.bunifuCircleProgressbar1.animationIterval = 5;
-            this.bunifuCircleProgressbar1.animationSpeed = 30;
-            this.bunifuCircleProgressbar1.BackColor = System.Drawing.Color.White;
-            this.bunifuCircleProgressbar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar1.BackgroundImage")));
-            this.bunifuCircleProgressbar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar1.ForeColor = System.Drawing.Color.Red;
-            this.bunifuCircleProgressbar1.LabelVisible = true;
-            this.bunifuCircleProgressbar1.LineProgressThickness = 8;
-            this.bunifuCircleProgressbar1.LineThickness = 5;
-            this.bunifuCircleProgressbar1.Location = new System.Drawing.Point(63, 57);
-            this.bunifuCircleProgressbar1.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar1.MaxValue = 100;
-            this.bunifuCircleProgressbar1.Name = "bunifuCircleProgressbar1";
-            this.bunifuCircleProgressbar1.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.bunifuCircleProgressbar1.ProgressColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar1.Size = new System.Drawing.Size(201, 201);
-            this.bunifuCircleProgressbar1.TabIndex = 1;
-            this.bunifuCircleProgressbar1.Value = 20;
-            // 
             // Export
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +264,5 @@
         private XylosButton btnCancel;
         private System.Windows.Forms.ColumnHeader chPostcode;
         private System.Windows.Forms.ColumnHeader chDatum;
-        private Bunifu.Framework.UI.BunifuCircleProgressbar bunifuCircleProgressbar1;
     }
 }

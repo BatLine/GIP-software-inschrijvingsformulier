@@ -15,9 +15,7 @@ using prop = DefinitiefProgram.Properties.Settings;
 namespace DefinitiefProgram
 {
     public partial class Menu : Form
-    {
-        
-        
+    { 
         #region vars
         Excel.Application xlexcel;
         Excel.Workbook xlWorkBook;
@@ -40,8 +38,13 @@ namespace DefinitiefProgram
         {
             Lijstleerlingen lijstleerlingen = new Lijstleerlingen();
             lijstleerlingen.m = this;
-            lijstleerlingen.ShowDialog();
-            if ((lijstleerlingen.DialogResult == DialogResult.OK) && (selectedLeerlingID != -1))
+            lijstleerlingen.Show();
+            lijstleerlingen.BringToFront();
+            lijstleerlingen.refreshLLN();
+        }
+        public void wijzigLLN(int id)
+        {
+            if (id != -1)
             {
                 Design d = new Design(); d.Text = "Leerling wijzigen";
                 d.veldenvullen(selectedLeerlingID);
@@ -49,23 +52,7 @@ namespace DefinitiefProgram
             }
         }
         private void btnExport_Click(object sender, EventArgs e)
-        {
-            //moet nog verplaatst worden naar export dinges
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-            //fbd.SelectedPath = prop.Default.lastSaveFolder;
-            //DialogResult result = fbd.ShowDialog();
-
-            //if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-            //{
-            //    prop.Default.lastSaveFolder = fbd.SelectedPath +  @"\"; prop.Default.Save();
-            //    if (export(prop.Default.lastSaveFolder, "Leerlingen.xlsx"))
-            //    { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-            //    else { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            //}
-
-            Export export = new Export();
-            export.Show();
-        }
+        { new Export().Show(); }
         private void btnClose_Click(object sender, EventArgs e)
         { Application.Exit();}
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)

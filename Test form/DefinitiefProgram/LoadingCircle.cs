@@ -17,7 +17,7 @@ namespace DefinitiefProgram
 
         private void LoadingCircle_Load(object sender, EventArgs e)
         {
-            circle.Value = 0;
+            //circle.Value = 0;
             circle.MaxValue = 100;
         }
 

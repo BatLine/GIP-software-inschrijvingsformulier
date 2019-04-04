@@ -60,17 +60,37 @@ namespace DefinitiefProgram
             setLocationButtons();
         }
 
-        void refreshSpecifieker()
+        async void refreshSpecifieker()
+        {
+            LoadingCircle lo = new LoadingCircle();
+            lo.Show();
+            lo.BringToFront();
+            Panel pnl = new Panel();
+            this.Controls.Add(pnl);
+            pnl.BackColor = this.BackColor;
+            pnl.Size = this.Size;
+            pnl.Location = new Point(0, 0);
+            pnl.BringToFront();
+            string text = this.Text;
+            this.Text = "";
+
+            await Task.Run(() => refrSpecifieker());
+
+            Controls.Remove(pnl);
+            lo.Close();
+        }
+        void refrSpecifieker()
         {
             string van, tot;
             van = dtpVan.Value.ToString("dd MM yyyy");
             tot = dtpTot.Value.ToString("dd MM yyyy");
 
-            //new thread & loading dinges?
             Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot, this);
-            lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
-            lijstSpecifieker = tuple.Item2;
-            vulSpeciefieker(tuple.Item2);
+            this.Invoke(new Action(() => {
+                lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
+                lijstSpecifieker = tuple.Item2;
+                vulSpeciefieker(tuple.Item2);
+            }));
         }
         void vulSpeciefieker(List<Leerling> lln)
         {
@@ -147,8 +167,6 @@ namespace DefinitiefProgram
         private void btnExport_Click(object sender, EventArgs e)
         {
             bool cancel = false;
-            //laad scherm tonen tot einde adhv async method
-            //alles uit menu naar hier halen om te exporten
             if (rdbSpecifiek.Checked)
             {
                 if (chkSpecifiker.Checked)
@@ -185,9 +203,29 @@ namespace DefinitiefProgram
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
-                    export(prop.Default.lastSaveFolder, "Leerlingen.xlsx");
+                    runExport(prop.Default.lastSaveFolder, "Leerlingen.xlsx");
                 }
             } else { MessageBox.Show("Leerlingen exporteren mislukt."+Environment.NewLine+"Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        async void runExport(string l, string n)
+        {
+            LoadingCircle lo = new LoadingCircle();
+            lo.Show();
+            lo.BringToFront();
+            Panel pnl = new Panel();
+            this.Controls.Add(pnl);
+            pnl.BackColor = this.BackColor;
+            pnl.Size = this.Size;
+            pnl.Location = new Point(0, 0);
+            pnl.BringToFront();
+            string text = this.Text;
+            this.Text = "";
+
+            await Task.Run(() => export(l, n));
+
+            Controls.Remove(pnl);
+            this.Text = text;
+            lo.Close();
         }
         void export(string locatie, string naam)
         {
@@ -277,10 +315,8 @@ namespace DefinitiefProgram
                 MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
-            {
-                MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            this.Close();
+            { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            this.Invoke(new Action(() => this.Close()));          
         }
         private void releaseObject(object obj)
         {

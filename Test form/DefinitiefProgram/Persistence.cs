@@ -37,15 +37,6 @@ namespace DefinitiefProgram
             return new Tuple<int, List<Leerling>>(intAantal, specifiekeLLN);            
         }
 
-        int getTotaalAantalLLN()
-        {
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT COUNT(idLeerling) FROM leerling;", conn);
-            int intAantal = Convert.ToInt16(cmd.ExecuteScalar());
-            conn.Close();
-            return intAantal;
-        }
-
         public Leerling getLeerling(int pintID)
         {
             int moederID = 0;
@@ -132,58 +123,15 @@ namespace DefinitiefProgram
             return l;
         }
 
-        LoadingCircle l;
         public List<Leerling> getAlleLeerlingenFromDB()
         {
+            List<Leerling> lln = new List<Leerling>();
+            List<int> ids = getAlleIDs();
+            foreach (int i in ids)
+            { lln.Add(getLeerling(i)); }
             
-            l = new LoadingCircle();
-            l.Show();
-            l.BringToFront();
-            l.Refresh();
-            int aantalLLN = getTotaalAantalLLN();
-            BackgroundWorker bw = new BackgroundWorker();
-
-            bw.WorkerReportsProgress = true;
-            bw.ProgressChanged += new ProgressChangedEventHandler(
-            delegate (object o, ProgressChangedEventArgs args)
-            {
-                l.setValue(args.ProgressPercentage);
-                //l.Refresh();
-                l.circle.Invalidate();
-            });
-
-            // what to do in the background thread
-            bw.DoWork += new DoWorkEventHandler(
-            delegate (object o, DoWorkEventArgs args)
-            {
-                BackgroundWorker b = o as BackgroundWorker;
-
-                // do some simple processing for 10 seconds
-                lln = new List<Leerling>();
-                List<int> ids = getAlleIDs();
-                int intTeller = 1;
-                foreach (int i in ids)
-                {
-                    lln.Add(getLeerling(i));
-                    double dblGetal = Convert.ToDouble(intTeller) / Convert.ToDouble(aantalLLN);
-                    dblGetal *= 100;
-                    b.ReportProgress(Convert.ToInt16(dblGetal));
-                    intTeller++;
-                }
-
-            });
-
-            // what to do when worker completes its task (notify the user)
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(
-            delegate (object o, RunWorkerCompletedEventArgs args)
-            {
-                l.Close();
-            });
-
-            bw.RunWorkerAsync();
             return lln;
         }
-        List<Leerling> lln;
 
         public List<int> getAlleIDs()
         {

@@ -33,6 +33,7 @@
             this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
+            this.txtGeboortedatum = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskPostcode = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskGsmNummer = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskRijksregisterNummer = new DefinitiefProgram.CustomMaskedTextbox();
@@ -50,7 +51,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new XylosTextBox();
             this.txtNationaliteit = new XylosTextBox();
-            this.txtGeboortedatum = new XylosTextBox();
             this.txtGeboorteplaats = new XylosTextBox();
             this.txtBijkvoornaam = new XylosTextBox();
             this.txtFamilieNaam = new XylosTextBox();
@@ -134,6 +134,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
@@ -144,6 +145,7 @@
             this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpBevestigen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // ilPassword
@@ -176,6 +178,8 @@
             // tpLLN
             // 
             this.tpLLN.BackColor = System.Drawing.Color.White;
+            this.tpLLN.Controls.Add(this.bunifuImageButton1);
+            this.tpLLN.Controls.Add(this.txtGeboortedatum);
             this.tpLLN.Controls.Add(this.mskPostcode);
             this.tpLLN.Controls.Add(this.mskGsmNummer);
             this.tpLLN.Controls.Add(this.mskRijksregisterNummer);
@@ -193,7 +197,6 @@
             this.tpLLN.Controls.Add(this.label9);
             this.tpLLN.Controls.Add(this.txtEmail);
             this.tpLLN.Controls.Add(this.txtNationaliteit);
-            this.tpLLN.Controls.Add(this.txtGeboortedatum);
             this.tpLLN.Controls.Add(this.txtGeboorteplaats);
             this.tpLLN.Controls.Add(this.txtBijkvoornaam);
             this.tpLLN.Controls.Add(this.txtFamilieNaam);
@@ -217,6 +220,23 @@
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
             this.tpLLN.Click += new System.EventHandler(this.tpLLN_Click);
+            // 
+            // txtGeboortedatum
+            // 
+            this.txtGeboortedatum.EnabledCalc = true;
+            this.txtGeboortedatum.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtGeboortedatum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtGeboortedatum.Location = new System.Drawing.Point(137, 180);
+            this.txtGeboortedatum.Mask = "00/00/0000";
+            this.txtGeboortedatum.MaxLength = 32767;
+            this.txtGeboortedatum.MultiLine = false;
+            this.txtGeboortedatum.Name = "txtGeboortedatum";
+            this.txtGeboortedatum.ReadOnly = false;
+            this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
+            this.txtGeboortedatum.TabIndex = 130;
+            this.txtGeboortedatum.Text = "  /  /";
+            this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtGeboortedatum.UseSystemPasswordChar = false;
             // 
             // mskPostcode
             // 
@@ -445,21 +465,6 @@
             this.txtNationaliteit.TabIndex = 132;
             this.txtNationaliteit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNationaliteit.UseSystemPasswordChar = false;
-            // 
-            // txtGeboortedatum
-            // 
-            this.txtGeboortedatum.EnabledCalc = true;
-            this.txtGeboortedatum.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtGeboortedatum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGeboortedatum.Location = new System.Drawing.Point(137, 180);
-            this.txtGeboortedatum.MaxLength = 32767;
-            this.txtGeboortedatum.MultiLine = false;
-            this.txtGeboortedatum.Name = "txtGeboortedatum";
-            this.txtGeboortedatum.ReadOnly = false;
-            this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
-            this.txtGeboortedatum.TabIndex = 130;
-            this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtGeboortedatum.UseSystemPasswordChar = false;
             // 
             // txtGeboorteplaats
             // 
@@ -1155,7 +1160,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(16, 253);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 15);
+            this.label16.Size = new System.Drawing.Size(80, 15);
             this.label16.TabIndex = 14;
             this.label16.Text = "Telefoon werk";
             // 
@@ -1515,6 +1520,19 @@
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.White;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(375, 183);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 26);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuImageButton1.TabIndex = 143;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1547,6 +1565,7 @@
             this.tpExtra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpBevestigen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1592,7 +1611,6 @@
         private System.Windows.Forms.Label label9;
         private XylosTextBox txtEmail;
         private XylosTextBox txtNationaliteit;
-        private XylosTextBox txtGeboortedatum;
         private XylosTextBox txtGeboorteplaats;
         private XylosTextBox txtBijkvoornaam;
         private XylosTextBox txtFamilieNaam;
@@ -1657,5 +1675,7 @@
         private XylosRadioButton rdbGezinshoofdVader;
         private XylosRadioButton rdbGezinshoofdMoeder;
         private System.Windows.Forms.Label label24;
+        private CustomMaskedTextbox txtGeboortedatum;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
     }
 }

@@ -48,7 +48,7 @@
             this.circle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("circle.BackgroundImage")));
             this.circle.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
             this.circle.ForeColor = System.Drawing.Color.Black;
-            this.circle.LabelVisible = true;
+            this.circle.LabelVisible = false;
             this.circle.LineProgressThickness = 8;
             this.circle.LineThickness = 5;
             this.circle.Location = new System.Drawing.Point(18, 18);
@@ -59,7 +59,7 @@
             this.circle.ProgressColor = System.Drawing.Color.Cyan;
             this.circle.Size = new System.Drawing.Size(212, 212);
             this.circle.TabIndex = 0;
-            this.circle.Value = 0;
+            this.circle.Value = 20;
             // 
             // LoadingCircle
             // 
