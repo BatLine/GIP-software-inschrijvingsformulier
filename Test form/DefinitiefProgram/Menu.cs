@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 using prop = DefinitiefProgram.Properties.Settings;
 #endregion
 namespace DefinitiefProgram
@@ -17,13 +16,8 @@ namespace DefinitiefProgram
     public partial class Menu : Form
     { 
         #region vars
-        Excel.Application xlexcel;
-        Excel.Workbook xlWorkBook;
-        Excel.Worksheet xlWorkSheet;
-        object misValue = System.Reflection.Missing.Value;
         string tempPath = Path.GetTempPath();
         Business b = new Business();
-        public int selectedLeerlingID=-1;
         #endregion
 
         #region controls
@@ -39,7 +33,7 @@ namespace DefinitiefProgram
         }
         #endregion
         private void btnToevoegen_Click(object sender, EventArgs e)
-        { Design d = new Design(); d.ShowDialog(); }
+        { Design d = new Design(); d.ShowDialog(); this.Focus(); }
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
             Lijstleerlingen lijstleerlingen = new Lijstleerlingen();
@@ -61,8 +55,9 @@ namespace DefinitiefProgram
             {
                 Design d = new Design();
                 d.Text = "Leerling wijzigen";
-                d.veldenvullen(selectedLeerlingID);
+                d.veldenvullen(id);
                 d.ShowDialog();
+                this.Focus();
             }
         }
         #endregion

@@ -16,15 +16,14 @@ namespace DefinitiefProgram
     {
         /// <TODO>
         /// postcode automatisch laten invullen? => of omgekeerd
-        /// cmb land opvullen met alle landen
         /// cmbNationaliteit invullen met alle nationaliteiten
-        /// eerst checken op oudernaam om dan alles automatisch te laten invullen als ouder al bestaat
         /// </TODO>
         #region vars
         Business b = new Business();
         int Studiejaar = 0;
         string Schoolstatuut = "Extern";
         bool blnShowPassword = false;
+        bool starting = false;
         #endregion
 
         #region controls
@@ -32,10 +31,32 @@ namespace DefinitiefProgram
         public Design()
         { InitializeComponent(); }
         private void Design_Load(object sender, EventArgs e)
-        { checkdebug(); pbToonWachtwoord.Image = ilPassword.Images[0]; }
+        { starting = true; getAlleLanden(); getAlleNationaliteiten(); pbToonWachtwoord.Image = ilPassword.Images[0]; checkdebug(); starting = false; }
         private void Design_FormClosing(object sender, FormClosingEventArgs e)
         { }
         #endregion
+        private void btnAddLand_Click(object sender, EventArgs e)
+        {
+            string strLand = Microsoft.VisualBasic.Interaction.InputBox("Naam land:", "Land toevoegen");
+            if (b.addLand(strLand))
+            {
+                MessageBox.Show(strLand + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                getAlleLanden();
+                setSelectedLand(strLand);
+            }
+            else { MessageBox.Show(strLand + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+        private void btnAddNationaliteit_Click(object sender, EventArgs e)
+        {
+            string strNationaliteit = Microsoft.VisualBasic.Interaction.InputBox("Nationaliteit:", "Nationaliteit toevoegen");
+            if (b.addNationaliteit(strNationaliteit))
+            {
+                MessageBox.Show(strNationaliteit + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                getAlleNationaliteiten();
+                setSelectedLand(strNationaliteit);
+            }
+            else { MessageBox.Show(strNationaliteit + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Leerling lln = new Leerling();
@@ -180,6 +201,27 @@ namespace DefinitiefProgram
         #endregion
 
         #region functions
+        void setSelectedLand(string nieuwLand)
+        { cmbLand.SelectedItem = nieuwLand; }
+        void getAlleLanden()
+        {
+            string strHuidigland=string.Empty;
+            if (!starting)
+            { cmbLand.Items.Clear(); } else { if (cmbLand.Items.Count > 0) { strHuidigland = cmbLand.Items[0].ToString(); }}
+            foreach (string s in b.getAlleLanden())
+            { if (strHuidigland != s) { cmbLand.Items.Add(s); } }
+        }
+        void setSelectedNationaliteit(string nieuweNationaliteit)
+        { txtNationaliteit.SelectedItem = nieuweNationaliteit; }
+        void getAlleNationaliteiten()
+        {
+            string strHuidigeNationaliteit = string.Empty;
+            if (!starting)
+            { txtNationaliteit.Items.Clear(); }
+            else { if (txtNationaliteit.Items.Count > 0) { strHuidigeNationaliteit = txtNationaliteit.Items[0].ToString(); } }
+            foreach (string s in b.getAlleNationaliteiten())
+            { if (strHuidigeNationaliteit != s) { txtNationaliteit.Items.Add(s); } }
+        }
         public void veldenvullen(int pintID)
         {
             Leerling l = b.GetLeerling(pintID);
@@ -198,7 +240,8 @@ namespace DefinitiefProgram
             txtBus.Text = l.StrBus;
             txtGemeente.Text = l.StrGemeente;
             mskPostcode.Text = l.StrPostcode;
-            cmbLand.SelectedItem = l.StrLand;
+            cmbLand.Items.Add(l.StrLand);
+            //cmbLand.SelectedItem = l.StrLand;
             switch (l.IntMiddelbaar)
             {
                 case 1:

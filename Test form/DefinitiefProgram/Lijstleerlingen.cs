@@ -44,7 +44,6 @@ namespace DefinitiefProgram
             LoadingCircle lo = new LoadingCircle();
             lo.Show();
             lo.BringToFront();
-            lo.TopMost = true;
             Panel pnl = new Panel();
             this.Controls.Add(pnl);
             pnl.BackColor = this.BackColor;
@@ -57,6 +56,7 @@ namespace DefinitiefProgram
 
             await Task.Run(() => getAlleLLN());
 
+            this.Focus();
             this.Visible = true;
             this.Text = text;
             Controls.Remove(pnl);

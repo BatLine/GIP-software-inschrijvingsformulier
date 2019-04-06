@@ -9,7 +9,6 @@ namespace DefinitiefProgram
     class Business
     {
         Persistence p;
-        List<Leerling> Leerlingen = new List<Leerling>();
 
         public Business()
         { p = new Persistence(); }
@@ -81,5 +80,20 @@ namespace DefinitiefProgram
             Leerling l = p.getLeerling(pintID);
             return l;
         }
+        public bool addLand(string strLand)
+        {
+            if (!p.getAlleLanden().Contains(strLand))
+            { p.addLand(strLand); return true; } else { return false; }
+        }
+        public List<string> getAlleLanden()
+        { return p.getAlleLanden(); }
+        public bool addNationaliteit(string strNationaliteit)
+        {
+            if (!p.getAlleNationaliteiten().Contains(strNationaliteit))
+            { p.addNationaliteit(strNationaliteit); return true; }
+            else { return false; }
+        }
+        public List<string> getAlleNationaliteiten()
+        { return p.getAlleNationaliteiten(); }
     }
 }

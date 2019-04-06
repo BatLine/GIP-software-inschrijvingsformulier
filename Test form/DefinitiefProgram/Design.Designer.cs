@@ -33,7 +33,7 @@
             this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
-            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnAddLand = new Bunifu.Framework.UI.BunifuImageButton();
             this.txtGeboortedatum = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskPostcode = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskGsmNummer = new DefinitiefProgram.CustomMaskedTextbox();
@@ -51,7 +51,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new XylosTextBox();
-            this.txtNationaliteit = new XylosTextBox();
             this.txtGeboorteplaats = new XylosTextBox();
             this.txtBijkvoornaam = new XylosTextBox();
             this.txtFamilieNaam = new XylosTextBox();
@@ -135,9 +134,11 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
+            this.btnAddNationaliteit = new Bunifu.Framework.UI.BunifuImageButton();
+            this.txtNationaliteit = new XylosCombobox();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddLand)).BeginInit();
             this.tpOuder.SuspendLayout();
             this.pnlMoeder.SuspendLayout();
             this.pnlVader.SuspendLayout();
@@ -146,6 +147,7 @@
             this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpBevestigen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).BeginInit();
             this.SuspendLayout();
             // 
             // ilPassword
@@ -178,7 +180,9 @@
             // tpLLN
             // 
             this.tpLLN.BackColor = System.Drawing.Color.White;
-            this.tpLLN.Controls.Add(this.bunifuImageButton1);
+            this.tpLLN.Controls.Add(this.txtNationaliteit);
+            this.tpLLN.Controls.Add(this.btnAddNationaliteit);
+            this.tpLLN.Controls.Add(this.btnAddLand);
             this.tpLLN.Controls.Add(this.txtGeboortedatum);
             this.tpLLN.Controls.Add(this.mskPostcode);
             this.tpLLN.Controls.Add(this.mskGsmNummer);
@@ -196,7 +200,6 @@
             this.tpLLN.Controls.Add(this.label10);
             this.tpLLN.Controls.Add(this.label9);
             this.tpLLN.Controls.Add(this.txtEmail);
-            this.tpLLN.Controls.Add(this.txtNationaliteit);
             this.tpLLN.Controls.Add(this.txtGeboorteplaats);
             this.tpLLN.Controls.Add(this.txtBijkvoornaam);
             this.tpLLN.Controls.Add(this.txtFamilieNaam);
@@ -220,18 +223,19 @@
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
             // 
-            // bunifuImageButton1
+            // btnAddLand
             // 
-            this.bunifuImageButton1.BackColor = System.Drawing.Color.White;
-            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
-            this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(375, 183);
-            this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(26, 26);
-            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuImageButton1.TabIndex = 143;
-            this.bunifuImageButton1.TabStop = false;
-            this.bunifuImageButton1.Zoom = 10;
+            this.btnAddLand.BackColor = System.Drawing.Color.White;
+            this.btnAddLand.Image = ((System.Drawing.Image)(resources.GetObject("btnAddLand.Image")));
+            this.btnAddLand.ImageActive = null;
+            this.btnAddLand.Location = new System.Drawing.Point(375, 183);
+            this.btnAddLand.Name = "btnAddLand";
+            this.btnAddLand.Size = new System.Drawing.Size(26, 26);
+            this.btnAddLand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddLand.TabIndex = 143;
+            this.btnAddLand.TabStop = false;
+            this.btnAddLand.Zoom = 10;
+            this.btnAddLand.Click += new System.EventHandler(this.btnAddLand_Click);
             // 
             // txtGeboortedatum
             // 
@@ -271,7 +275,7 @@
             this.mskGsmNummer.EnabledCalc = true;
             this.mskGsmNummer.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mskGsmNummer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskGsmNummer.Location = new System.Drawing.Point(137, 285);
+            this.mskGsmNummer.Location = new System.Drawing.Point(137, 282);
             this.mskGsmNummer.Mask = "0000 00 00 00";
             this.mskGsmNummer.MaxLength = 32767;
             this.mskGsmNummer.MultiLine = false;
@@ -309,9 +313,6 @@
             this.cmbLand.EnabledCalc = true;
             this.cmbLand.FormattingEnabled = true;
             this.cmbLand.ItemHeight = 20;
-            this.cmbLand.Items.AddRange(new object[] {
-            "Belgie",
-            "Brakka landen"});
             this.cmbLand.Location = new System.Drawing.Point(407, 183);
             this.cmbLand.Name = "cmbLand";
             this.cmbLand.Size = new System.Drawing.Size(130, 26);
@@ -453,7 +454,7 @@
             this.txtEmail.EnabledCalc = true;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtEmail.Location = new System.Drawing.Point(137, 320);
+            this.txtEmail.Location = new System.Drawing.Point(137, 317);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.MultiLine = false;
             this.txtEmail.Name = "txtEmail";
@@ -462,21 +463,6 @@
             this.txtEmail.TabIndex = 134;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmail.UseSystemPasswordChar = false;
-            // 
-            // txtNationaliteit
-            // 
-            this.txtNationaliteit.EnabledCalc = true;
-            this.txtNationaliteit.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNationaliteit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtNationaliteit.Location = new System.Drawing.Point(137, 250);
-            this.txtNationaliteit.MaxLength = 32767;
-            this.txtNationaliteit.MultiLine = false;
-            this.txtNationaliteit.Name = "txtNationaliteit";
-            this.txtNationaliteit.ReadOnly = false;
-            this.txtNationaliteit.Size = new System.Drawing.Size(130, 29);
-            this.txtNationaliteit.TabIndex = 132;
-            this.txtNationaliteit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNationaliteit.UseSystemPasswordChar = false;
             // 
             // txtGeboorteplaats
             // 
@@ -552,7 +538,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 320);
+            this.label8.Location = new System.Drawing.Point(7, 317);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 15);
             this.label8.TabIndex = 123;
@@ -561,7 +547,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 285);
+            this.label4.Location = new System.Drawing.Point(7, 282);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 15);
             this.label4.TabIndex = 122;
@@ -1168,7 +1154,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(16, 253);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(80, 15);
+            this.label16.Size = new System.Drawing.Size(81, 15);
             this.label16.TabIndex = 14;
             this.label16.Text = "Telefoon werk";
             // 
@@ -1528,6 +1514,34 @@
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
+            // btnAddNationaliteit
+            // 
+            this.btnAddNationaliteit.BackColor = System.Drawing.Color.White;
+            this.btnAddNationaliteit.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNationaliteit.Image")));
+            this.btnAddNationaliteit.ImageActive = null;
+            this.btnAddNationaliteit.Location = new System.Drawing.Point(105, 250);
+            this.btnAddNationaliteit.Name = "btnAddNationaliteit";
+            this.btnAddNationaliteit.Size = new System.Drawing.Size(26, 26);
+            this.btnAddNationaliteit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddNationaliteit.TabIndex = 144;
+            this.btnAddNationaliteit.TabStop = false;
+            this.btnAddNationaliteit.Zoom = 10;
+            this.btnAddNationaliteit.Click += new System.EventHandler(this.btnAddNationaliteit_Click);
+            // 
+            // txtNationaliteit
+            // 
+            this.txtNationaliteit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtNationaliteit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.txtNationaliteit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtNationaliteit.Enabled = false;
+            this.txtNationaliteit.EnabledCalc = true;
+            this.txtNationaliteit.FormattingEnabled = true;
+            this.txtNationaliteit.ItemHeight = 20;
+            this.txtNationaliteit.Location = new System.Drawing.Point(137, 250);
+            this.txtNationaliteit.Name = "txtNationaliteit";
+            this.txtNationaliteit.Size = new System.Drawing.Size(130, 26);
+            this.txtNationaliteit.TabIndex = 145;
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1546,7 +1560,7 @@
             this.xylosTabControl1.ResumeLayout(false);
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddLand)).EndInit();
             this.tpOuder.ResumeLayout(false);
             this.tpOuder.PerformLayout();
             this.pnlMoeder.ResumeLayout(false);
@@ -1561,6 +1575,7 @@
             this.tpExtra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpBevestigen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1605,7 +1620,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private XylosTextBox txtEmail;
-        private XylosTextBox txtNationaliteit;
         private XylosTextBox txtGeboorteplaats;
         private XylosTextBox txtBijkvoornaam;
         private XylosTextBox txtFamilieNaam;
@@ -1671,6 +1685,8 @@
         private XylosRadioButton rdbGezinshoofdMoeder;
         private System.Windows.Forms.Label label24;
         private CustomMaskedTextbox txtGeboortedatum;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private Bunifu.Framework.UI.BunifuImageButton btnAddLand;
+        private Bunifu.Framework.UI.BunifuImageButton btnAddNationaliteit;
+        private XylosCombobox txtNationaliteit;
     }
 }

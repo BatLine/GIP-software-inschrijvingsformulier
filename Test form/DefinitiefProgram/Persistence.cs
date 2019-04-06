@@ -88,6 +88,24 @@ namespace DefinitiefProgram
             new MySqlCommand("UPDATE leerling SET IDmoeder = '" + MoederID + "', IDvader = '" + VaderID + "' WHERE (idLeerling = '" + LLNID + "')", conn).ExecuteNonQuery();
             conn.Close();
         }
+        public void addLand(string land)
+        {
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `landen` (`land`) VALUES ('" + land + "');", conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void addNationaliteit(string nationaliteit)
+        {
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `nationaliteiten` (`nationaliteit`) VALUES ('" + nationaliteit + "');", conn);
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         #endregion
 
         #region get
@@ -217,6 +235,32 @@ namespace DefinitiefProgram
             { ids.Add(Convert.ToInt16(dr["idLeerling"])); }
             conn.Close();
             return ids;
+        }
+        public List<string> getAlleLanden()
+        {
+            List<string> alleLanden = new List<string>();
+
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from landen", conn);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            { alleLanden.Add(dr["land"].ToString()); }
+
+            conn.Close();
+            return alleLanden;
+        }
+        public List<string> getAlleNationaliteiten()
+        {
+            List<string> alleNationaliteiten = new List<string>();
+
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from nationaliteiten", conn);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            { alleNationaliteiten.Add(dr["nationaliteit"].ToString()); }
+
+            conn.Close();
+            return alleNationaliteiten;
         }
         #endregion
     }
