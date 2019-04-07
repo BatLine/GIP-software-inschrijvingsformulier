@@ -17,10 +17,13 @@ namespace DefinitiefProgram
         #region controls
         #region form
         public LoadingCircle()
-        { InitializeComponent(); }
+        {
+            InitializeComponent();
+        }
         private void LoadingCircle_Load(object sender, EventArgs e)
         { }
         #endregion
+
         #endregion
     }
 }

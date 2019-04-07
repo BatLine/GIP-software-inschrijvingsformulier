@@ -35,6 +35,7 @@ namespace DefinitiefProgram
             pnlMenu.Location = new Point((this.Width / 2) - (pnlMenu.Width / 2), (this.Height / 2) - (pnlMenu.Height / 2));
             if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
             { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
+            setLogo();
         }
         #endregion
         private void btnToevoegen_Click(object sender, EventArgs e)
@@ -62,6 +63,13 @@ namespace DefinitiefProgram
                 d.ShowDialog();
                 this.Focus();
             }
+        }
+        void setLogo()
+        {
+            pbLogo.Load("http://www.vhsj.be/sint-joris/images/logo_handelsschool_sint_joris.jpg");
+            int x = this.Width - pbLogo.Width - 20;
+            int y = this.Height - pbLogo.Height - 20;
+            pbLogo.Location = new Point(x, y);
         }
         #endregion
     }

@@ -123,6 +123,12 @@
     <Compile Include="Export.Designer.cs">
       <DependentUpon>Export.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layout\circle_progressbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Layout\circle_progressbar.Designer.cs">
+      <DependentUpon>circle_progressbar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\ctb.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export.resx">
       <DependentUpon>Export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Layout\circle_progressbar.resx">
+      <DependentUpon>circle_progressbar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lijstleerlingen.resx">
       <DependentUpon>Lijstleerlingen.cs</DependentUpon>

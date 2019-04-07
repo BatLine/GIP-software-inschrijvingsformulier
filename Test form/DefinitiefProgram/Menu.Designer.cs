@@ -36,7 +36,9 @@
             this.btnToevoegen = new XylosButton();
             this.btnClose = new XylosButton();
             this.btnWijzigen = new XylosButton();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -110,6 +112,15 @@
             this.btnWijzigen.Text = "Bestaande leerling aanpassen";
             this.btnWijzigen.Click += new XylosButton.ClickEventHandler(this.btnWijzigen_Click);
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(405, 351);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(100, 50);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLogo.TabIndex = 9;
+            this.pbLogo.TabStop = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,6 +128,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(546, 460);
             this.ControlBox = false;
+            this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -128,7 +140,9 @@
             this.Load += new System.EventHandler(this.Menu_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,5 +155,6 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.Windows.Forms.Panel pnlMenu;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }
