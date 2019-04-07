@@ -26,10 +26,11 @@ namespace DefinitiefProgram
         string tempPath = Path.GetTempPath();
         List<Leerling> lijstSpecifieker;
         List<Leerling> leerlingenOmteExporteren = new List<Leerling>();
+        bool busy = false;
         //item.Selected = true; toevoegen bij alles dat wordt toegevoegd in de listview
-        //size klein 318; 140
-        //size med 318; 270
-        //size large 318; 538
+        //size klein 341; 140
+        //size med 341; 275
+        //size large 341, 574
         #endregion
 
         #region controls
@@ -46,7 +47,7 @@ namespace DefinitiefProgram
         private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSpecifiker.Checked)
-            { showSpecifieker(); this.Size = new Size(318, 538); }
+            { showSpecifieker(); this.Size = new Size(341, 574); }
             else { hideSpecifieker(); }
             setLocationButtons();
         }
@@ -103,7 +104,7 @@ namespace DefinitiefProgram
         #region functions
         void hideAlles()
         {
-            this.Size = new Size(318, 140);
+            this.Size = new Size(341, 140);
             gpSpecifiek.Hide();
             gpSpecifieker.Hide();
             setLocationButtons();
@@ -112,7 +113,7 @@ namespace DefinitiefProgram
         {
             chkSpecifiker.Checked = false;
             gpSpecifiek.Show();
-            this.Size = new Size(318, 270);
+            this.Size = new Size(341, 275);
             setLocationButtons();
         }
         void showSpecifieker()
@@ -123,31 +124,43 @@ namespace DefinitiefProgram
         void hideSpecifieker()
         {
             gpSpecifieker.Hide();
-            this.Size = new Size(318, 270);
+            this.Size = new Size(341, 275);
             setLocationButtons();
         }
         async void refreshSpecifieker()
         {
-            LoadingCircle lo = new LoadingCircle();
-            lo.Show();
-            lo.BringToFront();
-            lo.TopMost = true;
-            Panel pnl = new Panel();
-            this.Controls.Add(pnl);
-            pnl.BackColor = this.BackColor;
-            pnl.Size = this.Size;
-            pnl.Location = new Point(0, 0);
-            pnl.BringToFront();
-            string text = this.Text;
-            this.Text = "";
-            this.Visible = false;
+            if (!busy)
+            {
+                if (Convert.ToDateTime(DateTime.ParseExact(dtpVan.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null)) > Convert.ToDateTime(DateTime.ParseExact(dtpTot.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null)))
+                { busy = true; MessageBox.Show("De einddatum kan niet lager zijn dan de begindatum."); dtpVan.Value = DateTime.Now; busy = false; refreshSpecifieker(); }
+                else if (Convert.ToDateTime(DateTime.ParseExact(dtpVan.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null)) > DateTime.Now)
+                { busy = true; MessageBox.Show("Je kan niet in de toekomst beignnen zoeken."); dtpVan.Value = DateTime.Now; busy = false; refreshSpecifieker(); }
+                else if (Convert.ToDateTime(DateTime.ParseExact(dtpTot.Value.ToString("dd/MM/yyyy"), "dd/MM/yyyy", null)) > DateTime.Now)
+                { busy = true; MessageBox.Show("Je kan niet tot in de toekomst zoeken."); dtpTot.Value = DateTime.Now; busy = false; refreshSpecifieker(); }
+                else
+                {
+                    LoadingCircle lo = new LoadingCircle();
+                    lo.Show();
+                    lo.BringToFront();
+                    lo.TopMost = true;
+                    Panel pnl = new Panel();
+                    this.Controls.Add(pnl);
+                    pnl.BackColor = this.BackColor;
+                    pnl.Size = this.Size;
+                    pnl.Location = new Point(0, 0);
+                    pnl.BringToFront();
+                    string text = this.Text;
+                    this.Text = "";
+                    this.Visible = false;
 
-            await Task.Run(() => refrSpecifieker());
+                    await Task.Run(() => refrSpecifieker());
 
-            this.Visible = true;
-            this.Text = text;
-            Controls.Remove(pnl);
-            lo.Close();
+                    this.Visible = true;
+                    this.Text = text;
+                    Controls.Remove(pnl);
+                    lo.Close();
+                }
+            }
         }
         void refrSpecifieker()
         {
@@ -182,37 +195,40 @@ namespace DefinitiefProgram
             { hideAlles(); }
             else
             {
-                showSpecifiek();
                 refreshSpecifieker();
+                showSpecifiek();
             }
         }
         void setLocationButtons()
         {
-            if (this.Size == new Size(318, 538))
+            int xCancel = 15;
+            int xExport = 255;
+            if (this.Size == new Size(341, 574))
             {
-                int y = this.Height - btnCancel.Height - 60;
-                btnCancel.Location = new Point(btnCancel.Width, y);
-                btnExport.Location = new Point(this.Width - btnExport.Width - 40, y);
+                int y = 505;
+                btnCancel.Location = new Point(xCancel, y);
+                btnExport.Location = new Point(xExport, y);
                 btnCancel.BringToFront();
                 btnExport.BringToFront();
             }
-            else if (this.Size == new Size(318, 270))
+            else if (this.Size == new Size(341, 275))
+            {
+                int y = gpSpecifiek.Location.Y + gpSpecifiek.Size.Height + 4;
+                btnCancel.Location = new Point(xCancel, y);
+                btnExport.Location = new Point(xExport, y);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                this.Size = new Size(341, 242);
+            }
+            else if (this.Size == new Size(341, 140))
             {
                 int y = this.Height - btnCancel.Height - 45;
-                btnCancel.Location = new Point(gpSpecifiek.Location.X, y);
-                btnExport.Location = new Point(gpSpecifiek.Location.X + gpSpecifiek.Size.Width - btnExport.Width, y);
+                btnCancel.Location = new Point(xCancel, y);
+                btnExport.Location = new Point(xExport, y);
                 btnCancel.BringToFront();
                 btnExport.BringToFront();
             }
-            else if (this.Size == new Size(318, 140))
-            {
-                int y = this.Height - btnCancel.Height - 45;
-                btnCancel.Location = new Point(rdbIedereen.Location.X, y);
-                btnExport.Location = new Point(rdbIedereen.Location.X + rdbIedereen.Size.Width - btnExport.Width, y);
-                btnCancel.BringToFront();
-                btnExport.BringToFront();
-            }
-            CenterToScreen();
+            CenterToParent();
         }
         async void runExport(string l, string n)
         {

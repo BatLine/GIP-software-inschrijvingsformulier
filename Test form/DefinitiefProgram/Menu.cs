@@ -14,7 +14,7 @@ using prop = DefinitiefProgram.Properties.Settings;
 namespace DefinitiefProgram
 {
     public partial class Menu : Form
-    { 
+    {
         #region vars
         string tempPath = Path.GetTempPath();
         Business b = new Business();
@@ -28,19 +28,22 @@ namespace DefinitiefProgram
         { }
         private void Menu_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Left = Top = 0;
+            Width = Screen.PrimaryScreen.WorkingArea.Width;
+            Height = Screen.PrimaryScreen.WorkingArea.Height;
+            pnlMenu.Location = new Point((this.Width / 2) - (pnlMenu.Width / 2), (this.Height / 2) - (pnlMenu.Height / 2));
             if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
             { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
         }
         #endregion
         private void btnToevoegen_Click(object sender, EventArgs e)
-        { Design d = new Design(); d.ShowDialog(); this.Focus(); }
+        { Design d = new Design(); d.ShowDialog(); d.Dispose(); this.Focus(); }
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
             Lijstleerlingen lijstleerlingen = new Lijstleerlingen();
             lijstleerlingen.m = this;
-            lijstleerlingen.Show();
-            lijstleerlingen.BringToFront();
-            lijstleerlingen.refreshLLN();
+            lijstleerlingen.ShowDialog();
         }
         private void btnExport_Click(object sender, EventArgs e)
         { Export export = new Export(); export.Show(); }

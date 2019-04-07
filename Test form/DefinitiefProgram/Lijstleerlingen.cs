@@ -18,6 +18,7 @@ namespace DefinitiefProgram
         #region vars
         Business b = new Business();
         public Menu m = new Menu();
+        bool loading = true;
         #endregion
 
         #region controls
@@ -25,7 +26,7 @@ namespace DefinitiefProgram
         public Lijstleerlingen()
         { InitializeComponent(); }
         private void Lijstleerlingen_Load(object sender, EventArgs e)
-        { }
+        { refreshLLN(); loading = false; }
         #endregion
         private void btnKies_Click(object sender, EventArgs e)
         {
@@ -36,12 +37,31 @@ namespace DefinitiefProgram
             }
             else { MessageBox.Show("Selecteer eerst een leerling."); }
         }
+        private void lvLeerlingen_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvLeerlingen.SelectedItems.Count > 0)
+            { btnKies_Click(sender, e); }
+        }
+        private void lvLeerlingen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            { btnKies_Click(sender, e); }
+        }
+        private void tmrCheckIfLoaded_Tick(object sender, EventArgs e)
+        {
+            if (!loading)
+            {
+                lo.Focus();
+                tmrCheckIfLoaded.Stop();
+            }
+        }
         #endregion
 
         #region functions
+        LoadingCircle lo;
         public async void refreshLLN()
         {
-            LoadingCircle lo = new LoadingCircle();
+            lo = new LoadingCircle();
             lo.Show();
             lo.BringToFront();
             Panel pnl = new Panel();
@@ -53,6 +73,7 @@ namespace DefinitiefProgram
             string text = this.Text;
             this.Text = "";
             this.Visible = false;
+            lo.Focus();
 
             await Task.Run(() => getAlleLLN());
 
@@ -61,6 +82,7 @@ namespace DefinitiefProgram
             this.Text = text;
             Controls.Remove(pnl);
             lo.Close();
+            lo.Dispose();
         }
         void getAlleLLN()
         {
@@ -74,7 +96,7 @@ namespace DefinitiefProgram
                 info[2] = l.StrPostcode;
                 ListViewItem lv = new ListViewItem(info);
                 lv.Tag = databaseID;
-                this.Invoke(new Action(() => lvLeerlingen.Items.Add(lv))); 
+                this.Invoke(new Action(() => lvLeerlingen.Items.Add(lv)));
             }
         }
         #endregion

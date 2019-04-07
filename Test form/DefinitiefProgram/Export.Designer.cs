@@ -68,17 +68,17 @@
             this.gpSpecifiek.Controls.Add(this.dtpVan);
             this.gpSpecifiek.Location = new System.Drawing.Point(14, 73);
             this.gpSpecifiek.Name = "gpSpecifiek";
-            this.gpSpecifiek.Size = new System.Drawing.Size(277, 125);
+            this.gpSpecifiek.Size = new System.Drawing.Size(299, 132);
             this.gpSpecifiek.TabIndex = 3;
             this.gpSpecifiek.TabStop = false;
-            this.gpSpecifiek.Text = "Op datum";
+            this.gpSpecifiek.Text = "Op aanmaakdatum";
             // 
             // chkSpecifiker
             // 
             this.chkSpecifiker.Checked = false;
             this.chkSpecifiker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkSpecifiker.EnabledCalc = true;
-            this.chkSpecifiker.Location = new System.Drawing.Point(9, 101);
+            this.chkSpecifiker.Location = new System.Drawing.Point(9, 106);
             this.chkSpecifiker.Name = "chkSpecifiker";
             this.chkSpecifiker.Size = new System.Drawing.Size(262, 18);
             this.chkSpecifiker.TabIndex = 5;
@@ -88,7 +88,7 @@
             // lblAantalLLN
             // 
             this.lblAantalLLN.AutoSize = true;
-            this.lblAantalLLN.Location = new System.Drawing.Point(6, 85);
+            this.lblAantalLLN.Location = new System.Drawing.Point(38, 78);
             this.lblAantalLLN.Name = "lblAantalLLN";
             this.lblAantalLLN.Size = new System.Drawing.Size(140, 13);
             this.lblAantalLLN.TabIndex = 4;
@@ -97,7 +97,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 61);
+            this.label3.Location = new System.Drawing.Point(6, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 3;
@@ -106,7 +106,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 25);
+            this.label2.Location = new System.Drawing.Point(6, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 2;
@@ -116,7 +116,7 @@
             // 
             this.dtpTot.Location = new System.Drawing.Point(41, 55);
             this.dtpTot.Name = "dtpTot";
-            this.dtpTot.Size = new System.Drawing.Size(230, 20);
+            this.dtpTot.Size = new System.Drawing.Size(252, 20);
             this.dtpTot.TabIndex = 1;
             this.dtpTot.ValueChanged += new System.EventHandler(this.dtpTot_ValueChanged);
             // 
@@ -124,16 +124,16 @@
             // 
             this.dtpVan.Location = new System.Drawing.Point(41, 19);
             this.dtpVan.Name = "dtpVan";
-            this.dtpVan.Size = new System.Drawing.Size(230, 20);
+            this.dtpVan.Size = new System.Drawing.Size(252, 20);
             this.dtpVan.TabIndex = 0;
             this.dtpVan.ValueChanged += new System.EventHandler(this.dtpVan_ValueChanged);
             // 
             // gpSpecifieker
             // 
             this.gpSpecifieker.Controls.Add(this.lvSpecifieker);
-            this.gpSpecifieker.Location = new System.Drawing.Point(14, 204);
+            this.gpSpecifieker.Location = new System.Drawing.Point(14, 211);
             this.gpSpecifieker.Name = "gpSpecifieker";
-            this.gpSpecifieker.Size = new System.Drawing.Size(277, 288);
+            this.gpSpecifieker.Size = new System.Drawing.Size(299, 288);
             this.gpSpecifieker.TabIndex = 4;
             this.gpSpecifieker.TabStop = false;
             this.gpSpecifieker.Text = "Op naam";
@@ -150,7 +150,7 @@
             this.lvSpecifieker.HideSelection = false;
             this.lvSpecifieker.Location = new System.Drawing.Point(6, 19);
             this.lvSpecifieker.Name = "lvSpecifieker";
-            this.lvSpecifieker.Size = new System.Drawing.Size(265, 263);
+            this.lvSpecifieker.Size = new System.Drawing.Size(287, 263);
             this.lvSpecifieker.TabIndex = 0;
             this.lvSpecifieker.UseCompatibleStateImageBehavior = false;
             this.lvSpecifieker.View = System.Windows.Forms.View.Details;
@@ -158,7 +158,7 @@
             // chNaam
             // 
             this.chNaam.Text = "Naam";
-            this.chNaam.Width = 120;
+            this.chNaam.Width = 140;
             // 
             // chPostcode
             // 
@@ -173,21 +173,21 @@
             // btnExport
             // 
             this.btnExport.EnabledCalc = true;
-            this.btnExport.Location = new System.Drawing.Point(264, 9);
+            this.btnExport.Location = new System.Drawing.Point(255, 505);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(26, 23);
+            this.btnExport.Size = new System.Drawing.Size(58, 23);
             this.btnExport.TabIndex = 5;
-            this.btnExport.Text = "=>";
+            this.btnExport.Text = "Exporteer";
             this.btnExport.Click += new XylosButton.ClickEventHandler(this.btnExport_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.EnabledCalc = true;
-            this.btnCancel.Location = new System.Drawing.Point(232, 9);
+            this.btnCancel.Location = new System.Drawing.Point(15, 505);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(26, 23);
+            this.btnCancel.Size = new System.Drawing.Size(42, 23);
             this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "<=";
+            this.btnCancel.Text = "Terug";
             this.btnCancel.Click += new XylosButton.ClickEventHandler(this.btnCancel_Click);
             // 
             // rdbSpecifiek
@@ -220,7 +220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(302, 499);
+            this.ClientSize = new System.Drawing.Size(325, 535);
             this.ControlBox = false;
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnCancel);

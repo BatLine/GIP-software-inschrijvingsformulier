@@ -33,6 +33,8 @@
             this.ilPassword = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
+            this.txtNationaliteit = new XylosCombobox();
+            this.btnAddNationaliteit = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnAddLand = new Bunifu.Framework.UI.BunifuImageButton();
             this.txtGeboortedatum = new DefinitiefProgram.CustomMaskedTextbox();
             this.mskPostcode = new DefinitiefProgram.CustomMaskedTextbox();
@@ -134,10 +136,9 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
-            this.btnAddNationaliteit = new Bunifu.Framework.UI.BunifuImageButton();
-            this.txtNationaliteit = new XylosCombobox();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddLand)).BeginInit();
             this.tpOuder.SuspendLayout();
             this.pnlMoeder.SuspendLayout();
@@ -147,7 +148,6 @@
             this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpBevestigen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).BeginInit();
             this.SuspendLayout();
             // 
             // ilPassword
@@ -222,6 +222,34 @@
             this.tpLLN.Size = new System.Drawing.Size(555, 510);
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
+            // 
+            // txtNationaliteit
+            // 
+            this.txtNationaliteit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtNationaliteit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.txtNationaliteit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtNationaliteit.Enabled = false;
+            this.txtNationaliteit.EnabledCalc = true;
+            this.txtNationaliteit.FormattingEnabled = true;
+            this.txtNationaliteit.ItemHeight = 20;
+            this.txtNationaliteit.Location = new System.Drawing.Point(137, 250);
+            this.txtNationaliteit.Name = "txtNationaliteit";
+            this.txtNationaliteit.Size = new System.Drawing.Size(130, 26);
+            this.txtNationaliteit.TabIndex = 132;
+            // 
+            // btnAddNationaliteit
+            // 
+            this.btnAddNationaliteit.BackColor = System.Drawing.Color.White;
+            this.btnAddNationaliteit.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNationaliteit.Image")));
+            this.btnAddNationaliteit.ImageActive = null;
+            this.btnAddNationaliteit.Location = new System.Drawing.Point(105, 250);
+            this.btnAddNationaliteit.Name = "btnAddNationaliteit";
+            this.btnAddNationaliteit.Size = new System.Drawing.Size(26, 26);
+            this.btnAddNationaliteit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnAddNationaliteit.TabIndex = 144;
+            this.btnAddNationaliteit.TabStop = false;
+            this.btnAddNationaliteit.Zoom = 10;
+            this.btnAddNationaliteit.Click += new System.EventHandler(this.btnAddNationaliteit_Click);
             // 
             // btnAddLand
             // 
@@ -1514,34 +1542,6 @@
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
-            // btnAddNationaliteit
-            // 
-            this.btnAddNationaliteit.BackColor = System.Drawing.Color.White;
-            this.btnAddNationaliteit.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNationaliteit.Image")));
-            this.btnAddNationaliteit.ImageActive = null;
-            this.btnAddNationaliteit.Location = new System.Drawing.Point(105, 250);
-            this.btnAddNationaliteit.Name = "btnAddNationaliteit";
-            this.btnAddNationaliteit.Size = new System.Drawing.Size(26, 26);
-            this.btnAddNationaliteit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnAddNationaliteit.TabIndex = 144;
-            this.btnAddNationaliteit.TabStop = false;
-            this.btnAddNationaliteit.Zoom = 10;
-            this.btnAddNationaliteit.Click += new System.EventHandler(this.btnAddNationaliteit_Click);
-            // 
-            // txtNationaliteit
-            // 
-            this.txtNationaliteit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtNationaliteit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.txtNationaliteit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtNationaliteit.Enabled = false;
-            this.txtNationaliteit.EnabledCalc = true;
-            this.txtNationaliteit.FormattingEnabled = true;
-            this.txtNationaliteit.ItemHeight = 20;
-            this.txtNationaliteit.Location = new System.Drawing.Point(137, 250);
-            this.txtNationaliteit.Name = "txtNationaliteit";
-            this.txtNationaliteit.Size = new System.Drawing.Size(130, 26);
-            this.txtNationaliteit.TabIndex = 145;
-            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1560,6 +1560,7 @@
             this.xylosTabControl1.ResumeLayout(false);
             this.tpLLN.ResumeLayout(false);
             this.tpLLN.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddLand)).EndInit();
             this.tpOuder.ResumeLayout(false);
             this.tpOuder.PerformLayout();
@@ -1575,7 +1576,6 @@
             this.tpExtra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpBevestigen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).EndInit();
             this.ResumeLayout(false);
 
         }

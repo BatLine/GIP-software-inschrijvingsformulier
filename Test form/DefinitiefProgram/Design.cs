@@ -15,15 +15,16 @@ namespace DefinitiefProgram
     public partial class Design : Form
     {
         /// <TODO>
-        /// postcode automatisch laten invullen? => of omgekeerd
-        /// cmbNationaliteit invullen met alle nationaliteiten
+        /// postcode in nederland kan bv ook 9000 AB zijn dus mss geen masked txt
+        /// Alles checken dat nodig is (als er wel iets ingetypt is,als het email wel een @ heeft enz)
         /// </TODO>
         #region vars
-        Business b = new Business();
+        Business b;// = new Business();
         int Studiejaar = 0;
         string Schoolstatuut = "Extern";
         bool blnShowPassword = false;
         bool starting = false;
+        LoadingCircle lo;
         #endregion
 
         #region controls
@@ -31,36 +32,43 @@ namespace DefinitiefProgram
         public Design()
         { InitializeComponent(); }
         private void Design_Load(object sender, EventArgs e)
-        { starting = true; getAlleLanden(); getAlleNationaliteiten(); pbToonWachtwoord.Image = ilPassword.Images[0]; checkdebug(); starting = false; }
+        {
+            start();
+        }
         private void Design_FormClosing(object sender, FormClosingEventArgs e)
         { }
         #endregion
         private void btnAddLand_Click(object sender, EventArgs e)
         {
             string strLand = Microsoft.VisualBasic.Interaction.InputBox("Naam land:", "Land toevoegen");
-            if (b.addLand(strLand))
+            if (!string.IsNullOrWhiteSpace(strLand))
             {
-                MessageBox.Show(strLand + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                getAlleLanden();
-                setSelectedLand(strLand);
+                if (b.addLand(strLand))
+                {
+                    MessageBox.Show(strLand + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    getAlleLanden();
+                    setSelectedLand(strLand);
+                }
+                else { MessageBox.Show(strLand + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            else { MessageBox.Show(strLand + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         private void btnAddNationaliteit_Click(object sender, EventArgs e)
         {
             string strNationaliteit = Microsoft.VisualBasic.Interaction.InputBox("Nationaliteit:", "Nationaliteit toevoegen");
-            if (b.addNationaliteit(strNationaliteit))
+            if (!string.IsNullOrWhiteSpace(strNationaliteit))
             {
-                MessageBox.Show(strNationaliteit + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                getAlleNationaliteiten();
-                setSelectedLand(strNationaliteit);
+                if (b.addNationaliteit(strNationaliteit))
+                {
+                    MessageBox.Show(strNationaliteit + " is toegevoegd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    getAlleNationaliteiten();
+                    setSelectedNationaliteit(strNationaliteit);
+                }
+                else { MessageBox.Show(strNationaliteit + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
-            else { MessageBox.Show(strNationaliteit + " bestaat al.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Leerling lln = new Leerling();
-
             //leerling
             //correspondentie
             lln.StrVoornaam = txtVoornaam.Text;
@@ -117,15 +125,7 @@ namespace DefinitiefProgram
             o.StrGezinshoofd = strGezinshoofd;
             lln.O = o;
 
-            try
-            {
-                this.Hide();
-                b.addToDatabase(lln, cmbRichting.Text, Schoolstatuut);
-            }
-            catch (Exception)
-            { MessageBox.Show("Toevoegen mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            
-            this.Close();
+            voegToe(lln);
         }
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
@@ -201,11 +201,59 @@ namespace DefinitiefProgram
         #endregion
 
         #region functions
+        async void start()
+        {
+            lo = new LoadingCircle();
+            lo.Show();
+            lo.Focus();
+            lo.TopMost = true;
+            lo.BringToFront();
+
+            await Task.Run(() => _start());
+
+            lo.Close();
+        }
+        void _start()
+        {
+            starting = true;
+            b = new Business();
+            this.Invoke(new Action(() =>
+            {
+                getAlleLanden();
+                getAlleNationaliteiten();
+                pbToonWachtwoord.Image = ilPassword.Images[0];
+                checkdebug();
+            }));
+            starting = false;
+        }
+        void toevoegen(Leerling l)
+        {
+            try
+            {
+                var richting = (string)cmbRichting.Invoke(new Func<string>(() => cmbRichting.Text));
+                //this.Invoke(new Action(() => this.Hide()));
+                b.addToDatabase(l, richting, Schoolstatuut);
+            }
+            catch (Exception)
+            { MessageBox.Show("Toevoegen mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            this.Invoke(new Action(() => this.Close()));
+        }
+        async void voegToe(Leerling l)
+        {
+            LoadingCircle lo = new LoadingCircle();
+            lo.Show();
+            lo.Focus();
+
+            await Task.Run(() => toevoegen(l));
+
+            lo.Close();
+        }
         void setSelectedLand(string nieuwLand)
         { cmbLand.SelectedItem = nieuwLand; }
         void getAlleLanden()
         {
-            string strHuidigland=string.Empty;
+            string strHuidigland = string.Empty;
             if (!starting)
             { cmbLand.Items.Clear(); } else { if (cmbLand.Items.Count > 0) { strHuidigland = cmbLand.Items[0].ToString(); }}
             foreach (string s in b.getAlleLanden())
@@ -217,8 +265,7 @@ namespace DefinitiefProgram
         {
             string strHuidigeNationaliteit = string.Empty;
             if (!starting)
-            { txtNationaliteit.Items.Clear(); }
-            else { if (txtNationaliteit.Items.Count > 0) { strHuidigeNationaliteit = txtNationaliteit.Items[0].ToString(); } }
+            { txtNationaliteit.Items.Clear(); } else { if (txtNationaliteit.Items.Count > 0) { strHuidigeNationaliteit = txtNationaliteit.Items[0].ToString(); }}
             foreach (string s in b.getAlleNationaliteiten())
             { if (strHuidigeNationaliteit != s) { txtNationaliteit.Items.Add(s); } }
         }
