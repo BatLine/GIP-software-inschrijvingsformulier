@@ -27,6 +27,8 @@ namespace DefinitiefProgram
         { InitializeComponent(); }
         private void Lijstleerlingen_Load(object sender, EventArgs e)
         { refreshLLN(); loading = false; }
+        private void Lijstleerlingen_FormClosing(object sender, FormClosingEventArgs e)
+        { this.Dispose(); }
         #endregion
         private void btnKies_Click(object sender, EventArgs e)
         {
@@ -96,7 +98,10 @@ namespace DefinitiefProgram
                 info[2] = l.StrPostcode;
                 ListViewItem lv = new ListViewItem(info);
                 lv.Tag = databaseID;
-                this.Invoke(new Action(() => lvLeerlingen.Items.Add(lv)));
+                try
+                { this.Invoke(new Action(() => lvLeerlingen.Items.Add(lv) )); }
+                catch (Exception)
+                { Thread.Sleep(2000); }
             }
         }
         #endregion

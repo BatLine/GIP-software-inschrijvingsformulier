@@ -13,8 +13,10 @@ namespace DefinitiefProgram
         public Business()
         { p = new Persistence(); }
 
-        public Tuple<int, List<Leerling>> getAantalLLN(string van, string tot, Export ex)
-        { return p.getAantalLLN(van, tot, ex); }
+        public Tuple<int, List<Leerling>> getAantalLLN(string van, string tot)
+        { return p.getAantalLLN(van, tot); }
+        public Tuple<int, List<Leerling>> getAantalLLNOpNaam(string VNaam, string ANaam)
+        { return p.getAantalLLNOpNaam(VNaam, ANaam); }
         public void addToDatabase(Leerling lln, string pRichting, string pStatuut)
         {
             int intKeuzeID=0, intStatuut=0;

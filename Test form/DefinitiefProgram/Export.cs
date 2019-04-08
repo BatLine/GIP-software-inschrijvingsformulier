@@ -27,10 +27,6 @@ namespace DefinitiefProgram
         List<Leerling> lijstSpecifieker;
         List<Leerling> leerlingenOmteExporteren = new List<Leerling>();
         bool busy = false;
-        //item.Selected = true; toevoegen bij alles dat wordt toegevoegd in de listview
-        //size klein 341; 140
-        //size med 341; 275
-        //size large 341, 574
         #endregion
 
         #region controls
@@ -38,7 +34,18 @@ namespace DefinitiefProgram
         public Export()
         { InitializeComponent(); }
         private void Export_Load(object sender, EventArgs e)
-        { hideAlles(); }
+        {
+            this.Size = new Size(341, 163);
+            gpSpecifiek.Hide();
+            gpSpecifieker.Hide();
+            gpLeerling.Hide();
+            int y = this.Height - btnCancel.Height - 45;
+            btnCancel.Location = new Point(15, y);
+            btnExport.Location = new Point(255, y);
+            btnCancel.BringToFront();
+            btnExport.BringToFront();
+            CenterToParent();
+        }
         #endregion
         private void rdbIedereen_CheckedChanged(object sender, EventArgs e)
         { rdbChanged(); }
@@ -47,10 +54,29 @@ namespace DefinitiefProgram
         private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSpecifiker.Checked)
-            { showSpecifieker(); this.Size = new Size(341, 574); }
-            else { hideSpecifieker(); }
-            setLocationButtons();
+            {
+                this.Size = new Size(341, 597);
+                gpSpecifieker.Show();
+                btnCancel.Location = new Point(15, 529);
+                btnExport.Location = new Point(255, 529);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                CenterToParent();
+            }
+            else
+            {
+                gpSpecifieker.Hide();
+                this.Size = new Size(341, 300);
+                int y = gpSpecifiek.Location.Y + gpSpecifiek.Size.Height + 4;
+                btnCancel.Location = new Point(15, y);
+                btnExport.Location = new Point(255, y);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                CenterToParent();
+            }
         }
+        private void rdbLeerling_CheckedChanged(object sender, EventArgs e)
+        { rdbChanged(); }
         private void dtpVan_ValueChanged(object sender, EventArgs e)
         { refreshSpecifieker(); }
         private void dtpTot_ValueChanged(object sender, EventArgs e)
@@ -80,7 +106,23 @@ namespace DefinitiefProgram
                 }
                 else { leerlingenOmteExporteren = lijstSpecifieker; }
             }
-            else { leerlingenOmteExporteren = b.getAlleLeerlingen(); }
+            else if (rdbIedereen.Checked) { leerlingenOmteExporteren = b.getAlleLeerlingen(); }
+            else if (rdbLeerling.Checked)
+            {
+                ListView.CheckedListViewItemCollection geselecteerdeLLN = this.lvSpecifieker.CheckedItems;
+                if (geselecteerdeLLN.Count > 0)
+                {
+                    foreach (ListViewItem item in geselecteerdeLLN)
+                    {
+                        foreach (Leerling l in lijstSpecifieker)
+                        {
+                            if ((l.StrNaam + " " + l.StrVoornaam == item.Text) && (l.StrPostcode == item.SubItems[1].Text))
+                            { leerlingenOmteExporteren.Add(l); }
+                        }
+                    }
+                }
+                else { cancel = true; }
+            }
 
             if (leerlingenOmteExporteren.Count == 0)
             { cancel = true; }
@@ -99,34 +141,11 @@ namespace DefinitiefProgram
             }
             else { MessageBox.Show("Leerlingen exporteren mislukt." + Environment.NewLine + "Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
+        private void btnZoek_Click(object sender, EventArgs e)
+        { vulSpeciefiekerOpNaam(txtVNaam.Text, txtANaam.Text); }
         #endregion
 
         #region functions
-        void hideAlles()
-        {
-            this.Size = new Size(341, 140);
-            gpSpecifiek.Hide();
-            gpSpecifieker.Hide();
-            setLocationButtons();
-        }
-        void showSpecifiek()
-        {
-            chkSpecifiker.Checked = false;
-            gpSpecifiek.Show();
-            this.Size = new Size(341, 275);
-            setLocationButtons();
-        }
-        void showSpecifieker()
-        {
-            gpSpecifieker.Show();
-            setLocationButtons();
-        }
-        void hideSpecifieker()
-        {
-            gpSpecifieker.Hide();
-            this.Size = new Size(341, 275);
-            setLocationButtons();
-        }
         async void refreshSpecifieker()
         {
             if (!busy)
@@ -168,7 +187,7 @@ namespace DefinitiefProgram
             van = dtpVan.Value.ToString("dd MM yyyy");
             tot = dtpTot.Value.ToString("dd MM yyyy");
 
-            Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot, this);
+            Tuple<int, List<Leerling>> tuple = b.getAantalLLN(van, tot);
             this.Invoke(new Action(() => {
                 lblAantalLLN.Text = tuple.Item1 + " Leerlingen in deze periode.";
                 lijstSpecifieker = tuple.Item2;
@@ -192,43 +211,94 @@ namespace DefinitiefProgram
         void rdbChanged()
         {
             if (rdbIedereen.Checked)
-            { hideAlles(); }
-            else
+            {
+                this.Size = new Size(341, 163);
+                gpSpecifiek.Hide();
+                gpSpecifieker.Hide();
+                gpLeerling.Hide();
+                int y = this.Height - btnCancel.Height - 45;
+                btnCancel.Location = new Point(15, y);
+                btnExport.Location = new Point(255, y);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                CenterToParent();
+            }
+            else if (rdbSpecifiek.Checked)
             {
                 refreshSpecifieker();
-                showSpecifiek();
+                chkSpecifiker.Checked = false;
+                gpLeerling.Hide();
+                gpSpecifiek.Show();
+                this.Size = new Size(341, 300);
+                int y = gpSpecifiek.Location.Y + gpSpecifiek.Size.Height + 4;
+                btnCancel.Location = new Point(15, y);
+                btnExport.Location = new Point(255, y);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                this.Size = new Size(341, 268);
+                CenterToParent();
+            } else if (rdbLeerling.Checked)
+            {
+                gpSpecifieker.Hide();
+                gpSpecifiek.Hide();
+                gpLeerling.Show();
+                this.Size = new Size(341, 300);
+                int y = gpSpecifiek.Location.Y + gpSpecifiek.Size.Height + 4;
+                btnCancel.Location = new Point(15, y);
+                btnExport.Location = new Point(255, y);
+                btnCancel.BringToFront();
+                btnExport.BringToFront();
+                CenterToParent();
             }
         }
-        void setLocationButtons()
+        async void vulSpeciefiekerOpNaam(string Vnaam, string Anaam)
         {
-            int xCancel = 15;
-            int xExport = 255;
-            if (this.Size == new Size(341, 574))
+            if (string.IsNullOrWhiteSpace(txtVNaam.Text))
+            { MessageBox.Show("Geef een geldige voornaam in."); }
+            else if (string.IsNullOrWhiteSpace(txtANaam.Text))
+            { MessageBox.Show("Geef een geldige achternaam in."); }
+            else
             {
-                int y = 505;
-                btnCancel.Location = new Point(xCancel, y);
-                btnExport.Location = new Point(xExport, y);
+                LoadingCircle lo = new LoadingCircle();
+                lo.Show();
+                lo.BringToFront();
+                lo.TopMost = true;
+                Panel pnl = new Panel();
+                this.Controls.Add(pnl);
+                pnl.BackColor = this.BackColor;
+                pnl.Size = this.Size;
+                pnl.Location = new Point(0, 0);
+                pnl.BringToFront();
+                string text = this.Text;
+                this.Text = "";
+                this.Visible = false;
+
+                await Task.Run(() => _vulSpeciefiekerOpNaam(Vnaam, Anaam));
+
+                this.Visible = true;
+                this.Text = text;
+                Controls.Remove(pnl);
+                lo.Close();
+            }
+        }
+        void _vulSpeciefiekerOpNaam(string Vnaam, string Anaam)
+        {
+            Tuple<int, List<Leerling>> tuple = b.getAantalLLNOpNaam(Vnaam, Anaam);
+            this.Invoke(new Action(() => {
+                this.Size = new Size(341, 557);
+                gpSpecifieker.Show();
+                btnCancel.Location = new Point(15, 525);
+                btnExport.Location = new Point(258, 525);
                 btnCancel.BringToFront();
                 btnExport.BringToFront();
-            }
-            else if (this.Size == new Size(341, 275))
-            {
-                int y = gpSpecifiek.Location.Y + gpSpecifiek.Size.Height + 4;
-                btnCancel.Location = new Point(xCancel, y);
-                btnExport.Location = new Point(xExport, y);
-                btnCancel.BringToFront();
-                btnExport.BringToFront();
-                this.Size = new Size(341, 242);
-            }
-            else if (this.Size == new Size(341, 140))
-            {
-                int y = this.Height - btnCancel.Height - 45;
-                btnCancel.Location = new Point(xCancel, y);
-                btnExport.Location = new Point(xExport, y);
-                btnCancel.BringToFront();
-                btnExport.BringToFront();
-            }
-            CenterToParent();
+                CenterToParent();
+                if (tuple.Item1 == 1)
+                { lblAantalLLNOpNaam.Text = tuple.Item1 + " Leerling gevonden."; }
+                else
+                { lblAantalLLNOpNaam.Text = tuple.Item1 + " Leerlingen gevonden."; }
+                lijstSpecifieker = tuple.Item2;
+                vulSpeciefieker(tuple.Item2);
+            }));
         }
         async void runExport(string l, string n)
         {

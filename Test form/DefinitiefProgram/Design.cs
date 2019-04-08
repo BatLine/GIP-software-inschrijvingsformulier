@@ -32,9 +32,7 @@ namespace DefinitiefProgram
         public Design()
         { InitializeComponent(); }
         private void Design_Load(object sender, EventArgs e)
-        {
-            start();
-        }
+        { start(); }
         private void Design_FormClosing(object sender, FormClosingEventArgs e)
         { }
         #endregion
@@ -222,7 +220,10 @@ namespace DefinitiefProgram
                 getAlleLanden();
                 getAlleNationaliteiten();
                 pbToonWachtwoord.Image = ilPassword.Images[0];
-                checkdebug();
+                cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
+                cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
+                rdbJaar1.Checked = true;
+                //checkdebug();
             }));
             starting = false;
         }

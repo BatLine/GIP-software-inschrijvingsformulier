@@ -559,9 +559,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(7, 79);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(83, 15);
+            this.label17.Size = new System.Drawing.Size(86, 15);
             this.label17.TabIndex = 124;
-            this.label17.Text = "Bijk voornaam";
+            this.label17.Text = "Bijk. voornaam";
             // 
             // label8
             // 
@@ -1244,7 +1244,7 @@
             this.rdbHalfIntern.Location = new System.Drawing.Point(92, 57);
             this.rdbHalfIntern.Name = "rdbHalfIntern";
             this.rdbHalfIntern.Size = new System.Drawing.Size(260, 18);
-            this.rdbHalfIntern.TabIndex = 108;
+            this.rdbHalfIntern.TabIndex = 113;
             this.rdbHalfIntern.Text = "Half-Intern (Blijft \'s middags op school)";
             this.rdbHalfIntern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbHalfIntern_CheckedChanged);
             // 
@@ -1256,7 +1256,7 @@
             this.rdbExtern.Location = new System.Drawing.Point(92, 33);
             this.rdbExtern.Name = "rdbExtern";
             this.rdbExtern.Size = new System.Drawing.Size(260, 18);
-            this.rdbExtern.TabIndex = 107;
+            this.rdbExtern.TabIndex = 112;
             this.rdbExtern.Text = "Extern (Mag de school \'s middags verlaten)";
             this.rdbExtern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbExtern_CheckedChanged);
             // 
@@ -1268,7 +1268,7 @@
             this.rdbIntern.Location = new System.Drawing.Point(92, 9);
             this.rdbIntern.Name = "rdbIntern";
             this.rdbIntern.Size = new System.Drawing.Size(75, 18);
-            this.rdbIntern.TabIndex = 106;
+            this.rdbIntern.TabIndex = 111;
             this.rdbIntern.Text = "Intern";
             this.rdbIntern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIntern_CheckedChanged);
             // 
@@ -1293,7 +1293,7 @@
             this.cmbRichting.Location = new System.Drawing.Point(95, 114);
             this.cmbRichting.Name = "cmbRichting";
             this.cmbRichting.Size = new System.Drawing.Size(201, 26);
-            this.cmbRichting.TabIndex = 104;
+            this.cmbRichting.TabIndex = 110;
             // 
             // rdbJaar6
             // 
@@ -1303,7 +1303,7 @@
             this.rdbJaar6.Location = new System.Drawing.Point(221, 32);
             this.rdbJaar6.Name = "rdbJaar6";
             this.rdbJaar6.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar6.TabIndex = 103;
+            this.rdbJaar6.TabIndex = 109;
             this.rdbJaar6.Text = "6e Jaar";
             this.rdbJaar6.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar6_CheckedChanged);
             // 
@@ -1315,7 +1315,7 @@
             this.rdbJaar5.Location = new System.Drawing.Point(221, 8);
             this.rdbJaar5.Name = "rdbJaar5";
             this.rdbJaar5.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar5.TabIndex = 102;
+            this.rdbJaar5.TabIndex = 108;
             this.rdbJaar5.Text = "5e Jaar";
             this.rdbJaar5.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar5_CheckedChanged);
             // 
@@ -1327,7 +1327,7 @@
             this.rdbJaar4.Location = new System.Drawing.Point(95, 80);
             this.rdbJaar4.Name = "rdbJaar4";
             this.rdbJaar4.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar4.TabIndex = 101;
+            this.rdbJaar4.TabIndex = 107;
             this.rdbJaar4.Text = "4e Jaar";
             this.rdbJaar4.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar4_CheckedChanged);
             // 
@@ -1339,7 +1339,7 @@
             this.rdbJaar3.Location = new System.Drawing.Point(95, 56);
             this.rdbJaar3.Name = "rdbJaar3";
             this.rdbJaar3.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar3.TabIndex = 100;
+            this.rdbJaar3.TabIndex = 106;
             this.rdbJaar3.Text = "3e Jaar";
             this.rdbJaar3.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar3_CheckedChanged);
             // 
@@ -1351,7 +1351,7 @@
             this.rdbJaar2.Location = new System.Drawing.Point(95, 32);
             this.rdbJaar2.Name = "rdbJaar2";
             this.rdbJaar2.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar2.TabIndex = 99;
+            this.rdbJaar2.TabIndex = 105;
             this.rdbJaar2.Text = "2e Jaar";
             this.rdbJaar2.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar2_CheckedChanged);
             // 
@@ -1363,7 +1363,7 @@
             this.rdbJaar1.Location = new System.Drawing.Point(95, 8);
             this.rdbJaar1.Name = "rdbJaar1";
             this.rdbJaar1.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar1.TabIndex = 98;
+            this.rdbJaar1.TabIndex = 104;
             this.rdbJaar1.Text = "1ste Jaar";
             this.rdbJaar1.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar1_CheckedChanged);
             // 

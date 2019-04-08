@@ -109,7 +109,7 @@ namespace DefinitiefProgram
         #endregion
 
         #region get
-        public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot, Export ex)
+        public Tuple<int, List<Leerling>> getAantalLLN(string strVan, string strTot)
         {
             int intAantal = 0;
             List<Leerling> alleLeerlingenInDB = getAlleLeerlingenFromDB();
@@ -121,6 +121,23 @@ namespace DefinitiefProgram
             {
                 DateTime dte = DateTime.ParseExact(l.AanmaakDatum, "dd/MM/yyyy", null);
                 if ((dte >= dteVan) && (dte <= dteTot))
+                {
+                    intAantal++;
+                    specifiekeLLN.Add(l);
+                }
+            }
+            return new Tuple<int, List<Leerling>>(intAantal, specifiekeLLN);
+        }
+        public Tuple<int, List<Leerling>> getAantalLLNOpNaam(string VNaam, string ANaam)
+        {
+            int intAantal = 0;
+            List<Leerling> alleLeerlingenInDB = getAlleLeerlingenFromDB();
+            List<Leerling> specifiekeLLN = new List<Leerling>();
+
+            foreach (Leerling l in alleLeerlingenInDB)
+            {
+                DateTime dte = DateTime.ParseExact(l.AanmaakDatum, "dd/MM/yyyy", null);
+                if ((l.StrVoornaam.ToLower() == VNaam.ToLower()) && (l.StrNaam.ToLower() == ANaam.ToLower()))
                 {
                     intAantal++;
                     specifiekeLLN.Add(l);

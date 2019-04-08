@@ -103,6 +103,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kies een leerling";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lijstleerlingen_FormClosing);
             this.Load += new System.EventHandler(this.Lijstleerlingen_Load);
             this.ResumeLayout(false);
 
