@@ -25,5 +25,19 @@ namespace Tools
 
         private void button2_Click(object sender, EventArgs e)
         { new MySqlCommand("TRUNCATE TABLE ouder", conn).ExecuteNonQuery(); }
+
+        private void button3_Click(object sender, EventArgs e)
+        { new MySqlCommand("TRUNCATE TABLE landen", conn).ExecuteNonQuery(); new MySqlCommand("INSERT INTO landen (`idlanden`, `land`) VALUES ('1', 'België');", conn).ExecuteNonQuery(); }
+
+        private void button4_Click(object sender, EventArgs e)
+        { new MySqlCommand("TRUNCATE TABLE nationaliteiten", conn).ExecuteNonQuery(); new MySqlCommand("INSERT INTO nationaliteiten (`idnationaliteiten`, `nationaliteit`) VALUES ('1', 'Belg');", conn).ExecuteNonQuery(); }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            button1_Click(sender, e);
+            button2_Click(sender, e);
+            button3_Click(sender, e);
+            button4_Click(sender, e);
+        }
     }
 }
