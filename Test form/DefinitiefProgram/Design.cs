@@ -66,71 +66,85 @@ namespace DefinitiefProgram
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Leerling lln = new Leerling();
-            //leerling
-            //correspondentie
-            lln.StrVoornaam = txtVoornaam.Text;
-            lln.StrNaam = txtFamilieNaam.Text;
-            lln.StrBijkNaam = txtBijkvoornaam.Text;
-            lln.StrGeslacht = cmbGeslacht.SelectedItem.ToString();
-            lln.StrGeboorteplaats = txtGeboorteplaats.Text;
-            lln.StrGeboortedatum = txtGeboortedatum.Text;
-            lln.StrRijkregisternummer = mskRijksregisterNummer.Text;
-            lln.StrNationaliteit = txtNationaliteit.Text;
-            lln.StrGSM_Nummer = mskGsmNummer.Text;
-            lln.StrE_Mail = txtEmail.Text;
-            lln.StrStraat = txtStraat.Text;
-            lln.StrHuisnummer = txtHuisnr.Text;
-            lln.StrBus = txtBus.Text;
-            lln.StrGemeente = txtGemeente.Text;
-            lln.StrPostcode = mskPostcode.Text;
-            lln.StrLand = cmbLand.Text;
-            lln.IntMiddelbaar = Studiejaar;
-            lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
-            lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
+            notification.Visible = false;
+            if (check())
+            {
+                Leerling lln = new Leerling();
+                //leerling
+                //correspondentie
+                lln.StrVoornaam = txtVoornaam.Text;
+                lln.StrNaam = txtFamilieNaam.Text;
+                lln.StrBijkNaam = txtBijkvoornaam.Text;
+                lln.StrGeslacht = cmbGeslacht.SelectedItem.ToString();
+                lln.StrGeboorteplaats = txtGeboorteplaats.Text;
+                lln.StrGeboortedatum = txtGeboortedatum.Text;
+                lln.StrRijkregisternummer = mskRijksregisterNummer.Text;
+                lln.StrNationaliteit = txtNationaliteit.Text;
+                lln.StrGSM_Nummer = mskGsmNummer.Text;
+                lln.StrE_Mail = txtEmail.Text;
+                lln.StrStraat = txtStraat.Text;
+                lln.StrHuisnummer = txtHuisnr.Text;
+                lln.StrBus = txtBus.Text;
+                lln.StrGemeente = txtGemeente.Text;
+                lln.StrPostcode = mskPostcode.Text;
+                lln.StrLand = cmbLand.Text;
+                lln.IntMiddelbaar = Studiejaar;
+                lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
+                lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
 
-            //Ouders
-            Ouders o = new Ouders();
-            o.StrGezinssituatie = cmbGezinssituatie.SelectedItem.ToString();
-            //Moeder
-            o.StrNaamMoeder = txtVoornaamMoeder.Text;
-            //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
-            //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
-            //o.StrBeroepMoeder = txtBeroepMoeder.Text;
-            o.StrGSMMoeder = mtxtGSMMoeder.Text;
-            o.StrTelefoonWerkMoeder = mtxtTelfoonWerkMoeder.Text;
-            o.StrEmailMoeder = txtEmailMoeder.Text;
-            o.StrStraatMoeder = txtStraatMoeder.Text;
-            o.StrHuisnrMoeder = txtHuisNRMoeder.Text;
-            o.StrGemeenteMoeder = txtGemeenteMoeder.Text;
-            o.StrPostcodeMoeder = mtxtPostcodeMoeder.Text;
+                //Ouders
+                Ouders o = new Ouders();
+                o.StrGezinssituatie = cmbGezinssituatie.SelectedItem.ToString();
+                //Moeder
+                o.StrNaamMoeder = txtVoornaamMoeder.Text;
+                //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
+                //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
+                //o.StrBeroepMoeder = txtBeroepMoeder.Text;
+                o.StrGSMMoeder = mtxtGSMMoeder.Text;
+                o.StrTelefoonWerkMoeder = mtxtTelfoonWerkMoeder.Text;
+                o.StrEmailMoeder = txtEmailMoeder.Text;
+                o.StrStraatMoeder = txtStraatMoeder.Text;
+                o.StrHuisnrMoeder = txtHuisNRMoeder.Text;
+                o.StrGemeenteMoeder = txtGemeenteMoeder.Text;
+                o.StrPostcodeMoeder = mtxtPostcodeMoeder.Text;
 
-            //Vader
-            o.StrNaamVader = txtVoornaamVader.Text;
-            //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
-            //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
-            //o.StrBeroepVader = txtBeroepVader.Text;
-            o.StrGSMVader = mtxtGSMVader.Text;
-            o.StrTelefoonWerkVader = mtxtTelfoonWerkVader.Text;
-            o.StrEmailVader = txtEmailVader.Text;
-            o.StrStraatVader = txtStraatVader.Text;
-            o.StrHuisnrVader = txtHuisNRVader.Text;
-            o.StrGemeenteVader = txtGemeenteVader.Text;
-            o.StrPostcodeVader = mtxtPostcodeVader.Text;
+                //Vader
+                o.StrNaamVader = txtVoornaamVader.Text;
+                //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
+                //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
+                //o.StrBeroepVader = txtBeroepVader.Text;
+                o.StrGSMVader = mtxtGSMVader.Text;
+                o.StrTelefoonWerkVader = mtxtTelfoonWerkVader.Text;
+                o.StrEmailVader = txtEmailVader.Text;
+                o.StrStraatVader = txtStraatVader.Text;
+                o.StrHuisnrVader = txtHuisNRVader.Text;
+                o.StrGemeenteVader = txtGemeenteVader.Text;
+                o.StrPostcodeVader = mtxtPostcodeVader.Text;
 
-            string strGezinshoofd;
-            if (rdbGezinshoofdMoeder.Checked) { strGezinshoofd = "Moeder"; } else { strGezinshoofd = "Vader"; }
-            o.StrGezinshoofd = strGezinshoofd;
-            lln.O = o;
+                string strGezinshoofd;
+                if (rdbGezinshoofdMoeder.Checked) { strGezinshoofd = "Moeder"; } else { strGezinshoofd = "Vader"; }
+                o.StrGezinshoofd = strGezinshoofd;
+                lln.O = o;
 
-            voegToe(lln);
+                voegToe(lln);
+            }
         }
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
             if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
             else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
         }
-
+        private void txtGeboortedatum_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                string dag = txtGeboortedatum.Text.Substring(0, 2);
+                string maand = txtGeboortedatum.Text.Substring(3, 2);
+                string jaar = txtGeboortedatum.Text.Substring(8, 2);
+                mskRijksregisterNummer.Text = jaar + "." + maand + "." + dag + "-";
+            }
+            catch (Exception) { }
+        }
         #region updatenetwerknaam
         private void txtVoornaam_TextChanged(object sender, EventArgs e)
         { updateNetwerkNaam(); }
@@ -223,6 +237,7 @@ namespace DefinitiefProgram
                 cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
                 cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
                 rdbJaar1.Checked = true;
+                txtVoornaam.Focus();
                 //checkdebug();
             }));
             starting = false;
@@ -402,6 +417,61 @@ namespace DefinitiefProgram
 
                 checkSchoolstatuut();
             }
+        }
+        void error(string Titel, string Message)
+        {
+            lblText.Text = Message;
+            lblTitel.Text = Titel;
+            notification.Visible = true;
+        }
+        bool check()
+        {
+            if (string.IsNullOrWhiteSpace(txtVoornaam.Text)) { error("Ongeldige voornaam leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtFamilieNaam.Text)) { error("Ongeldige familienaam leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtGeboorteplaats.Text)) { error("Ongeldige geboorteplaats leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtGeboortedatum.Text)) { error("Ongeldige geboortedatum leerling.", "(dd/mm/jjjj)"); return false; }
+            try { DateTime.ParseExact(txtGeboortedatum.Text, "dd/MM/yyyy", null); }
+            catch (Exception) { error("Ongeldige geboortedatum leerling.", "(dd/mm/jjjj)"); return false;  }
+            if (DateTime.ParseExact(txtGeboortedatum.Text, "dd/MM/yyyy", null) > DateTime.Now) { error("Ongeldige geboortedatum leerling.", "Leerling geboren in toekomstige tijd."); return false; }
+            if (string.IsNullOrWhiteSpace(mskRijksregisterNummer.Text)) { error("Ongeldig rijksregisternummer leerling.", ""); return false; }
+            if (mskRijksregisterNummer.Text.Substring(0,2) != txtGeboortedatum.Text.Substring(8,2)) { error("Ongeldig rijksregisternummer leerling", "Eerste 2 cijfers komen niet overeen met het geboortejaar."); return false; }
+            if (mskRijksregisterNummer.Text.Substring(3,2) != txtGeboortedatum.Text.Substring(3,2)) { error("Ongeldig rijksregisternummer leerling", "3e en 4e cijfer komt niet overeen met de geboortemaand."); return false; }
+            if (mskRijksregisterNummer.Text.Substring(6,2) != txtGeboortedatum.Text.Substring(0,2)) { error("Ongeldig rijksregisternummer leerling", "5e en 6e cijfer komt niet overeen met de geboortedag."); return false; }
+            if (cmbGeslacht.SelectedItem.ToString() == "Vrouw")
+            {
+                if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) != 0)
+                { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+            } else if (cmbGeslacht.SelectedItem.ToString() == "Man")
+            {
+                if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) == 0)
+                { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+            }
+            string getal = string.Empty;
+            if (txtGeboortedatum.Text.Substring(6,1) == "2") { getal = "2"; }
+            getal += mskRijksregisterNummer.Text.Substring(0, 2) + mskRijksregisterNummer.Text.Substring(3, 2) + mskRijksregisterNummer.Text.Substring(6, 2) + mskRijksregisterNummer.Text.Substring(9, 3);
+            int intGetal = 97 - (Convert.ToInt32(getal) % 97);
+            int intControleGetal = Convert.ToInt16(mskRijksregisterNummer.Text.Substring(13, 2));
+            if (intControleGetal != intGetal)
+            { error("Ongeldig rijksregisternummer leerling", "Controlenummer klopt niet."); return false; }
+            //if (string.IsNullOrWhiteSpace(mskGsmNummer.Text)) { error("Ongeldig GSM nummer leerling.", ""); return false; ; }
+            //leerling hoeft niet persee gsm te hebben...
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) { error("Ongeldig E-mail adres leerling.", ""); return false; ; }
+            if (!txtEmail.Text.Contains("@")) { error("Ongeldig E-mail adres leerling.", ""); return false; }
+            if (!txtEmail.Text.Contains(".")) { error("Ongeldig E-mail adres leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtStraat.Text)) { error("Ongeldige straatnaam leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtHuisnr.Text)) { error("Ongeldig huisnummer leerling.", ""); return false; }
+            bool isNumeric = int.TryParse(txtHuisnr.Text, out int n);
+            if (!isNumeric) { error("Ongeldig huisnummer leerling.", "Geef een getal in."); return false; }
+            if (string.IsNullOrWhiteSpace(txtGemeente.Text)) { error("Ongeldige gemeente leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(mskPostcode.Text)) { error("Ongeldige postcode leerling.", ""); return false; }
+
+            //ouders
+            //resultaten
+
+            if (string.IsNullOrWhiteSpace(txtGebruikersnaamNetwerk.Text)) { error("Ongeldige gebruikersnaam.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtWachtwoordNetwerk.Text)) { error("Ongeldig wachtwoord leerling.", ""); return false; }
+
+            return true;
         }
         private void cmbGezinssituatie_SelectedIndexChanged(object sender, EventArgs e)
         {

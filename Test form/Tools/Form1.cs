@@ -18,7 +18,9 @@ namespace Tools
         { InitializeComponent(); }
 
         private void Form1_Load(object sender, EventArgs e)
-        { conn.Open(); }
+        {
+            conn.Open();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         { new MySqlCommand("TRUNCATE TABLE leerling", conn).ExecuteNonQuery(); }

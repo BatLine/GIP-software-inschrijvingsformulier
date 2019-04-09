@@ -135,6 +135,11 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
+            this.notification = new System.Windows.Forms.Panel();
+            this.btnCloseNotification = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pbIcon = new System.Windows.Forms.PictureBox();
+            this.lblText = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lblTitel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnConfirm = new XylosButton();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
@@ -148,6 +153,9 @@
             this.tpExtra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).BeginInit();
             this.tpBevestigen.SuspendLayout();
+            this.notification.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseNotification)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // ilPassword
@@ -281,6 +289,7 @@
             this.txtGeboortedatum.Text = "  /  /";
             this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGeboortedatum.UseSystemPasswordChar = false;
+            this.txtGeboortedatum.Leave += new System.EventHandler(this.txtGeboortedatum_Leave);
             // 
             // mskPostcode
             // 
@@ -357,7 +366,8 @@
             this.cmbGeslacht.ItemHeight = 20;
             this.cmbGeslacht.Items.AddRange(new object[] {
             "Man",
-            "Vrouw"});
+            "Vrouw",
+            "Ander"});
             this.cmbGeslacht.Location = new System.Drawing.Point(137, 114);
             this.cmbGeslacht.Name = "cmbGeslacht";
             this.cmbGeslacht.Size = new System.Drawing.Size(130, 26);
@@ -549,7 +559,7 @@
             this.txtVoornaam.Name = "txtVoornaam";
             this.txtVoornaam.ReadOnly = false;
             this.txtVoornaam.Size = new System.Drawing.Size(130, 29);
-            this.txtVoornaam.TabIndex = 125;
+            this.txtVoornaam.TabIndex = 0;
             this.txtVoornaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVoornaam.UseSystemPasswordChar = false;
             this.txtVoornaam.TextChanged += new System.EventHandler(this.txtVoornaam_TextChanged);
@@ -1523,6 +1533,7 @@
             // tpBevestigen
             // 
             this.tpBevestigen.BackColor = System.Drawing.Color.White;
+            this.tpBevestigen.Controls.Add(this.notification);
             this.tpBevestigen.Controls.Add(this.btnConfirm);
             this.tpBevestigen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tpBevestigen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
@@ -1531,6 +1542,61 @@
             this.tpBevestigen.Size = new System.Drawing.Size(555, 510);
             this.tpBevestigen.TabIndex = 10;
             this.tpBevestigen.Text = "Bevestigen";
+            // 
+            // notification
+            // 
+            this.notification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(54)))), ((int)(((byte)(59)))));
+            this.notification.Controls.Add(this.btnCloseNotification);
+            this.notification.Controls.Add(this.pbIcon);
+            this.notification.Controls.Add(this.lblText);
+            this.notification.Controls.Add(this.lblTitel);
+            this.notification.Location = new System.Drawing.Point(3, 39);
+            this.notification.Name = "notification";
+            this.notification.Size = new System.Drawing.Size(453, 70);
+            this.notification.TabIndex = 1;
+            this.notification.Visible = false;
+            // 
+            // btnCloseNotification
+            // 
+            this.btnCloseNotification.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnCloseNotification.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseNotification.Image")));
+            this.btnCloseNotification.ImageActive = null;
+            this.btnCloseNotification.Location = new System.Drawing.Point(418, 3);
+            this.btnCloseNotification.Name = "btnCloseNotification";
+            this.btnCloseNotification.Size = new System.Drawing.Size(32, 32);
+            this.btnCloseNotification.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCloseNotification.TabIndex = 3;
+            this.btnCloseNotification.TabStop = false;
+            this.btnCloseNotification.Zoom = 10;
+            // 
+            // pbIcon
+            // 
+            this.pbIcon.Location = new System.Drawing.Point(3, 3);
+            this.pbIcon.Name = "pbIcon";
+            this.pbIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbIcon.TabIndex = 2;
+            this.pbIcon.TabStop = false;
+            // 
+            // lblText
+            // 
+            this.lblText.AutoSize = true;
+            this.lblText.ForeColor = System.Drawing.Color.White;
+            this.lblText.Location = new System.Drawing.Point(74, 24);
+            this.lblText.Name = "lblText";
+            this.lblText.Size = new System.Drawing.Size(25, 15);
+            this.lblText.TabIndex = 1;
+            this.lblText.Text = "404";
+            // 
+            // lblTitel
+            // 
+            this.lblTitel.AutoSize = true;
+            this.lblTitel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitel.ForeColor = System.Drawing.Color.White;
+            this.lblTitel.Location = new System.Drawing.Point(73, 3);
+            this.lblTitel.Name = "lblTitel";
+            this.lblTitel.Size = new System.Drawing.Size(48, 21);
+            this.lblTitel.TabIndex = 0;
+            this.lblTitel.Text = "Error.";
             // 
             // btnConfirm
             // 
@@ -1576,6 +1642,10 @@
             this.tpExtra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbToonWachtwoord)).EndInit();
             this.tpBevestigen.ResumeLayout(false);
+            this.notification.ResumeLayout(false);
+            this.notification.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseNotification)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1688,5 +1758,10 @@
         private Bunifu.Framework.UI.BunifuImageButton btnAddLand;
         private Bunifu.Framework.UI.BunifuImageButton btnAddNationaliteit;
         private XylosCombobox txtNationaliteit;
+        private System.Windows.Forms.Panel notification;
+        private Bunifu.Framework.UI.BunifuImageButton btnCloseNotification;
+        private System.Windows.Forms.PictureBox pbIcon;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblText;
+        private Bunifu.Framework.UI.BunifuCustomLabel lblTitel;
     }
 }
