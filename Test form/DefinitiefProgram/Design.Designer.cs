@@ -50,7 +50,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new XylosTextBox();
             this.txtNationaliteit = new XylosTextBox();
-            this.txtGeboortedatum = new XylosTextBox();
             this.txtGeboorteplaats = new XylosTextBox();
             this.txtBijkvoornaam = new XylosTextBox();
             this.txtFamilieNaam = new XylosTextBox();
@@ -134,6 +133,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.tpBevestigen = new System.Windows.Forms.TabPage();
             this.btnConfirm = new XylosButton();
+            this.txtGeboortedatum = new DefinitiefProgram.CustomMaskedTextbox();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             this.tpOuder.SuspendLayout();
@@ -176,6 +176,7 @@
             // tpLLN
             // 
             this.tpLLN.BackColor = System.Drawing.Color.White;
+            this.tpLLN.Controls.Add(this.txtGeboortedatum);
             this.tpLLN.Controls.Add(this.mskPostcode);
             this.tpLLN.Controls.Add(this.mskGsmNummer);
             this.tpLLN.Controls.Add(this.mskRijksregisterNummer);
@@ -193,7 +194,6 @@
             this.tpLLN.Controls.Add(this.label9);
             this.tpLLN.Controls.Add(this.txtEmail);
             this.tpLLN.Controls.Add(this.txtNationaliteit);
-            this.tpLLN.Controls.Add(this.txtGeboortedatum);
             this.tpLLN.Controls.Add(this.txtGeboorteplaats);
             this.tpLLN.Controls.Add(this.txtBijkvoornaam);
             this.tpLLN.Controls.Add(this.txtFamilieNaam);
@@ -445,21 +445,6 @@
             this.txtNationaliteit.TabIndex = 132;
             this.txtNationaliteit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNationaliteit.UseSystemPasswordChar = false;
-            // 
-            // txtGeboortedatum
-            // 
-            this.txtGeboortedatum.EnabledCalc = true;
-            this.txtGeboortedatum.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtGeboortedatum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGeboortedatum.Location = new System.Drawing.Point(137, 180);
-            this.txtGeboortedatum.MaxLength = 32767;
-            this.txtGeboortedatum.MultiLine = false;
-            this.txtGeboortedatum.Name = "txtGeboortedatum";
-            this.txtGeboortedatum.ReadOnly = false;
-            this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
-            this.txtGeboortedatum.TabIndex = 130;
-            this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtGeboortedatum.UseSystemPasswordChar = false;
             // 
             // txtGeboorteplaats
             // 
@@ -1515,6 +1500,23 @@
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
+            // txtGeboortedatum
+            // 
+            this.txtGeboortedatum.EnabledCalc = true;
+            this.txtGeboortedatum.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtGeboortedatum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtGeboortedatum.Location = new System.Drawing.Point(137, 180);
+            this.txtGeboortedatum.Mask = "00/00/0000";
+            this.txtGeboortedatum.MaxLength = 32767;
+            this.txtGeboortedatum.MultiLine = false;
+            this.txtGeboortedatum.Name = "txtGeboortedatum";
+            this.txtGeboortedatum.ReadOnly = false;
+            this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
+            this.txtGeboortedatum.TabIndex = 143;
+            this.txtGeboortedatum.Text = "  /  /";
+            this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtGeboortedatum.UseSystemPasswordChar = false;
+            // 
             // Design
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1592,7 +1594,6 @@
         private System.Windows.Forms.Label label9;
         private XylosTextBox txtEmail;
         private XylosTextBox txtNationaliteit;
-        private XylosTextBox txtGeboortedatum;
         private XylosTextBox txtGeboorteplaats;
         private XylosTextBox txtBijkvoornaam;
         private XylosTextBox txtFamilieNaam;
@@ -1657,5 +1658,6 @@
         private XylosRadioButton rdbGezinshoofdVader;
         private XylosRadioButton rdbGezinshoofdMoeder;
         private System.Windows.Forms.Label label24;
+        private CustomMaskedTextbox txtGeboortedatum;
     }
 }
