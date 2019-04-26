@@ -9,13 +9,14 @@ namespace DefinitiefProgram
     class Business
     {
         Persistence p;
-        List<Leerling> Leerlingen = new List<Leerling>();
 
         public Business()
         { p = new Persistence(); }
 
         public Tuple<int, List<Leerling>> getAantalLLN(string van, string tot)
         { return p.getAantalLLN(van, tot); }
+        public Tuple<int, List<Leerling>> getAantalLLNOpNaam(string VNaam, string ANaam)
+        { return p.getAantalLLNOpNaam(VNaam, ANaam); }
         public void addToDatabase(Leerling lln, string pRichting, string pStatuut)
         {
             int intKeuzeID=0, intStatuut=0;
@@ -70,7 +71,6 @@ namespace DefinitiefProgram
             lln.AanmaakDatum = DateTime.Now.ToString("dd/MM/yyyy");
             p.addToDB(lln);
         }
-
         public List<Leerling> getAlleLeerlingen()
         {
             List<Leerling> l = new List<Leerling>();
@@ -82,5 +82,20 @@ namespace DefinitiefProgram
             Leerling l = p.getLeerling(pintID);
             return l;
         }
+        public bool addLand(string strLand)
+        {
+            if (!p.getAlleLanden().Contains(strLand))
+            { p.addLand(strLand); return true; } else { return false; }
+        }
+        public List<string> getAlleLanden()
+        { return p.getAlleLanden(); }
+        public bool addNationaliteit(string strNationaliteit)
+        {
+            if (!p.getAlleNationaliteiten().Contains(strNationaliteit))
+            { p.addNationaliteit(strNationaliteit); return true; }
+            else { return false; }
+        }
+        public List<string> getAlleNationaliteiten()
+        { return p.getAlleNationaliteiten(); }
     }
 }

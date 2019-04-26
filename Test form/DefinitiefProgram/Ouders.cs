@@ -10,8 +10,6 @@ namespace DefinitiefProgram
     {
         string strVoornaamMoeder;
         string strNaamMoeder;
-        string strGeboorteDatumMoeder;
-        string strRijksregisterNRMoeder;
         string strBeroepMoeder;
         string strGSMMoeder;
         string strTelefoonWerkMoeder;
@@ -20,11 +18,8 @@ namespace DefinitiefProgram
         string strHuisnrMoeder;
         string strPostcodeMoeder;
         string strGemeenteMoeder;
-
         string strVoornaamVader;
         string strNaamVader;
-        string strGeboorteDatumVader;
-        string strRijksregisterNRVader;
         string strBeroepVader;
         string strGSMVader;
         string strTelefoonWerkVader;
@@ -38,16 +33,12 @@ namespace DefinitiefProgram
 
         public string StrVoornaamMoeder { get => strVoornaamMoeder; set => strVoornaamMoeder = value; }
         public string StrNaamMoeder { get => strNaamMoeder; set => strNaamMoeder = value; }
-        public string StrGeboorteDatumMoeder { get => strGeboorteDatumMoeder; set => strGeboorteDatumMoeder = value; }
-        public string StrRijksregisterNRMoeder { get => strRijksregisterNRMoeder; set => strRijksregisterNRMoeder = value; }
         public string StrBeroepMoeder { get => strBeroepMoeder; set => strBeroepMoeder = value; }
         public string StrGSMMoeder { get => strGSMMoeder; set => strGSMMoeder = value; }
         public string StrTelefoonWerkMoeder { get => strTelefoonWerkMoeder; set => strTelefoonWerkMoeder = value; }
         public string StrEmailMoeder { get => strEmailMoeder; set => strEmailMoeder = value; }
         public string StrVoornaamVader { get => strVoornaamVader; set => strVoornaamVader = value; }
         public string StrNaamVader { get => strNaamVader; set => strNaamVader = value; }
-        public string StrGeboorteDatumVader { get => strGeboorteDatumVader; set => strGeboorteDatumVader = value; }
-        public string StrRijksregisterNRVader { get => strRijksregisterNRVader; set => strRijksregisterNRVader = value; }
         public string StrBeroepVader { get => strBeroepVader; set => strBeroepVader = value; }
         public string StrGSMVader { get => strGSMVader; set => strGSMVader = value; }
         public string StrTelefoonWerkVader { get => strTelefoonWerkVader; set => strTelefoonWerkVader = value; }
