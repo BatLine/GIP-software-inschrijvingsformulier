@@ -15,8 +15,7 @@ namespace DefinitiefProgram
     public partial class Design : Form
     {
         /// <TODO>
-        /// postcode in nederland kan bv ook 9000 AB zijn dus mss geen masked txt
-        /// Alles checken dat nodig is (als er wel iets ingetypt is,als het email wel een @ heeft enz)
+        /// 
         /// </TODO>
         #region vars
         Business b;// = new Business();
@@ -25,6 +24,7 @@ namespace DefinitiefProgram
         bool blnShowPassword = false;
         bool starting = false;
         LoadingCircle lo;
+        int updateID = 0;
         #endregion
 
         #region controls
@@ -36,6 +36,8 @@ namespace DefinitiefProgram
         private void Design_FormClosing(object sender, FormClosingEventArgs e)
         { }
         #endregion
+        private void BtnCloseNotification_Click(object sender, EventArgs e)
+        { notification.Hide(); }
         private void btnAddLand_Click(object sender, EventArgs e)
         {
             string strLand = Microsoft.VisualBasic.Interaction.InputBox("Naam land:", "Land toevoegen");
@@ -71,7 +73,7 @@ namespace DefinitiefProgram
             {
                 Leerling lln = new Leerling();
                 //leerling
-                //correspondentie
+                lln.StrCorrespondentie = cmbCorrespondentie.SelectedItem.ToString();
                 lln.StrVoornaam = txtVoornaam.Text;
                 lln.StrNaam = txtFamilieNaam.Text;
                 lln.StrBijkNaam = txtBijkvoornaam.Text;
@@ -91,15 +93,14 @@ namespace DefinitiefProgram
                 lln.IntMiddelbaar = Studiejaar;
                 lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
                 lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
+                lln.StrRichtingNaam = cmbRichting.SelectedItem.ToString();
 
                 //Ouders
                 Ouders o = new Ouders();
                 o.StrGezinssituatie = cmbGezinssituatie.SelectedItem.ToString();
                 //Moeder
-                o.StrNaamMoeder = txtVoornaamMoeder.Text;
-                //o.StrGeboorteDatumMoeder = txtGeboortedatumMoeder.Text;
-                //o.StrRijksregisterNRMoeder = mtxtRijkregNRMoeder.Text;
-                //o.StrBeroepMoeder = txtBeroepMoeder.Text;
+                o.StrNaamMoeder = txtFamilienaamMoeder.Text;
+                o.StrVoornaamMoeder = txtVoornaamMoeder.Text;
                 o.StrGSMMoeder = mtxtGSMMoeder.Text;
                 o.StrTelefoonWerkMoeder = mtxtTelfoonWerkMoeder.Text;
                 o.StrEmailMoeder = txtEmailMoeder.Text;
@@ -107,12 +108,11 @@ namespace DefinitiefProgram
                 o.StrHuisnrMoeder = txtHuisNRMoeder.Text;
                 o.StrGemeenteMoeder = txtGemeenteMoeder.Text;
                 o.StrPostcodeMoeder = mtxtPostcodeMoeder.Text;
+                o.StrBeroepMoeder = txtBeroepMoeder.Text;
 
                 //Vader
-                o.StrNaamVader = txtVoornaamVader.Text;
-                //o.StrGeboorteDatumVader = txtGeboortedatumVader.Text;
-                //o.StrRijksregisterNRVader = mtxtRijksregisterNRVader.Text;
-                //o.StrBeroepVader = txtBeroepVader.Text;
+                o.StrNaamVader = txtFamilienaamMoeder.Text;
+                o.StrVoornaamVader = txtVoornaamVader.Text;
                 o.StrGSMVader = mtxtGSMVader.Text;
                 o.StrTelefoonWerkVader = mtxtTelfoonWerkVader.Text;
                 o.StrEmailVader = txtEmailVader.Text;
@@ -120,19 +120,22 @@ namespace DefinitiefProgram
                 o.StrHuisnrVader = txtHuisNRVader.Text;
                 o.StrGemeenteVader = txtGemeenteVader.Text;
                 o.StrPostcodeVader = mtxtPostcodeVader.Text;
+                o.StrBeroepVader = txtBeroepVader.Text;
 
                 string strGezinshoofd;
                 if (rdbGezinshoofdMoeder.Checked) { strGezinshoofd = "Moeder"; } else { strGezinshoofd = "Vader"; }
                 o.StrGezinshoofd = strGezinshoofd;
                 lln.O = o;
 
-                voegToe(lln);
+                if (this.Text == "Leerling Toevoegen")
+                { voegToe(lln); }
+                else { updateLLN(lln, updateID); }
             }
         }
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
         {
-            if (blnShowPassword) { pbToonWachtwoord.Image = ilPassword.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
-            else { pbToonWachtwoord.Image = ilPassword.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
+            if (blnShowPassword) { pbToonWachtwoord.Image = il.Images[0]; blnShowPassword = false; txtWachtwoordNetwerk.UseSystemPasswordChar = true; }
+            else { pbToonWachtwoord.Image = il.Images[1]; blnShowPassword = true; txtWachtwoordNetwerk.UseSystemPasswordChar = false; }
         }
         private void txtGeboortedatum_Leave(object sender, EventArgs e)
         {
@@ -144,6 +147,44 @@ namespace DefinitiefProgram
                 mskRijksregisterNummer.Text = jaar + "." + maand + "." + dag + "-";
             }
             catch (Exception) { }
+        }
+        private void RdbGezinshoofdMoeder_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
+            {
+                if (rdbGezinshoofdMoeder.Checked)
+                {
+                    label21.Text = "Moeder";
+                    pnlVader.Visible = false;
+                    pnlMoeder.Visible = true;
+                }
+                else
+                {
+                    label23.Text = "Vader";
+                    pnlVader.Visible = true;
+                    pnlMoeder.Visible = false;
+                }
+                centerOuderNames();
+            }
+        }
+        private void RdbGezinshoofdVader_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
+            {
+                if (rdbGezinshoofdMoeder.Checked)
+                {
+                    label21.Text = "Moeder";
+                    pnlVader.Visible = false;
+                    pnlMoeder.Visible = true;
+                }
+                else
+                {
+                    label23.Text = "Vader";
+                    pnlVader.Visible = true;
+                    pnlMoeder.Visible = false;
+                }
+                centerOuderNames();
+            }
         }
         #region updatenetwerknaam
         private void txtVoornaam_TextChanged(object sender, EventArgs e)
@@ -213,7 +254,7 @@ namespace DefinitiefProgram
         #endregion
 
         #region functions
-        async void start()
+        public async void start()
         {
             lo = new LoadingCircle();
             lo.Show();
@@ -228,15 +269,17 @@ namespace DefinitiefProgram
         void _start()
         {
             starting = true;
-            b = new Business();
             this.Invoke(new Action(() =>
             {
+                b = new Business();
                 getAlleLanden();
                 getAlleNationaliteiten();
-                pbToonWachtwoord.Image = ilPassword.Images[0];
+                pbToonWachtwoord.Image = il.Images[0];
                 cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
                 cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
                 rdbJaar1.Checked = true;
+                checkStudieJaar();
+                txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
                 txtVoornaam.Focus();
                 //checkdebug();
             }));
@@ -247,7 +290,6 @@ namespace DefinitiefProgram
             try
             {
                 var richting = (string)cmbRichting.Invoke(new Func<string>(() => cmbRichting.Text));
-                //this.Invoke(new Action(() => this.Hide()));
                 b.addToDatabase(l, richting, Schoolstatuut);
             }
             catch (Exception)
@@ -264,6 +306,29 @@ namespace DefinitiefProgram
             await Task.Run(() => toevoegen(l));
 
             lo.Close();
+        }
+        async void updateLLN(Leerling l, int id)
+        {
+            LoadingCircle lo = new LoadingCircle();
+            lo.Show();
+            lo.Focus();
+
+            await Task.Run(() => updaten(l, id));
+
+            lo.Close();
+        }
+        void updaten(Leerling l, int id)
+        {
+            try
+            {
+                b.removeByID(id);
+                var richting = (string)cmbRichting.Invoke(new Func<string>(() => cmbRichting.Text));
+                b.addToDatabase(l, richting, Schoolstatuut);
+            }
+            catch (Exception)
+            { MessageBox.Show("Updaten mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            this.Invoke(new Action(() => this.Close()));
         }
         void setSelectedLand(string nieuwLand)
         { cmbLand.SelectedItem = nieuwLand; }
@@ -287,6 +352,17 @@ namespace DefinitiefProgram
         }
         public void veldenvullen(int pintID)
         {
+            b = new Business();
+            getAlleLanden();
+            getAlleNationaliteiten();
+            pbToonWachtwoord.Image = il.Images[0];
+            cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
+            cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
+            rdbJaar1.Checked = true;
+            checkStudieJaar();
+            txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
+            txtVoornaam.Focus();
+
             Leerling l = b.GetLeerling(pintID);
             txtVoornaam.Text = l.StrVoornaam;
             txtFamilieNaam.Text = l.StrNaam;
@@ -303,8 +379,9 @@ namespace DefinitiefProgram
             txtBus.Text = l.StrBus;
             txtGemeente.Text = l.StrGemeente;
             mskPostcode.Text = l.StrPostcode;
-            cmbLand.Items.Add(l.StrLand);
-            //cmbLand.SelectedItem = l.StrLand;
+            if (!cmbLand.Items.Contains(l.StrLand))
+            { cmbLand.Items.Add(l.StrLand); }
+            cmbLand.SelectedItem = l.StrLand;
             switch (l.IntMiddelbaar)
             {
                 case 1:
@@ -333,7 +410,8 @@ namespace DefinitiefProgram
                 case 3:
                     rdbIntern.Checked = false; rdbExtern.Checked = false; rdbHalfIntern.Checked = true; break;
             }
-            txtVoornaamMoeder.Text = l.O.StrNaamMoeder;
+            txtVoornaamMoeder.Text = l.O.StrVoornaamMoeder;
+            txtFamilienaamMoeder.Text = l.O.StrNaamMoeder;
             txtEmailMoeder.Text = l.O.StrEmailMoeder;
             mtxtGSMMoeder.Text = l.O.StrGSMMoeder;
             mtxtTelfoonWerkMoeder.Text = l.O.StrTelefoonWerkMoeder;
@@ -341,8 +419,10 @@ namespace DefinitiefProgram
             mtxtPostcodeMoeder.Text = l.O.StrPostcodeMoeder;
             txtHuisNRMoeder.Text = l.O.StrHuisnrMoeder;
             txtGemeenteMoeder.Text = l.O.StrGemeenteMoeder;
+            txtBeroepMoeder.Text = l.O.StrBeroepMoeder;
 
-            txtVoornaamVader.Text = l.O.StrNaamVader;
+            txtVoornaamVader.Text = l.O.StrVoornaamVader;
+            txtFamilienaamVader.Text = l.O.StrNaamVader;
             txtEmailVader.Text = l.O.StrEmailVader;
             mtxtGSMVader.Text = l.O.StrGSMVader;
             mtxtTelfoonWerkVader.Text = l.O.StrTelefoonWerkVader;
@@ -350,10 +430,13 @@ namespace DefinitiefProgram
             mtxtPostcodeVader.Text = l.O.StrPostcodeVader;
             txtHuisNRVader.Text = l.O.StrHuisnrVader;
             txtGemeenteVader.Text = l.O.StrGemeenteVader;
+            txtBeroepVader.Text = l.O.StrBeroepVader;
 
-            if (l.O.StrGezinshoofd == "Moeder") { rdbGezinshoofdMoeder.Checked = true; rdbGezinshoofdVader.Checked = false; } else { rdbGezinshoofdVader.Checked = true; rdbGezinshoofdMoeder.Checked = false; }
+            if (l.O.StrGezinshoofd.ToLower().Contains("moeder")) { rdbGezinshoofdMoeder.Checked = true; rdbGezinshoofdVader.Checked = false; } else { rdbGezinshoofdVader.Checked = true; rdbGezinshoofdMoeder.Checked = false; }
+            if (l.O.StrGezinshoofd.ToLower().Contains("pleeg")) { rdbGezinshoofdMoeder.Text = "Pleeg moeder"; rdbGezinshoofdVader.Text = "Pleeg vader"; }
             cmbGezinssituatie.SelectedItem = l.O.StrGezinssituatie;
 
+            cmbCorrespondentie.SelectedItem = l.StrCorrespondentie;
             //bij bevestigen de origenele updaten/eerst verwijderen en dan toevoegen
         }
         void unselectAllrdbJaar()
@@ -423,6 +506,7 @@ namespace DefinitiefProgram
             lblText.Text = Message;
             lblTitel.Text = Titel;
             notification.Visible = true;
+            notification.Location = new Point((tpBevestigen.Width / 2) - (notification.Width / 2), notification.Location.Y);
         }
         bool check()
         {
@@ -466,7 +550,55 @@ namespace DefinitiefProgram
             if (string.IsNullOrWhiteSpace(mskPostcode.Text)) { error("Ongeldige postcode leerling.", ""); return false; }
 
             //ouders
-            //resultaten
+            if ((cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin") || (cmbGezinssituatie.SelectedItem.ToString() == "Vader overleden") || (cmbGezinssituatie.SelectedItem.ToString() == "Moeder overleden"))
+            {
+                if (rdbGezinshoofdMoeder.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(txtVoornaamMoeder.Text)) { error("Ongeldige voornaam moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtFamilienaamMoeder.Text)) { error("Ongeldige familienaam moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(mtxtGSMMoeder.Text)) { error("Ongeldig GSM nummer moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
+                    if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
+                    if (string.IsNullOrWhiteSpace(txtGemeenteMoeder.Text)) { error("Ongeldige gemeente moeder.", ""); return false; }
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(txtVoornaamVader.Text)) { error("Ongeldige voornaam vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtFamilienaamVader.Text)) { error("Ongeldige familienaam vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(mtxtGSMVader.Text)) { error("Ongeldig GSM nummer vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtEmailVader.Text)) { error("Ongeldig mailadres vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
+                    if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
+                    if (double.TryParse(mtxtPostcodeVader.Text, out double nr)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
+                    if (string.IsNullOrWhiteSpace(txtGemeenteVader.Text)) { error("Ongeldige gemeente vader.", ""); return false; }
+                }
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(txtVoornaamMoeder.Text)) { error("Ongeldige voornaam moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtFamilienaamMoeder.Text)) { error("Ongeldige familienaam moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(mtxtGSMMoeder.Text)) { error("Ongeldig GSM nummer moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
+                if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
+                if (string.IsNullOrWhiteSpace(txtGemeenteMoeder.Text)) { error("Ongeldige gemeente moeder.", ""); return false; }
+
+                if (string.IsNullOrWhiteSpace(txtVoornaamVader.Text)) { error("Ongeldige voornaam vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtFamilienaamVader.Text)) { error("Ongeldige familienaam vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(mtxtGSMVader.Text)) { error("Ongeldig GSM nummer vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtEmailVader.Text)) { error("Ongeldig mailadres vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
+                if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
+                if (double.TryParse(mtxtPostcodeVader.Text, out double nr2)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
+                if (string.IsNullOrWhiteSpace(txtGemeenteVader.Text)) { error("Ongeldige gemeente vader.", ""); return false; }
+            }
 
             if (string.IsNullOrWhiteSpace(txtGebruikersnaamNetwerk.Text)) { error("Ongeldige gebruikersnaam.", ""); return false; }
             if (string.IsNullOrWhiteSpace(txtWachtwoordNetwerk.Text)) { error("Ongeldig wachtwoord leerling.", ""); return false; }
@@ -475,15 +607,27 @@ namespace DefinitiefProgram
         }
         private void cmbGezinssituatie_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbGezinssituatie.SelectedItem.ToString() != "Pleeggezin")
+            {
+                rdbGezinshoofdMoeder.Text = "Moeder";
+                rdbGezinshoofdVader.Text = "Vader";
+            }
+
             if (cmbGezinssituatie.SelectedItem.ToString() == "Gehuwd")
             {
+                rdbGezinshoofdMoeder.Enabled = true;
+                rdbGezinshoofdVader.Enabled = true;
                 label21.Text = "Moeder";
+                label23.Text = "Vader";
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Co-Ouderschap")
             {
+                rdbGezinshoofdMoeder.Enabled = true;
+                rdbGezinshoofdVader.Enabled = true;
                 label21.Text = "Moeder";
+                label21.Text = "Vader";
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = true;
             }
@@ -491,33 +635,67 @@ namespace DefinitiefProgram
             {
                 label21.Text = "Pleeg moeder";
                 label23.Text = "Pleeg vader";
+
+                rdbGezinshoofdMoeder.Text = "Pleeg moeder";
+                rdbGezinshoofdVader.Text = "Pleeg vader";
+
+                rdbGezinshoofdMoeder.Enabled = true;
+                rdbGezinshoofdVader.Enabled = true;
+
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
             {
-                label21.Text = "Ouder";
-                pnlVader.Visible = false;
-                pnlMoeder.Visible = true;
-            }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Gescheiden")
-            {
-                label21.Text = "Moeder";
-                pnlVader.Visible = true;
-                pnlMoeder.Visible = true;
+                rdbGezinshoofdMoeder.Enabled = true;
+                rdbGezinshoofdVader.Enabled = true;
+                if (rdbGezinshoofdMoeder.Checked)
+                {
+                    label21.Text = "Moeder";
+                    pnlVader.Visible = false;
+                    pnlMoeder.Visible = true;
+                }
+                else
+                {
+                    label23.Text = "Vader";
+                    pnlVader.Visible = true;
+                    pnlMoeder.Visible = false;
+                }
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Vader overleden")
             {
                 label21.Text = "Moeder";
                 pnlVader.Visible = false;
                 pnlMoeder.Visible = true;
+                rdbGezinshoofdMoeder.Checked = true;
+                rdbGezinshoofdVader.Checked = false;
+                rdbGezinshoofdMoeder.Enabled = true;
+                rdbGezinshoofdVader.Enabled = false;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Moeder overleden")
             {
                 label21.Text = "Moeder";
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = false;
+                rdbGezinshoofdMoeder.Checked = false;
+                rdbGezinshoofdVader.Checked = true;
+                rdbGezinshoofdMoeder.Enabled = false;
+                rdbGezinshoofdVader.Enabled = true;
             }
+
+            centerOuderNames();
+        }
+        void centerOuderNames()
+        {
+            int x = label21.Location.X;
+            int y = label21.Location.Y;
+            x = (pnlMoeder.Size.Width / 2) - (label21.Width / 2);
+            label21.Location = new Point(x, y);
+
+            x = label23.Location.X;
+            y = label23.Location.Y;
+            x = (pnlVader.Size.Width / 2) - (label23.Width / 2);
+            label23.Location = new Point(x, y);
         }
         #endregion
     }

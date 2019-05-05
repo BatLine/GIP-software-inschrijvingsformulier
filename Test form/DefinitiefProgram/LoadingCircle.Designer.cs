@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadingCircle));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.circle_progressbar1 = new DefinitiefProgram.Layout.circle_progressbar();
             this.SuspendLayout();
@@ -42,6 +43,8 @@
             // 
             this.circle_progressbar1.BackColor = System.Drawing.Color.White;
             this.circle_progressbar1.Location = new System.Drawing.Point(12, 12);
+            this.circle_progressbar1.MaximumSize = new System.Drawing.Size(232, 232);
+            this.circle_progressbar1.MinimumSize = new System.Drawing.Size(232, 232);
             this.circle_progressbar1.Name = "circle_progressbar1";
             this.circle_progressbar1.Size = new System.Drawing.Size(232, 232);
             this.circle_progressbar1.TabIndex = 0;
@@ -54,6 +57,7 @@
             this.ClientSize = new System.Drawing.Size(256, 256);
             this.Controls.Add(this.circle_progressbar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoadingCircle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoadingCircle";

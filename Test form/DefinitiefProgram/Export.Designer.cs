@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Export));
             this.label1 = new System.Windows.Forms.Label();
             this.gpSpecifiek = new System.Windows.Forms.GroupBox();
+            this.chkSpecifiker = new XylosCheckBox();
             this.lblAantalLLN = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,18 +43,17 @@
             this.chPostcode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDatum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gpLeerling = new System.Windows.Forms.GroupBox();
+            this.btnZoek = new XylosButton();
+            this.txtANaam = new XylosTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtVNaam = new XylosTextBox();
             this.lblAantalLLNOpNaam = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.rdbLeerling = new XylosRadioButton();
             this.btnExport = new XylosButton();
             this.btnCancel = new XylosButton();
-            this.chkSpecifiker = new XylosCheckBox();
             this.rdbSpecifiek = new XylosRadioButton();
             this.rdbIedereen = new XylosRadioButton();
-            this.btnZoek = new XylosButton();
-            this.txtANaam = new XylosTextBox();
-            this.txtVNaam = new XylosTextBox();
             this.gpSpecifiek.SuspendLayout();
             this.gpSpecifieker.SuspendLayout();
             this.gpLeerling.SuspendLayout();
@@ -81,6 +82,18 @@
             this.gpSpecifiek.TabIndex = 3;
             this.gpSpecifiek.TabStop = false;
             this.gpSpecifiek.Text = "Op aanmaakdatum";
+            // 
+            // chkSpecifiker
+            // 
+            this.chkSpecifiker.Checked = false;
+            this.chkSpecifiker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chkSpecifiker.EnabledCalc = true;
+            this.chkSpecifiker.Location = new System.Drawing.Point(9, 106);
+            this.chkSpecifiker.Name = "chkSpecifiker";
+            this.chkSpecifiker.Size = new System.Drawing.Size(262, 18);
+            this.chkSpecifiker.TabIndex = 5;
+            this.chkSpecifiker.Text = "Bekijk deze leerlingen / selecteer specifieker";
+            this.chkSpecifiker.CheckedChanged += new XylosCheckBox.CheckedChangedEventHandler(this.chkSpecifiker_CheckedChanged);
             // 
             // lblAantalLLN
             // 
@@ -183,6 +196,55 @@
             this.gpLeerling.Text = "Op naam";
             this.gpLeerling.Visible = false;
             // 
+            // btnZoek
+            // 
+            this.btnZoek.EnabledCalc = true;
+            this.btnZoek.Location = new System.Drawing.Point(79, 85);
+            this.btnZoek.Name = "btnZoek";
+            this.btnZoek.Size = new System.Drawing.Size(206, 23);
+            this.btnZoek.TabIndex = 8;
+            this.btnZoek.Text = "Zoek";
+            this.btnZoek.Click += new XylosButton.ClickEventHandler(this.btnZoek_Click);
+            // 
+            // txtANaam
+            // 
+            this.txtANaam.EnabledCalc = true;
+            this.txtANaam.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtANaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtANaam.Location = new System.Drawing.Point(79, 50);
+            this.txtANaam.MaxLength = 32767;
+            this.txtANaam.MultiLine = false;
+            this.txtANaam.Name = "txtANaam";
+            this.txtANaam.ReadOnly = false;
+            this.txtANaam.Size = new System.Drawing.Size(206, 29);
+            this.txtANaam.TabIndex = 7;
+            this.txtANaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtANaam.UseSystemPasswordChar = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Achternaam:";
+            // 
+            // txtVNaam
+            // 
+            this.txtVNaam.EnabledCalc = true;
+            this.txtVNaam.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtVNaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.txtVNaam.Location = new System.Drawing.Point(79, 15);
+            this.txtVNaam.MaxLength = 32767;
+            this.txtVNaam.MultiLine = false;
+            this.txtVNaam.Name = "txtVNaam";
+            this.txtVNaam.ReadOnly = false;
+            this.txtVNaam.Size = new System.Drawing.Size(206, 29);
+            this.txtVNaam.TabIndex = 6;
+            this.txtVNaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtVNaam.UseSystemPasswordChar = false;
+            // 
             // lblAantalLLNOpNaam
             // 
             this.lblAantalLLNOpNaam.AutoSize = true;
@@ -200,15 +262,6 @@
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 2;
             this.label6.Text = "Voornaam:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Achternaam:";
             // 
             // rdbLeerling
             // 
@@ -242,18 +295,6 @@
             this.btnCancel.Text = "Terug";
             this.btnCancel.Click += new XylosButton.ClickEventHandler(this.btnCancel_Click);
             // 
-            // chkSpecifiker
-            // 
-            this.chkSpecifiker.Checked = false;
-            this.chkSpecifiker.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chkSpecifiker.EnabledCalc = true;
-            this.chkSpecifiker.Location = new System.Drawing.Point(9, 106);
-            this.chkSpecifiker.Name = "chkSpecifiker";
-            this.chkSpecifiker.Size = new System.Drawing.Size(262, 18);
-            this.chkSpecifiker.TabIndex = 5;
-            this.chkSpecifiker.Text = "Bekijk deze leerlingen / selecteer specifieker";
-            this.chkSpecifiker.CheckedChanged += new XylosCheckBox.CheckedChangedEventHandler(this.chkSpecifiker_CheckedChanged);
-            // 
             // rdbSpecifiek
             // 
             this.rdbSpecifiek.Checked = false;
@@ -278,46 +319,6 @@
             this.rdbIedereen.Text = "Alle leerlingen uit de database exporteren";
             this.rdbIedereen.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIedereen_CheckedChanged);
             // 
-            // btnZoek
-            // 
-            this.btnZoek.EnabledCalc = true;
-            this.btnZoek.Location = new System.Drawing.Point(79, 85);
-            this.btnZoek.Name = "btnZoek";
-            this.btnZoek.Size = new System.Drawing.Size(206, 23);
-            this.btnZoek.TabIndex = 8;
-            this.btnZoek.Text = "Zoek";
-            this.btnZoek.Click += new XylosButton.ClickEventHandler(this.btnZoek_Click);
-            // 
-            // txtANaam
-            // 
-            this.txtANaam.EnabledCalc = true;
-            this.txtANaam.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtANaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtANaam.Location = new System.Drawing.Point(79, 50);
-            this.txtANaam.MaxLength = 32767;
-            this.txtANaam.MultiLine = false;
-            this.txtANaam.Name = "txtANaam";
-            this.txtANaam.ReadOnly = false;
-            this.txtANaam.Size = new System.Drawing.Size(206, 29);
-            this.txtANaam.TabIndex = 7;
-            this.txtANaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtANaam.UseSystemPasswordChar = false;
-            // 
-            // txtVNaam
-            // 
-            this.txtVNaam.EnabledCalc = true;
-            this.txtVNaam.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtVNaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtVNaam.Location = new System.Drawing.Point(79, 15);
-            this.txtVNaam.MaxLength = 32767;
-            this.txtVNaam.MultiLine = false;
-            this.txtVNaam.Name = "txtVNaam";
-            this.txtVNaam.ReadOnly = false;
-            this.txtVNaam.Size = new System.Drawing.Size(206, 29);
-            this.txtVNaam.TabIndex = 6;
-            this.txtVNaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtVNaam.UseSystemPasswordChar = false;
-            // 
             // Export
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,8 +337,11 @@
             this.Controls.Add(this.gpLeerling);
             this.Controls.Add(this.gpSpecifiek);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(341, 597);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(341, 597);
             this.Name = "Export";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -38,8 +38,18 @@ namespace DefinitiefProgram
             { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
             setLogo();
             setFooter();
+            btnClose2.Location = new Point(this.Width - btnClose2.Width - 15, 15);
+            btnSettings.Location = new Point(btnClose2.Location.X - 38, btnClose2.Location.Y);
         }
         #endregion
+        private void BtnClose2_Click(object sender, EventArgs e)
+        { Application.Exit(); }
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            DialogResult result = new CheckPassword().ShowDialog();
+            if (result == DialogResult.OK)
+            { new Settings().ShowDialog(); } else if (result == DialogResult.No) { MessageBox.Show("Fout wachtwoord!", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
         private void btnToevoegen_Click(object sender, EventArgs e)
         { Design d = new Design(); d.ShowDialog(); d.Dispose(); this.Focus(); }
         private void btnWijzigen_Click(object sender, EventArgs e)
@@ -79,8 +89,8 @@ namespace DefinitiefProgram
         async void setFooter()
         {
             lblTime.Location = new Point(5, this.Height - lblTime.Height - 5);
-            //await Task.Run(() => _setFooter()); voor bv tijd (dingen die veranderen)
-            //lblTime.Text = "GIP Software | Rune " + @"\&" + " Gilles"; wordt gedaan in _Paint
+            //await Task.Run(() => _setFooter());
+            //lblTime.Text = "GIP Software | Rune " + @"\&" + " Gilles"; wordt gedaan in lblTime_Paint
         }
         void _setFooter()
         {

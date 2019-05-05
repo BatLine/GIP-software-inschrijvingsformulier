@@ -25,8 +25,9 @@ namespace DefinitiefProgram
         {
             string LLNID, MoederID, VaderID;
             conn.Open();
-            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk, Aanmaakdatum) VALUES (" +
+            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Correspondentie, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk, Aanmaakdatum) VALUES (" +
                 "'" + lln.StrNaam + "','" +
+                lln.StrCorrespondentie + "','" +
                 lln.StrVoornaam + "','" +
                 lln.StrBijkNaam + "','" +
                 lln.StrGeslacht + "','" +
@@ -52,8 +53,9 @@ namespace DefinitiefProgram
             cmdLLN.ExecuteNonQuery();
 
             LLNID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
-            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
+            MySqlCommand cmdMoeder = new MySqlCommand("INSERT INTO ouder (Naam, Beroep, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" +
                 "'" + lln.O.StrNaamMoeder + "','" +
+                lln.O.StrBeroepMoeder + "','" +
                 lln.O.StrEmailMoeder + "','" +
                 lln.O.StrGSMMoeder + "','" +
                 lln.O.StrTelefoonWerkMoeder + "','" +
@@ -69,8 +71,9 @@ namespace DefinitiefProgram
             cmdMoeder.ExecuteNonQuery();
             MoederID = new MySqlCommand("select last_insert_id()", conn).ExecuteScalar().ToString();
 
-            MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" + //'naam', 'mail', 'gsm', 'tel', 'straat', 'postcode', 'huisnr', 'gemeente', 'gezinshoofdjafnee', 'gezinssituatie', 'relatieid'" +
+            MySqlCommand cmdVader = new MySqlCommand("INSERT INTO ouder (Naam, Beroep, Mailadres, GSM, Tel, Straat, Postcode, HuisNR, Gemeente, Gezinshoofd, GezinsSituatie, Voornaam, RelatieID) VALUES (" +
                 "'" + lln.O.StrNaamVader + "','" +
+                lln.O.StrBeroepVader + "','" +
                 lln.O.StrEmailVader + "','" +
                 lln.O.StrGSMVader + "','" +
                 lln.O.StrTelefoonWerkVader + "','" +
@@ -105,6 +108,64 @@ namespace DefinitiefProgram
             cmd.ExecuteNonQuery();
 
             conn.Close();
+        }
+        #endregion
+
+        #region delete
+        public void removeByID(int id)
+        {
+            int IDmoeder = 0;
+            int IDvader = 0;
+            conn.Open();
+
+            MySqlCommand getOuderIDS = new MySqlCommand("select IDmoeder, IDvader from leerling where idLeerling=" + id, conn);
+            MySqlDataReader dr = getOuderIDS.ExecuteReader();
+            while (dr.Read())
+            {
+                IDmoeder = Convert.ToInt16(dr["IDmoeder"]);
+                IDvader = Convert.ToInt16(dr["IDvader"]);
+            }
+
+            conn.Close();
+            conn.Open();
+            MySqlCommand deleteMoeder = new MySqlCommand("delete from ouder where (OuderID = " + IDmoeder + ");", conn);
+            deleteMoeder.ExecuteNonQuery();
+
+            conn.Close();
+            conn.Open();
+            MySqlCommand deleteVader = new MySqlCommand("delete from ouder where (OuderID = " + IDvader + ");", conn);
+            deleteVader.ExecuteNonQuery();
+
+            conn.Close();
+            conn.Open();
+            MySqlCommand deleteLeerling = new MySqlCommand("delete from leerling where (idLeerling = " + id + ");", conn);
+            deleteLeerling.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void wisAlles()
+        {
+            conn.Open();
+
+            new MySqlCommand("TRUNCATE TABLE ouder", conn).ExecuteNonQuery();
+            new MySqlCommand("TRUNCATE TABLE leerling", conn).ExecuteNonQuery();
+            new MySqlCommand("TRUNCATE TABLE landen", conn).ExecuteNonQuery();
+            new MySqlCommand("INSERT INTO landen (`idlanden`, `land`) VALUES ('1', 'België');", conn).ExecuteNonQuery();
+            new MySqlCommand("TRUNCATE TABLE nationaliteiten", conn).ExecuteNonQuery();
+            new MySqlCommand("INSERT INTO nationaliteiten (`idnationaliteiten`, `nationaliteit`) VALUES ('1', 'Belg');", conn).ExecuteNonQuery();
+
+            conn.Close();
+        }
+        public void wisLeerling(string naam, string achternaam, string postcode)
+        {
+            conn.Open();
+
+            MySqlCommand getIDLeerling = new MySqlCommand("select idLeerling from leerling where Voornaam='" + naam + "' AND Naam='" + achternaam + "' AND Postcode='" + postcode + "'", conn);
+            var idLeerling = getIDLeerling.ExecuteScalar();
+
+            conn.Close();
+            if (idLeerling == null) { throw new Exception("Geen leerling gevonden."); }
+            removeByID(Convert.ToInt16(idLeerling));
         }
         #endregion
 
@@ -178,6 +239,7 @@ namespace DefinitiefProgram
                 l.StrGebruikersnaamNetwerk = dr["GebruikersnaamNetwerk"].ToString();
                 l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
                 l.AanmaakDatum = dr["Aanmaakdatum"].ToString();
+                l.StrCorrespondentie = dr["Correspondentie"].ToString();
                 moederID = Convert.ToInt16(dr["IDmoeder"]);
                 vaderID = Convert.ToInt16(dr["IDvader"]);
             }
@@ -206,6 +268,7 @@ namespace DefinitiefProgram
                 l.O.StrPostcodeMoeder = dr["Postcode"].ToString();
                 l.O.StrHuisnrMoeder = dr["HuisNR"].ToString();
                 l.O.StrGemeenteMoeder = dr["Gemeente"].ToString();
+                l.O.StrBeroepMoeder = dr["Beroep"].ToString();
 
                 //algemeen
                 l.O.StrGezinshoofd = dr["Gezinshoofd"].ToString();
@@ -228,6 +291,7 @@ namespace DefinitiefProgram
                 l.O.StrPostcodeVader = dr["Postcode"].ToString();
                 l.O.StrHuisnrVader = dr["HuisNR"].ToString();
                 l.O.StrGemeenteVader = dr["Gemeente"].ToString();
+                l.O.StrBeroepVader = dr["Beroep"].ToString();
             }
             conn.Close();
 

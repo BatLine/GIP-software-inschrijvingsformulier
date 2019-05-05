@@ -39,8 +39,12 @@
             this.btnWijzigen = new XylosButton();
             this.lblTime = new System.Windows.Forms.Label();
             this.pbLogo = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnClose2 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnSettings = new Bunifu.Framework.UI.BunifuImageButton();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -127,11 +131,11 @@
             // 
             // pbLogo
             // 
-            this.pbLogo.BackColor = System.Drawing.Color.SeaGreen;
+            this.pbLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
             this.pbLogo.ImageActive = null;
-            this.pbLogo.Location = new System.Drawing.Point(351, 202);
+            this.pbLogo.Location = new System.Drawing.Point(445, 365);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(71, 71);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -141,6 +145,34 @@
             this.pbLogo.Zoom = 10;
             this.pbLogo.Click += new System.EventHandler(this.pbLogo_Click);
             // 
+            // btnClose2
+            // 
+            this.btnClose2.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose2.Image = ((System.Drawing.Image)(resources.GetObject("btnClose2.Image")));
+            this.btnClose2.ImageActive = null;
+            this.btnClose2.Location = new System.Drawing.Point(484, 31);
+            this.btnClose2.Name = "btnClose2";
+            this.btnClose2.Size = new System.Drawing.Size(32, 32);
+            this.btnClose2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnClose2.TabIndex = 12;
+            this.btnClose2.TabStop = false;
+            this.btnClose2.Zoom = 10;
+            this.btnClose2.Click += new System.EventHandler(this.BtnClose2_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+            this.btnSettings.ImageActive = null;
+            this.btnSettings.Location = new System.Drawing.Point(446, 31);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(32, 32);
+            this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnSettings.TabIndex = 13;
+            this.btnSettings.TabStop = false;
+            this.btnSettings.Zoom = 10;
+            this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,10 +180,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(546, 460);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSettings);
+            this.Controls.Add(this.btnClose2);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Menu";
@@ -162,6 +197,8 @@
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +215,7 @@
         private System.Windows.Forms.Panel pnlMenu;
         private System.Windows.Forms.Label lblTime;
         private Bunifu.Framework.UI.BunifuImageButton pbLogo;
+        private Bunifu.Framework.UI.BunifuImageButton btnSettings;
+        private Bunifu.Framework.UI.BunifuImageButton btnClose2;
     }
 }

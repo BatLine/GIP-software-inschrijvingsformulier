@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Design));
-            this.ilPassword = new System.Windows.Forms.ImageList(this.components);
+            this.il = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
             this.txtNationaliteit = new XylosCombobox();
@@ -123,7 +123,6 @@
             this.rdbJaar1 = new XylosRadioButton();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.tpResultaten = new System.Windows.Forms.TabPage();
             this.tpExtra = new System.Windows.Forms.TabPage();
             this.pbToonWachtwoord = new System.Windows.Forms.PictureBox();
             this.cmbCorrespondentie = new XylosCombobox();
@@ -158,12 +157,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // ilPassword
+            // il
             // 
-            this.ilPassword.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilPassword.ImageStream")));
-            this.ilPassword.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilPassword.Images.SetKeyName(0, "eye visible.png");
-            this.ilPassword.Images.SetKeyName(1, "eye invisible.png");
+            this.il.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("il.ImageStream")));
+            this.il.TransparentColor = System.Drawing.Color.Transparent;
+            this.il.Images.SetKeyName(0, "eye visible.png");
+            this.il.Images.SetKeyName(1, "eye invisible.png");
             // 
             // xylosTabControl1
             // 
@@ -171,7 +170,6 @@
             this.xylosTabControl1.Controls.Add(this.tpLLN);
             this.xylosTabControl1.Controls.Add(this.tpOuder);
             this.xylosTabControl1.Controls.Add(this.tpSchool);
-            this.xylosTabControl1.Controls.Add(this.tpResultaten);
             this.xylosTabControl1.Controls.Add(this.tpExtra);
             this.xylosTabControl1.Controls.Add(this.tpBevestigen);
             this.xylosTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -183,7 +181,7 @@
             this.xylosTabControl1.SelectedIndex = 0;
             this.xylosTabControl1.Size = new System.Drawing.Size(743, 518);
             this.xylosTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.xylosTabControl1.TabIndex = 141;
+            this.xylosTabControl1.TabIndex = 57;
             // 
             // tpLLN
             // 
@@ -243,7 +241,7 @@
             this.txtNationaliteit.Location = new System.Drawing.Point(137, 250);
             this.txtNationaliteit.Name = "txtNationaliteit";
             this.txtNationaliteit.Size = new System.Drawing.Size(130, 26);
-            this.txtNationaliteit.TabIndex = 132;
+            this.txtNationaliteit.TabIndex = 7;
             // 
             // btnAddNationaliteit
             // 
@@ -285,7 +283,7 @@
             this.txtGeboortedatum.Name = "txtGeboortedatum";
             this.txtGeboortedatum.ReadOnly = false;
             this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
-            this.txtGeboortedatum.TabIndex = 130;
+            this.txtGeboortedatum.TabIndex = 5;
             this.txtGeboortedatum.Text = "  /  /";
             this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGeboortedatum.UseSystemPasswordChar = false;
@@ -303,7 +301,7 @@
             this.mskPostcode.Name = "mskPostcode";
             this.mskPostcode.ReadOnly = false;
             this.mskPostcode.Size = new System.Drawing.Size(52, 29);
-            this.mskPostcode.TabIndex = 139;
+            this.mskPostcode.TabIndex = 14;
             this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mskPostcode.UseSystemPasswordChar = false;
             // 
@@ -319,7 +317,7 @@
             this.mskGsmNummer.Name = "mskGsmNummer";
             this.mskGsmNummer.ReadOnly = false;
             this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskGsmNummer.TabIndex = 133;
+            this.mskGsmNummer.TabIndex = 8;
             this.mskGsmNummer.Text = "           ";
             this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskGsmNummer.UseSystemPasswordChar = false;
@@ -336,7 +334,7 @@
             this.mskRijksregisterNummer.Name = "mskRijksregisterNummer";
             this.mskRijksregisterNummer.ReadOnly = false;
             this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
-            this.mskRijksregisterNummer.TabIndex = 131;
+            this.mskRijksregisterNummer.TabIndex = 6;
             this.mskRijksregisterNummer.Text = "  .  .  -   .";
             this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskRijksregisterNummer.UseSystemPasswordChar = false;
@@ -353,7 +351,7 @@
             this.cmbLand.Location = new System.Drawing.Point(407, 183);
             this.cmbLand.Name = "cmbLand";
             this.cmbLand.Size = new System.Drawing.Size(130, 26);
-            this.cmbLand.TabIndex = 140;
+            this.cmbLand.TabIndex = 15;
             // 
             // cmbGeslacht
             // 
@@ -371,7 +369,7 @@
             this.cmbGeslacht.Location = new System.Drawing.Point(137, 114);
             this.cmbGeslacht.Name = "cmbGeslacht";
             this.cmbGeslacht.Size = new System.Drawing.Size(130, 26);
-            this.cmbGeslacht.TabIndex = 128;
+            this.cmbGeslacht.TabIndex = 3;
             // 
             // txtGemeente
             // 
@@ -384,7 +382,7 @@
             this.txtGemeente.Name = "txtGemeente";
             this.txtGemeente.ReadOnly = false;
             this.txtGemeente.Size = new System.Drawing.Size(130, 29);
-            this.txtGemeente.TabIndex = 138;
+            this.txtGemeente.TabIndex = 13;
             this.txtGemeente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGemeente.UseSystemPasswordChar = false;
             // 
@@ -399,7 +397,7 @@
             this.txtBus.Name = "txtBus";
             this.txtBus.ReadOnly = false;
             this.txtBus.Size = new System.Drawing.Size(52, 29);
-            this.txtBus.TabIndex = 137;
+            this.txtBus.TabIndex = 12;
             this.txtBus.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBus.UseSystemPasswordChar = false;
             // 
@@ -414,7 +412,7 @@
             this.txtHuisnr.Name = "txtHuisnr";
             this.txtHuisnr.ReadOnly = false;
             this.txtHuisnr.Size = new System.Drawing.Size(52, 29);
-            this.txtHuisnr.TabIndex = 136;
+            this.txtHuisnr.TabIndex = 11;
             this.txtHuisnr.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtHuisnr.UseSystemPasswordChar = false;
             // 
@@ -429,7 +427,7 @@
             this.txtStraat.Name = "txtStraat";
             this.txtStraat.ReadOnly = false;
             this.txtStraat.Size = new System.Drawing.Size(130, 29);
-            this.txtStraat.TabIndex = 135;
+            this.txtStraat.TabIndex = 10;
             this.txtStraat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtStraat.UseSystemPasswordChar = false;
             // 
@@ -439,7 +437,7 @@
             this.label14.Location = new System.Drawing.Point(318, 183);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(33, 15);
-            this.label14.TabIndex = 142;
+            this.label14.TabIndex = 16;
             this.label14.Text = "Land";
             // 
             // label13
@@ -448,7 +446,7 @@
             this.label13.Location = new System.Drawing.Point(318, 148);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 15);
-            this.label13.TabIndex = 141;
+            this.label13.TabIndex = 16;
             this.label13.Text = "Postcode";
             // 
             // label12
@@ -457,7 +455,7 @@
             this.label12.Location = new System.Drawing.Point(318, 117);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 15);
-            this.label12.TabIndex = 140;
+            this.label12.TabIndex = 16;
             this.label12.Text = "Gemeente";
             // 
             // label11
@@ -466,7 +464,7 @@
             this.label11.Location = new System.Drawing.Point(318, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(26, 15);
-            this.label11.TabIndex = 139;
+            this.label11.TabIndex = 16;
             this.label11.Text = "Bus";
             // 
             // label10
@@ -475,7 +473,7 @@
             this.label10.Location = new System.Drawing.Point(318, 44);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 15);
-            this.label10.TabIndex = 138;
+            this.label10.TabIndex = 16;
             this.label10.Text = "Huisnummer";
             // 
             // label9
@@ -484,7 +482,7 @@
             this.label9.Location = new System.Drawing.Point(318, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 15);
-            this.label9.TabIndex = 137;
+            this.label9.TabIndex = 16;
             this.label9.Text = "Straat";
             // 
             // txtEmail
@@ -498,7 +496,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = false;
             this.txtEmail.Size = new System.Drawing.Size(130, 29);
-            this.txtEmail.TabIndex = 134;
+            this.txtEmail.TabIndex = 9;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmail.UseSystemPasswordChar = false;
             // 
@@ -513,7 +511,7 @@
             this.txtGeboorteplaats.Name = "txtGeboorteplaats";
             this.txtGeboorteplaats.ReadOnly = false;
             this.txtGeboorteplaats.Size = new System.Drawing.Size(130, 29);
-            this.txtGeboorteplaats.TabIndex = 129;
+            this.txtGeboorteplaats.TabIndex = 4;
             this.txtGeboorteplaats.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGeboorteplaats.UseSystemPasswordChar = false;
             // 
@@ -528,7 +526,7 @@
             this.txtBijkvoornaam.Name = "txtBijkvoornaam";
             this.txtBijkvoornaam.ReadOnly = false;
             this.txtBijkvoornaam.Size = new System.Drawing.Size(130, 29);
-            this.txtBijkvoornaam.TabIndex = 127;
+            this.txtBijkvoornaam.TabIndex = 2;
             this.txtBijkvoornaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBijkvoornaam.UseSystemPasswordChar = false;
             // 
@@ -543,7 +541,7 @@
             this.txtFamilieNaam.Name = "txtFamilieNaam";
             this.txtFamilieNaam.ReadOnly = false;
             this.txtFamilieNaam.Size = new System.Drawing.Size(130, 29);
-            this.txtFamilieNaam.TabIndex = 126;
+            this.txtFamilieNaam.TabIndex = 1;
             this.txtFamilieNaam.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFamilieNaam.UseSystemPasswordChar = false;
             this.txtFamilieNaam.TextChanged += new System.EventHandler(this.txtFamilieNaam_TextChanged);
@@ -570,7 +568,7 @@
             this.label17.Location = new System.Drawing.Point(7, 79);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(86, 15);
-            this.label17.TabIndex = 124;
+            this.label17.TabIndex = 16;
             this.label17.Text = "Bijk. voornaam";
             // 
             // label8
@@ -579,7 +577,7 @@
             this.label8.Location = new System.Drawing.Point(7, 317);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 15);
-            this.label8.TabIndex = 123;
+            this.label8.TabIndex = 16;
             this.label8.Text = "E-Mail";
             // 
             // label4
@@ -588,7 +586,7 @@
             this.label4.Location = new System.Drawing.Point(7, 282);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 15);
-            this.label4.TabIndex = 122;
+            this.label4.TabIndex = 16;
             this.label4.Text = "GSM-Nummer";
             // 
             // label7
@@ -597,7 +595,7 @@
             this.label7.Location = new System.Drawing.Point(7, 250);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 15);
-            this.label7.TabIndex = 121;
+            this.label7.TabIndex = 16;
             this.label7.Text = "Nationaliteit";
             // 
             // label6
@@ -606,7 +604,7 @@
             this.label6.Location = new System.Drawing.Point(7, 215);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 15);
-            this.label6.TabIndex = 120;
+            this.label6.TabIndex = 16;
             this.label6.Text = "Rijksregisternummer";
             // 
             // label5
@@ -615,7 +613,7 @@
             this.label5.Location = new System.Drawing.Point(7, 181);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 15);
-            this.label5.TabIndex = 119;
+            this.label5.TabIndex = 16;
             this.label5.Text = "Geboortedatum";
             // 
             // label3
@@ -624,7 +622,7 @@
             this.label3.Location = new System.Drawing.Point(7, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 15);
-            this.label3.TabIndex = 118;
+            this.label3.TabIndex = 16;
             this.label3.Text = "Geboorteplaats";
             // 
             // label2
@@ -633,7 +631,7 @@
             this.label2.Location = new System.Drawing.Point(7, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 15);
-            this.label2.TabIndex = 117;
+            this.label2.TabIndex = 16;
             this.label2.Text = "Geslacht";
             // 
             // label1
@@ -642,7 +640,7 @@
             this.label1.Location = new System.Drawing.Point(7, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 15);
-            this.label1.TabIndex = 116;
+            this.label1.TabIndex = 16;
             this.label1.Text = "Familienaam";
             // 
             // Voornaam
@@ -651,7 +649,7 @@
             this.Voornaam.Location = new System.Drawing.Point(7, 9);
             this.Voornaam.Name = "Voornaam";
             this.Voornaam.Size = new System.Drawing.Size(61, 15);
-            this.Voornaam.TabIndex = 115;
+            this.Voornaam.TabIndex = 16;
             this.Voornaam.Text = "Voornaam";
             // 
             // tpOuder
@@ -698,22 +696,21 @@
             "Co-ouderschap",
             "Pleeggezin",
             "Éenoudergezin",
-            "Gescheiden",
             "Moeder overleden",
             "Vader overleden"});
-            this.cmbGezinssituatie.Location = new System.Drawing.Point(146, 70);
+            this.cmbGezinssituatie.Location = new System.Drawing.Point(146, 9);
             this.cmbGezinssituatie.Name = "cmbGezinssituatie";
             this.cmbGezinssituatie.Size = new System.Drawing.Size(209, 26);
-            this.cmbGezinssituatie.TabIndex = 199;
+            this.cmbGezinssituatie.TabIndex = 17;
             this.cmbGezinssituatie.SelectedIndexChanged += new System.EventHandler(this.cmbGezinssituatie_SelectedIndexChanged);
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(16, 67);
+            this.label25.Location = new System.Drawing.Point(7, 9);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(79, 15);
-            this.label25.TabIndex = 202;
+            this.label25.TabIndex = 40;
             this.label25.Text = "Gezinssituatie";
             // 
             // xylosSeparator2
@@ -729,30 +726,32 @@
             this.rdbGezinshoofdVader.Checked = false;
             this.rdbGezinshoofdVader.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbGezinshoofdVader.EnabledCalc = true;
-            this.rdbGezinshoofdVader.Location = new System.Drawing.Point(146, 38);
+            this.rdbGezinshoofdVader.Location = new System.Drawing.Point(146, 77);
             this.rdbGezinshoofdVader.Name = "rdbGezinshoofdVader";
-            this.rdbGezinshoofdVader.Size = new System.Drawing.Size(75, 18);
-            this.rdbGezinshoofdVader.TabIndex = 198;
+            this.rdbGezinshoofdVader.Size = new System.Drawing.Size(137, 18);
+            this.rdbGezinshoofdVader.TabIndex = 19;
             this.rdbGezinshoofdVader.Text = "Vader";
+            this.rdbGezinshoofdVader.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.RdbGezinshoofdVader_CheckedChanged);
             // 
             // rdbGezinshoofdMoeder
             // 
             this.rdbGezinshoofdMoeder.Checked = true;
             this.rdbGezinshoofdMoeder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbGezinshoofdMoeder.EnabledCalc = true;
-            this.rdbGezinshoofdMoeder.Location = new System.Drawing.Point(146, 14);
+            this.rdbGezinshoofdMoeder.Location = new System.Drawing.Point(146, 53);
             this.rdbGezinshoofdMoeder.Name = "rdbGezinshoofdMoeder";
-            this.rdbGezinshoofdMoeder.Size = new System.Drawing.Size(75, 18);
-            this.rdbGezinshoofdMoeder.TabIndex = 197;
+            this.rdbGezinshoofdMoeder.Size = new System.Drawing.Size(137, 18);
+            this.rdbGezinshoofdMoeder.TabIndex = 18;
             this.rdbGezinshoofdMoeder.Text = "Moeder";
+            this.rdbGezinshoofdMoeder.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.RdbGezinshoofdMoeder_CheckedChanged);
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(16, 14);
+            this.label24.Location = new System.Drawing.Point(7, 53);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(73, 15);
-            this.label24.TabIndex = 200;
+            this.label24.TabIndex = 40;
             this.label24.Text = "Gezinshoofd";
             // 
             // pnlMoeder
@@ -768,23 +767,23 @@
             this.pnlMoeder.Controls.Add(this.txtStraatMoeder);
             this.pnlMoeder.Controls.Add(this.txtEmailMoeder);
             this.pnlMoeder.Controls.Add(this.txtVoornaamMoeder);
-            this.pnlMoeder.Location = new System.Drawing.Point(114, 117);
+            this.pnlMoeder.Location = new System.Drawing.Point(123, 117);
             this.pnlMoeder.Name = "pnlMoeder";
-            this.pnlMoeder.Size = new System.Drawing.Size(200, 385);
-            this.pnlMoeder.TabIndex = 196;
+            this.pnlMoeder.Size = new System.Drawing.Size(190, 385);
+            this.pnlMoeder.TabIndex = 18;
             // 
             // txtFamilienaamMoeder
             // 
             this.txtFamilienaamMoeder.EnabledCalc = true;
             this.txtFamilienaamMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFamilienaamMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtFamilienaamMoeder.Location = new System.Drawing.Point(35, 67);
+            this.txtFamilienaamMoeder.Location = new System.Drawing.Point(30, 66);
             this.txtFamilienaamMoeder.MaxLength = 32767;
             this.txtFamilienaamMoeder.MultiLine = false;
             this.txtFamilienaamMoeder.Name = "txtFamilienaamMoeder";
             this.txtFamilienaamMoeder.ReadOnly = false;
             this.txtFamilienaamMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtFamilienaamMoeder.TabIndex = 204;
+            this.txtFamilienaamMoeder.TabIndex = 21;
             this.txtFamilienaamMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFamilienaamMoeder.UseSystemPasswordChar = false;
             // 
@@ -793,13 +792,13 @@
             this.txtBeroepMoeder.EnabledCalc = true;
             this.txtBeroepMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBeroepMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtBeroepMoeder.Location = new System.Drawing.Point(35, 347);
+            this.txtBeroepMoeder.Location = new System.Drawing.Point(30, 346);
             this.txtBeroepMoeder.MaxLength = 32767;
             this.txtBeroepMoeder.MultiLine = false;
             this.txtBeroepMoeder.Name = "txtBeroepMoeder";
             this.txtBeroepMoeder.ReadOnly = false;
             this.txtBeroepMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtBeroepMoeder.TabIndex = 203;
+            this.txtBeroepMoeder.TabIndex = 29;
             this.txtBeroepMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBeroepMoeder.UseSystemPasswordChar = false;
             // 
@@ -808,14 +807,14 @@
             this.mtxtPostcodeMoeder.EnabledCalc = true;
             this.mtxtPostcodeMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtPostcodeMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtPostcodeMoeder.Location = new System.Drawing.Point(35, 277);
+            this.mtxtPostcodeMoeder.Location = new System.Drawing.Point(30, 276);
             this.mtxtPostcodeMoeder.Mask = "0000";
             this.mtxtPostcodeMoeder.MaxLength = 32767;
             this.mtxtPostcodeMoeder.MultiLine = false;
             this.mtxtPostcodeMoeder.Name = "mtxtPostcodeMoeder";
             this.mtxtPostcodeMoeder.ReadOnly = false;
             this.mtxtPostcodeMoeder.Size = new System.Drawing.Size(52, 29);
-            this.mtxtPostcodeMoeder.TabIndex = 200;
+            this.mtxtPostcodeMoeder.TabIndex = 27;
             this.mtxtPostcodeMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtxtPostcodeMoeder.UseSystemPasswordChar = false;
             // 
@@ -824,14 +823,14 @@
             this.mtxtGSMMoeder.EnabledCalc = true;
             this.mtxtGSMMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtGSMMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtGSMMoeder.Location = new System.Drawing.Point(35, 102);
+            this.mtxtGSMMoeder.Location = new System.Drawing.Point(30, 101);
             this.mtxtGSMMoeder.Mask = "0000 00 00 00";
             this.mtxtGSMMoeder.MaxLength = 32767;
             this.mtxtGSMMoeder.MultiLine = false;
             this.mtxtGSMMoeder.Name = "mtxtGSMMoeder";
             this.mtxtGSMMoeder.ReadOnly = false;
             this.mtxtGSMMoeder.Size = new System.Drawing.Size(130, 29);
-            this.mtxtGSMMoeder.TabIndex = 195;
+            this.mtxtGSMMoeder.TabIndex = 22;
             this.mtxtGSMMoeder.Text = "           ";
             this.mtxtGSMMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtGSMMoeder.UseSystemPasswordChar = false;
@@ -841,14 +840,14 @@
             this.mtxtTelfoonWerkMoeder.EnabledCalc = true;
             this.mtxtTelfoonWerkMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtTelfoonWerkMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtTelfoonWerkMoeder.Location = new System.Drawing.Point(35, 137);
+            this.mtxtTelfoonWerkMoeder.Location = new System.Drawing.Point(30, 136);
             this.mtxtTelfoonWerkMoeder.Mask = "0000 00 00 00";
             this.mtxtTelfoonWerkMoeder.MaxLength = 32767;
             this.mtxtTelfoonWerkMoeder.MultiLine = false;
             this.mtxtTelfoonWerkMoeder.Name = "mtxtTelfoonWerkMoeder";
             this.mtxtTelfoonWerkMoeder.ReadOnly = false;
             this.mtxtTelfoonWerkMoeder.Size = new System.Drawing.Size(130, 29);
-            this.mtxtTelfoonWerkMoeder.TabIndex = 196;
+            this.mtxtTelfoonWerkMoeder.TabIndex = 23;
             this.mtxtTelfoonWerkMoeder.Text = "           ";
             this.mtxtTelfoonWerkMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtTelfoonWerkMoeder.UseSystemPasswordChar = false;
@@ -857,10 +856,10 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(70, 8);
+            this.label21.Location = new System.Drawing.Point(61, 7);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(69, 21);
-            this.label21.TabIndex = 202;
+            this.label21.TabIndex = 40;
             this.label21.Text = "Moeder";
             // 
             // txtHuisNRMoeder
@@ -868,13 +867,13 @@
             this.txtHuisNRMoeder.EnabledCalc = true;
             this.txtHuisNRMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtHuisNRMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtHuisNRMoeder.Location = new System.Drawing.Point(35, 242);
+            this.txtHuisNRMoeder.Location = new System.Drawing.Point(30, 241);
             this.txtHuisNRMoeder.MaxLength = 32767;
             this.txtHuisNRMoeder.MultiLine = false;
             this.txtHuisNRMoeder.Name = "txtHuisNRMoeder";
             this.txtHuisNRMoeder.ReadOnly = false;
             this.txtHuisNRMoeder.Size = new System.Drawing.Size(52, 29);
-            this.txtHuisNRMoeder.TabIndex = 199;
+            this.txtHuisNRMoeder.TabIndex = 26;
             this.txtHuisNRMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtHuisNRMoeder.UseSystemPasswordChar = false;
             // 
@@ -883,13 +882,13 @@
             this.txtGemeenteMoeder.EnabledCalc = true;
             this.txtGemeenteMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtGemeenteMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGemeenteMoeder.Location = new System.Drawing.Point(35, 312);
+            this.txtGemeenteMoeder.Location = new System.Drawing.Point(30, 311);
             this.txtGemeenteMoeder.MaxLength = 32767;
             this.txtGemeenteMoeder.MultiLine = false;
             this.txtGemeenteMoeder.Name = "txtGemeenteMoeder";
             this.txtGemeenteMoeder.ReadOnly = false;
             this.txtGemeenteMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtGemeenteMoeder.TabIndex = 201;
+            this.txtGemeenteMoeder.TabIndex = 28;
             this.txtGemeenteMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGemeenteMoeder.UseSystemPasswordChar = false;
             // 
@@ -898,13 +897,13 @@
             this.txtStraatMoeder.EnabledCalc = true;
             this.txtStraatMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtStraatMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtStraatMoeder.Location = new System.Drawing.Point(35, 207);
+            this.txtStraatMoeder.Location = new System.Drawing.Point(30, 206);
             this.txtStraatMoeder.MaxLength = 32767;
             this.txtStraatMoeder.MultiLine = false;
             this.txtStraatMoeder.Name = "txtStraatMoeder";
             this.txtStraatMoeder.ReadOnly = false;
             this.txtStraatMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtStraatMoeder.TabIndex = 198;
+            this.txtStraatMoeder.TabIndex = 25;
             this.txtStraatMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtStraatMoeder.UseSystemPasswordChar = false;
             // 
@@ -914,13 +913,13 @@
             this.txtEmailMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmailMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.txtEmailMoeder.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txtEmailMoeder.Location = new System.Drawing.Point(35, 172);
+            this.txtEmailMoeder.Location = new System.Drawing.Point(30, 171);
             this.txtEmailMoeder.MaxLength = 32767;
             this.txtEmailMoeder.MultiLine = false;
             this.txtEmailMoeder.Name = "txtEmailMoeder";
             this.txtEmailMoeder.ReadOnly = false;
             this.txtEmailMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtEmailMoeder.TabIndex = 197;
+            this.txtEmailMoeder.TabIndex = 24;
             this.txtEmailMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmailMoeder.UseSystemPasswordChar = false;
             // 
@@ -929,13 +928,13 @@
             this.txtVoornaamMoeder.EnabledCalc = true;
             this.txtVoornaamMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtVoornaamMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtVoornaamMoeder.Location = new System.Drawing.Point(35, 32);
+            this.txtVoornaamMoeder.Location = new System.Drawing.Point(30, 31);
             this.txtVoornaamMoeder.MaxLength = 32767;
             this.txtVoornaamMoeder.MultiLine = false;
             this.txtVoornaamMoeder.Name = "txtVoornaamMoeder";
             this.txtVoornaamMoeder.ReadOnly = false;
             this.txtVoornaamMoeder.Size = new System.Drawing.Size(130, 29);
-            this.txtVoornaamMoeder.TabIndex = 194;
+            this.txtVoornaamMoeder.TabIndex = 20;
             this.txtVoornaamMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVoornaamMoeder.UseSystemPasswordChar = false;
             // 
@@ -955,20 +954,20 @@
             this.pnlVader.Location = new System.Drawing.Point(335, 117);
             this.pnlVader.Name = "pnlVader";
             this.pnlVader.Size = new System.Drawing.Size(200, 385);
-            this.pnlVader.TabIndex = 195;
+            this.pnlVader.TabIndex = 19;
             // 
             // txtFamilienaamVader
             // 
             this.txtFamilienaamVader.EnabledCalc = true;
             this.txtFamilienaamVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFamilienaamVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtFamilienaamVader.Location = new System.Drawing.Point(39, 66);
+            this.txtFamilienaamVader.Location = new System.Drawing.Point(35, 66);
             this.txtFamilienaamVader.MaxLength = 32767;
             this.txtFamilienaamVader.MultiLine = false;
             this.txtFamilienaamVader.Name = "txtFamilienaamVader";
             this.txtFamilienaamVader.ReadOnly = false;
             this.txtFamilienaamVader.Size = new System.Drawing.Size(130, 29);
-            this.txtFamilienaamVader.TabIndex = 205;
+            this.txtFamilienaamVader.TabIndex = 31;
             this.txtFamilienaamVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtFamilienaamVader.UseSystemPasswordChar = false;
             // 
@@ -977,13 +976,13 @@
             this.txtBeroepVader.EnabledCalc = true;
             this.txtBeroepVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBeroepVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtBeroepVader.Location = new System.Drawing.Point(39, 346);
+            this.txtBeroepVader.Location = new System.Drawing.Point(35, 346);
             this.txtBeroepVader.MaxLength = 32767;
             this.txtBeroepVader.MultiLine = false;
             this.txtBeroepVader.Name = "txtBeroepVader";
             this.txtBeroepVader.ReadOnly = false;
             this.txtBeroepVader.Size = new System.Drawing.Size(130, 29);
-            this.txtBeroepVader.TabIndex = 204;
+            this.txtBeroepVader.TabIndex = 39;
             this.txtBeroepVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBeroepVader.UseSystemPasswordChar = false;
             // 
@@ -992,14 +991,14 @@
             this.mtxtPostcodeVader.EnabledCalc = true;
             this.mtxtPostcodeVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtPostcodeVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtPostcodeVader.Location = new System.Drawing.Point(39, 276);
+            this.mtxtPostcodeVader.Location = new System.Drawing.Point(35, 276);
             this.mtxtPostcodeVader.Mask = "0000";
             this.mtxtPostcodeVader.MaxLength = 32767;
             this.mtxtPostcodeVader.MultiLine = false;
             this.mtxtPostcodeVader.Name = "mtxtPostcodeVader";
             this.mtxtPostcodeVader.ReadOnly = false;
             this.mtxtPostcodeVader.Size = new System.Drawing.Size(52, 29);
-            this.mtxtPostcodeVader.TabIndex = 201;
+            this.mtxtPostcodeVader.TabIndex = 37;
             this.mtxtPostcodeVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtxtPostcodeVader.UseSystemPasswordChar = false;
             // 
@@ -1008,14 +1007,14 @@
             this.mtxtGSMVader.EnabledCalc = true;
             this.mtxtGSMVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtGSMVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtGSMVader.Location = new System.Drawing.Point(39, 101);
+            this.mtxtGSMVader.Location = new System.Drawing.Point(35, 101);
             this.mtxtGSMVader.Mask = "0000 00 00 00";
             this.mtxtGSMVader.MaxLength = 32767;
             this.mtxtGSMVader.MultiLine = false;
             this.mtxtGSMVader.Name = "mtxtGSMVader";
             this.mtxtGSMVader.ReadOnly = false;
             this.mtxtGSMVader.Size = new System.Drawing.Size(130, 29);
-            this.mtxtGSMVader.TabIndex = 196;
+            this.mtxtGSMVader.TabIndex = 32;
             this.mtxtGSMVader.Text = "           ";
             this.mtxtGSMVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtGSMVader.UseSystemPasswordChar = false;
@@ -1025,14 +1024,14 @@
             this.mtxtTelfoonWerkVader.EnabledCalc = true;
             this.mtxtTelfoonWerkVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtTelfoonWerkVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtTelfoonWerkVader.Location = new System.Drawing.Point(39, 136);
+            this.mtxtTelfoonWerkVader.Location = new System.Drawing.Point(35, 136);
             this.mtxtTelfoonWerkVader.Mask = "0000 00 00 00";
             this.mtxtTelfoonWerkVader.MaxLength = 32767;
             this.mtxtTelfoonWerkVader.MultiLine = false;
             this.mtxtTelfoonWerkVader.Name = "mtxtTelfoonWerkVader";
             this.mtxtTelfoonWerkVader.ReadOnly = false;
             this.mtxtTelfoonWerkVader.Size = new System.Drawing.Size(130, 29);
-            this.mtxtTelfoonWerkVader.TabIndex = 197;
+            this.mtxtTelfoonWerkVader.TabIndex = 33;
             this.mtxtTelfoonWerkVader.Text = "           ";
             this.mtxtTelfoonWerkVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtTelfoonWerkVader.UseSystemPasswordChar = false;
@@ -1041,10 +1040,10 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(80, 7);
+            this.label23.Location = new System.Drawing.Point(74, 7);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(52, 21);
-            this.label23.TabIndex = 203;
+            this.label23.TabIndex = 40;
             this.label23.Text = "Vader";
             // 
             // txtHuisNRVader
@@ -1053,13 +1052,13 @@
             this.txtHuisNRVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtHuisNRVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.txtHuisNRVader.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtHuisNRVader.Location = new System.Drawing.Point(39, 241);
+            this.txtHuisNRVader.Location = new System.Drawing.Point(35, 241);
             this.txtHuisNRVader.MaxLength = 32767;
             this.txtHuisNRVader.MultiLine = false;
             this.txtHuisNRVader.Name = "txtHuisNRVader";
             this.txtHuisNRVader.ReadOnly = false;
             this.txtHuisNRVader.Size = new System.Drawing.Size(52, 29);
-            this.txtHuisNRVader.TabIndex = 200;
+            this.txtHuisNRVader.TabIndex = 36;
             this.txtHuisNRVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtHuisNRVader.UseSystemPasswordChar = false;
             // 
@@ -1068,13 +1067,13 @@
             this.txtGemeenteVader.EnabledCalc = true;
             this.txtGemeenteVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtGemeenteVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtGemeenteVader.Location = new System.Drawing.Point(39, 311);
+            this.txtGemeenteVader.Location = new System.Drawing.Point(35, 311);
             this.txtGemeenteVader.MaxLength = 32767;
             this.txtGemeenteVader.MultiLine = false;
             this.txtGemeenteVader.Name = "txtGemeenteVader";
             this.txtGemeenteVader.ReadOnly = false;
             this.txtGemeenteVader.Size = new System.Drawing.Size(130, 29);
-            this.txtGemeenteVader.TabIndex = 202;
+            this.txtGemeenteVader.TabIndex = 38;
             this.txtGemeenteVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGemeenteVader.UseSystemPasswordChar = false;
             // 
@@ -1083,13 +1082,13 @@
             this.txtStraatVader.EnabledCalc = true;
             this.txtStraatVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtStraatVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtStraatVader.Location = new System.Drawing.Point(39, 206);
+            this.txtStraatVader.Location = new System.Drawing.Point(35, 206);
             this.txtStraatVader.MaxLength = 32767;
             this.txtStraatVader.MultiLine = false;
             this.txtStraatVader.Name = "txtStraatVader";
             this.txtStraatVader.ReadOnly = false;
             this.txtStraatVader.Size = new System.Drawing.Size(130, 29);
-            this.txtStraatVader.TabIndex = 199;
+            this.txtStraatVader.TabIndex = 35;
             this.txtStraatVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtStraatVader.UseSystemPasswordChar = false;
             // 
@@ -1099,13 +1098,13 @@
             this.txtEmailVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmailVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.txtEmailVader.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtEmailVader.Location = new System.Drawing.Point(39, 171);
+            this.txtEmailVader.Location = new System.Drawing.Point(35, 171);
             this.txtEmailVader.MaxLength = 32767;
             this.txtEmailVader.MultiLine = false;
             this.txtEmailVader.Name = "txtEmailVader";
             this.txtEmailVader.ReadOnly = false;
             this.txtEmailVader.Size = new System.Drawing.Size(130, 29);
-            this.txtEmailVader.TabIndex = 198;
+            this.txtEmailVader.TabIndex = 34;
             this.txtEmailVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmailVader.UseSystemPasswordChar = false;
             // 
@@ -1114,104 +1113,104 @@
             this.txtVoornaamVader.EnabledCalc = true;
             this.txtVoornaamVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtVoornaamVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.txtVoornaamVader.Location = new System.Drawing.Point(39, 31);
+            this.txtVoornaamVader.Location = new System.Drawing.Point(35, 31);
             this.txtVoornaamVader.MaxLength = 32767;
             this.txtVoornaamVader.MultiLine = false;
             this.txtVoornaamVader.Name = "txtVoornaamVader";
             this.txtVoornaamVader.ReadOnly = false;
             this.txtVoornaamVader.Size = new System.Drawing.Size(130, 29);
-            this.txtVoornaamVader.TabIndex = 195;
+            this.txtVoornaamVader.TabIndex = 30;
             this.txtVoornaamVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVoornaamVader.UseSystemPasswordChar = false;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(16, 183);
+            this.label28.Location = new System.Drawing.Point(7, 183);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(75, 15);
-            this.label28.TabIndex = 192;
+            this.label28.TabIndex = 40;
             this.label28.Text = "Familienaam";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(16, 463);
+            this.label27.Location = new System.Drawing.Point(7, 463);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(44, 15);
-            this.label27.TabIndex = 191;
+            this.label27.TabIndex = 40;
             this.label27.Text = "Beroep";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 358);
+            this.label20.Location = new System.Drawing.Point(7, 358);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(77, 15);
-            this.label20.TabIndex = 164;
-            this.label20.Text = "Huisnummer";
+            this.label20.Size = new System.Drawing.Size(110, 15);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Huisnummer + Bus";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 428);
+            this.label19.Location = new System.Drawing.Point(7, 428);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(61, 15);
-            this.label19.TabIndex = 162;
+            this.label19.TabIndex = 40;
             this.label19.Text = "Gemeente";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(16, 393);
+            this.label36.Location = new System.Drawing.Point(7, 393);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(56, 15);
-            this.label36.TabIndex = 161;
+            this.label36.TabIndex = 40;
             this.label36.Text = "Postcode";
             // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(16, 323);
+            this.label35.Location = new System.Drawing.Point(7, 323);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(37, 15);
-            this.label35.TabIndex = 160;
+            this.label35.TabIndex = 40;
             this.label35.Text = "Straat";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 288);
+            this.label15.Location = new System.Drawing.Point(7, 288);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(41, 15);
-            this.label15.TabIndex = 15;
+            this.label15.TabIndex = 40;
             this.label15.Text = "E-Mail";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 253);
+            this.label16.Location = new System.Drawing.Point(7, 253);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(81, 15);
-            this.label16.TabIndex = 14;
+            this.label16.TabIndex = 40;
             this.label16.Text = "Telefoon werk";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(16, 218);
+            this.label18.Location = new System.Drawing.Point(7, 218);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(32, 15);
-            this.label18.TabIndex = 13;
+            this.label18.TabIndex = 40;
             this.label18.Text = "GSM";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 148);
+            this.label22.Location = new System.Drawing.Point(7, 148);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(61, 15);
-            this.label22.TabIndex = 9;
+            this.label22.TabIndex = 40;
             this.label22.Text = "Voornaam";
             // 
             // tpSchool
@@ -1254,7 +1253,7 @@
             this.rdbHalfIntern.Location = new System.Drawing.Point(92, 57);
             this.rdbHalfIntern.Name = "rdbHalfIntern";
             this.rdbHalfIntern.Size = new System.Drawing.Size(260, 18);
-            this.rdbHalfIntern.TabIndex = 113;
+            this.rdbHalfIntern.TabIndex = 50;
             this.rdbHalfIntern.Text = "Half-Intern (Blijft \'s middags op school)";
             this.rdbHalfIntern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbHalfIntern_CheckedChanged);
             // 
@@ -1266,7 +1265,7 @@
             this.rdbExtern.Location = new System.Drawing.Point(92, 33);
             this.rdbExtern.Name = "rdbExtern";
             this.rdbExtern.Size = new System.Drawing.Size(260, 18);
-            this.rdbExtern.TabIndex = 112;
+            this.rdbExtern.TabIndex = 49;
             this.rdbExtern.Text = "Extern (Mag de school \'s middags verlaten)";
             this.rdbExtern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbExtern_CheckedChanged);
             // 
@@ -1278,7 +1277,7 @@
             this.rdbIntern.Location = new System.Drawing.Point(92, 9);
             this.rdbIntern.Name = "rdbIntern";
             this.rdbIntern.Size = new System.Drawing.Size(75, 18);
-            this.rdbIntern.TabIndex = 111;
+            this.rdbIntern.TabIndex = 48;
             this.rdbIntern.Text = "Intern";
             this.rdbIntern.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbIntern_CheckedChanged);
             // 
@@ -1288,7 +1287,7 @@
             this.label34.Location = new System.Drawing.Point(3, 9);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(83, 15);
-            this.label34.TabIndex = 105;
+            this.label34.TabIndex = 51;
             this.label34.Text = "Schoolstatuut:";
             // 
             // cmbRichting
@@ -1303,7 +1302,7 @@
             this.cmbRichting.Location = new System.Drawing.Point(95, 114);
             this.cmbRichting.Name = "cmbRichting";
             this.cmbRichting.Size = new System.Drawing.Size(201, 26);
-            this.cmbRichting.TabIndex = 110;
+            this.cmbRichting.TabIndex = 47;
             // 
             // rdbJaar6
             // 
@@ -1313,7 +1312,7 @@
             this.rdbJaar6.Location = new System.Drawing.Point(221, 32);
             this.rdbJaar6.Name = "rdbJaar6";
             this.rdbJaar6.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar6.TabIndex = 109;
+            this.rdbJaar6.TabIndex = 46;
             this.rdbJaar6.Text = "6e Jaar";
             this.rdbJaar6.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar6_CheckedChanged);
             // 
@@ -1325,7 +1324,7 @@
             this.rdbJaar5.Location = new System.Drawing.Point(221, 8);
             this.rdbJaar5.Name = "rdbJaar5";
             this.rdbJaar5.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar5.TabIndex = 108;
+            this.rdbJaar5.TabIndex = 45;
             this.rdbJaar5.Text = "5e Jaar";
             this.rdbJaar5.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar5_CheckedChanged);
             // 
@@ -1337,7 +1336,7 @@
             this.rdbJaar4.Location = new System.Drawing.Point(95, 80);
             this.rdbJaar4.Name = "rdbJaar4";
             this.rdbJaar4.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar4.TabIndex = 107;
+            this.rdbJaar4.TabIndex = 44;
             this.rdbJaar4.Text = "4e Jaar";
             this.rdbJaar4.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar4_CheckedChanged);
             // 
@@ -1349,7 +1348,7 @@
             this.rdbJaar3.Location = new System.Drawing.Point(95, 56);
             this.rdbJaar3.Name = "rdbJaar3";
             this.rdbJaar3.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar3.TabIndex = 106;
+            this.rdbJaar3.TabIndex = 43;
             this.rdbJaar3.Text = "3e Jaar";
             this.rdbJaar3.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar3_CheckedChanged);
             // 
@@ -1361,7 +1360,7 @@
             this.rdbJaar2.Location = new System.Drawing.Point(95, 32);
             this.rdbJaar2.Name = "rdbJaar2";
             this.rdbJaar2.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar2.TabIndex = 105;
+            this.rdbJaar2.TabIndex = 42;
             this.rdbJaar2.Text = "2e Jaar";
             this.rdbJaar2.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar2_CheckedChanged);
             // 
@@ -1373,7 +1372,7 @@
             this.rdbJaar1.Location = new System.Drawing.Point(95, 8);
             this.rdbJaar1.Name = "rdbJaar1";
             this.rdbJaar1.Size = new System.Drawing.Size(75, 18);
-            this.rdbJaar1.TabIndex = 104;
+            this.rdbJaar1.TabIndex = 41;
             this.rdbJaar1.Text = "1ste Jaar";
             this.rdbJaar1.CheckedChanged += new XylosRadioButton.CheckedChangedEventHandler(this.rdbJaar1_CheckedChanged);
             // 
@@ -1383,7 +1382,7 @@
             this.label32.Location = new System.Drawing.Point(7, 9);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(59, 15);
-            this.label32.TabIndex = 89;
+            this.label32.TabIndex = 51;
             this.label32.Text = "Studiejaar";
             // 
             // label33
@@ -1392,20 +1391,8 @@
             this.label33.Location = new System.Drawing.Point(7, 114);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(51, 15);
-            this.label33.TabIndex = 87;
+            this.label33.TabIndex = 51;
             this.label33.Text = "Richting";
-            // 
-            // tpResultaten
-            // 
-            this.tpResultaten.BackColor = System.Drawing.Color.White;
-            this.tpResultaten.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tpResultaten.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.tpResultaten.Location = new System.Drawing.Point(184, 4);
-            this.tpResultaten.Name = "tpResultaten";
-            this.tpResultaten.Padding = new System.Windows.Forms.Padding(3);
-            this.tpResultaten.Size = new System.Drawing.Size(555, 510);
-            this.tpResultaten.TabIndex = 12;
-            this.tpResultaten.Text = "Resultaten";
             // 
             // tpExtra
             // 
@@ -1453,7 +1440,7 @@
             this.cmbCorrespondentie.Location = new System.Drawing.Point(10, 152);
             this.cmbCorrespondentie.Name = "cmbCorrespondentie";
             this.cmbCorrespondentie.Size = new System.Drawing.Size(209, 26);
-            this.cmbCorrespondentie.TabIndex = 207;
+            this.cmbCorrespondentie.TabIndex = 54;
             // 
             // xylosSeparator3
             // 
@@ -1469,7 +1456,7 @@
             this.label26.Location = new System.Drawing.Point(7, 134);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(311, 15);
-            this.label26.TabIndex = 205;
+            this.label26.TabIndex = 55;
             this.label26.Text = "Rapport en correspondentie opsturen naar  vader/moeder";
             // 
             // txtWachtwoordNetwerk
@@ -1483,7 +1470,7 @@
             this.txtWachtwoordNetwerk.Name = "txtWachtwoordNetwerk";
             this.txtWachtwoordNetwerk.ReadOnly = false;
             this.txtWachtwoordNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtWachtwoordNetwerk.TabIndex = 203;
+            this.txtWachtwoordNetwerk.TabIndex = 53;
             this.txtWachtwoordNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtWachtwoordNetwerk.UseSystemPasswordChar = true;
             // 
@@ -1498,7 +1485,7 @@
             this.txtGebruikersnaamNetwerk.Name = "txtGebruikersnaamNetwerk";
             this.txtGebruikersnaamNetwerk.ReadOnly = false;
             this.txtGebruikersnaamNetwerk.Size = new System.Drawing.Size(181, 29);
-            this.txtGebruikersnaamNetwerk.TabIndex = 202;
+            this.txtGebruikersnaamNetwerk.TabIndex = 52;
             this.txtGebruikersnaamNetwerk.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGebruikersnaamNetwerk.UseSystemPasswordChar = false;
             // 
@@ -1509,7 +1496,7 @@
             this.label38.Location = new System.Drawing.Point(6, 5);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(72, 21);
-            this.label38.TabIndex = 201;
+            this.label38.TabIndex = 55;
             this.label38.Text = "Netwerk";
             // 
             // label31
@@ -1518,7 +1505,7 @@
             this.label31.Location = new System.Drawing.Point(7, 76);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(120, 15);
-            this.label31.TabIndex = 199;
+            this.label31.TabIndex = 55;
             this.label31.Text = "Wachtwoord netwerk";
             // 
             // label30
@@ -1527,7 +1514,7 @@
             this.label30.Location = new System.Drawing.Point(7, 26);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(138, 15);
-            this.label30.TabIndex = 197;
+            this.label30.TabIndex = 55;
             this.label30.Text = "Gebruikersnaam netwerk";
             // 
             // tpBevestigen
@@ -1550,15 +1537,15 @@
             this.notification.Controls.Add(this.pbIcon);
             this.notification.Controls.Add(this.lblText);
             this.notification.Controls.Add(this.lblTitel);
-            this.notification.Location = new System.Drawing.Point(3, 39);
+            this.notification.Location = new System.Drawing.Point(57, 20);
             this.notification.Name = "notification";
             this.notification.Size = new System.Drawing.Size(453, 70);
-            this.notification.TabIndex = 1;
+            this.notification.TabIndex = 57;
             this.notification.Visible = false;
             // 
             // btnCloseNotification
             // 
-            this.btnCloseNotification.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnCloseNotification.BackColor = System.Drawing.Color.Transparent;
             this.btnCloseNotification.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseNotification.Image")));
             this.btnCloseNotification.ImageActive = null;
             this.btnCloseNotification.Location = new System.Drawing.Point(418, 3);
@@ -1568,12 +1555,15 @@
             this.btnCloseNotification.TabIndex = 3;
             this.btnCloseNotification.TabStop = false;
             this.btnCloseNotification.Zoom = 10;
+            this.btnCloseNotification.Click += new System.EventHandler(this.BtnCloseNotification_Click);
             // 
             // pbIcon
             // 
+            this.pbIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbIcon.Image")));
             this.pbIcon.Location = new System.Drawing.Point(3, 3);
             this.pbIcon.Name = "pbIcon";
             this.pbIcon.Size = new System.Drawing.Size(64, 64);
+            this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbIcon.TabIndex = 2;
             this.pbIcon.TabStop = false;
             // 
@@ -1584,7 +1574,7 @@
             this.lblText.Location = new System.Drawing.Point(74, 24);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(25, 15);
-            this.lblText.TabIndex = 1;
+            this.lblText.TabIndex = 57;
             this.lblText.Text = "404";
             // 
             // lblTitel
@@ -1595,7 +1585,7 @@
             this.lblTitel.Location = new System.Drawing.Point(73, 3);
             this.lblTitel.Name = "lblTitel";
             this.lblTitel.Size = new System.Drawing.Size(48, 21);
-            this.lblTitel.TabIndex = 0;
+            this.lblTitel.TabIndex = 57;
             this.lblTitel.Text = "Error.";
             // 
             // btnConfirm
@@ -1604,7 +1594,7 @@
             this.btnConfirm.Location = new System.Drawing.Point(159, 148);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(244, 134);
-            this.btnConfirm.TabIndex = 0;
+            this.btnConfirm.TabIndex = 56;
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
             // 
@@ -1616,8 +1606,11 @@
             this.ClientSize = new System.Drawing.Size(743, 518);
             this.Controls.Add(this.xylosTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(759, 557);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(759, 557);
             this.Name = "Design";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leerling Toevoegen";
@@ -1710,8 +1703,7 @@
         private CustomMaskedTextbox mskRijksregisterNummer;
         private CustomMaskedTextbox mskPostcode;
         private CustomMaskedTextbox mskGsmNummer;
-        private System.Windows.Forms.ImageList ilPassword;
-        private System.Windows.Forms.TabPage tpResultaten;
+        private System.Windows.Forms.ImageList il;
         private System.Windows.Forms.TabPage tpExtra;
         private System.Windows.Forms.PictureBox pbToonWachtwoord;
         private XylosCombobox cmbCorrespondentie;

@@ -50,7 +50,7 @@ namespace DefinitiefProgram
         private void rdbIedereen_CheckedChanged(object sender, EventArgs e)
         { rdbChanged(); }
         private void rdbSpecifiek_CheckedChanged(object sender, EventArgs e)
-        { rdbChanged(); }
+        { gpSpecifieker.Visible = false; rdbChanged(); }
         private void chkSpecifiker_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSpecifiker.Checked)
@@ -318,34 +318,44 @@ namespace DefinitiefProgram
 
             await Task.Run(() => export(l, n));
 
-            this.Visible = true;
-            this.Text = text;
-            Controls.Remove(pnl);
-            lo.Close();
+            try {
+                this.Visible = true;
+                this.Text = text;
+                Controls.Remove(pnl);
+                lo.Close();
+            } catch (Exception) { try { lo.Close(); } catch (Exception) { } }
         }
         void export(string locatie, string naam)
         {
+            try
+            {
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = false;
+
+                try
+                {
+                    if (File.Exists(locatie + naam))
+                    { File.Delete(locatie + naam); }
+                    if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
+                    { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
+                }
+                catch (Exception)
+                { MessageBox.Show("Fout bij het maken van het bestand.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); this.Close(); }
+
+                var app = new Excel.Application();
+                var wb = app.Workbooks.Add();
+                wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
+                wb.Close();
+
+                xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
+                Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            }
+            catch (Exception) { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); this.Close(); }
             this.Invoke(new Action(() => {
                 try
                 {
                     int intTeller = 1;
-                    xlexcel = new Excel.Application();
-                    xlexcel.Visible = false;
-
-                    if (File.Exists(locatie + naam))
-                        File.Delete(locatie + naam);
-                    if (File.Exists(tempPath + @"\tempLeerlingen.xlsx"))
-                    { File.Delete(tempPath + @"\tempLeerlingen.xlsx"); }
-
-                    var app = new Excel.Application();
-                    var wb = app.Workbooks.Add();
-                    wb.SaveAs(tempPath + @"tempLeerlingen.xlsx");
-                    wb.Close();
-
-                    xlWorkBook = xlexcel.Workbooks.Open(tempPath + @"\tempLeerlingen.xlsx", 0, true, 5, "", "", true,
-                    Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
                     foreach (Leerling l in leerlingenOmteExporteren)
                     {
                         xlWorkSheet.Cells[intTeller, 1] = l.StrNaam;
@@ -391,7 +401,12 @@ namespace DefinitiefProgram
 
                         intTeller++;
                     }
+                }
+                catch (Exception)
+                { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
+                try
+                {
                     xlWorkBook.Close(true, locatie + naam, misValue);
                     xlexcel.Quit();
 
@@ -399,10 +414,10 @@ namespace DefinitiefProgram
                     releaseObject(xlWorkBook);
                     releaseObject(xlexcel);
                     MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Close();
                 }
-                catch (Exception)
-                { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-                this.Close();
+                catch (Exception) { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); this.Close(); }
             }));
         }
         private void releaseObject(object obj)

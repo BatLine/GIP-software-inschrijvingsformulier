@@ -33,7 +33,7 @@ namespace DefinitiefProgram
         private int databaseID;
         private string aanmaakDatum;
         private Ouders o = new Ouders();
-
+        private string strCorrespondentie;
         public string StrNaam { get => strNaam; set => strNaam = value; }
         public string StrVoornaam { get => strVoornaam; set => strVoornaam = value; }
         public string StrBijkNaam { get => strBijkNaam; set => strBijkNaam = value; }
@@ -59,5 +59,6 @@ namespace DefinitiefProgram
         public string StrRichtingNaam { get => strRichtingNaam; set => strRichtingNaam = value; }
         public Ouders O { get => o; set => o = value; }
         public string AanmaakDatum { get => aanmaakDatum; set => aanmaakDatum = value; }
+        public string StrCorrespondentie { get => strCorrespondentie; set => strCorrespondentie = value; }
     }
 }

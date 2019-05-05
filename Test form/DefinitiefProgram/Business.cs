@@ -71,6 +71,22 @@ namespace DefinitiefProgram
             lln.AanmaakDatum = DateTime.Now.ToString("dd/MM/yyyy");
             p.addToDB(lln);
         }
+        public void removeByID(int id)
+        { p.removeByID(id); }
+        public string wisAlles()
+        {
+            try { p.wisAlles(); }
+            catch (Exception)
+            { return "Fout bij het wissen van de database."; }
+            return "Database gewist";
+        }
+        public string wisLeerling(string naam, string achternaam, string postcode)
+        {
+            try { p.wisLeerling(naam, achternaam, postcode); }
+            catch (Exception)
+            { return "Fout bij het wissen van " + naam + " " + achternaam + "."; }
+            return "Leerling gewist";
+        }
         public List<Leerling> getAlleLeerlingen()
         {
             List<Leerling> l = new List<Leerling>();

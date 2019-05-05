@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lijstleerlingen));
             this.lvLeerlingen = new System.Windows.Forms.ListView();
             this.cVoornaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cNaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -96,8 +97,11 @@
             this.Controls.Add(this.btnKies);
             this.Controls.Add(this.lvLeerlingen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(282, 433);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(282, 433);
             this.Name = "Lijstleerlingen";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
