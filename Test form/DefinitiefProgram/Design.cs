@@ -127,7 +127,7 @@ namespace DefinitiefProgram
                 o.StrGezinshoofd = strGezinshoofd;
                 lln.O = o;
 
-                if (this.Text == "Leerling Toevoegen")
+                if (this.Text == "Leerling wijzigen")
                 { voegToe(lln); }
                 else { updateLLN(lln, updateID); }
             }
