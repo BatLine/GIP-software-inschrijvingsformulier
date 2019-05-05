@@ -33,6 +33,7 @@
             this.il = new System.Windows.Forms.ImageList(this.components);
             this.xylosTabControl1 = new XylosTabControl();
             this.tpLLN = new System.Windows.Forms.TabPage();
+            this.mskPostcode = new XylosTextBox();
             this.txtNationaliteit = new XylosCombobox();
             this.btnAddNationaliteit = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnAddLand = new Bunifu.Framework.UI.BunifuImageButton();
@@ -74,6 +75,7 @@
             this.rdbGezinshoofdMoeder = new XylosRadioButton();
             this.label24 = new System.Windows.Forms.Label();
             this.pnlMoeder = new System.Windows.Forms.Panel();
+            this.mtxtPostcodeMoeder = new XylosTextBox();
             this.txtFamilienaamMoeder = new XylosTextBox();
             this.txtBeroepMoeder = new XylosTextBox();
             this.mtxtGSMMoeder = new DefinitiefProgram.CustomMaskedTextbox();
@@ -85,6 +87,7 @@
             this.txtEmailMoeder = new XylosTextBox();
             this.txtVoornaamMoeder = new XylosTextBox();
             this.pnlVader = new System.Windows.Forms.Panel();
+            this.mtxtPostcodeVader = new XylosTextBox();
             this.txtFamilienaamVader = new XylosTextBox();
             this.txtBeroepVader = new XylosTextBox();
             this.mtxtGSMVader = new DefinitiefProgram.CustomMaskedTextbox();
@@ -137,9 +140,6 @@
             this.lblText = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lblTitel = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnConfirm = new XylosButton();
-            this.mskPostcode = new XylosTextBox();
-            this.mtxtPostcodeMoeder = new XylosTextBox();
-            this.mtxtPostcodeVader = new XylosTextBox();
             this.xylosTabControl1.SuspendLayout();
             this.tpLLN.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddNationaliteit)).BeginInit();
@@ -229,6 +229,21 @@
             this.tpLLN.TabIndex = 0;
             this.tpLLN.Text = "Leerling";
             // 
+            // mskPostcode
+            // 
+            this.mskPostcode.EnabledCalc = true;
+            this.mskPostcode.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mskPostcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mskPostcode.Location = new System.Drawing.Point(407, 149);
+            this.mskPostcode.MaxLength = 32767;
+            this.mskPostcode.MultiLine = false;
+            this.mskPostcode.Name = "mskPostcode";
+            this.mskPostcode.ReadOnly = false;
+            this.mskPostcode.Size = new System.Drawing.Size(130, 29);
+            this.mskPostcode.TabIndex = 14;
+            this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mskPostcode.UseSystemPasswordChar = false;
+            // 
             // txtNationaliteit
             // 
             this.txtNationaliteit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -284,7 +299,6 @@
             this.txtGeboortedatum.ReadOnly = false;
             this.txtGeboortedatum.Size = new System.Drawing.Size(130, 29);
             this.txtGeboortedatum.TabIndex = 5;
-            this.txtGeboortedatum.Text = "  /  /";
             this.txtGeboortedatum.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtGeboortedatum.UseSystemPasswordChar = false;
             this.txtGeboortedatum.Leave += new System.EventHandler(this.txtGeboortedatum_Leave);
@@ -302,7 +316,7 @@
             this.mskGsmNummer.ReadOnly = false;
             this.mskGsmNummer.Size = new System.Drawing.Size(130, 29);
             this.mskGsmNummer.TabIndex = 8;
-            this.mskGsmNummer.Text = "+32           ";
+            this.mskGsmNummer.Text = "+32";
             this.mskGsmNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskGsmNummer.UseSystemPasswordChar = false;
             // 
@@ -319,7 +333,7 @@
             this.mskRijksregisterNummer.ReadOnly = false;
             this.mskRijksregisterNummer.Size = new System.Drawing.Size(130, 29);
             this.mskRijksregisterNummer.TabIndex = 6;
-            this.mskRijksregisterNummer.Text = "  .  .  -   .";
+            this.mskRijksregisterNummer.Text = "  .  .  -";
             this.mskRijksregisterNummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mskRijksregisterNummer.UseSystemPasswordChar = false;
             // 
@@ -756,6 +770,21 @@
             this.pnlMoeder.Size = new System.Drawing.Size(190, 385);
             this.pnlMoeder.TabIndex = 18;
             // 
+            // mtxtPostcodeMoeder
+            // 
+            this.mtxtPostcodeMoeder.EnabledCalc = true;
+            this.mtxtPostcodeMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mtxtPostcodeMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mtxtPostcodeMoeder.Location = new System.Drawing.Point(30, 276);
+            this.mtxtPostcodeMoeder.MaxLength = 32767;
+            this.mtxtPostcodeMoeder.MultiLine = false;
+            this.mtxtPostcodeMoeder.Name = "mtxtPostcodeMoeder";
+            this.mtxtPostcodeMoeder.ReadOnly = false;
+            this.mtxtPostcodeMoeder.Size = new System.Drawing.Size(130, 29);
+            this.mtxtPostcodeMoeder.TabIndex = 27;
+            this.mtxtPostcodeMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mtxtPostcodeMoeder.UseSystemPasswordChar = false;
+            // 
             // txtFamilienaamMoeder
             // 
             this.txtFamilienaamMoeder.EnabledCalc = true;
@@ -792,14 +821,14 @@
             this.mtxtGSMMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtGSMMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.mtxtGSMMoeder.Location = new System.Drawing.Point(30, 101);
-            this.mtxtGSMMoeder.Mask = "0000 00 00 00";
+            this.mtxtGSMMoeder.Mask = "+00 000 00 00 00";
             this.mtxtGSMMoeder.MaxLength = 32767;
             this.mtxtGSMMoeder.MultiLine = false;
             this.mtxtGSMMoeder.Name = "mtxtGSMMoeder";
             this.mtxtGSMMoeder.ReadOnly = false;
             this.mtxtGSMMoeder.Size = new System.Drawing.Size(130, 29);
             this.mtxtGSMMoeder.TabIndex = 22;
-            this.mtxtGSMMoeder.Text = "           ";
+            this.mtxtGSMMoeder.Text = "+32";
             this.mtxtGSMMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtGSMMoeder.UseSystemPasswordChar = false;
             // 
@@ -809,14 +838,14 @@
             this.mtxtTelfoonWerkMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtTelfoonWerkMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.mtxtTelfoonWerkMoeder.Location = new System.Drawing.Point(30, 136);
-            this.mtxtTelfoonWerkMoeder.Mask = "0000 00 00 00";
+            this.mtxtTelfoonWerkMoeder.Mask = "+00 000 00 00 00";
             this.mtxtTelfoonWerkMoeder.MaxLength = 32767;
             this.mtxtTelfoonWerkMoeder.MultiLine = false;
             this.mtxtTelfoonWerkMoeder.Name = "mtxtTelfoonWerkMoeder";
             this.mtxtTelfoonWerkMoeder.ReadOnly = false;
             this.mtxtTelfoonWerkMoeder.Size = new System.Drawing.Size(130, 29);
             this.mtxtTelfoonWerkMoeder.TabIndex = 23;
-            this.mtxtTelfoonWerkMoeder.Text = "           ";
+            this.mtxtTelfoonWerkMoeder.Text = "+32";
             this.mtxtTelfoonWerkMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtTelfoonWerkMoeder.UseSystemPasswordChar = false;
             // 
@@ -924,6 +953,21 @@
             this.pnlVader.Size = new System.Drawing.Size(200, 385);
             this.pnlVader.TabIndex = 19;
             // 
+            // mtxtPostcodeVader
+            // 
+            this.mtxtPostcodeVader.EnabledCalc = true;
+            this.mtxtPostcodeVader.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.mtxtPostcodeVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
+            this.mtxtPostcodeVader.Location = new System.Drawing.Point(35, 276);
+            this.mtxtPostcodeVader.MaxLength = 32767;
+            this.mtxtPostcodeVader.MultiLine = false;
+            this.mtxtPostcodeVader.Name = "mtxtPostcodeVader";
+            this.mtxtPostcodeVader.ReadOnly = false;
+            this.mtxtPostcodeVader.Size = new System.Drawing.Size(130, 29);
+            this.mtxtPostcodeVader.TabIndex = 37;
+            this.mtxtPostcodeVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mtxtPostcodeVader.UseSystemPasswordChar = false;
+            // 
             // txtFamilienaamVader
             // 
             this.txtFamilienaamVader.EnabledCalc = true;
@@ -960,14 +1004,14 @@
             this.mtxtGSMVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtGSMVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.mtxtGSMVader.Location = new System.Drawing.Point(35, 101);
-            this.mtxtGSMVader.Mask = "0000 00 00 00";
+            this.mtxtGSMVader.Mask = "+00 000 00 00 00";
             this.mtxtGSMVader.MaxLength = 32767;
             this.mtxtGSMVader.MultiLine = false;
             this.mtxtGSMVader.Name = "mtxtGSMVader";
             this.mtxtGSMVader.ReadOnly = false;
             this.mtxtGSMVader.Size = new System.Drawing.Size(130, 29);
             this.mtxtGSMVader.TabIndex = 32;
-            this.mtxtGSMVader.Text = "           ";
+            this.mtxtGSMVader.Text = "+32";
             this.mtxtGSMVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtGSMVader.UseSystemPasswordChar = false;
             // 
@@ -977,14 +1021,14 @@
             this.mtxtTelfoonWerkVader.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.mtxtTelfoonWerkVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
             this.mtxtTelfoonWerkVader.Location = new System.Drawing.Point(35, 136);
-            this.mtxtTelfoonWerkVader.Mask = "0000 00 00 00";
+            this.mtxtTelfoonWerkVader.Mask = "+00 000 00 00 00";
             this.mtxtTelfoonWerkVader.MaxLength = 32767;
             this.mtxtTelfoonWerkVader.MultiLine = false;
             this.mtxtTelfoonWerkVader.Name = "mtxtTelfoonWerkVader";
             this.mtxtTelfoonWerkVader.ReadOnly = false;
             this.mtxtTelfoonWerkVader.Size = new System.Drawing.Size(130, 29);
             this.mtxtTelfoonWerkVader.TabIndex = 33;
-            this.mtxtTelfoonWerkVader.Text = "           ";
+            this.mtxtTelfoonWerkVader.Text = "+32";
             this.mtxtTelfoonWerkVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mtxtTelfoonWerkVader.UseSystemPasswordChar = false;
             // 
@@ -1549,51 +1593,6 @@
             this.btnConfirm.TabIndex = 56;
             this.btnConfirm.Text = "Bevestigen";
             this.btnConfirm.Click += new XylosButton.ClickEventHandler(this.btnConfirm_Click);
-            // 
-            // mskPostcode
-            // 
-            this.mskPostcode.EnabledCalc = true;
-            this.mskPostcode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mskPostcode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mskPostcode.Location = new System.Drawing.Point(407, 149);
-            this.mskPostcode.MaxLength = 32767;
-            this.mskPostcode.MultiLine = false;
-            this.mskPostcode.Name = "mskPostcode";
-            this.mskPostcode.ReadOnly = false;
-            this.mskPostcode.Size = new System.Drawing.Size(130, 29);
-            this.mskPostcode.TabIndex = 145;
-            this.mskPostcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mskPostcode.UseSystemPasswordChar = false;
-            // 
-            // mtxtPostcodeMoeder
-            // 
-            this.mtxtPostcodeMoeder.EnabledCalc = true;
-            this.mtxtPostcodeMoeder.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mtxtPostcodeMoeder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtPostcodeMoeder.Location = new System.Drawing.Point(30, 276);
-            this.mtxtPostcodeMoeder.MaxLength = 32767;
-            this.mtxtPostcodeMoeder.MultiLine = false;
-            this.mtxtPostcodeMoeder.Name = "mtxtPostcodeMoeder";
-            this.mtxtPostcodeMoeder.ReadOnly = false;
-            this.mtxtPostcodeMoeder.Size = new System.Drawing.Size(130, 29);
-            this.mtxtPostcodeMoeder.TabIndex = 41;
-            this.mtxtPostcodeMoeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mtxtPostcodeMoeder.UseSystemPasswordChar = false;
-            // 
-            // mtxtPostcodeVader
-            // 
-            this.mtxtPostcodeVader.EnabledCalc = true;
-            this.mtxtPostcodeVader.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.mtxtPostcodeVader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(133)))), ((int)(((byte)(142)))));
-            this.mtxtPostcodeVader.Location = new System.Drawing.Point(35, 276);
-            this.mtxtPostcodeVader.MaxLength = 32767;
-            this.mtxtPostcodeVader.MultiLine = false;
-            this.mtxtPostcodeVader.Name = "mtxtPostcodeVader";
-            this.mtxtPostcodeVader.ReadOnly = false;
-            this.mtxtPostcodeVader.Size = new System.Drawing.Size(130, 29);
-            this.mtxtPostcodeVader.TabIndex = 41;
-            this.mtxtPostcodeVader.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mtxtPostcodeVader.UseSystemPasswordChar = false;
             // 
             // Design
             // 

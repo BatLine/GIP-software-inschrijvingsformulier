@@ -223,6 +223,7 @@ namespace DefinitiefProgram
                 cmbRichting.Items.Add("IT & Netwerken");
                 cmbRichting.Items.Add("Office management & communicatie");
             }
+            cmbRichting.SelectedItem = cmbRichting.Items[0];
         }
         private void rdbJaar1_CheckedChanged(object sender, EventArgs e)
         { checkStudieJaar(); }
@@ -277,6 +278,7 @@ namespace DefinitiefProgram
                 pbToonWachtwoord.Image = il.Images[0];
                 cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
                 cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
+                cmbCorrespondentie.SelectedItem = cmbCorrespondentie.Items[0];
                 rdbJaar1.Checked = true;
                 checkStudieJaar();
                 txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
@@ -542,6 +544,8 @@ namespace DefinitiefProgram
             if (!txtEmail.Text.Contains('@')) { error("Ongeldig mailadres leerling.", "Geen @ gevonden."); return false; }
             if (!txtEmail.Text.Contains('.')) { error("Ongeldig mailadres leerling.", "Geen . gevonden."); return false; }
             if (txtEmail.Text.Length < 5) { error("Ongeldig mailadres leerling.", "Email niet lang genoeg."); return false; }
+            if (txtEmail.Text.Substring(txtEmail.Text.Length - 1) == "@") { error("Ongeldig mailadres leerling.", "Mailadres mag niet eindigen op een @."); return false; }
+            if (txtEmail.Text.Substring(txtEmail.Text.Length - 1) == ".") { error("Ongeldig mailadres leerling.", "Mailadres mag niet eindigen op een . ."); return false; }
             if (string.IsNullOrWhiteSpace(txtStraat.Text)) { error("Ongeldige straatnaam leerling.", ""); return false; }
             if (string.IsNullOrWhiteSpace(txtHuisnr.Text)) { error("Ongeldig huisnummer leerling.", ""); return false; }
             //bool isNumeric = int.TryParse(txtHuisnr.Text, out int n);
@@ -560,7 +564,9 @@ namespace DefinitiefProgram
                     if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
                     if (!txtEmailMoeder.Text.Contains('@')) { error("Ongeldig mailadres moeder.", "Geen @ gevonden."); return false; }
                     if (!txtEmailMoeder.Text.Contains('.')) { error("Ongeldig mailadres moeder.", "Geen . gevonden."); return false; }
-                    if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Email niet lang genoeg."); return false; }
+                    if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Mailadres niet lang genoeg."); return false; }
+                    if (txtEmailMoeder.Text.Substring(txtEmailMoeder.Text.Length - 1) == "@") { error("Ongeldig mailadres moeder.", "Mailadres mag niet eindigen op een @."); return false; }
+                    if (txtEmailMoeder.Text.Substring(txtEmailMoeder.Text.Length - 1) == ".") { error("Ongeldig mailadres moeder.", "Mailadres mag niet eindigen op een . ."); return false; }
                     if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
@@ -575,7 +581,9 @@ namespace DefinitiefProgram
                     if (string.IsNullOrWhiteSpace(txtEmailVader.Text)) { error("Ongeldig mailadres vader.", ""); return false; }
                     if (!txtEmailVader.Text.Contains('@')) { error("Ongeldig mailadres vader.", "Geen @ gevonden."); return false; }
                     if (!txtEmailVader.Text.Contains('.')) { error("Ongeldig mailadres vader.", "Geen . gevonden."); return false; }
-                    if (txtEmailVader.Text.Length < 5) { error("Ongeldig mailadres vader.", "Email niet lang genoeg."); return false; }
+                    if (txtEmailVader.Text.Length < 5) { error("Ongeldig mailadres vader.", "Mailadres niet lang genoeg."); return false; }
+                    if (txtEmailVader.Text.Substring(txtEmailVader.Text.Length - 1) == "@") { error("Ongeldig mailadres vader.", "Mailadres mag niet eindigen op een @."); return false; }
+                    if (txtEmailVader.Text.Substring(txtEmailVader.Text.Length - 1) == ".") { error("Ongeldig mailadres vader.", "Mailadres mag niet eindigen op een . ."); return false; }
                     if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
@@ -591,7 +599,9 @@ namespace DefinitiefProgram
                 if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
                 if (!txtEmailMoeder.Text.Contains('@')) { error("Ongeldig mailadres moeder.", "Geen @ gevonden."); return false; }
                 if (!txtEmailMoeder.Text.Contains('.')) { error("Ongeldig mailadres moeder.", "Geen . gevonden."); return false; }
-                if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Email niet lang genoeg."); return false; }
+                if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Mailadres niet lang genoeg."); return false; }
+                if (txtEmailMoeder.Text.Substring(txtEmailMoeder.Text.Length - 1)=="@") { error("Ongeldig mailadres moeder.", "Mailadres mag niet eindigen op een @."); return false; }
+                if (txtEmailMoeder.Text.Substring(txtEmailMoeder.Text.Length - 1)==".") { error("Ongeldig mailadres moeder.", "Mailadres mag niet eindigen op een . ."); return false; }
                 if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
@@ -605,6 +615,8 @@ namespace DefinitiefProgram
                 if (!txtEmailVader.Text.Contains('@')) { error("Ongeldig mailadres vader.", "Geen @ gevonden."); return false; }
                 if (!txtEmailVader.Text.Contains('.')) { error("Ongeldig mailadres vader.", "Geen . gevonden."); return false; }
                 if (txtEmailVader.Text.Length < 5) { error("Ongeldig mailadres vader.", "Email niet lang genoeg."); return false; }
+                if (txtEmailVader.Text.Substring(txtEmailVader.Text.Length - 1) == "@") { error("Ongeldig mailadres vader.", "Mailadres mag niet eindigen op een @."); return false; }
+                if (txtEmailVader.Text.Substring(txtEmailVader.Text.Length - 1) == ".") { error("Ongeldig mailadres vader.", "Mailadres mag niet eindigen op een . ."); return false; }
                 if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
@@ -623,21 +635,22 @@ namespace DefinitiefProgram
             {
                 rdbGezinshoofdMoeder.Text = "Moeder";
                 rdbGezinshoofdVader.Text = "Vader";
+            } else {
+                rdbGezinshoofdMoeder.Text = "Pleeg moeder";
+                rdbGezinshoofdVader.Text = "Pleeg vader";
             }
+            rdbGezinshoofdMoeder.Enabled = true;
+            rdbGezinshoofdVader.Enabled = true;
 
             if (cmbGezinssituatie.SelectedItem.ToString() == "Gehuwd")
             {
-                rdbGezinshoofdMoeder.Enabled = true;
-                rdbGezinshoofdVader.Enabled = true;
                 label21.Text = "Moeder";
                 label23.Text = "Vader";
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = true;
             }
-            else if (cmbGezinssituatie.SelectedItem.ToString() == "Co-Ouderschap")
+            else if (cmbGezinssituatie.SelectedItem.ToString() == "Co-ouderschap")
             {
-                rdbGezinshoofdMoeder.Enabled = true;
-                rdbGezinshoofdVader.Enabled = true;
                 label21.Text = "Moeder";
                 label21.Text = "Vader";
                 pnlVader.Visible = true;
@@ -648,19 +661,11 @@ namespace DefinitiefProgram
                 label21.Text = "Pleeg moeder";
                 label23.Text = "Pleeg vader";
 
-                rdbGezinshoofdMoeder.Text = "Pleeg moeder";
-                rdbGezinshoofdVader.Text = "Pleeg vader";
-
-                rdbGezinshoofdMoeder.Enabled = true;
-                rdbGezinshoofdVader.Enabled = true;
-
                 pnlVader.Visible = true;
                 pnlMoeder.Visible = true;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Éenoudergezin")
             {
-                rdbGezinshoofdMoeder.Enabled = true;
-                rdbGezinshoofdVader.Enabled = true;
                 if (rdbGezinshoofdMoeder.Checked)
                 {
                     label21.Text = "Moeder";
@@ -681,7 +686,6 @@ namespace DefinitiefProgram
                 pnlMoeder.Visible = true;
                 rdbGezinshoofdMoeder.Checked = true;
                 rdbGezinshoofdVader.Checked = false;
-                rdbGezinshoofdMoeder.Enabled = true;
                 rdbGezinshoofdVader.Enabled = false;
             }
             else if (cmbGezinssituatie.SelectedItem.ToString() == "Moeder overleden")
@@ -692,7 +696,6 @@ namespace DefinitiefProgram
                 rdbGezinshoofdMoeder.Checked = false;
                 rdbGezinshoofdVader.Checked = true;
                 rdbGezinshoofdMoeder.Enabled = false;
-                rdbGezinshoofdVader.Enabled = true;
             }
 
             centerOuderNames();
