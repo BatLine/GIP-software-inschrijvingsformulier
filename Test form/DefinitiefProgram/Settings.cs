@@ -33,8 +33,12 @@ namespace DefinitiefProgram
         {
             this.TopMost = false;
             string voornaam = Interaction.InputBox("Voornaam leerling:", "Info Leerling");
+            if (string.IsNullOrWhiteSpace(voornaam)) { MessageBox.Show("Ongeldige voornaam ingegeven.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); this.TopMost = true; return; }
             string achternaam = Interaction.InputBox("(Tussenvoegsel +) Achternaam leerling:", "Info Leerling");
+            if (string.IsNullOrWhiteSpace(achternaam)) { MessageBox.Show("Ongeldige achternaam ingegeven.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); this.TopMost = true; return; }
             string postcode = Interaction.InputBox("Postcode leerling:", "Info Leerling");
+            if (string.IsNullOrWhiteSpace(postcode)) { MessageBox.Show("Ongeldige postcode ingegeven.", "", MessageBoxButtons.OK, MessageBoxIcon.Error); this.TopMost = true; return; }
+
             DialogResult result = MessageBox.Show("Ben je zeker dat je " + voornaam + " " + achternaam + " wilt verwijderen?" + Environment.NewLine + "Dit kan niet ongedaan gemaakt worden.", "", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             { wisLLN(voornaam, achternaam, postcode); }

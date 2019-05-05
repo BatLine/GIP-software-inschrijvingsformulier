@@ -96,7 +96,7 @@
             this.btnVerwijderLeerling.Name = "btnVerwijderLeerling";
             this.btnVerwijderLeerling.Size = new System.Drawing.Size(230, 49);
             this.btnVerwijderLeerling.TabIndex = 4;
-            this.btnVerwijderLeerling.Text = "Verwijder 1 leerling";
+            this.btnVerwijderLeerling.Text = "Verwijder 1 leerling en ouders";
             this.btnVerwijderLeerling.Click += new XylosButton.ClickEventHandler(this.BtnVerwijderLeerling_Click);
             // 
             // Settings
