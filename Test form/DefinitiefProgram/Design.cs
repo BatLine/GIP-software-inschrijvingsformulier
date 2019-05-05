@@ -24,7 +24,7 @@ namespace DefinitiefProgram
         bool blnShowPassword = false;
         bool starting = false;
         LoadingCircle lo;
-        int updateID = 0;
+        public int updateID = 0;
         #endregion
 
         #region controls
@@ -128,8 +128,8 @@ namespace DefinitiefProgram
                 lln.O = o;
 
                 if (this.Text == "Leerling wijzigen")
-                { voegToe(lln); }
-                else { updateLLN(lln, updateID); }
+                { updateLLN(lln, updateID); }
+                else { voegToe(lln); }
             }
         }
         private void pbToonWachtwoord_Click(object sender, EventArgs e)
