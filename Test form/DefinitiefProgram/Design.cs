@@ -538,14 +538,14 @@ namespace DefinitiefProgram
             if (intControleGetal != intGetal)
             { error("Ongeldig rijksregisternummer leerling", "Controlenummer klopt niet."); return false; }
             //if (string.IsNullOrWhiteSpace(mskGsmNummer.Text)) { error("Ongeldig GSM nummer leerling.", ""); return false; ; }
-            //leerling hoeft niet persee gsm te hebben...
-            if (string.IsNullOrWhiteSpace(txtEmail.Text)) { error("Ongeldig E-mail adres leerling.", ""); return false; ; }
-            if (!txtEmail.Text.Contains("@")) { error("Ongeldig E-mail adres leerling.", ""); return false; }
-            if (!txtEmail.Text.Contains(".")) { error("Ongeldig E-mail adres leerling.", ""); return false; }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) { error("Ongeldig mailadres leerling.", ""); return false; ; }
+            if (!txtEmail.Text.Contains('@')) { error("Ongeldig mailadres leerling.", "Geen @ gevonden."); return false; }
+            if (!txtEmail.Text.Contains('.')) { error("Ongeldig mailadres leerling.", "Geen . gevonden."); return false; }
+            if (txtEmail.Text.Length < 5) { error("Ongeldig mailadres leerling.", "Email niet lang genoeg."); return false; }
             if (string.IsNullOrWhiteSpace(txtStraat.Text)) { error("Ongeldige straatnaam leerling.", ""); return false; }
             if (string.IsNullOrWhiteSpace(txtHuisnr.Text)) { error("Ongeldig huisnummer leerling.", ""); return false; }
-            bool isNumeric = int.TryParse(txtHuisnr.Text, out int n);
-            if (!isNumeric) { error("Ongeldig huisnummer leerling.", "Geef een getal in."); return false; }
+            //bool isNumeric = int.TryParse(txtHuisnr.Text, out int n);
+            //if (!isNumeric) { error("Ongeldig huisnummer leerling.", "Geef een getal in."); return false; }
             if (string.IsNullOrWhiteSpace(txtGemeente.Text)) { error("Ongeldige gemeente leerling.", ""); return false; }
             if (string.IsNullOrWhiteSpace(mskPostcode.Text)) { error("Ongeldige postcode leerling.", ""); return false; }
 
@@ -558,10 +558,13 @@ namespace DefinitiefProgram
                     if (string.IsNullOrWhiteSpace(txtFamilienaamMoeder.Text)) { error("Ongeldige familienaam moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtGSMMoeder.Text)) { error("Ongeldig GSM nummer moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
+                    if (!txtEmailMoeder.Text.Contains('@')) { error("Ongeldig mailadres moeder.", "Geen @ gevonden."); return false; }
+                    if (!txtEmailMoeder.Text.Contains('.')) { error("Ongeldig mailadres moeder.", "Geen . gevonden."); return false; }
+                    if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Email niet lang genoeg."); return false; }
                     if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
-                    if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
+                    //if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
                     if (string.IsNullOrWhiteSpace(txtGemeenteMoeder.Text)) { error("Ongeldige gemeente moeder.", ""); return false; }
                 }
                 else
@@ -570,10 +573,13 @@ namespace DefinitiefProgram
                     if (string.IsNullOrWhiteSpace(txtFamilienaamVader.Text)) { error("Ongeldige familienaam vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtGSMVader.Text)) { error("Ongeldig GSM nummer vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtEmailVader.Text)) { error("Ongeldig mailadres vader.", ""); return false; }
+                    if (!txtEmailVader.Text.Contains('@')) { error("Ongeldig mailadres vader.", "Geen @ gevonden."); return false; }
+                    if (!txtEmailVader.Text.Contains('.')) { error("Ongeldig mailadres vader.", "Geen . gevonden."); return false; }
+                    if (txtEmailVader.Text.Length < 5) { error("Ongeldig mailadres vader.", "Email niet lang genoeg."); return false; }
                     if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
                     if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
-                    if (double.TryParse(mtxtPostcodeVader.Text, out double nr)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
+                    //if (double.TryParse(mtxtPostcodeVader.Text, out double nr)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
                     if (string.IsNullOrWhiteSpace(txtGemeenteVader.Text)) { error("Ongeldige gemeente vader.", ""); return false; }
                 }
             }
@@ -583,20 +589,26 @@ namespace DefinitiefProgram
                 if (string.IsNullOrWhiteSpace(txtFamilienaamMoeder.Text)) { error("Ongeldige familienaam moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtGSMMoeder.Text)) { error("Ongeldig GSM nummer moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtEmailMoeder.Text)) { error("Ongeldig mailadres moeder.", ""); return false; }
+                if (!txtEmailMoeder.Text.Contains('@')) { error("Ongeldig mailadres moeder.", "Geen @ gevonden."); return false; }
+                if (!txtEmailMoeder.Text.Contains('.')) { error("Ongeldig mailadres moeder.", "Geen . gevonden."); return false; }
+                if (txtEmailMoeder.Text.Length < 5) { error("Ongeldig mailadres moeder.", "Email niet lang genoeg."); return false; }
                 if (string.IsNullOrWhiteSpace(txtStraatMoeder.Text)) { error("Ongeldige straatnaam moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtHuisNRMoeder.Text)) { error("Ongeldig huisnummer moeder.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtPostcodeMoeder.Text)) { error("Ongeldige postcode moeder.", ""); return false; }
-                if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
+                //if (double.TryParse(mtxtPostcodeMoeder.Text, out double nr)) { error("Ongeldige postcode moeder.", "Gebruik alleen cijfers."); return false; }
                 if (string.IsNullOrWhiteSpace(txtGemeenteMoeder.Text)) { error("Ongeldige gemeente moeder.", ""); return false; }
 
                 if (string.IsNullOrWhiteSpace(txtVoornaamVader.Text)) { error("Ongeldige voornaam vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtFamilienaamVader.Text)) { error("Ongeldige familienaam vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtGSMVader.Text)) { error("Ongeldig GSM nummer vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtEmailVader.Text)) { error("Ongeldig mailadres vader.", ""); return false; }
+                if (!txtEmailVader.Text.Contains('@')) { error("Ongeldig mailadres vader.", "Geen @ gevonden."); return false; }
+                if (!txtEmailVader.Text.Contains('.')) { error("Ongeldig mailadres vader.", "Geen . gevonden."); return false; }
+                if (txtEmailVader.Text.Length < 5) { error("Ongeldig mailadres vader.", "Email niet lang genoeg."); return false; }
                 if (string.IsNullOrWhiteSpace(txtStraatVader.Text)) { error("Ongeldige straatnaam vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(txtHuisNRVader.Text)) { error("Ongeldig huisnummer vader.", ""); return false; }
                 if (string.IsNullOrWhiteSpace(mtxtPostcodeVader.Text)) { error("Ongeldige postcode vader.", ""); return false; }
-                if (double.TryParse(mtxtPostcodeVader.Text, out double nr2)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
+                //if (double.TryParse(mtxtPostcodeVader.Text, out double nr2)) { error("Ongeldige postcode vader.", "Gebruik alleen cijfers."); return false; }
                 if (string.IsNullOrWhiteSpace(txtGemeenteVader.Text)) { error("Ongeldige gemeente vader.", ""); return false; }
             }
 
