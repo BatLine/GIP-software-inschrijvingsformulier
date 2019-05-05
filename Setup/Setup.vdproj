@@ -5607,7 +5607,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_AD213927678B4E588C0D8FC23B91957C"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -5634,7 +5634,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SLCB Inschrijvingen"
         "ProductCode" = "8:{1839339B-6ED4-483F-AACB-E8047E3E5344}"
-        "PackageCode" = "8:{76EAB3F4-4266-460D-A970-169D03F9DA2D}"
+        "PackageCode" = "8:{30DF8A7D-F1F1-4F14-9642-FF6F91188E2B}"
         "UpgradeCode" = "8:{76BECC24-5972-4F8E-BEF5-1F03B9B33D01}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
