@@ -525,12 +525,22 @@ namespace DefinitiefProgram
             if (mskRijksregisterNummer.Text.Substring(6,2) != txtGeboortedatum.Text.Substring(0,2)) { error("Ongeldig rijksregisternummer leerling", "5e en 6e cijfer komt niet overeen met de geboortedag."); return false; }
             if (cmbGeslacht.SelectedItem.ToString() == "Vrouw")
             {
-                if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) != 0)
-                { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+                try
+                {
+                    if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) != 0)
+                    { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+                }
+                catch (Exception)
+                { error("Ongeldig rijksregisternummer leerling", "Check als alles ingevuld is."); return false; }
             } else if (cmbGeslacht.SelectedItem.ToString() == "Man")
             {
-                if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) == 0)
-                { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+                try
+                {
+                    if ((Convert.ToInt16(mskRijksregisterNummer.Text.Substring(9, 3)) % 2) == 0)
+                    { error("Ongeldig rijksregisternummer leerling", "Check de cijfergroep van 3 cijfers."); return false; }
+                }
+                catch (Exception)
+                { error("Ongeldig rijksregisternummer leerling", "Check als alles ingevuld is."); return false; }
             }
             string getal = string.Empty;
             if (txtGeboortedatum.Text.Substring(6,1) == "2") { getal = "2"; }
