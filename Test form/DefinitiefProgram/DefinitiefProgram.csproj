@@ -83,6 +83,9 @@
     <Reference Include="MySqlConnector, Version=0.51.1.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.0.51.1\lib\net461\MySqlConnector.dll</HintPath>
     </Reference>
+    <Reference Include="RawPrint, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RawPrint.0.2.0.0\lib\net40\RawPrint.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -133,6 +136,12 @@
     <Compile Include="Export.Designer.cs">
       <DependentUpon>Export.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportPDF.Designer.cs">
+      <DependentUpon>ExportPDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout\circle_progressbar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Export.resx">
       <DependentUpon>Export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportPDF.resx">
+      <DependentUpon>ExportPDF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout\circle_progressbar.resx">
       <DependentUpon>circle_progressbar.cs</DependentUpon>

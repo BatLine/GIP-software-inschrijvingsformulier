@@ -36,6 +36,8 @@
             this.btnClose = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnWisAlles = new XylosButton();
             this.btnVerwijderLeerling = new XylosButton();
+            this.txtWijzigWachtwoordInstellingen = new XylosButton();
+            this.txtWijzigStandaardWWLLN = new XylosButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(63, 13);
             this.bunifuCustomLabel2.TabIndex = 1;
-            this.bunifuCustomLabel2.Text = "Versie 1.0.0";
+            this.bunifuCustomLabel2.Text = "Versie 1.0.1";
             // 
             // btnClose
             // 
@@ -99,13 +101,35 @@
             this.btnVerwijderLeerling.Text = "Verwijder 1 leerling en ouders";
             this.btnVerwijderLeerling.Click += new XylosButton.ClickEventHandler(this.BtnVerwijderLeerling_Click);
             // 
+            // txtWijzigWachtwoordInstellingen
+            // 
+            this.txtWijzigWachtwoordInstellingen.EnabledCalc = true;
+            this.txtWijzigWachtwoordInstellingen.Location = new System.Drawing.Point(11, 166);
+            this.txtWijzigWachtwoordInstellingen.Name = "txtWijzigWachtwoordInstellingen";
+            this.txtWijzigWachtwoordInstellingen.Size = new System.Drawing.Size(230, 49);
+            this.txtWijzigWachtwoordInstellingen.TabIndex = 5;
+            this.txtWijzigWachtwoordInstellingen.Text = "Wijzig wachtwoord instellingen";
+            this.txtWijzigWachtwoordInstellingen.Click += new XylosButton.ClickEventHandler(this.TxtWijzigWachtwoordInstellingen_Click);
+            // 
+            // txtWijzigStandaardWWLLN
+            // 
+            this.txtWijzigStandaardWWLLN.EnabledCalc = true;
+            this.txtWijzigStandaardWWLLN.Location = new System.Drawing.Point(11, 221);
+            this.txtWijzigStandaardWWLLN.Name = "txtWijzigStandaardWWLLN";
+            this.txtWijzigStandaardWWLLN.Size = new System.Drawing.Size(230, 49);
+            this.txtWijzigStandaardWWLLN.TabIndex = 6;
+            this.txtWijzigStandaardWWLLN.Text = "Wijzig standaardwachtwoord lln";
+            this.txtWijzigStandaardWWLLN.Click += new XylosButton.ClickEventHandler(this.TxtWijzigStandaardWWLLN_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(55)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(255, 176);
+            this.ClientSize = new System.Drawing.Size(255, 284);
             this.ControlBox = false;
+            this.Controls.Add(this.txtWijzigStandaardWWLLN);
+            this.Controls.Add(this.txtWijzigWachtwoordInstellingen);
             this.Controls.Add(this.btnVerwijderLeerling);
             this.Controls.Add(this.btnWisAlles);
             this.Controls.Add(this.btnClose);
@@ -114,9 +138,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(255, 176);
+            this.MaximumSize = new System.Drawing.Size(255, 284);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(255, 176);
+            this.MinimumSize = new System.Drawing.Size(255, 284);
             this.Name = "Settings";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -137,5 +161,7 @@
         private Bunifu.Framework.UI.BunifuImageButton btnClose;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private XylosButton txtWijzigStandaardWWLLN;
+        private XylosButton txtWijzigWachtwoordInstellingen;
     }
 }

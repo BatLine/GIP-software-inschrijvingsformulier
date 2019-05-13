@@ -41,6 +41,7 @@
             this.pbLogo = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClose2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnSettings = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btnExportToPDF = new XylosButton();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             // pnlMenu
             // 
+            this.pnlMenu.Controls.Add(this.btnExportToPDF);
             this.pnlMenu.Controls.Add(this.btnExport);
             this.pnlMenu.Controls.Add(this.bunifuCustomLabel1);
             this.pnlMenu.Controls.Add(this.btnToevoegen);
@@ -71,7 +73,7 @@
             this.pnlMenu.Controls.Add(this.btnWijzigen);
             this.pnlMenu.Location = new System.Drawing.Point(113, 28);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(198, 373);
+            this.pnlMenu.Size = new System.Drawing.Size(198, 431);
             this.pnlMenu.TabIndex = 8;
             // 
             // btnExport
@@ -100,7 +102,7 @@
             // 
             this.btnClose.EnabledCalc = true;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(4, 306);
+            this.btnClose.Location = new System.Drawing.Point(4, 363);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(191, 60);
             this.btnClose.TabIndex = 6;
@@ -173,12 +175,23 @@
             this.btnSettings.Zoom = 10;
             this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
+            // btnExportToPDF
+            // 
+            this.btnExportToPDF.EnabledCalc = true;
+            this.btnExportToPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToPDF.Location = new System.Drawing.Point(4, 240);
+            this.btnExportToPDF.Name = "btnExportToPDF";
+            this.btnExportToPDF.Size = new System.Drawing.Size(191, 60);
+            this.btnExportToPDF.TabIndex = 8;
+            this.btnExportToPDF.Text = "Leerling naar PDF";
+            this.btnExportToPDF.Click += new XylosButton.ClickEventHandler(this.BtnExportToPDF_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(546, 460);
+            this.ClientSize = new System.Drawing.Size(546, 543);
             this.ControlBox = false;
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnClose2);
@@ -217,5 +230,6 @@
         private Bunifu.Framework.UI.BunifuImageButton pbLogo;
         private Bunifu.Framework.UI.BunifuImageButton btnSettings;
         private Bunifu.Framework.UI.BunifuImageButton btnClose2;
+        private XylosButton btnExportToPDF;
     }
 }

@@ -31,6 +31,10 @@ namespace DefinitiefProgram
             }
             switch (pRichting)
             {
+                case "ICT":
+                    if (lln.IntMiddelbaar == 1)
+                    { intKeuzeID = 15; } else if (lln.IntMiddelbaar == 2) { intKeuzeID = 16; }
+                    break;
                 case "Ondernemen":
                     if (lln.IntMiddelbaar == 1)
                     { intKeuzeID = 1; } else if (lln.IntMiddelbaar == 2) { intKeuzeID = 2; }
@@ -96,6 +100,11 @@ namespace DefinitiefProgram
         public Leerling GetLeerling(int pintID)
         {
             Leerling l = p.getLeerling(pintID);
+            return l;
+        }
+        public Leerling GetLeerling(string Voornaam, string Achternaam)
+        {
+            Leerling l = p.getLeerling(Voornaam, Achternaam);
             return l;
         }
         public bool addLand(string strLand)

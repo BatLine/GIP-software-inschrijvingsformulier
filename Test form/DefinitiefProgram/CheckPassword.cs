@@ -17,7 +17,7 @@ namespace DefinitiefProgram
 
         private void BtnForward_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "SLCB2019") { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.No; }
+            if (txtPassword.Text == Properties.Settings.Default.Wachtwoord) { this.DialogResult = DialogResult.OK; } else { this.DialogResult = DialogResult.No; }
             this.Close();
         }
 

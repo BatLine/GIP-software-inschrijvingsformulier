@@ -71,5 +71,25 @@ namespace DefinitiefProgram
         }
         void alleswissen()
         { MessageBox.Show(b.wisAlles(), "Database wissen", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
+        private void TxtWijzigWachtwoordInstellingen_Click(object sender, EventArgs e)
+        {
+            if (Interaction.InputBox("Geef het huidige wachtwoord in:", "Wachtwoord veranderen") == Properties.Settings.Default.Wachtwoord)
+            {
+                Properties.Settings.Default.Wachtwoord = Interaction.InputBox("Geef een nieuw wachtwoord in:", "Wachtwoord veranderen");
+                Properties.Settings.Default.Save();
+                MessageBox.Show("Wachtwoord gewijzigd.", "Wachtwoord veranderen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else { MessageBox.Show("Fout wachtwoord!", "Wachtwoord veranderen", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void TxtWijzigStandaardWWLLN_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.StandaardWachtwoordLLN = Interaction.InputBox("Geef een nieuw wachtwoord in:", "Wachtwoord veranderen");
+            try
+            {
+                Properties.Settings.Default.Save();
+                MessageBox.Show("Wachtwoord gewijzigd.", "Wachtwoord veranderen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (Exception) { MessageBox.Show("Fout bij het wijzigen van het wachtwoord!", "Wachtwoord veranderen", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
     }
 }

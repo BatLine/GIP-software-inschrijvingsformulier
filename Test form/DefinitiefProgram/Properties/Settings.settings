@@ -5,5 +5,11 @@
     <Setting Name="lastSaveFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Wachtwoord" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SLCB2019</Value>
+    </Setting>
+    <Setting Name="StandaardWachtwoordLLN" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Netwerk2019</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

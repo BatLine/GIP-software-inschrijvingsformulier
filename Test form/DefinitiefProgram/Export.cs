@@ -136,7 +136,7 @@ namespace DefinitiefProgram
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     prop.Default.lastSaveFolder = fbd.SelectedPath + @"\"; prop.Default.Save();
-                    runExport(prop.Default.lastSaveFolder, "Leerlingen.xlsx");
+                    runExport(prop.Default.lastSaveFolder, "Leerlingen " + DateTime.Now.Day + DateTime.Now.Month + DateTime.Now.Year + DateTime.Now.Hour + DateTime.Now.Minute + ".xlsx");
                 }
             }
             else { MessageBox.Show("Leerlingen exporteren mislukt." + Environment.NewLine + "Gelieve minstens 1 leerling te selecteren.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
@@ -327,6 +327,7 @@ namespace DefinitiefProgram
         }
         void export(string locatie, string naam)
         {
+            bool crashed = false;
             try
             {
                 xlexcel = new Excel.Application();
@@ -356,6 +357,58 @@ namespace DefinitiefProgram
                 try
                 {
                     int intTeller = 1;
+                    xlWorkSheet.Columns.ColumnWidth = 20;
+                    xlWorkSheet.Range["A1"].EntireRow.Font.Bold = true;
+                    xlWorkSheet.Range["A1"].EntireRow.Font.Size = 12;
+                    xlWorkSheet.Cells[intTeller, 1] = "Achternaam Leerling";
+                    xlWorkSheet.Cells[intTeller, 2] = "Voornaam Leerling";
+                    xlWorkSheet.Cells[intTeller, 3] = "Bijkomende Voornaam Leerlign";
+                    xlWorkSheet.Cells[intTeller, 4] = "Geslacht Leerling";
+                    xlWorkSheet.Cells[intTeller, 5] = "Geboortedatum Leerling";
+                    xlWorkSheet.Cells[intTeller, 6] = "Geboorteplaats Leerling";
+                    xlWorkSheet.Cells[intTeller, 7] = "Rijksregister Leerling";
+                    xlWorkSheet.Cells[intTeller, 8] = "Straatnaam Leerling";
+                    xlWorkSheet.Cells[intTeller, 9] = "Huisnummer Leerling";
+                    xlWorkSheet.Cells[intTeller, 10] = "Bus Leerling";
+                    xlWorkSheet.Cells[intTeller, 11] = "Postcode Leerling";
+                    xlWorkSheet.Cells[intTeller, 12] = "Gemeente Leerling";
+                    xlWorkSheet.Cells[intTeller, 13] = "Land Leerling";
+                    xlWorkSheet.Cells[intTeller, 14] = "Nationaliteit Leerling";
+                    xlWorkSheet.Cells[intTeller, 15] = "Gezinshoofd";
+                    xlWorkSheet.Cells[intTeller, 16] = "Gezinssituatie";
+                    xlWorkSheet.Cells[intTeller, 17] = "GSM Nr Leerling";
+                    xlWorkSheet.Cells[intTeller, 18] = "E-mail Leerling";
+                    xlWorkSheet.Cells[intTeller, 19] = "Studiejaar Leerling";
+                    xlWorkSheet.Cells[intTeller, 20] = "Schoolstatuut Leerling";
+                    xlWorkSheet.Cells[intTeller, 21] = "Richting Leerling";
+                    xlWorkSheet.Cells[intTeller, 22] = "Correspondentie";
+
+                    xlWorkSheet.Cells[intTeller, 23] = "Gebruikersnaam Leerling";
+                    xlWorkSheet.Cells[intTeller, 24] = "Standaardwachtwoord Leerling";
+
+                    xlWorkSheet.Cells[intTeller, 25] = "Achternaam Moeder";
+                    xlWorkSheet.Cells[intTeller, 26] = "Voornaam Moeder";
+                    xlWorkSheet.Cells[intTeller, 27] = "Beroep Moeder";
+                    xlWorkSheet.Cells[intTeller, 28] = "GSM Nr Moeder";
+                    xlWorkSheet.Cells[intTeller, 29] = "Telefoon Werk Moeder";
+                    xlWorkSheet.Cells[intTeller, 30] = "E-mail Moeder";
+                    xlWorkSheet.Cells[intTeller, 31] = "Straat Moeder";
+                    xlWorkSheet.Cells[intTeller, 32] = "Huisnummer + Bus Moeder";
+                    xlWorkSheet.Cells[intTeller, 33] = "Postcode Moeder";
+                    xlWorkSheet.Cells[intTeller, 34] = "Gemeente Moeder";
+
+                    xlWorkSheet.Cells[intTeller, 35] = "Achternaam Vader";
+                    xlWorkSheet.Cells[intTeller, 36] = "Voornaam Vader";
+                    xlWorkSheet.Cells[intTeller, 37] = "Beroep Vader";
+                    xlWorkSheet.Cells[intTeller, 38] = "GSM NR Vader";
+                    xlWorkSheet.Cells[intTeller, 39] = "Telefoon Werk Vader";
+                    xlWorkSheet.Cells[intTeller, 40] = "E-mail Vader";
+                    xlWorkSheet.Cells[intTeller, 41] = "Straat Vader";
+                    xlWorkSheet.Cells[intTeller, 42] = "Huisnummer + Bus Vader";
+                    xlWorkSheet.Cells[intTeller, 43] = "Postcode Vader";
+                    xlWorkSheet.Cells[intTeller, 44] = "Gemeente Vader";
+
+                    intTeller++;
                     foreach (Leerling l in leerlingenOmteExporteren)
                     {
                         xlWorkSheet.Cells[intTeller, 1] = l.StrNaam;
@@ -372,38 +425,54 @@ namespace DefinitiefProgram
                         xlWorkSheet.Cells[intTeller, 12] = l.StrGemeente;
                         xlWorkSheet.Cells[intTeller, 13] = l.StrLand;
                         xlWorkSheet.Cells[intTeller, 14] = l.StrNationaliteit;
-                        if (l.O.StrGezinshoofd == "Moeder")
-                        { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkMoeder; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMMoeder; }
-                        else { xlWorkSheet.Cells[intTeller, 15] = l.O.StrTelefoonWerkVader; xlWorkSheet.Cells[intTeller, 16] = l.O.StrGSMVader; }
+                        xlWorkSheet.Cells[intTeller, 15] = l.O.StrGezinshoofd;
+                        xlWorkSheet.Cells[intTeller, 16] = l.O.StrGezinssituatie;
                         xlWorkSheet.Cells[intTeller, 17] = l.StrGSM_Nummer;
-                        xlWorkSheet.Cells[intTeller, 18] = l.O.StrGSMMoeder;
-                        xlWorkSheet.Cells[intTeller, 19] = l.O.StrGSMVader;
-                        xlWorkSheet.Cells[intTeller, 20] = l.StrE_Mail;
-                        xlWorkSheet.Cells[intTeller, 21] = l.O.StrEmailMoeder;
-                        xlWorkSheet.Cells[intTeller, 22] = l.O.StrEmailVader;
+                        xlWorkSheet.Cells[intTeller, 18] = l.StrE_Mail;
+                        xlWorkSheet.Cells[intTeller, 19] = l.IntMiddelbaar;
+                        string text = string.Empty;
+                        switch (l.IntSchoolstatuutID)
+                        {
+                            case 1: text = "Intern"; break;
+                            case 2: text = "Extern"; break;
+                            case 3: text = "Half-Intern"; break;
+                        }
+                        xlWorkSheet.Cells[intTeller, 20] = text;
+                        xlWorkSheet.Cells[intTeller, 21] = l.StrRichtingNaam;
+                        xlWorkSheet.Cells[intTeller, 22] = l.StrCorrespondentie;
 
                         xlWorkSheet.Cells[intTeller, 23] = l.StrGebruikersnaamNetwerk;
                         xlWorkSheet.Cells[intTeller, 24] = l.StrWachtwoordNetwerk;
 
                         xlWorkSheet.Cells[intTeller, 25] = l.O.StrNaamMoeder;
                         xlWorkSheet.Cells[intTeller, 26] = l.O.StrVoornaamMoeder;
-                        xlWorkSheet.Cells[intTeller, 29] = l.O.StrBeroepMoeder;
-                        xlWorkSheet.Cells[intTeller, 30] = l.O.StrGSMMoeder;
-                        xlWorkSheet.Cells[intTeller, 31] = l.O.StrTelefoonWerkMoeder;
-                        xlWorkSheet.Cells[intTeller, 32] = l.O.StrEmailMoeder;
+                        xlWorkSheet.Cells[intTeller, 27] = l.O.StrBeroepMoeder;
+                        xlWorkSheet.Cells[intTeller, 28] = l.O.StrGSMMoeder;
+                        xlWorkSheet.Cells[intTeller, 29] = l.O.StrTelefoonWerkMoeder;
+                        xlWorkSheet.Cells[intTeller, 30] = l.O.StrEmailMoeder;
+                        xlWorkSheet.Cells[intTeller, 31] = l.O.StrStraatMoeder;
+                        xlWorkSheet.Cells[intTeller, 32] = l.O.StrHuisnrMoeder; //bus zit hier in
+                        xlWorkSheet.Cells[intTeller, 33] = l.O.StrPostcodeMoeder;
+                        xlWorkSheet.Cells[intTeller, 34] = l.O.StrGemeenteMoeder;
 
-                        xlWorkSheet.Cells[intTeller, 33] = l.O.StrNaamVader;
-                        xlWorkSheet.Cells[intTeller, 34] = l.O.StrVoornaamVader;
+                        xlWorkSheet.Cells[intTeller, 35] = l.O.StrNaamVader;
+                        xlWorkSheet.Cells[intTeller, 36] = l.O.StrVoornaamVader;
                         xlWorkSheet.Cells[intTeller, 37] = l.O.StrBeroepVader;
                         xlWorkSheet.Cells[intTeller, 38] = l.O.StrGSMVader;
                         xlWorkSheet.Cells[intTeller, 39] = l.O.StrTelefoonWerkVader;
                         xlWorkSheet.Cells[intTeller, 40] = l.O.StrEmailVader;
+                        xlWorkSheet.Cells[intTeller, 41] = l.O.StrStraatVader;
+                        xlWorkSheet.Cells[intTeller, 42] = l.O.StrHuisnrVader; //bus zit hier in
+                        xlWorkSheet.Cells[intTeller, 43] = l.O.StrPostcodeVader;
+                        xlWorkSheet.Cells[intTeller, 44] = l.O.StrGemeenteVader;
 
                         intTeller++;
                     }
+                    xlWorkSheet.Columns.AutoFit();
+                    xlWorkSheet.Rows.AutoFit();
                 }
                 catch (Exception)
-                { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                { MessageBox.Show("Leerlingen exporteren mislukt.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning); crashed = true; }
 
                 try
                 {
@@ -413,7 +482,8 @@ namespace DefinitiefProgram
                     releaseObject(xlWorkSheet);
                     releaseObject(xlWorkBook);
                     releaseObject(xlexcel);
-                    MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!crashed)
+                    { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 
                     this.Close();
                 }

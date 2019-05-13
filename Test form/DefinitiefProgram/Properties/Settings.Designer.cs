@@ -34,5 +34,29 @@ namespace DefinitiefProgram.Properties {
                 this["lastSaveFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("SLCB2019")]
+        public string Wachtwoord {
+            get {
+                return ((string)(this["Wachtwoord"]));
+            }
+            set {
+                this["Wachtwoord"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Netwerk2019")]
+        public string StandaardWachtwoordLLN {
+            get {
+                return ((string)(this["StandaardWachtwoordLLN"]));
+            }
+            set {
+                this["StandaardWachtwoordLLN"] = value;
+            }
+        }
     }
 }

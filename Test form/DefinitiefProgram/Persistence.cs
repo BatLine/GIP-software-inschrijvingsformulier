@@ -25,8 +25,9 @@ namespace DefinitiefProgram
         {
             string LLNID, MoederID, VaderID;
             conn.Open();
-            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, Correspondentie, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk, Aanmaakdatum) VALUES (" +
+            MySqlCommand cmdLLN = new MySqlCommand("INSERT INTO leerling (Naam, ExtraInfo, Correspondentie, Voornaam, BijkVoornaam, Geslacht, Geboorteplaats, Geboortedatum, Rijksregisternummer, Nationaliteit, GSMnummer, Email, Straat, Huisnummer, Bus, Gemeente, Postcode, Land, StudiekeuzeID, Middelbaar, SchoolstatuutID, GebruikersnaamNetwerk, WachtwoordNetwerk, Aanmaakdatum) VALUES (" +
                 "'" + lln.StrNaam + "','" +
+                lln.ExtraInfo + "','" +
                 lln.StrCorrespondentie + "','" +
                 lln.StrVoornaam + "','" +
                 lln.StrBijkNaam + "','" +
@@ -197,7 +198,6 @@ namespace DefinitiefProgram
 
             foreach (Leerling l in alleLeerlingenInDB)
             {
-                DateTime dte = DateTime.ParseExact(l.AanmaakDatum, "dd/MM/yyyy", null);
                 if ((l.StrVoornaam.ToLower() == VNaam.ToLower()) && (l.StrNaam.ToLower() == ANaam.ToLower()))
                 {
                     intAantal++;
@@ -240,6 +240,99 @@ namespace DefinitiefProgram
                 l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
                 l.AanmaakDatum = dr["Aanmaakdatum"].ToString();
                 l.StrCorrespondentie = dr["Correspondentie"].ToString();
+                l.ExtraInfo = dr["ExtraInfo"].ToString();
+                moederID = Convert.ToInt16(dr["IDmoeder"]);
+                vaderID = Convert.ToInt16(dr["IDvader"]);
+            }
+            conn.Close();
+
+            //richtingnaam
+            cmd = new MySqlCommand("select Omschrijving,StudiekeuzeID from studiekeuze where StudiekeuzeID=" + l.IntStudieKeuzeID, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            { l.StrRichtingNaam = dr["Omschrijving"].ToString(); }
+            conn.Close();
+
+            //moeder
+            cmd = new MySqlCommand("select * from ouder where OuderID=" + moederID, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.O.StrVoornaamMoeder = dr["Voornaam"].ToString();
+                l.O.StrNaamMoeder = dr["Naam"].ToString();
+                l.O.StrEmailMoeder = dr["Mailadres"].ToString();
+                l.O.StrGSMMoeder = dr["GSM"].ToString();
+                l.O.StrTelefoonWerkMoeder = dr["Tel"].ToString();
+                l.O.StrStraatMoeder = dr["Straat"].ToString();
+                l.O.StrPostcodeMoeder = dr["Postcode"].ToString();
+                l.O.StrHuisnrMoeder = dr["HuisNR"].ToString();
+                l.O.StrGemeenteMoeder = dr["Gemeente"].ToString();
+                l.O.StrBeroepMoeder = dr["Beroep"].ToString();
+
+                //algemeen
+                l.O.StrGezinshoofd = dr["Gezinshoofd"].ToString();
+                l.O.StrGezinssituatie = dr["GezinsSituatie"].ToString();
+            }
+            conn.Close();
+
+            //vader
+            cmd = new MySqlCommand("select * from ouder where OuderID=" + vaderID, conn);
+            conn.Open();
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.O.StrVoornaamVader = dr["Voornaam"].ToString();
+                l.O.StrNaamVader = dr["Naam"].ToString();
+                l.O.StrEmailVader = dr["Mailadres"].ToString();
+                l.O.StrGSMVader = dr["GSM"].ToString();
+                l.O.StrTelefoonWerkVader = dr["Tel"].ToString();
+                l.O.StrStraatVader = dr["Straat"].ToString();
+                l.O.StrPostcodeVader = dr["Postcode"].ToString();
+                l.O.StrHuisnrVader = dr["HuisNR"].ToString();
+                l.O.StrGemeenteVader = dr["Gemeente"].ToString();
+                l.O.StrBeroepVader = dr["Beroep"].ToString();
+            }
+            conn.Close();
+
+            return l;
+        }
+        public Leerling getLeerling(string Voornaam, string Achternaam)
+        {
+            int moederID = 0;
+            int vaderID = 0;
+            Leerling l = new Leerling();
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from leerling where Naam = '" + Achternaam + "' and Voornaam = '" + Voornaam + "';", conn);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                l.DatabaseID = Convert.ToInt16(dr["idLeerling"]);
+                l.StrNaam = dr["Naam"].ToString();
+                l.StrVoornaam = dr["Voornaam"].ToString();
+                l.StrBijkNaam = dr["BijkVoornaam"].ToString();
+                l.StrGeslacht = dr["Geslacht"].ToString();
+                l.StrGeboortedatum = dr["Geboortedatum"].ToString();
+                l.StrGeboorteplaats = dr["Geboorteplaats"].ToString();
+                l.StrRijkregisternummer = dr["Rijksregisternummer"].ToString();
+                l.StrNationaliteit = dr["Nationaliteit"].ToString();
+                l.StrGSM_Nummer = dr["GSMnummer"].ToString();
+                l.StrE_Mail = dr["Email"].ToString();
+                l.StrStraat = dr["Straat"].ToString();
+                l.StrHuisnummer = dr["Huisnummer"].ToString();
+                l.StrBus = dr["Bus"].ToString();
+                l.StrGemeente = dr["Gemeente"].ToString();
+                l.StrPostcode = dr["Postcode"].ToString();
+                l.StrLand = dr["Land"].ToString();
+                l.IntMiddelbaar = Convert.ToInt16(dr["Middelbaar"]);
+                l.IntStudieKeuzeID = Convert.ToInt16(dr["StudiekeuzeID"]);
+                l.IntSchoolstatuutID = Convert.ToInt16(dr["SchoolstatuutID"]);
+                l.StrGebruikersnaamNetwerk = dr["GebruikersnaamNetwerk"].ToString();
+                l.StrWachtwoordNetwerk = dr["WachtwoordNetwerk"].ToString();
+                l.AanmaakDatum = dr["Aanmaakdatum"].ToString();
+                l.StrCorrespondentie = dr["Correspondentie"].ToString();
+                l.ExtraInfo = dr["ExtraInfo"].ToString();
                 moederID = Convert.ToInt16(dr["IDmoeder"]);
                 vaderID = Convert.ToInt16(dr["IDvader"]);
             }

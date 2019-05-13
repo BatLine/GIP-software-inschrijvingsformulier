@@ -81,7 +81,7 @@ namespace DefinitiefProgram
                 lln.StrGeboorteplaats = txtGeboorteplaats.Text;
                 lln.StrGeboortedatum = txtGeboortedatum.Text;
                 lln.StrRijkregisternummer = mskRijksregisterNummer.Text;
-                lln.StrNationaliteit = txtNationaliteit.Text;
+                lln.StrNationaliteit = txtNationaliteit.SelectedItem.ToString();
                 lln.StrGSM_Nummer = mskGsmNummer.Text;
                 lln.StrE_Mail = txtEmail.Text;
                 lln.StrStraat = txtStraat.Text;
@@ -89,11 +89,12 @@ namespace DefinitiefProgram
                 lln.StrBus = txtBus.Text;
                 lln.StrGemeente = txtGemeente.Text;
                 lln.StrPostcode = mskPostcode.Text;
-                lln.StrLand = cmbLand.Text;
+                lln.StrLand = cmbLand.SelectedItem.ToString();
                 lln.IntMiddelbaar = Studiejaar;
                 lln.StrGebruikersnaamNetwerk = txtGebruikersnaamNetwerk.Text;
                 lln.StrWachtwoordNetwerk = txtWachtwoordNetwerk.Text;
                 lln.StrRichtingNaam = cmbRichting.SelectedItem.ToString();
+                lln.ExtraInfo = txtExtraInfo.Text;
 
                 //Ouders
                 Ouders o = new Ouders();
@@ -208,6 +209,7 @@ namespace DefinitiefProgram
             {
                 cmbRichting.Items.Clear();
                 cmbRichting.Items.Add("Ondernemen");
+                cmbRichting.Items.Add("ICT");
             }
             else if (rdbJaar3.Checked || rdbJaar4.Checked)
             {
@@ -283,7 +285,6 @@ namespace DefinitiefProgram
                 checkStudieJaar();
                 txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
                 txtVoornaam.Focus();
-                //checkdebug();
             }));
             starting = false;
         }
@@ -341,6 +342,7 @@ namespace DefinitiefProgram
             { cmbLand.Items.Clear(); } else { if (cmbLand.Items.Count > 0) { strHuidigland = cmbLand.Items[0].ToString(); }}
             foreach (string s in b.getAlleLanden())
             { if (strHuidigland != s) { cmbLand.Items.Add(s); } }
+            cmbLand.SelectedItem = cmbLand.Items[0];
         }
         void setSelectedNationaliteit(string nieuweNationaliteit)
         { txtNationaliteit.SelectedItem = nieuweNationaliteit; }
@@ -351,6 +353,7 @@ namespace DefinitiefProgram
             { txtNationaliteit.Items.Clear(); } else { if (txtNationaliteit.Items.Count > 0) { strHuidigeNationaliteit = txtNationaliteit.Items[0].ToString(); }}
             foreach (string s in b.getAlleNationaliteiten())
             { if (strHuidigeNationaliteit != s) { txtNationaliteit.Items.Add(s); } }
+            txtNationaliteit.SelectedItem = txtNationaliteit.Items[0];
         }
         public void veldenvullen(int pintID)
         {
@@ -362,10 +365,10 @@ namespace DefinitiefProgram
             cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
             rdbJaar1.Checked = true;
             checkStudieJaar();
-            txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
             txtVoornaam.Focus();
 
             Leerling l = b.GetLeerling(pintID);
+            txtWachtwoordNetwerk.Text = l.StrWachtwoordNetwerk;
             txtVoornaam.Text = l.StrVoornaam;
             txtFamilieNaam.Text = l.StrNaam;
             txtBijkvoornaam.Text = l.StrBijkNaam;
@@ -433,6 +436,7 @@ namespace DefinitiefProgram
             txtHuisNRVader.Text = l.O.StrHuisnrVader;
             txtGemeenteVader.Text = l.O.StrGemeenteVader;
             txtBeroepVader.Text = l.O.StrBeroepVader;
+            txtExtraInfo.Text = l.ExtraInfo;
 
             if (l.O.StrGezinshoofd.ToLower().Contains("moeder")) { rdbGezinshoofdMoeder.Checked = true; rdbGezinshoofdVader.Checked = false; } else { rdbGezinshoofdVader.Checked = true; rdbGezinshoofdMoeder.Checked = false; }
             if (l.O.StrGezinshoofd.ToLower().Contains("pleeg")) { rdbGezinshoofdMoeder.Text = "Pleeg moeder"; rdbGezinshoofdVader.Text = "Pleeg vader"; }
@@ -450,59 +454,6 @@ namespace DefinitiefProgram
             rdbJaar5.Checked = false;
             rdbJaar6.Checked = false;
         }    
-        void checkdebug()
-        {
-            if ((System.Diagnostics.Debugger.IsAttached) && (this.Text != "Leerling wijzigen"))
-            {
-                //alle velden vullen om te testen
-                txtVoornaam.Text = "Voornaam";
-                txtFamilieNaam.Text = "Familienaam";
-                txtBijkvoornaam.Text = "bijk. vnaam";
-                cmbGeslacht.SelectedIndex = 1;
-                txtGeboorteplaats.Text = "geboorteplaats";
-                txtGeboortedatum.Text = "01/01/0001";
-                mskRijksregisterNummer.Text = "1";
-                txtNationaliteit.Text = "Nationaliteit";
-                mskGsmNummer.Text = "04711";
-                txtStraat.Text = "Straat";
-                txtEmail.Text = "email@email.com";
-                txtHuisnr.Text = "1";
-                txtBus.Text = "a";
-                txtGemeente.Text = "Gemeente";
-                mskPostcode.Text = "9000";
-                cmbLand.SelectedIndex = 0;
-
-                txtVoornaamMoeder.Text = "naam";
-                txtHuisNRMoeder.Text = "1";
-                txtGemeenteMoeder.Text = "Gemeente";
-                txtEmailMoeder.Text = "email@mail.com";
-                mtxtPostcodeMoeder.Text = "9000";
-                txtStraatMoeder.Text = "straat";
-                mtxtTelfoonWerkMoeder.Text = "04711";
-                mtxtGSMMoeder.Text = "04711";
-                txtVoornaamVader.Text = "naam";
-                txtHuisNRVader.Text = "1";
-                txtGemeenteVader.Text = "Gemeente";
-                txtEmailVader.Text = "email@mail.com";
-                mtxtPostcodeVader.Text = "9000";
-                txtStraatVader.Text = "straat";
-                mtxtTelfoonWerkVader.Text = "04711";
-                mtxtGSMVader.Text = "04711";
-                rdbGezinshoofdMoeder.Checked = true;
-                cmbGezinssituatie.SelectedIndex = 1;
-
-                rdbJaar6.Checked = true;
-                checkStudieJaar();
-                cmbRichting.SelectedIndex = 0;
-                rdbExtern.Checked = true;
-
-                txtGebruikersnaamNetwerk.Text = "gebruikersnaam";
-                txtWachtwoordNetwerk.Text = "wachtwoord";
-                cmbCorrespondentie.SelectedIndex = 1;
-
-                checkSchoolstatuut();
-            }
-        }
         void error(string Titel, string Message)
         {
             lblText.Text = Message;

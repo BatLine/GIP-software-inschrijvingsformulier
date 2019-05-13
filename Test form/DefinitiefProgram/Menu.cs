@@ -50,6 +50,8 @@ namespace DefinitiefProgram
             if (result == DialogResult.OK)
             { new Settings().ShowDialog(); } else if (result == DialogResult.No) { MessageBox.Show("Fout wachtwoord!", "", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
+        private void BtnExportToPDF_Click(object sender, EventArgs e)
+        { new ExportPDF().ShowDialog(); }
         private void btnToevoegen_Click(object sender, EventArgs e)
         { Design d = new Design(); d.ShowDialog(); d.Dispose(); this.Focus(); }
         private void btnWijzigen_Click(object sender, EventArgs e)
@@ -115,6 +117,7 @@ namespace DefinitiefProgram
         private void pbLogo_Click(object sender, EventArgs e)
         { System.Diagnostics.Process.Start("www.slcb.be"); }
         #endregion
+
         #endregion
     }
 }
