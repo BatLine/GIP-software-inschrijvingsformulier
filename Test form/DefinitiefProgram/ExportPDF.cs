@@ -45,7 +45,7 @@ namespace DefinitiefProgram
             }
         }
         private void ExportPDF_Load(object sender, EventArgs e)
-        { txtPath.Text = Path; }
+        { txtPath.Text = Path; txtVoornaam.Focus(); }
         private void TxtVoornaam_TextChanged(object sender, EventArgs e)
         { refreshPath(); }
         private void TxtAchternaam_TextChanged(object sender, EventArgs e)
@@ -289,6 +289,7 @@ namespace DefinitiefProgram
 
             if (!chkPrinten.Checked)
             {
+                MessageBox.Show("PDF gemaakt.", "Exporteren", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (File.Exists(outputPath))
                 { Process.Start(outputPath); }
             }
@@ -297,6 +298,8 @@ namespace DefinitiefProgram
                 PrinterSettings settings = new PrinterSettings();
                 IPrinter printer = new Printer();
                 printer.PrintRawFile(settings.PrinterName, outputPath, outputPath);
+                MessageBox.Show("Gegevens leerling gemaakt.", "Exporteren", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
 
             return exportSuccessful;

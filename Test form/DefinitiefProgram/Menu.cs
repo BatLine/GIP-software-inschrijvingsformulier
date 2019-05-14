@@ -36,8 +36,13 @@ namespace DefinitiefProgram
             pnlMenu.Location = new Point((this.Width / 2) - (pnlMenu.Width / 2), (this.Height / 2) - (pnlMenu.Height / 2));
             if ((prop.Default.lastSaveFolder == null) || (prop.Default.lastSaveFolder == ""))
             { prop.Default.lastSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop); prop.Default.Save(); }
-            if (prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 2) != "/" || prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 2) != @"\")
-            { prop.Default.lastSaveFolder += @"\"; prop.Default.Save(); }
+            if (prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 1) != "/" && prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 1) != @"\")
+            {
+                if (prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 1) != "/")
+                { prop.Default.lastSaveFolder += @"\"; prop.Default.Save(); }
+                else if (prop.Default.lastSaveFolder.Substring(prop.Default.lastSaveFolder.Length - 1) != @"\")
+                { prop.Default.lastSaveFolder += @"\"; prop.Default.Save(); }
+            }
             setLogo();
             setFooter();
             btnClose2.Location = new Point(this.Width - btnClose2.Width - 15, 15);
