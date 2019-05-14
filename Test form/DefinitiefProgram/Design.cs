@@ -14,9 +14,6 @@ namespace DefinitiefProgram
 {
     public partial class Design : Form
     {
-        /// <TODO>
-        /// 
-        /// </TODO>
         #region vars
         Business b;// = new Business();
         int Studiejaar = 0;
