@@ -272,6 +272,7 @@ namespace DefinitiefProgram
             this.Invoke(new Action(() =>
             {
                 b = new Business();
+                mskRijksregisterNummer.TB.Culture = System.Globalization.CultureInfo.InvariantCulture;
                 getAlleLanden();
                 getAlleNationaliteiten();
                 pbToonWachtwoord.Image = il.Images[0];
