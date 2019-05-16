@@ -13,6 +13,8 @@ using System.IO;
 using System.Diagnostics;
 using RawPrint;
 using System.Drawing.Printing;
+using System.Threading;
+using Spire.Pdf;
 #endregion
 namespace DefinitiefProgram
 {
@@ -56,6 +58,7 @@ namespace DefinitiefProgram
             if (chkPrinten.Checked)
             { btnCreatePDF.Text = "Print"; btnBrowse.Enabled = false; }
             else { btnCreatePDF.Text = "Maak PDF"; btnBrowse.Enabled = true; }
+            btnCreatePDF.Refresh();
         }
         #region form
         public ExportPDF()
@@ -67,7 +70,11 @@ namespace DefinitiefProgram
         void refreshPath()
         {
             if (!chkPrinten.Checked)
-            { txtPath.Text = Path + txtAchternaam.Text.Replace(" ", "") + txtVoornaam.Text.Replace(" ", "") + ".pdf"; }
+            {
+                if (string.IsNullOrWhiteSpace(txtVoornaam.Text) && string.IsNullOrWhiteSpace(txtAchternaam.Text))
+                { txtPath.Text = Path; }
+                else { txtPath.Text = Path + txtAchternaam.Text.Replace(" ", "") + txtVoornaam.Text.Replace(" ", "") + ".pdf"; }
+            }
             else { txtPath.Text = tempPath + "leerling.pdf"; }
         }
         async void maakPDF(string path)
@@ -295,11 +302,11 @@ namespace DefinitiefProgram
             }
             else
             {
-                PrinterSettings settings = new PrinterSettings();
-                IPrinter printer = new Printer();
-                printer.PrintRawFile(settings.PrinterName, outputPath, outputPath);
+                PdfDocument doc = new PdfDocument();
+                doc.LoadFromFile(outputPath);
+                doc.Print();
                 MessageBox.Show("Gegevens leerling gemaakt.", "Exporteren", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                doc.Dispose();
             }
 
             return exportSuccessful;

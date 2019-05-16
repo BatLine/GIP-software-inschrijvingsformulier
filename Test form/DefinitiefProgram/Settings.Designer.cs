@@ -65,7 +65,7 @@
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(63, 13);
             this.bunifuCustomLabel2.TabIndex = 1;
-            this.bunifuCustomLabel2.Text = "Versie 1.0.1";
+            this.bunifuCustomLabel2.Text = "Versie 1.0.3";
             // 
             // btnClose
             // 
