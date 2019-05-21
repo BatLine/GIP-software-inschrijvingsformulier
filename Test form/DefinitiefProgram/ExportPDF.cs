@@ -218,11 +218,11 @@ namespace DefinitiefProgram
                     x.Cells[30, 2] = l.O.StrBeroepMoeder;
                     x.Cells[31, 2] = "'" + l.O.StrGSMMoeder;
                     x.Cells[32, 2] = "'" + l.O.StrTelefoonWerkMoeder;
-                    x.Cells[32, 2] = l.O.StrEmailMoeder;
-                    x.Cells[33, 2] = l.O.StrStraatMoeder;
-                    x.Cells[34, 2] = "'" + l.O.StrHuisnrMoeder;
-                    x.Cells[35, 2] = "'" + l.O.StrPostcodeMoeder;
-                    x.Cells[36, 2] = l.O.StrGemeenteMoeder;
+                    x.Cells[33, 2] = l.O.StrEmailMoeder;
+                    x.Cells[34, 2] = l.O.StrStraatMoeder;
+                    x.Cells[35, 2] = "'" + l.O.StrHuisnrMoeder;
+                    x.Cells[36, 2] = "'" + l.O.StrPostcodeMoeder;
+                    x.Cells[37, 2] = l.O.StrGemeenteMoeder;
 
                     x.Cells[40, 2] = l.O.StrNaamVader;
                     x.Cells[41, 2] = l.O.StrVoornaamVader;

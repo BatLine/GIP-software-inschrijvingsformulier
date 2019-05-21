@@ -33,6 +33,7 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnExportToPDF = new XylosButton();
             this.btnExport = new XylosButton();
             this.btnToevoegen = new XylosButton();
             this.btnClose = new XylosButton();
@@ -41,7 +42,6 @@
             this.pbLogo = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClose2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnSettings = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btnExportToPDF = new XylosButton();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose2)).BeginInit();
@@ -76,6 +76,17 @@
             this.pnlMenu.Size = new System.Drawing.Size(198, 431);
             this.pnlMenu.TabIndex = 8;
             // 
+            // btnExportToPDF
+            // 
+            this.btnExportToPDF.EnabledCalc = true;
+            this.btnExportToPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToPDF.Location = new System.Drawing.Point(4, 240);
+            this.btnExportToPDF.Name = "btnExportToPDF";
+            this.btnExportToPDF.Size = new System.Drawing.Size(191, 60);
+            this.btnExportToPDF.TabIndex = 8;
+            this.btnExportToPDF.Text = "Leerling naar PDF";
+            this.btnExportToPDF.Click += new XylosButton.ClickEventHandler(this.BtnExportToPDF_Click);
+            // 
             // btnExport
             // 
             this.btnExport.EnabledCalc = true;
@@ -90,7 +101,7 @@
             // btnToevoegen
             // 
             this.btnToevoegen.EnabledCalc = true;
-            this.btnToevoegen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnToevoegen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.btnToevoegen.Location = new System.Drawing.Point(4, 42);
             this.btnToevoegen.Name = "btnToevoegen";
             this.btnToevoegen.Size = new System.Drawing.Size(191, 60);
@@ -174,17 +185,6 @@
             this.btnSettings.TabStop = false;
             this.btnSettings.Zoom = 10;
             this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
-            // 
-            // btnExportToPDF
-            // 
-            this.btnExportToPDF.EnabledCalc = true;
-            this.btnExportToPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportToPDF.Location = new System.Drawing.Point(4, 240);
-            this.btnExportToPDF.Name = "btnExportToPDF";
-            this.btnExportToPDF.Size = new System.Drawing.Size(191, 60);
-            this.btnExportToPDF.TabIndex = 8;
-            this.btnExportToPDF.Text = "Leerling naar PDF";
-            this.btnExportToPDF.Click += new XylosButton.ClickEventHandler(this.BtnExportToPDF_Click);
             // 
             // Menu
             // 
