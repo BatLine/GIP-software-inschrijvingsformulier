@@ -96,7 +96,7 @@ namespace DefinitiefProgram
             int y = this.Height - pbLogo.Height - 30;
             pbLogo.Location = new Point(x, y);
         }
-        async void setFooter()
+        void setFooter() //async
         {
             lblTime.Location = new Point(5, this.Height - lblTime.Height - 5);
             //await Task.Run(() => _setFooter());

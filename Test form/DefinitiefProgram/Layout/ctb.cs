@@ -29,8 +29,6 @@ namespace DefinitiefProgram
 
         private XylosTextBox.MouseState State;
 
-        private bool IsDown;
-
         private bool _EnabledCalc;
 
         private bool _allowpassword;

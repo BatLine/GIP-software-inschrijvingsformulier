@@ -121,7 +121,7 @@ public class XylosTabControl : TabControl
 
     private int _OverIndex;
 
-    private bool _FirstHeaderBorder;
+    
 
     public bool FirstHeaderBorder
     { get; set; }
@@ -305,8 +305,6 @@ public class XylosTextBox : Control
     private Graphics G;
 
     private XylosTextBox.MouseState State;
-
-    private bool IsDown;
 
     private bool _EnabledCalc;
 
@@ -1138,12 +1136,6 @@ public class XylosProgressBar : Control
     private int _Min;
 
     private int _Max;
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never), CompilerGenerated]
-    private Color _Stripes;
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never), CompilerGenerated]
-    private Color _BackgroundColor;
 
     public Color Stripes
     { get; set; }
