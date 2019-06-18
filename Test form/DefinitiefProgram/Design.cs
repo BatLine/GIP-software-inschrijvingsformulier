@@ -441,7 +441,6 @@ namespace DefinitiefProgram
             cmbGezinssituatie.SelectedItem = l.O.StrGezinssituatie;
 
             cmbCorrespondentie.SelectedItem = l.StrCorrespondentie;
-            //bij bevestigen de origenele updaten/eerst verwijderen en dan toevoegen
         }
         void unselectAllrdbJaar()
         {
