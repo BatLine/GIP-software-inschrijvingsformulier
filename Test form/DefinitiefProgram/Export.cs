@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using prop = DefinitiefProgram.Properties.Settings;
 using System.IO;
+using System.Diagnostics;
 #endregion
 
 namespace DefinitiefProgram
@@ -482,6 +483,22 @@ namespace DefinitiefProgram
                     releaseObject(xlWorkSheet);
                     releaseObject(xlWorkBook);
                     releaseObject(xlexcel);
+                    try
+                    {
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkSheet);
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkBook);
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(xlexcel);
+                        Process[] excelProcesses = Process.GetProcessesByName("excel");
+                        foreach (Process p in excelProcesses)
+                        {
+                            if (string.IsNullOrEmpty(p.MainWindowTitle))
+                            { p.Kill(); }
+                        }
+                        xlWorkSheet = null;
+                        xlWorkBook = null;
+                        xlexcel = null;
+                    }
+                    catch (Exception) { }
                     if (!crashed)
                     { MessageBox.Show("Leerlingen ge-exporteerd.", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 
@@ -500,7 +517,7 @@ namespace DefinitiefProgram
             catch (Exception ex)
             {
                 obj = null;
-                MessageBox.Show("Unable to release the Object " + ex.ToString());
+                Console.WriteLine("Unable to release the Object " + ex.ToString());
             }
             finally
             { GC.Collect(); }

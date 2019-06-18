@@ -246,12 +246,24 @@ namespace DefinitiefProgram
 
                     sheet.Close(true, tempPath + "tempLeerling2.xlsx", Type.Missing);
                     excel.Quit();
-                    x = null;
-                    sheet = null;
                     if (File.Exists(txtPath.Text)) { File.Delete(txtPath.Text); }
                     if (!chkPrinten.Checked)
                     { ExportWorkbookToPdf(tempPath + "tempLeerling2.xlsx", txtPath.Text); }
                     else { ExportWorkbookToPdf(tempPath + "tempLeerling2.xlsx", tempPath + "leerling.pdf"); }
+                    try
+                    {
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excel);
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(sheet);
+                        System.Runtime.InteropServices.Marshal.FinalReleaseComObject(x);
+                        Process[] excelProcesses = Process.GetProcessesByName("excel");
+                        foreach (Process p in excelProcesses)
+                        {
+                            if (string.IsNullOrEmpty(p.MainWindowTitle))
+                            { p.Kill(); }
+                        }
+                        x = null;
+                        sheet = null;
+                    }  catch (Exception) { }
                 }
                 else { MessageBox.Show("Geen leerling gevonden", "Exporteren", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
             }
