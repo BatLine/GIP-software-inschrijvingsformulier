@@ -22,6 +22,7 @@ namespace DefinitiefProgram
         bool starting = false;
         LoadingCircle lo;
         public int updateID = 0;
+        public bool updatenn = false;
         #endregion
 
         #region controls
@@ -276,10 +277,13 @@ namespace DefinitiefProgram
                 getAlleLanden();
                 getAlleNationaliteiten();
                 pbToonWachtwoord.Image = il.Images[0];
-                cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
-                cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
-                cmbCorrespondentie.SelectedItem = cmbCorrespondentie.Items[0];
-                rdbJaar1.Checked = true;
+                if (!updatenn)
+                {
+                    cmbGeslacht.SelectedItem = cmbGeslacht.Items[0];
+                    cmbGezinssituatie.SelectedItem = cmbGezinssituatie.Items[0];
+                    cmbCorrespondentie.SelectedItem = cmbCorrespondentie.Items[0];
+                    rdbJaar1.Checked = true;
+                }
                 checkStudieJaar();
                 txtWachtwoordNetwerk.Text = "Netwerk" + DateTime.Now.Year;
                 txtVoornaam.Focus();
@@ -366,6 +370,7 @@ namespace DefinitiefProgram
             txtVoornaam.Focus();
 
             Leerling l = b.GetLeerling(pintID);
+            this.Text += ": " + l.StrVoornaam + " " + l.StrNaam;
             txtWachtwoordNetwerk.Text = l.StrWachtwoordNetwerk;
             txtVoornaam.Text = l.StrVoornaam;
             txtFamilieNaam.Text = l.StrNaam;
@@ -385,20 +390,21 @@ namespace DefinitiefProgram
             if (!cmbLand.Items.Contains(l.StrLand))
             { cmbLand.Items.Add(l.StrLand); }
             cmbLand.SelectedItem = l.StrLand;
+            unselectAllrdbJaar();
             switch (l.IntMiddelbaar)
             {
                 case 1:
-                    unselectAllrdbJaar(); rdbJaar1.Checked = true; break;
+                    rdbJaar1.Checked = true; break;
                 case 2:
-                    unselectAllrdbJaar(); rdbJaar2.Checked = true; break;
+                    rdbJaar2.Checked = true; break;
                 case 3:
-                    unselectAllrdbJaar(); rdbJaar3.Checked = true; break;
+                    rdbJaar3.Checked = true; break;
                 case 4:
-                    unselectAllrdbJaar(); rdbJaar4.Checked = true; break;
+                    rdbJaar4.Checked = true; break;
                 case 5:
-                    unselectAllrdbJaar(); rdbJaar5.Checked = true; break;
+                    rdbJaar5.Checked = true; break;
                 case 6:
-                    unselectAllrdbJaar(); rdbJaar6.Checked = true; break;
+                    rdbJaar6.Checked = true; break;
             }
             checkStudieJaar();
             cmbRichting.SelectedItem = l.StrRichtingNaam;

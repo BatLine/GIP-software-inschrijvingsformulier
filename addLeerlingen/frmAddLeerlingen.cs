@@ -101,7 +101,7 @@ namespace addLeerlingen
             l.IntStudieKeuzeID = 8;
             l.IntSchoolstatuutID = 2;
             l.StrRichtingNaam = "IT & Netwerken";
-            l.StrGebruikersnaamNetwerk = l.StrVoornaam + "." + l.AanmaakDatum;
+            l.StrGebruikersnaamNetwerk = l.StrVoornaam + "." + l.StrNaam;
             l.StrWachtwoordNetwerk = "Netwerk2019";
 
             l.O.StrVoornaamMoeder = names[r.Next(names.Count)];
@@ -130,7 +130,10 @@ namespace addLeerlingen
             l.O.StrGezinshoofd = "Moeder";
             l.O.StrGezinssituatie = "Gehuwd";
             l.StrCorrespondentie = "Beide";
-            l.AanmaakDatum = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+            if (DateTime.Now.Day < 10) { l.AanmaakDatum += "0"; }
+            l.AanmaakDatum = DateTime.Now.Day + "/";
+            if (DateTime.Now.Month < 10) { l.AanmaakDatum += "0"; }
+            l.AanmaakDatum += DateTime.Now.Month + DateTime.Now.Year;
 
             return l;
         }

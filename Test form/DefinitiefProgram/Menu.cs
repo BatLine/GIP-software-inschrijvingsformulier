@@ -81,6 +81,7 @@ namespace DefinitiefProgram
                 Design d = new Design();
                 d.Text = "Leerling wijzigen";
                 d.veldenvullen(id);
+                d.updatenn = true;
                 d.updateID = id;
                 d.ShowDialog();
                 this.Focus();
