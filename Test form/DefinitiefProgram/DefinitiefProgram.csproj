@@ -75,9 +75,9 @@
       <HintPath>..\DLL\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Microsoft Office\root\Office16\ADDINS\Microsoft Power Query for Excel Integrated\bin\Microsoft.Office.Interop.Excel.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Excel\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySqlConnector, Version=0.56.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
@@ -136,6 +136,7 @@
     <Compile Include="CheckPassword.Designer.cs">
       <DependentUpon>CheckPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connection.cs" />
     <Compile Include="Design.cs">
       <SubType>Form</SubType>
     </Compile>

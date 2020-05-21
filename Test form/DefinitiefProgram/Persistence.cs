@@ -15,7 +15,7 @@ namespace DefinitiefProgram
     class Persistence
     {
         #region vars
-        MySqlConnection conn = new MySqlConnection("server = ID191774_6itngip9.db.webhosting.be; user id = ID191774_6itngip9; database = ID191774_6itngip9;password=ILiWO2dm");
+        MySqlConnection conn = new MySqlConnection(new Connection().getStrConnectionString());
         public Persistence()
         { }
         #endregion

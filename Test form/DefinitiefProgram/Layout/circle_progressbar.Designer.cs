@@ -51,13 +51,13 @@
             this.circle.LabelVisible = false;
             this.circle.LineProgressThickness = 8;
             this.circle.LineThickness = 5;
-            this.circle.Location = new System.Drawing.Point(10, 10);
-            this.circle.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.circle.Location = new System.Drawing.Point(13, 12);
+            this.circle.Margin = new System.Windows.Forms.Padding(13, 11, 13, 11);
             this.circle.MaxValue = 200;
             this.circle.Name = "circle";
             this.circle.ProgressBackColor = System.Drawing.Color.White;
             this.circle.ProgressColor = System.Drawing.Color.SeaGreen;
-            this.circle.Size = new System.Drawing.Size(212, 212);
+            this.circle.Size = new System.Drawing.Size(261, 261);
             this.circle.TabIndex = 1;
             this.circle.Value = 30;
             // 
@@ -81,12 +81,13 @@
             // 
             // circle_progressbar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.circle);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "circle_progressbar";
-            this.Size = new System.Drawing.Size(232, 232);
+            this.Size = new System.Drawing.Size(309, 286);
             this.ResumeLayout(false);
 
         }

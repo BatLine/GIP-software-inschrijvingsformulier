@@ -90,8 +90,9 @@ namespace DefinitiefProgram
         #region footer
         void setLogo()
         {
-            pbLogo.Load("http://www.vhsj.be/sint-joris/images/logo_handelsschool_sint_joris.jpg");
-            pbLogo.Size = new Size(pbLogo.Image.Width, pbLogo.Image.Height);
+            pbLogo.Load("https://pbs.twimg.com/profile_images/427530649839210496/Xq-_xksG_400x400.jpeg");
+            //pbLogo.Size = new Size(pbLogo.Image.Width, pbLogo.Image.Height);
+            pbLogo.Size = new Size(150, 150);
             pbLogo.BackColor = this.BackColor;
             int x = this.Width - pbLogo.Width - 30;
             int y = this.Height - pbLogo.Height - 30;
